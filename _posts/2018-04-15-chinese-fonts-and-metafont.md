@@ -48,7 +48,7 @@ I forget why I wanted to do that. Maybe just to noodle around with METAFONT. Any
 the whole program with enough context to render a PDF that looks like this, where the non-Latin character
 is the one produced by the above snippet:
 
-![I have no idea what this says, if anything](/blog/images/welsh-w.png)
+![I have no idea what this says, if anything](/blog/images/2018-04-15-welsh-w.png)
 
 By the way, METAFONT is the only programming language I know in which `whatever` is a keyword.
 See also: [VALGOL](http://web.mit.edu/freebsd/head/games/fortune/datfiles/fortunes).

@@ -133,8 +133,9 @@ Here are some templates that you might naively expect to be `noexcept` with cert
 (because they have wide contracts and do not throw), but which are actually non-`noexcept`
 (because the STL is allergic to conditional `noexcept`):
 
+- `std::priority_queue<int>::empty()`
+- `std::less<int>::operator()(const int&, const int&)`
+- `std::less<void>::operator()(const int&, const int&)`
 - `std::optional<int>::emplace(int)`
 - `std::exchange(int&, int)`
 - `std::copy` and `std::transform`
-- `std::less<int>::operator()(const int&, const int&)`
-- `std::less<void>::operator()(const int&, const int&)`
