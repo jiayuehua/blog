@@ -33,6 +33,13 @@ of the Lakos Rule — and the half not explicitly stated in N3279 — is the con
 - A library function having a *narrow* contract, which has undefined behavior when passed certain parameter values,
   should *not* be marked as `noexcept`.
 
+[A commenter on Reddit points out](https://www.reddit.com/r/cpp/comments/8f1bvs/the_lakos_rule/dy0bln8/)
+that the subtler half of the Lakos Rule is stated explicitly in
+[N3248 "`noexcept` Prevents Library Validation"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2011/n3248.pdf):
+
+> Remove `noexcept` specifications from each library function having a _narrow_ contract,
+> typically (but not always) indicated by the presence of a Requirements: clause.
+
 Here's a concrete example. Suppose our library contains the following `array`-like class:
 
     class ArrayOfTen {
@@ -134,8 +141,8 @@ Here are some templates that you might naively expect to be `noexcept` with cert
 (because the STL is allergic to conditional `noexcept`):
 
 - `std::priority_queue<int>::empty()`
+- `std::optional<int>(int&&)`
 - `std::less<int>::operator()(const int&, const int&)`
 - `std::less<void>::operator()(const int&, const int&)`
-- `std::optional<int>::emplace(int)`
 - `std::exchange(int&, int)`
 - `std::copy` and `std::transform`
