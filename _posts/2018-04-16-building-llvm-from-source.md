@@ -50,10 +50,10 @@ I set it up this way:
 
     [remote "origin"]
         url = git@github.com:Quuxplusone/llvm.git
-        fetch = +refs/heads/master:refs/remotes/origin/master
+        fetch = +refs/heads/*:refs/remotes/origin/*
     [remote "upstream"]
         url = git@github.com:llvm-mirror/llvm.git
-        fetch = +refs/heads/master:refs/remotes/upstream/master
+        fetch = +refs/heads/*:refs/remotes/upstream/*
     [branch "master"]
         remote = upstream
         merge = refs/heads/master
