@@ -66,8 +66,8 @@ feature branch; my feature branches will track `origin`.
 
 ## Step 3: Build!
 
-    mkdir -p $ROOT/build
-    cd $ROOT/build
+    mkdir -p $ROOT/llvm/build
+    cd $ROOT/llvm/build
     cmake -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
     make -j5 clang
@@ -89,12 +89,29 @@ Making `check-$FOO` will build and run the test suite for `$FOO`:
 
 If something goes wrong, you can usually recover via
 
-    rm $ROOT/build/CMakeCache.txt
+    rm $ROOT/llvm/build/CMakeCache.txt
 
-and, absolute worst case, you can blow away `$ROOT/build` and start over.
+and, absolute worst case, you can blow away `$ROOT/llvm/build` and start over.
 
 
-## Step 4: Bootstrap!
+## Step 4: Run specific tests.
+
+Running a specific test or directory-of-tests for any product is easy:
+
+    cd $ROOT/llvm/build
+    ./bin/llvm-lit -sv ../test/Analysis
+    ./bin/llvm-lit -sv ../tools/clang/test/ARCMT
+    ./bin/llvm-lit -sv ../projects/libcxx/test/std/re
+
+However, it looks like before you can successfully run one of these lines,
+you must have run the corresponding one of `make check-{llvm,clang,cxx}`
+at least once, to initialize the right stuff in the `build` directory.
+
+(Thanks to [Brian Cain](http://lists.llvm.org/pipermail/llvm-dev/2018-May/123049.html)
+for documenting this recipe.)
+
+
+## Step 5: Bootstrap!
 
 This is where it might get non-portable for people who aren't on OS X, I'm not sure.
 Here we will *not* be installing Clang over top of the system compiler
@@ -103,7 +120,7 @@ the previously built Clang.
 
 There is apparently [an official way to bootstrap Clang](https://llvm.org/docs/AdvancedBuilds.html):
 
-    cd $ROOT/build
+    cd $ROOT/llvm/build
     make -j5 clang
     cmake -G 'Unix Makefiles' \
         -DCLANG_ENABLE_BOOTSTRAP=On \
@@ -116,7 +133,7 @@ However, when I get to `make -j5 stage2`, it fails with a CMake error:
 
 So when I bootstrap Clang, I use this crude approach:
 
-    cd $ROOT/build
+    cd $ROOT/llvm/build
     cmake -G 'Unix Makefiles' \
         -E env \
         CXXFLAGS="-cxx-isystem /Library/Developer/CommandLineTools/usr/include/c++/v1" \
