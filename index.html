@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="posts">
-  {% for post in site.posts %}
+  {% for post in site.posts limit:20 %}
     <article class="post">
 
       <h1 class="post-title-above-tags">
@@ -23,4 +23,8 @@ layout: default
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
   {% endfor %}
+
+  <article class="archive-link">
+    Older posts are available <a href="{{ site.baseurl }}/archive">in the archive</a>.
+  </article>
 </div>
