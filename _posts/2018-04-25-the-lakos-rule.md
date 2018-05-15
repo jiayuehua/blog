@@ -6,7 +6,7 @@ tags:
   contracts
   c++-style
   undefined-behavior
-  wg21
+  wg21-folkloristics
 ---
 
 The Lakos Rule is one of those STL design principles that is often brought up vaguely
