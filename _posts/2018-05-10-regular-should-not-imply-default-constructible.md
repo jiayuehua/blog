@@ -4,6 +4,7 @@ title: 'Default-constructibility is overrated'
 date: 2018-05-10 00:02:00 +0000
 tags:
   concepts
+  constructors
   rant
   templates
   wg21
