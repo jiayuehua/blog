@@ -40,11 +40,11 @@ on `some_value`. And we can overload the behavior of that implicit conversion! T
 
     template<class F>
     inline with_result_of_t<F> with_result_of(F&& f) {
-        return with_result_of_t<F>(f);
+        return with_result_of_t<F>(std::forward<F>(f));
     }
 
 Notice the overloaded `operator T`.
-[Now we can write](https://wandbox.org/permlink/mokhU32h1AR6fRUo):
+[Now we can write](https://wandbox.org/permlink/qK78vKwBwrqTULMU):
 
     std::vector<Widget> vec;
 
