@@ -63,6 +63,10 @@ with the LFTS allocator model, if not `pmr` per se.
 
 - As of this writing, Visual Studio 2017 has no header named
   either `<experimental/memory_resource>` or `<memory_resource>`.
+  (EDIT: I have been informed that the version on Godbolt is out of date,
+  and in fact `<memory_resource>`
+  [arrived in VS 2017 15.6](https://docs.microsoft.com/en-us/cpp/visual-cpp-language-conformance),
+  released in March 2018.)
 
 - [Boost.Container 1.67](https://www.boost.org/doc/libs/1_67_0/doc/html/container/polymorphic_memory_resources.html)
   supports all of the LFTSv2 version (as far as I can tell), in a collection of header files
@@ -100,7 +104,7 @@ C++17-compatible `<memory_resource>`.
 
 As of this writing (2018-06-05), I've got the following six patches lined up:
 
-- [D46806 "Remove unused code from `__functional_base`"](https://reviews.llvm.org/D46806)
+- [D46806 "Remove unused code from `__functional_base`"](https://reviews.llvm.org/D46806) (landed as a result of this blog post!)
 - [D47109 "LWG 2969, do uses-allocator construction correctly"](https://reviews.llvm.org/D47109) (landed!)
 - [D47344 "LWG 2843, stop quietly returning misaligned blocks"](https://reviews.llvm.org/D47344)
 - [D47111 "Implement `monotonic_buffer_resource`"](https://reviews.llvm.org/D47111)
@@ -228,6 +232,14 @@ pointer to the beginning of the buffer, allowing you to reuse the same
 resource (and the same buffer) multiple times. I think this feature is
 worth the extra 8 bytes of memory footprint.
 
+(EDIT: Ion Gaztañaga, the maintainer of Boost.Container, agrees with my analysis;
+although he's not sure which one of us has the right behavior. He points out that
+C++17 requires `mr.release()` to ["release all _allocated_ memory"](http://eel.is/c++draft/mem.res.monotonic.buffer.mem#1),
+and doesn't say anything about what to do with the _non_-allocated memory from the original buffer.
+If we read the standard's silence literally, as a requirement _not_ to reuse the
+original buffer, then Boost.Container's behavior is conforming and my implementation's
+behavior is non-conforming.)
+
 
 ## How my `synchronized_pool_resource` loses on data size
 
@@ -272,6 +284,11 @@ I'm sure I'm misunderstanding something about the design of Boost.Container's
 `synchronized_pool_resource` here. But for now, I don't feel too bad about
 the 40-byte overhead my version gets from `std::mutex`.
 
+(EDIT: Ion Gaztañaga, the maintainer of Boost.Container, confirms that my analysis of
+the data race is correct, and has made a note to fix it somehow in a later release.
+_Mantra: When you roll your own multithreading code, you get bugs._ This applies not only to
+beginners but also to experts.)
+
 
 ## Header weight
 
@@ -297,7 +314,9 @@ Because of trivia related to uses-allocator construction,
 even `<__memory_resource_base>` must effectively include `<tuple>`. So again we
 split up the heavy header, so that `<__memory_resource_base>` (which needs a
 forward-declaration of `tuple` but doesn't care about the definition)
-includes only the relatively lightweight `<__tuple>`.
+includes only the relatively lightweight `<__tuple>`.  (EDIT: Oops! As of this writing,
+`polymorphic_allocator::construct` actually _does_ need the definition of `tuple`. This
+could be fixed with some heavy surgery.)
 
 Niall Douglas has some data on the weight of the headers in various STL
 implementations [here](https://github.com/ned14/stl-header-heft). Notice that
