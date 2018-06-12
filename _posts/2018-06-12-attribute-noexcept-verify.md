@@ -114,6 +114,20 @@ point of view. Which might cause library pessimizations (such as how `vector<T>`
 reallocation falls off a cliff if you omit `noexcept` from `T`'s move-constructor)
 or might even cause `static_assert` failures in far-removed client code.
 
+And the problem is not limited to the C library: there are actually lots of APIs
+in the C++ standard library that [you might naïvely expect to be `noexcept`, but
+they're not](/blog/2018/04/25/the-lakos-rule). For example:
+
+    template<class T>
+    struct Holder {
+        T m_data;
+        T exchange(T value) const noexcept(auto) {
+            return std::exchange(m_data, value);
+        }
+    };
+    Holder<int> h;
+    static_assert(not noexcept(h.exchange(42)));  // yikes!
+
 I don't think we'll ever get `noexcept(auto)` in the C++ Standard unless somebody does
 the hard work to show concrete evidence (not just papers, but actual real-world usage)
 that this problem is surmountable or mitigable somehow.
