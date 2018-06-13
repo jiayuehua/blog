@@ -169,6 +169,13 @@ in non-constexpr context, gets a `double*`, and proceeds to initialize `bar` at 
 of this kind of issue, particularly focused on issues around template instantiations that might
 be triggered by the backtracking, which P0595R1 calls "tentative constant evaluation."
 
+(UPDATE: Barry Revzin points out that under P0595R1, the thing-formerly-known-as-`constexpr()`
+actually looks only at its _immediately_ enclosing context; so all of my `if constexpr (constexpr())`
+branches are actually asking about the constexprness of the `if constexpr` condition _itself_,
+and therefore are all equivalent to `if constexpr (true)`. This seems to eliminate some of these
+metaprogramming-related issues, although it does mean that both branches must be instantiable even
+in the constexpr case.)
+
 
 ## Strong typedefs
 
