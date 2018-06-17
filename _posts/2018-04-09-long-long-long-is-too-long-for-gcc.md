@@ -4,6 +4,7 @@ title: 'A modest proposal for a GCC diagnostic'
 date: 2018-04-09 00:02:00 +0000
 tags:
   memes
+  pitfalls
   this-should-exist
 ---
 

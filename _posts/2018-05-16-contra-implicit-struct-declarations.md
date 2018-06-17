@@ -4,6 +4,7 @@ title: '_Contra_ implicit declarations of struct types'
 date: 2018-05-16 00:01:00 +0000
 tags:
   language-design
+  pitfalls
   rant
 ---
 

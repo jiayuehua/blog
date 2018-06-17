@@ -3,6 +3,7 @@ layout: post
 title: 'Downsides of omitting trivial destructor calls'
 date: 2018-04-17 00:01:00 +0000
 tags:
+  pitfalls
   standard-library-trivia
   sufficiently-smart-compiler
   today-i-learned

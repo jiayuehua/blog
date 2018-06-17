@@ -4,6 +4,7 @@ title: 'Reference types with metadata cause problems'
 date: 2018-05-30 00:02:00 +0000
 tags:
   library-design
+  pitfalls
   sg14
   wg21
 ---

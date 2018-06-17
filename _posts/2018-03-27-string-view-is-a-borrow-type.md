@@ -5,6 +5,7 @@ date: 2018-03-27 00:01:00 +0000
 tags:
   c++-style
   paradigm-shift
+  pitfalls
 ---
 
 Today I'd like to talk about [`std::string_view`](http://en.cppreference.com/w/cpp/string/basic_string_view).
