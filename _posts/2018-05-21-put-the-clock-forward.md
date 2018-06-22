@@ -3,8 +3,8 @@ layout: post
 title: 'Great Deploy Plans of History: Time Zones'
 date: 2018-05-21 00:01:00 +0000
 tags:
-  great-deploy-plans-of-history
   old-shit
+  sre
 ---
 
 On November 18, 1883, the United States introduced standard time zones.
