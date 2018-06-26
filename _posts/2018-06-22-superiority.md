@@ -23,7 +23,7 @@ by Arthur C. Clarke:
 > It is fortunate for us that our opponents have been no wiser: we cannot assume
 > that this will always be so."
 >
-> "What we want are _new_ weapons - weapons totally different from any that have been
+> "What we want are _new_ weapons — weapons totally different from any that have been
 > employed before. Such weapons can be made: it will take time, of course, but since
 > assuming charge I have replaced some of the older scientists with young men and
 > have directed research into several unexplored fields which show great promise.
