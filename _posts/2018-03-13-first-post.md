@@ -4,8 +4,8 @@ title: First post — Jekyll Now
 date: 2018-03-13 00:01:00 +0000
 tags:
   how-to
-  jekyll
   slack
+  web
 ---
 
 I've been putting off creating a blog for years now, because I dreaded being one of those blogs
