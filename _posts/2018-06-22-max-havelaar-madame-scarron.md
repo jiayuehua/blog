@@ -4,6 +4,7 @@ title: 'Madame Scarron'
 date: 2018-06-22 00:02:00 +0000
 tags:
   litclub
+  old-shit
 ---
 
 Currently reading [_Max Havelaar_](https://en.wikipedia.org/wiki/Max_Havelaar) (1860),
