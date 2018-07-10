@@ -7,7 +7,7 @@ tags:
   metaprogramming
 ---
 
-I just watched Odin Holmes's half-session from C++Now 2017 titled
+I just watched [Odin Holmes](https://odinthenerd.blogspot.com)'s half-session from C++Now 2017 titled
 ["Type-Based Template Metaprogramming is Not Dead."](https://www.youtube.com/watch?v=EtU4RDCCsiU)
 Honestly, I found it mostly pretty hard to follow. (Note to presenters: The video
 recording will pick up your mouse cursor, but not your laser pointer!) But there
