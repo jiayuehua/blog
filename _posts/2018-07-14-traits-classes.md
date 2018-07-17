@@ -291,6 +291,13 @@ missing from `P`. For example, `pointer_traits<P>::pointer_to(T& r)` calls
 SFINAEing away. `pointer_traits<P>::difference_type` is `P::difference_type` if that
 member exists; but otherwise it will sensibly default to `ptrdiff_t`. And so on.
 
+[EDIT: Glen Fernandes points out that existing implementations do _not_ SFINAE
+away an omitted `pointer_to`; they just let the body go ill-formed, which is not SFINAE-friendly.
+Modern fancy-pointer code should generally
+[use `static_cast` for type conversions](https://www.youtube.com/watch?v=0MdSJsCTRkY)
+anyway; but the SFINAE-unfriendliness of `pointer_to` is still more of a "bug"
+than a "feature."]
+
 Now for the very bad news!
 
 In the C++2a working draft right now, there is a global function called
