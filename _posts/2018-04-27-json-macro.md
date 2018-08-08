@@ -4,6 +4,7 @@ title: 'Embedding quotes in strings'
 date: 2018-04-27 00:01:00 +0000
 tags:
   c++-style
+  pearls
   today-i-learned
 excerpt: |
   Yesterday I saw this (anonymized) in our codebase's unit tests:
