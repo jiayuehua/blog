@@ -131,17 +131,18 @@ However, when I get to `make -j5 stage2`, it fails with a CMake error:
 
     Host Clang must be able to find libstdc++4.8 or newer!
 
-So when I bootstrap Clang, I use this crude approach:
+So when I bootstrap Clang, I use this crude approach inspired by
+[the CMake FAQ](https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-do-i-use-a-different-compiler):
 
     cd $ROOT/llvm/build
+    rm CMakeCache.txt
+    CXX="$ROOT/llvm/build/bin/clang++" \
+    CXXFLAGS="-cxx-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -isystem /usr/include" \
     cmake -G 'Unix Makefiles' \
-        -E env \
-        CXXFLAGS="-cxx-isystem /Library/Developer/CommandLineTools/usr/include/c++/v1" \
-        CXX="$ROOT/llvm/build/bin/clang++" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
     cp bin/clang-7 clang-ok
     find ../include/ -name '*.h' | xargs touch
-    make -j5 clang
+    make -j5 clang VERBOSE=1
 
 (This takes the same 80 minutes as the original `make -j5 clang` did.)
 
