@@ -111,3 +111,8 @@ UPDATE: Tomasz Kamiński points out that this diagnostic is triggered on (and P0
 
 The devil's-advocate argument is that this feature of `reference_wrapper` must be used relatively infrequently
 in real code, or I would have noticed it in one of the codebases above! :)
+
+----
+
+For even more followup on this post, see
+["Fixing ADL, Round 2."](https://quuxplusone.github.io/blog/2018/08/14/fixing-adl-field-test-2/)
