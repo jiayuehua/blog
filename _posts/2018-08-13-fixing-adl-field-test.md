@@ -92,3 +92,22 @@ surprise me, because we're very good about namespace hygiene.
 
 I'd be very interested to know how it fares on a *really* large codebase, such as
 [Chromium](https://www.chromium.org/developers/how-tos/get-the-code). Anyone care to find out and tell me?
+
+----
+
+UPDATE: Tomasz Kamiński points out that this diagnostic is triggered on (and P0934 proposes to break)
+`std::reference_wrapper<T>`'s implicit conversion to `T&`. [Example:](https://godbolt.org/g/eDYHR2)
+
+    namespace A {
+        struct A {};
+        void foo(const A&);
+    }
+
+    int main() {
+        A::A a;
+        std::reference_wrapper<A::A> p(a);
+        foo(p);
+    }
+
+The devil's-advocate argument is that this feature of `reference_wrapper` must be used relatively infrequently
+in real code, or I would have noticed it in one of the codebases above! :)
