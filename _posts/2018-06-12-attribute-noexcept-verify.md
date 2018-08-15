@@ -77,7 +77,18 @@ We meant to ask whether `noexcept(T(t))`. (And sure,
 [that bugfix looks simple in hindsight](http://www.thesuccessfulcontractor.com/coachs-corner-a-plumbing-story/).
 But remember, this was a simple contrived example. Getting it right in real code,
 and getting it right 100% of the time, is not only difficult but practically
-a fool's game.)  If we were able to write this instead:
+a fool's game.)
+
+----
+
+UPDATE: David Stone points out that even the "expert" (me) got it wrong!  `noexcept(T(t))`
+tests the noexceptness of an *explicit* conversion, whereas what we actually did in
+`return x;` was an *implicit* conversion. [Here's an `EvenMoreEvil`](https://wandbox.org/permlink/NjKAikfnU50H7fit)
+that still calls `std::terminate` even after our supposed "fix."
+
+----
+
+If we were able to write this instead:
 
     template<class T>
     auto frobnicate(T t) noexcept(auto)
