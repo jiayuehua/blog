@@ -4,7 +4,7 @@ title: 'Case study: Making `std::any` trivially relocatable'
 date: 2018-08-02 00:01:00 +0000
 tags:
   library-design
-  relocation
+  relocatability
 ---
 
 Many library types are not trivially relocatable even though one's initial impression

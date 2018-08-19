@@ -5,7 +5,7 @@ date: 2018-06-13 00:01:00 +0000
 tags:
   allocators
   conferences
-  relocation
+  relocatability
 ---
 
 [The sessions I presented at C++Now 2018](/blog/2018/06/04/cppnow-2018-talks) are

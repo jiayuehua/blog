@@ -4,7 +4,7 @@ title: 'Trivially-constructible-from'
 date: 2018-07-03 00:01:00 +0000
 tags:
   rant
-  relocation
+  relocatability
   standard-library-trivia
 ---
 

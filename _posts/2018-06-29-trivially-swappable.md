@@ -5,7 +5,7 @@ date: 2018-06-29 00:02:00 +0000
 tags:
   move-semantics
   proposal
-  relocation
+  relocatability
 ---
 
 This is a recycling of a reply I just made to Mingxin Wang and Gašper Ažman over at

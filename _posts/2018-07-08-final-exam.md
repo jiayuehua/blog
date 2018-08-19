@@ -4,7 +4,7 @@ title: 'C++ quiz of the day'
 date: 2018-07-08 00:01:00 +0000
 tags:
   pitfalls
-  relocation
+  relocatability
 excerpt: |
   Is this code:
 

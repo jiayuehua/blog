@@ -4,7 +4,7 @@ title: 'Announcing "trivially relocatable"'
 date: 2018-07-18 00:01:00 +0000
 tags:
   proposal
-  relocation
+  relocatability
 ---
 
 Frequent users of Compiler Explorer, a.k.a. [godbolt.org](https://godbolt.org/),

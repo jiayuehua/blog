@@ -4,7 +4,7 @@ title: 'Thoughts on "sanely move-assignable"'
 date: 2018-07-06 00:02:00 +0000
 tags:
   concepts
-  relocation
+  relocatability
 ---
 
 The "relocate" operation to be proposed in my upcoming P1144 (not yet published) is a high-level

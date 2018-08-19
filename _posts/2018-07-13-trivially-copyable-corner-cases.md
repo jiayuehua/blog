@@ -5,7 +5,7 @@ date: 2018-07-13 00:02:00 +0000
 tags:
   pitfalls
   proposal
-  relocation
+  relocatability
   wg21
 ---
 
