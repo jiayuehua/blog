@@ -13,7 +13,7 @@ Sadly a full rules explanation is out of scope for this blog post, but maybe som
 In this post I just want to talk about a specific tactical error that (sigh) I keep making.
 
 Aficionados of Homeworlds will have heard of the "[Bluebird Mistake](https://www.youtube.com/watch?v=081STRjOFMw)."
-Andy Looney invented the name for this pattern; it's named for the Bluebird Tavern in Amsterdam
+Andy Looney invented the name for this pattern; it's named for the Bluebird coffeeshop in Amsterdam
 where Andy fell victim to it. Basically it's where you look at the board and think, "My homeworld
 is safe from overpopulation because I have only two pieces of any one color there; *three* pieces
 is where it gets dangerous. Also, my opponent only has one piece within striking distance."
@@ -91,3 +91,7 @@ us anything about the imperviousness, or otherwise, of such monopolies.)
 
 The moral of the story, such as it is, is: Watch out for unexpected green sacrifices.
 One doesn't need a factory to become a monopolist!
+
+----
+
+See [the followup to this post](/blog/2018/09/15/the-yellowbird-mistake-ii).
