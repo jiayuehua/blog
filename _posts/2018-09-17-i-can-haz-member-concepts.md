@@ -33,9 +33,7 @@ or the poor man's version,
         concept MemberConcept = Integral<T>;
     };
 
-    template<
-        template<class> class X
-    >
+    template<class X>
     struct Foo {
         template<class T>
         void bar() requires X::template MemberConcept<T> {
