@@ -14,8 +14,8 @@ with the same value category; Ezra's "perfect backwarding," then, is when
 you receive a return value from _below_ and pass it _upward_ with the same
 value category.
 
-[Here are](https://godbolt.org/z/yFsbtP) our test cases for perfect forwarding,
-[and also](https://godbolt.org/z/t2EA8w) for perfect backwarding:
+[Here are](https://godbolt.org/z/4JpcW7) our test cases for perfect forwarding,
+[and also](https://godbolt.org/z/wsE6Co) for perfect backwarding:
 
     void taker(int&);
     void taker(const int&);
@@ -27,18 +27,16 @@ value category.
         taker(std::forward<T>(t));
     }
 
-    int giver(priority_tag<0>);
-    int& giver(priority_tag<1>);
-    const int& giver(priority_tag<2>);
-    int&& giver(priority_tag<3>);
-    const int&& giver(priority_tag<4>);
+    int giver(index_constant<0>);
+    int& giver(index_constant<1>);
+    const int& giver(index_constant<2>);
+    int&& giver(index_constant<3>);
+    const int&& giver(index_constant<4>);
 
     template<int N>
     decltype(auto) perfect_backward() {
-        return giver(priority_tag<N>{});
+        return giver(index_constant<N>{});
     }
-
-(For `priority_tag`, see [here](/blog/2018/03/19/customization-points-for-functions).)
 
 We already kind of see our test cases breaking down, in that
 `perfect_backward<0>()` returns a different type from `perfect_backward<3>()`,
@@ -50,7 +48,7 @@ But where Ezra's code really gets tricky is if you want to _name_ the return val
 
     template<int N>
     decltype(auto) imperfect_backward_alpha() {
-        decltype(auto) result = giver(priority_tag<N>{});
+        decltype(auto) result = giver(index_constant<N>{});
         printf("%d\n", result);
         return std::forward<decltype(result)>(result);
     }
@@ -64,7 +62,7 @@ In his lightning talk, Ezra suggested
 
     template<int N>
     decltype(auto) imperfect_backward_beta() {
-        decltype(auto) result = giver(priority_tag<N>{});
+        decltype(auto) result = giver(index_constant<N>{});
         printf("%d\n", result);
         return decltype(result)(result);
     }
@@ -73,7 +71,7 @@ This [works](https://godbolt.org/z/hnzDHa), for `int`, but it has bad behavior f
 `std::string`. In the non-reference-type case there, we end up with the moral
 equivalent of
 
-    std::string result = giver(priority_tag<0>{});
+    std::string result = giver(index_constant<0>{});
     return std::string(result);
 
 which of course not only inhibits copy elision but also makes a *copy* of `result`.
@@ -83,7 +81,7 @@ return values — even prvalue return values — is more like this:
 
     template<int N>
     decltype(auto) perfect_backward() {
-        decltype(auto) result = giver(priority_tag<N>{});
+        decltype(auto) result = giver(index_constant<N>{});
         printf("%d\n", result);
         if constexpr (std::is_reference_v<decltype(result)>) {
             return decltype(result)(result);
@@ -112,13 +110,13 @@ bind the lvalue `result` to an rvalue reference `std::string&&`, and that doesn'
 work (yes, even though `decltype(result)` is `std::string&&`).
 
 If we could somehow change the Standard so that our `example()` was legal C++,
-then Ezra's "perfect backwarding" problem would have [a simple solution](https://godbolt.org/z/ENktsn):
+then Ezra's "perfect backwarding" problem would have [a simple solution](https://godbolt.org/z/5lsSlT):
 
     template<int N>
     auto perfect_backward_hypothetical()
-        -> decltype(giver(priority_tag<N>{}))
+        -> decltype(giver(index_constant<N>{}))
     {
-        decltype(auto) result = giver(priority_tag<N>{});
+        decltype(auto) result = giver(index_constant<N>{});
         printf("%d\n", result);
         return result;
     }
