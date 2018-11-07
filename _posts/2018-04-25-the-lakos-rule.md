@@ -146,3 +146,37 @@ Here are some templates that you might naively expect to be `noexcept` with cert
 - `std::less<void>::operator()(const int&, const int&)`
 - `std::exchange(int&, int)`
 - `std::copy` and `std::transform`
+
+
+## Update: Lakos Rule further codified into policy in P0884R0
+
+Nicolai Josuttis wrote a policy paper
+[P0884 "Extending the `noexcept` policy"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0884r0.pdf)
+(February 2018) which [LEWG adopted by 5–14–1–0–0 consensus](https://issues.isocpp.org/show_bug.cgi?id=414)
+at the Jacksonville WG21 meeting. P0884R0 states LEWG's current-as-of-2018 policy like this:
+
+> a) No library destructor should throw. They shall use the implicitly supplied (nonthrowing)
+> exception specification.
+>
+> b) Each library function having a wide contract (i.e., does not specify undefined behavior
+> due to a precondition) that the LWG agree cannot throw, should be marked as unconditionally noexcept.
+>
+> c) If a library swap function, move-constructor, or move-assignment operator is conditionally wide
+> (i.e. can be proven to not throw by applying the noexcept operator) then it should be marked as conditionally noexcept.
+>
+> d) If a library type has wrapping semantics to transparently provide the same behavior as the underlying type,
+> then default constructor, copy constructor, and copy-assigment operator should be marked as conditionally noexcept
+> [so that] the underlying exception specification still holds [for the wrapper].
+>
+> e) No other function should use a conditional noexcept specification.
+>
+> f) Library functions designed for compatibility with C code (such as the atomics facility)
+> may be marked unconditionally noexcept.
+
+Again, this is a _general_ policy used by the _standard_ library.
+The standard library deliberately deviates from this general policy
+in some specific cases, such as `shared_ptr::operator*`.
+And if you're writing a _non-standard_ (third-party) library, you very well might want to throw out this policy altogether.
+But if you're writing a proposal for WG21's consideration, you should _generally_ follow this policy;
+and if you're using the standard library, you should not be surprised when it follows this policy
+more often than not.
