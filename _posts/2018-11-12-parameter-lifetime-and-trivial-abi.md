@@ -68,11 +68,11 @@ Yes, really _implementation-defined_. [[expr.call] sentence 9.7:](http://eel.is/
 
 On Visual Studio, using Microsoft's calling convention,
 [the second snippet compiles and runs clean](https://rextester.com/CHQG51538) — the `unique_lock`
-object is destroyed in the caller and there is no deadlock.
+object is destroyed in the callee and there is no deadlock.
 
 And, as you might now expect, on Visual Studio
 [the *first* snippet produces undefined behavior](https://rextester.com/BWMIC40715)
-because the `unique_ptr` is destroyed in the caller and the string freed *before* the caller
+because the `unique_ptr` is destroyed in the callee and the string freed *before* the caller
 gets a chance to print it out!
 
 ----
