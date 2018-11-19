@@ -5,6 +5,7 @@ date: 2018-05-10 00:01:00 +0000
 tags:
   blog-roundup
   math
+  puzzles
 ---
 
 If I blog these math puzzles, I can close the browser tabs containing them and un-nerd-snipe

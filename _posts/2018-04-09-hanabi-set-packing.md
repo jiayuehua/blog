@@ -5,6 +5,7 @@ date: 2018-04-09 00:03:00 +0000
 tags:
   board-games
   math
+  puzzles
 ---
 
 Background reading: my previous post on [computerized Hanabi hint strategies](/blog/2018/03/29/hat-guessing-in-hanabi).

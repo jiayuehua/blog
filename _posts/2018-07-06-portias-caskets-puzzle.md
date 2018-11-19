@@ -13,6 +13,7 @@ excerpt: |
 tags:
   blog-roundup
   math
+  puzzles
 ---
 
 Via [Mark Dominus](https://blog.plover.com/math/logic/annoying-boxes.html):

@@ -4,6 +4,7 @@ title: "Puzzle: Sudoku Stories"
 date: 2018-10-26 00:03:00 +0000
 tags:
   math
+  puzzles
 ---
 
 Today I discovered a little book called [_Sudoku Stories_](https://amzn.to/2CLbSBd)
