@@ -3,6 +3,7 @@ layout: post
 title: '*Providentissimus Deus*'
 date: 2018-03-13 00:04:00 +0000
 tags:
+  rationality
   undefined-behavior
 excerpt: |
   On 1893-11-18, Pope Leo XIII issued the encyclical *[Providentissimus Deus](https://en.wikipedia.org/wiki/Providentissimus_Deus)*.
