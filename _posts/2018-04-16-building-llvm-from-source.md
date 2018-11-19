@@ -110,6 +110,12 @@ at least once, to initialize the right stuff in the `build` directory.
 (Thanks to [Brian Cain](http://lists.llvm.org/pipermail/llvm-dev/2018-May/123049.html)
 for documenting this recipe.)
 
+But watch out! Both `make check-cxx` and `llvm-lit` will by default use your *system compiler*
+to run the libc++ tests! This is not what you want! Tell `llvm-lit` to use your newly built Clang
+by passing the `cxx_under_test` parameter, like this:
+
+    ./bin/llvm-lit -sv --param cxx_under_test=`pwd`/bin/clang ../projects/libcxx/test/
+
 
 ## Step 5: Bootstrap!
 
@@ -140,7 +146,7 @@ So when I bootstrap Clang, I use this crude approach inspired by
     CXXFLAGS="-cxx-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -isystem /usr/include" \
     cmake -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-    cp bin/clang-7 clang-ok
+    cp bin/clang-8 clang-ok
     find ../include/ -name '*.h' | xargs touch
     make -j5 clang VERBOSE=1
 
@@ -151,6 +157,6 @@ So when I bootstrap Clang, I use this crude approach inspired by
 
 This crude approach will of course overwrite your "good" `build/bin/clang++`
 (the one that successfully compiled Clang) with a new version (which for all
-you know might *not* compile Clang), so that's why I did `cp bin/clang-7 clang-ok`
+you know might *not* compile Clang), so that's why I did `cp bin/clang-8 clang-ok`
 before running `make -j5 clang` the second time.
 (Make sure you `cp` the actual executable and not just a symlink to it!)
