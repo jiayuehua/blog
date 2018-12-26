@@ -3,9 +3,9 @@ layout: post
 title: '_Godspell_ and _Max Havelaar_'
 date: 2018-07-23 00:01:00 +0000
 tags:
+  morality
   movies
   old-shit
-  rationality
 ---
 
 Another movie (besides [_Citizen Kane_](/blog/2018/04/03/o-brien-on-hearst))

@@ -5,7 +5,7 @@ date: 2018-11-19 00:01:00 +0000
 tags:
   blog-roundup
   litclub
-  rationality
+  morality
   us-politics
 ---
 

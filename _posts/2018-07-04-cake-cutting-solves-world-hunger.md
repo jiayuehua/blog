@@ -3,6 +3,7 @@ layout: post
 title: 'Assume a spherical politician'
 date: 2018-07-04 00:01:00 +0000
 tags:
+  morality
   science
   us-politics
 ---
