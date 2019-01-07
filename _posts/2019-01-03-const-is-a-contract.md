@@ -523,13 +523,13 @@ So in the code from the previous section —
 — not only did the typo make it difficult to understand our intent, but, even if we _had_ meant to return
 by value, we were accidentally pessimizing a lot of places in our code!
 
-Be aware that Scott Meyers' [_Effective C++, Third Edition_](https://amzn.to/2BWn2Rn)
+Be aware that Scott Meyers' [_Effective C++, Third Edition_](https://amzn.to/2C3Yd64)
 (Item 3, page 18) once ["implied"](http://www.aristeia.com/BookErrata/ec++3e-errata.html)
 that returning by const value could be a good thing.
 
     const Rational operator*(const Rational& lhs, const Rational& rhs);
 
-This advice was removed via an erratum in 2009, and in 2014 Meyers' [_Effective Modern C++_](https://amzn.to/2s7eank)
+This advice was removed via an erratum in 2009, and in 2014 Meyers' [_Effective Modern C++_](https://amzn.to/2RxfzCa)
 (Item 25, page 172) gave a similar C++11 example with no return-by-const-value in sight:
 
     Matrix operator+(Matrix&& lhs, const Matrix& rhs);

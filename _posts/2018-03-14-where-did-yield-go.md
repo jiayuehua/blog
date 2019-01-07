@@ -4,7 +4,7 @@ title: On `raise` versus `throw`, and the Mandela Effect
 date: 2018-03-14 00:01:00 +0000
 ---
 
-I should really buy a copy of [_The Design and Evolution of C++_](http://amzn.to/2FSIYkl). It apparently
+I should really buy a copy of [_The Design and Evolution of C++_](https://amzn.to/2RCz1gM). It apparently
 contains a rationale for C++'s choice of `throw` and `catch` (as opposed to, say, Python's `raise` and
 `except`). The rationale in _D&E_ is presumably similar to 
 [this one from Stroustrup in 1989](http://www.stroustrup.com/except89.pdf):

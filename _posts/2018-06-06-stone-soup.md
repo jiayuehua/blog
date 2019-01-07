@@ -7,8 +7,8 @@ tags:
 ---
 
 With apologies to
-[Marcia Brown](https://amzn.to/2M3uz56)<sup>[1](http://www.michaelppowers.com/prosperity/stonesoup.html)</sup>
-and [Ann McGovern](https://amzn.to/2sKSgGE).
+[Marcia Brown](https://amzn.to/2CT3nUf)<sup>[1](http://www.michaelppowers.com/prosperity/stonesoup.html)</sup>
+and [Ann McGovern](https://amzn.to/2CU3ajK).
 
 ----
 

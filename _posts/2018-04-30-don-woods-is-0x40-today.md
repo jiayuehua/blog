@@ -10,7 +10,7 @@ tags:
 Today (April 30th) is the birthday of [Don Woods](https://en.wikipedia.org/wiki/Don_Woods_(programmer)),
 one of the two authors of the original _Adventure_. (And also one of the designers of [INTERCAL](https://en.wikipedia.org/wiki/INTERCAL) (1972).
 And also one of the six(?) coauthors<sup>[1](http://www.catb.org/~esr/jargon/html/revision-history.html)</sup> of the 1983
-[_Hacker's Dictionary_](https://amzn.to/2vWmDyM).)
+[_Hacker's Dictionary_](https://amzn.to/2Vz0vmM).)
 
 If you have never heard of _Adventure_ — or if you have heard of it, vaguely, via references to
 "xyzzy" or "twisty little passages", but have never played it — then you are missing out on a great
@@ -37,10 +37,10 @@ in extensive [source diving](https://nethackwiki.com/wiki/Source_diving) to high
 Source divers will certainly appreciate the 1998 collaboration between Don Woods and Don Knuth that produced a
 translation of _Adventure_ into a CWEB "literate program". The beautiful (and fairly informative, and fairly
 entertaining) result is [here](http://literateprogramming.com/adventure.pdf), and is also included as pages
-235–395 of Knuth's [_Selected Papers on Fun & Games_](https://amzn.to/2Kq5PDe) (2011).
+235–395 of Knuth's [_Selected Papers on Fun & Games_](https://amzn.to/2RhoZTb) (2011).
 
 Don Woods actually lives pretty close to me in the grand scheme of things — down in South Bay — and I went
-to visit him once, about five years ago, during the time I was developing [_Colossal Cave: The Board Game_](https://amzn.to/2jjJISR).
+to visit him once, about five years ago, during the time I was developing [_Colossal Cave: The Board Game_](https://amzn.to/2Ryo1kA).
 He is an avid board gamer — his [home page](http://www.icynic.com/~don/) lists _Race for the Galaxy_
 and _Dominion_ among his favorites — and so he had some people over and we played a prototype of _CC:TBG_,
 and also a game or two of _San Juan_ if I recall correctly, and generally a good time was had by all.

@@ -24,7 +24,7 @@ Via [Mark Dominus](https://blog.plover.com/math/logic/annoying-boxes.html):
 >
 > Can you figure out which box contains the treasure?
 
-As Mark notes, [Raymond Smullyan did it first](https://amzn.to/2MVeb6u);
+As Mark notes, [Raymond Smullyan did it first](https://amzn.to/2RvFlXz);
 but I really enjoy Mark's fleshing-out of the solution, including an
 explanation of what people usually get wrong about it.
 

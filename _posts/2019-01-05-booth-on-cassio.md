@@ -7,7 +7,7 @@ tags:
 ---
 
 When Mixpanel's lit club did Shakespeare's _Othello_, I was reading it out of
-[_A New Variorum Edition of Shakespeare_](https://amzn.to/2SFQOB8), which is
+[_A New Variorum Edition of Shakespeare_](https://amzn.to/2C3Yea8), which is
 full of footnotes collected from other annotated editions — incidentally including
 some commentary by [Coleridge](http://theshakespeareblog.com/2015/10/samuel-taylor-coleridge-and-shakespeare/).
 

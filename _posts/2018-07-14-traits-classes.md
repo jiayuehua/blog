@@ -21,7 +21,7 @@ I'm about to do in this blog post, I highly recommend that you stop reading and 
 my two-hour CppCon 2016 session on ["Template Normal Programming"](https://www.youtube.com/watch?v=vwrXHznaYLA)
 ([Part 1](https://www.youtube.com/watch?v=vwrXHznaYLA), [Part 2](https://www.youtube.com/watch?v=VIz6xBvwYd8));
 and/or, Vinnie Falco's CppCon 2017 session ["Make Classes Great Again"](https://www.youtube.com/watch?v=WsUnnYEKPnI).
-This post (as with [much of my content](https://amzn.to/2Joe5C2)) is intended mostly for people who
+This post (as with [much of my content](https://amzn.to/2CTujmN)) is intended mostly for people who
 already think they know this stuff backward and forward.
 
 ----

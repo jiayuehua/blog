@@ -7,7 +7,7 @@ tags:
   today-i-learned
 ---
 
-Today I learned (from the Reader's Digest–published [_American Folklore and Legend_](https://amzn.to/2rNjU5T))
+Today I learned (from the Reader's Digest–published [_American Folklore and Legend_](https://amzn.to/2REUGVw))
 that the state of California was [named after a fictional island](https://en.wikipedia.org/wiki/Etymology_of_California).
 
 > California was the name given to a mythical island [...] in the popular
@@ -48,7 +48,7 @@ linked the name "California" and the name of the island's queen "Calafia" to the
 [_Caliph_](https://en.wikipedia.org/wiki/Caliphate); that is, "Calafia" as female caliph
 and "California" as Amazonian caliphate.
 
-[_Asimov's Annotated Gilbert and Sullivan_](https://amzn.to/2QwtxVf) links the name "Barataria"
+[_Asimov's Annotated Gilbert and Sullivan_](https://amzn.to/2CUbtfe) links the name "Barataria"
 to the Spanish [_barato_](https://en.wiktionary.org/wiki/barato#Spanish), "cheap" (etymologically
 related to our verb _to barter_).
 

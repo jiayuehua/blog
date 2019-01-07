@@ -7,7 +7,7 @@ tags:
   puzzles
 ---
 
-Today I discovered a little book called [_Sudoku Stories_](https://amzn.to/2CLbSBd)
+Today I discovered a little book called [_Sudoku Stories_](https://amzn.to/2RAO0YB)
 (Oscar Seurat, 2014). Each page presents a little encyclopedia entry on some
 random topic accompanied by a sudoku puzzle whose pre-filled cells trace out
 a shape corresponding to the entry. For example:

@@ -272,7 +272,7 @@ Many thanks to John Lakos for pointing me to
 where Stepanov answers this exact question:
 
 > The role of a default constructor is that it constructs the object so it can be
-> assigned to or destroyed. Nothing more. [EoP](https://amzn.to/2I6S13f) calls these "partially formed" objects.
+> assigned to or destroyed. Nothing more. [EoP](https://amzn.to/2RCzbEU) calls these "partially formed" objects.
 > Default construction does not guarantee that the initial value is meaningful, or even the same across
 > invocations. Of course, if you write your own default constructor for your own class, you may choose
 > to initialize it with a useful value, but this is not part of the requirement.

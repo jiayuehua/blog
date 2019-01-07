@@ -14,10 +14,10 @@ coincidentally by the same author:
 - ["The long, incredibly tortuous, and fascinating process of creating a Chinese font", Nikhil Sonnad (2015-12-18)](https://qz.com/522079/the-long-incredibly-tortuous-and-fascinating-process-of-creating-a-chinese-font/)
 - ["What fonts tell us about the global economics of the internet", Nikhil Sonnad (2014-07-29)](https://qz.com/237851/what-fonts-tell-us-about-the-global-economics-of-the-internet/)
 
-I'm a big fan of Donald Knuth's book [_Computer Modern Typefaces_](https://amzn.to/2HCef9C),
+I'm a big fan of Donald Knuth's book [_Computer Modern Typefaces_](https://amzn.to/2RuFLxl),
 Volume E of the "Computers and Typesetting" series. (For those keeping track,
-the first four volumes are [the TeXbook](https://amzn.to/2H2QdYu), [TeX itself](https://amzn.to/2EOkDHZ),
-[the METAFONTbook](https://amzn.to/2HB7FjE), and [METAFONT itself](https://amzn.to/2vi2kLF) —
+the first four volumes are [the TeXbook](https://amzn.to/2H2QdYu), [TeX itself](https://amzn.to/2C7uNUu),
+[the METAFONTbook](https://amzn.to/2SFmI0t), and [METAFONT itself](https://amzn.to/2LSSvsd) —
 and Knuth has actually finished this book series!) It really shows what goes into crafting a font
 for Latin typography, and also for mathematical typography; but Chinese typography is something
 else again. Sonnad's excellent article above doesn't really get into what kind of software the

@@ -38,7 +38,7 @@ matcher like Javascript, but you can build `std::regex` as a class. (And then bu
 when `std::regex` turns out to still be wrong.) C++ doesn't have built-in reference counting
 like Objective-C, but you can build `std::shared_ptr` as a class.
 
-So, being able to build our own [software tools](https://amzn.to/2H2PbYq) is a bedrock principle of C++.
+So, being able to build our own [software tools](https://amzn.to/2RGOTz7) is a bedrock principle of C++.
 We don't build "magic types" into the core language; we give programmers the tools, and the freedom,
 to build their own types from scratch. You can (and usually should!) use `std::string` in your own
 programs, but there is nothing special about `std::string` from the compiler's point of view.

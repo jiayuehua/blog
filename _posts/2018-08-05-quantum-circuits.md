@@ -12,7 +12,7 @@ I'm currently most of the way through Michael Nielsen's YouTube lecture series
 ["Quantum Computing for the Determined"](https://www.youtube.com/playlist?list=PL1826E60FD05B44E4).
 I highly recommend it to anyone who, like me, has heard a lot of handwavy pop-science
 takes on "quantum computing" but has yet to learn what it actually *is*. (Heck, I own a
-copy of [Scott Aaronson's _Quantum Computing Since Democritus_](https://amzn.to/2AKDmHL) that
+copy of [Scott Aaronson's _Quantum Computing Since Democritus_](https://amzn.to/2C3z8bw) that
 I'm pretty sure I read, about five years ago, but clearly none of it stuck.)
 
 Michael Nielsen's lectures spend a lot of time working through the arithmetic of
