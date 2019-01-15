@@ -3,6 +3,7 @@ layout: post
 title: '_Godspell_ and _Max Havelaar_'
 date: 2018-07-23 00:01:00 +0000
 tags:
+  jokes
   morality
   movies
   old-shit

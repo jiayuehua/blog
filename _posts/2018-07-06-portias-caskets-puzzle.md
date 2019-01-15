@@ -12,6 +12,7 @@ excerpt: |
   > Can you figure out which box contains the treasure?
 tags:
   blog-roundup
+  jokes
   math
   puzzles
 ---
