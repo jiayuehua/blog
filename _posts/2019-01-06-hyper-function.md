@@ -15,7 +15,7 @@ a single translation unit and compiled all in one go. That single compiler invoc
 
 Yesterday [I replaced](https://github.com/zenorogue/hyperrogue/pull/67)
 all of the `std::function`s in HyperRogue with a [hand-rolled minimalistic
-`hyper_function`](https://github.com/Quuxplusone/hyperrogue/commit/4b3b2fd15c7cfc1be3202e290eff3b654d829fae#diff-2c224a5db38493856fb3f2083e7a9d68).
+`hyper_function`](https://github.com/Quuxplusone/hyperrogue/blob/b69ec2ed46304985ae8703ccea91651288195f2f/hyper_function.h).
 This new version compiles in about 90 seconds!
 
 By replacing `std::function`, we eliminate 37 percent of the compile time;
@@ -25,8 +25,9 @@ and 7.5 percent of the size of our final executable.
 and thus benefits a *lot* from replacing `std::function`. Your benefits may vary.)
 
 My somewhat self-serving conclusion: It's really important to keep teaching people how to
-do type erasure! If you're comfortable whipping up a type-erased wrapper in 70 lines of code,
-you can get some pretty nice improvements over the stuff that ships in the standard library.
+do type erasure! If you've been taught well, so that you're comfortable whipping up a type-erased
+wrapper in 60 lines of code, you can get some pretty nice improvements over the stuff that
+ships in the standard library.
 
 ----
 
