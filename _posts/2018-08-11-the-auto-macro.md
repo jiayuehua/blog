@@ -4,6 +4,7 @@ title: 'The `Auto` macro'
 date: 2018-08-11 00:01:00 +0000
 tags:
   c++-style
+  memes
   pearls
 ---
 
