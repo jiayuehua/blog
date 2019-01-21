@@ -142,7 +142,10 @@ that way.
 The result of the comparison in `uintptr_t` is not guaranteed by the Standard to be
 consistent with the result of the original comparison. (For example, let's say we're on a 64-bit platform
 with 48 bits of real address space and 16 [tag bits](https://en.wikipedia.org/wiki/Tagged_pointer)
-shoved into the high bits of the `uintptr_t`.) But that's fine. The libstdc++ authors basically
+shoved into the high bits of the `uintptr_t`. For many more fun and exotic ways that casting to
+`uintptr_t` might fail to preserve pointer ordering, see
+Joe Nelson's ["C Portability Lessons from Weird Machines"](https://begriffs.com/posts/2018-11-15-c-portability.html) (2018-11-15).)
+But that's fine. The libstdc++ authors basically
 assume that casting-to-`uintptr_t` Does The Right Thing for pointers — and if it doesn't, well,
 [here's a nickel, get yourself a better compiler](https://dilbert.com/strip/1995-06-24).
 
@@ -277,13 +280,13 @@ operator! So we dive again into the weeds of libstdc++ (massaged greatly for pre
     // Throw out any types that use a member operator function.
     template<class T, class U>
     struct are_compared_by_builtin_pointer_comparison<T, U, decltype(void(
-        std::declval<_Tp>().operator<(std::declval<_Up>())
+        std::declval<T>().operator<(std::declval<U>())
     ))> : std::false_type {};
 
     // Throw out any types that use an ADL free operator function.
     template<class T, class U>
     struct are_compared_by_builtin_pointer_comparison<T, U, decltype(void(
-        operator<(std::declval<_Tp>(), std::declval<_Up>())
+        operator<(std::declval<T>(), std::declval<U>())
     ))> : std::false_type {};
 
 This "clever" logic does fail in at least one case.
@@ -339,6 +342,18 @@ Therefore, even though the expression `operator<(a, a)` is well-formed, and the 
 I have verified that neither libstdc++'s "clever" metaprogramming, nor my simplified metaprogramming
 shown in this blog post, is able to detect that `are_compared_by_builtin_pointer_comparison<Alpha, Alpha>`.
 I suspect it is not possible to reliably detect this case.
+
+----
+
+> Sidenote for smarties: My massaged metaprogramming doesn't accept the following `struct Beta`, either,
+> because of how I simplified the two partial specializations for presentation; but libstdc++'s
+> actual un-massaged metaprogramming handles `Beta` just fine.
+> 
+>     struct Beta {
+>         bool operator<(Beta) const { return false; }
+>     };
+>     template<class = void>
+>     bool operator<(Beta, Beta) { return false; }
 
 ----
 
