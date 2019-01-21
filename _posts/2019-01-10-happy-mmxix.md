@@ -40,7 +40,7 @@ Back in 2014, I went and wrote a JavaScript visualizer for the problem, and — 
 around, no rigor at all — came up with a few solutions such as
 [this one](http://club.cc.cmu.edu/~ajo/disseminate/encamp.html?q=%7B%22v%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.167%7D%2C%7B%22minInvariant%22%3A0.833%2C%22maxInvariant%22%3A1%7D%5D%2C%22h%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.167%7D%2C%7B%22minInvariant%22%3A0.833%2C%22maxInvariant%22%3A1%7D%5D%2C%22s%22%3A%5B%7B%22minInvariant%22%3A0.000%2C%22maxInvariant%22%3A0.333%7D%2C%7B%22minInvariant%22%3A0.833%2C%22maxInvariant%22%3A1.166%7D%2C%7B%22minInvariant%22%3A1.666%2C%22maxInvariant%22%3A2%7D%5D%2C%22b%22%3A%5B%7B%22minInvariant%22%3A-1%2C%22maxInvariant%22%3A-0.666%7D%2C%7B%22minInvariant%22%3A-0.166%2C%22maxInvariant%22%3A0.166%7D%2C%7B%22minInvariant%22%3A0.666%2C%22maxInvariant%22%3A1%7D%5D%7D)
 and [this one](http://club.cc.cmu.edu/~ajo/disseminate/encamp.html?q=%7B%22v%22%3A%5B%7B%22minInvariant%22%3A0.0%2C%22maxInvariant%22%3A0.5%7D%5D%2C%22h%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.5%7D%5D%2C%22s%22%3A%5B%7B%22minInvariant%22%3A0.0%2C%22maxInvariant%22%3A1.0%7D%5D%2C%22b%22%3A%5B%7B%22minInvariant%22%3A0.0%2C%22maxInvariant%22%3A0.5%7D%5D%7D)
-and [this one, which I still conjecture to be the best possible](http://club.cc.cmu.edu/~ajo/disseminate/encamp.html?q=%7B%22v%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.422649730810374%7D%5D%2C%22h%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.42265%7D%5D%2C%22s%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A1%7D%5D%2C%22b%22%3A%5B%7B%22minInvariant%22%3A-0.2113248654051871177%2C%22maxInvariant%22%3A0.2113248654051871177%7D%5D%7D).
+and [this one, which I conjectured to be the best possible](http://club.cc.cmu.edu/~ajo/disseminate/encamp.html?q=%7B%22v%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.422649730810374%7D%5D%2C%22h%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.42265%7D%5D%2C%22s%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A1%7D%5D%2C%22b%22%3A%5B%7B%22minInvariant%22%3A-0.2113248654051871177%2C%22maxInvariant%22%3A0.2113248654051871177%7D%5D%7D).
 
 |:-----------------------------------------------------:|:------------------------------------------------------:|:---------------------------------------------------:|
 | ![Encampments](/blog/images/2019-01-10-one-ninth.png) | ![Encampments](/blog/images/2019-01-10-one-eighth.png) | ![Encampments](/blog/images/2019-01-10-optimal.png) |
@@ -61,3 +61,8 @@ My description of the puzzle continues:
 > and nothing for four or higher.
 
 I'd be interested to know if any further progress has been made on this problem since 2014.
+
+----
+
+UPDATE, 2019-01-21: My conjectured solution above is _not_ the best possible. [I've found a better
+solution](/blog/2019/01/21/peaceful-encampments-round-2) with armies of size approximately 0.1458.
