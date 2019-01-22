@@ -20,7 +20,7 @@ Back in 2014 I had conjectured that the optimum solution for two armies was the 
 I learned that I was _very_ wrong about that!
 
 |:---------------------------------------------------------------------------------:|
-| [![Two encampments of size 0.13397 each](/blog/images/2019-01-10-optimal.png)][1] |
+| [![Two encampments of size 0.13397 each](/blog/images/2019-01-10-1340.png)][1] |
 
 Last night I was noodling on this problem again (for the more-than-two-army case) and came up with
 this knight's-move-inspired solution for 4 armies. Each home-plate-shaped region has size
@@ -36,7 +36,7 @@ across the board from each other? I expected a modest increase, but after making
 jiggling it a bit, I arrived at _this_ interesting configuration!
 
 |:-------------------------------------------------------------------------------------:|
-| [![Two encampments of size 0.1458 each](/blog/images/2019-01-21-more-optimal.png)][4] |
+| [![Two encampments of size 0.1458 each](/blog/images/2019-01-21-1458.png)][4] |
 
 The vertical lines divide the unit square into fourths; the slashing lines divide the sides of the unit
 square at the 1/3 and 2/3 marks. So each home-plate-sized region has size
