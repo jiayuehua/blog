@@ -15,7 +15,8 @@ here's my hot takes.
 
 [P0429R6 "A Standard `flat_map`"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0429r6.pdf):
 I don't honestly think `flat_map` is well-baked enough to put into _the_ Standard Library; but at least
-it's been in Boost for a while (if I understand correctly), and it fits into the STL's scheme of
+it's been in Boost for a while (if I understand correctly)
+(<b>[EDIT: I do not](/blog/2019/01/29/contra-flat-map)</b>), and it fits into the STL's scheme of
 "container adaptors" pretty naturally. The order of the template parameters is awkward but probably
 correct.
 

@@ -4,6 +4,7 @@ title: "37 percent of HyperRogue's compilation time is due to `std::function`"
 date: 2019-01-06 00:01:00 +0000
 tags:
   hyperrogue
+  sg14
   type-erasure
 ---
 
