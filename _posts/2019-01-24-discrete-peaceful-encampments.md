@@ -45,9 +45,9 @@ on a 5x5 chessboard you can fit peacefully 4 white and 4 black queens; and so on
 
 For three armies, the sequence is not found in the OEIS.
 
-|  n    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9  | 10 | 11 | 12  | 13  | 14  | 15  |
-|:-----:|---|---|---|---|---|---|---|---|----|----|----|-----|-----|-----|-----|
-|  f(n) | 0 | 0 | 0 | 1 | 1 | 2 | 3 | 4 | 5* | 7* | 8* | 10* | 12* | 12* | 12* |
+|  n    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12  | 13  | 14  | 15  |
+|:-----:|---|---|---|---|---|---|---|---|---|----|----|-----|-----|-----|-----|
+|  f(n) | 0 | 0 | 0 | 1 | 1 | 2 | 3 | 4 | 5 | 7* | 8* | 10* | 12* | 12* | 12* |
 
 (That is, on a 7x7 chessboard you can fit peacefully 3 white, 3 black, and 3 red queens;
 on an 8x8 chessboard you can fit peacefully 4 white, 4 black, and 4 red queens; and so on.)
@@ -92,16 +92,16 @@ Here are my solutions, for the record:
 
 8x8: 6 white, 5 black, 4 red (verified best)
 
-    ..WW...W
-    ..W....W
+    ..RR....
+    ..RR....
+    ......WW
     .......W
-    ........
-    RR......
-    RR......
-    ....BBB.
-    .....BB.
+    .B......
+    BB......
+    BB......
+    .....WWW
 
-9x9: 7 white, 6 black, 5 red
+9x9: 7 white, 6 black, 5 red (verified best)
 
     ..RRR....
     ..RR.....
