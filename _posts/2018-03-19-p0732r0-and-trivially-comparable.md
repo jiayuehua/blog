@@ -10,6 +10,15 @@ tags:
   wg21
 ---
 
+UPDATE, 2019-02-04: The property which P0732R0 called "trivially comparable" was, in future
+revisions (and in the current C++2a Working Draft), given the new name "strong structural equality."
+In other words, my bikeshedding of the name worked!
+Everywhere that this post refers to P0732R0 "trivial comparability," you should read
+"strong structural equality," which is _not_ the same thing as trivial (as-if-by-memcmp)
+comparability in the intuitive sense.
+
+----
+
 Someone in SG14 asks, what do we all think about Jeff Snyder's
 [P0732R0 "Class Types in Non-Type Template Parameters"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0732r0.pdf).
 Executive summary: I think it's great.
