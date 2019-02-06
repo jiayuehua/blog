@@ -6,6 +6,7 @@ tags:
   hyperrogue
   sg14
   type-erasure
+  war-stories
 ---
 
 HyperRogue, [the most mind-expanding roguelike in
