@@ -559,6 +559,7 @@ This advice was removed via an erratum in 2009, and in 2014 Meyers' [_Effective 
     git grep '[(,]const [A-Za-z0-9_:]* [A-Za-z0-9_:]*\(,\|)\| =\)'
 
     # Look for return-by-const-value typos
+    git grep 'const [A-Za-z0-9_:]* [A-Za-z0-9_:]*([^")]*) const'
     git grep 'const [A-Za-z0-9_:]* [A-Za-z0-9_:]*([^")]*\( \|$\)'
 
 The latter regex will inevitably have some false positives, because it cannot distinguish between
