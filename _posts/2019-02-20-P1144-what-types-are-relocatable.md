@@ -46,7 +46,7 @@ Key:
 | `tuple<Ts...>`                       | C | C | C |    C  |
 | `variant<Ts...>`                     | C | C | C |    C  |
 | `optional<T>`                        | C | C | C |  C  |
-| `any`                                | No | No | ? |  No |
+| `any`                                | No | No | No |  No |
 | `locale`                             | ✓ | ✓ | ✓ |  ✓  |
 | `exception_ptr`                      | ✓ | ✓ | ✓ |  ✓  |
 | `exception`                          | No | No | No | No |
@@ -81,9 +81,9 @@ Key:
 | `smatch`                             | D | ✓ | ✓ | No |
 | `string`                             | D | No | ✓ | No |
 | `basic_string<C,T,A>`                | CD | No | C | No |
+| `bitset<N>`                          | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
 | `chrono::system_clock::duration`     | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
 | `chrono::system_clock::time_point`   | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
-| `bitset<N>`                          | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
 | `unique_lock<T>`                     | ✓ | ✓ | ✓ | ✓  |
 | `shared_lock<T>`                     | ✓ | ✓ | ✓ | ✓  |
 | `thread`                             | ✓ | ✓ | ✓ | ✓  |
@@ -93,10 +93,14 @@ Key:
 | `shared_future<T>`                   | ✓ | ✓ | ✓ | ✓  |
 | `function<T>`                        | No | ✓ | No | No |
 | `packaged_task<T>`                   | No | ✓ | No | No |
+| `complex<float>`                     | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
+| `mt19937`                            | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
+| `normal_distribution<float>`         | ✓✓ | ✓✓ | ✓✓ | ✓✓  |
+| `valarray<T>`                        | ✓ | ✓ | ✓ | ✓  |
 
 The following types aren't relocatable at all (because they aren't move-constructible):
 `atomic<T>`, `atomic_flag`, `condition_variable`, `condition_variable_any`,
-`lock_guard<T>`, `mutex`, `seed_seq`.
+`lock_guard<T>`, `mutex`, `seed_seq`, `random_device`.
 
 
 ## Notes applicable to both libc++ and libstdc++
@@ -134,6 +138,8 @@ The following types aren't relocatable at all (because they aren't move-construc
 
 - `vector<bool>::iterator` is not trivially copyable. (Making it so would be an ABI break.)
 
+- `valarray` is basically a `vector` as far as its memory management is concerned. It stores two pointers.
+
 
 ## Notes on libstdc++
 
@@ -147,10 +153,14 @@ The following types aren't relocatable at all (because they aren't move-construc
 
 - `ostream_iterator` is not trivially copyable. (Making it so would be an ABI break.)
 
+- `valarray` is basically a `vector` as far as its memory management is concerned. It stores a pointer and a length.
+
 
 ## Notes on MSVC
 
 - `list` allocates a "sentinel node" on the heap even in its default constructor, so it is not nothrow-move-constructible. However, as far as I can tell, it _is_ (conditionally) trivially relocatable.
+
+- `any` will store `T` inside its SBO buffer only if `is_trivially_move_constructible_v<T>`; but it permits `!is_trivially_destructible_v<T>`. There is a fast path for trivially copyable types.
 
 - `function` can store non-trivially-relocatable types inside its SBO buffer.
 
@@ -159,3 +169,5 @@ The following types aren't relocatable at all (because they aren't move-construc
 - `pmr::polymorphic_allocator` (correctly) has `=delete`d assignment operators, and MSVC (incorrectly) [reports such types as non-trivially copyable](https://godbolt.org/z/xf42b0). I've recorded it as trivially copyable with an asterisk.
 
 - `locale` and `exception_ptr` are just gussied-up (copy-only) `shared_ptr`s.
+
+- `valarray` is basically a `vector` as far as its memory management is concerned. It stores a pointer and a length.
