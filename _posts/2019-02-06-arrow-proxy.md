@@ -4,7 +4,7 @@ title: "C++ idiom of the day: `arrow_proxy`"
 date: 2019-02-06 00:02:00 +0000
 tags:
   library-design
-  template-metaprogramming
+  metaprogramming
 ---
 
 I'm currently working on a reference implementation of

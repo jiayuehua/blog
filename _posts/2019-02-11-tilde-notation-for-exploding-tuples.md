@@ -5,7 +5,7 @@ date: 2019-02-11 00:01:00 +0000
 tags:
   kona-2019
   language-design
-  template-metaprogramming
+  metaprogramming
 ---
 
 Jason Rice's interesting (but IMHO too novel) proposal
@@ -166,7 +166,7 @@ The equivalent in my tuple-exploding tilde notation would be
 
     template<size_t N>
     void baz() {
-        return sum(iota<iota<N>()~>()~ ...);  // Uh-oh x2!
+        return sum(iota< iota<N>()~ >()~ ...);  // Uh-oh x2!
     }
 
 ----
