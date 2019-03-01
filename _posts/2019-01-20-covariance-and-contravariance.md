@@ -351,15 +351,13 @@ For the covariant case, we can use our "gift box" metaphor:
     template struct ben_ishak<your_giftbox>;
     template struct moreau<your_giftbox>;
 
-[GCC does the right thing](https://godbolt.org/z/g9DmV1) by accepting `ben_ishak<your_giftbox>`
-and rejecting `moreau<your_giftbox>`. Clang currently rejects both, due to
-[an unrelated bug](https://github.com/saarraz/clang-concepts/issues/37).
+[GCC and Clang agree](https://godbolt.org/z/g9DmV1) that `ben_ishak<your_giftbox>`
+is acceptable and `moreau<your_giftbox>` is unacceptable.
 
 ### In constrained template type parameters with alias templates
 
 By the way, we can replace `dolittle`, `hackenbush`, and `your_giftbox` with alias templates;
-it [doesn't change](https://godbolt.org/z/zSyoez) any compiler's behavior. (GCC's behavior is still perfect; Clang rejects both
-breeders due to the unrelated bug.)
+it [doesn't change](https://godbolt.org/z/Gjiafv) any compiler' behavior.
 
     template<Animal> using dolittle = int;
     template<Horse> using hackenbush = int;
@@ -388,9 +386,9 @@ I should be able to send you to Dr. Dolittle, but not to Dr. Hackenbush:
     template struct you<dolittle>;
     template struct you<hackenbush>;
 
-(Here, popular C++ implementations falter: [Clang incorrectly rejects](https://godbolt.org/z/nIehbQ)
-`you<dolittle>`. GCC, ICC and MSVC accept it. And everybody
-correctly rejects `you<hackenbush>`.)
+(Here, Clang falters by [incorrectly rejecting](https://godbolt.org/z/nIehbQ)
+`you<dolittle>`. GCC, ICC and MSVC accept it.
+Everybody correctly rejects `you<hackenbush>`.)
 
 For the covariant case, we can use our "gift box" metaphor:
 
