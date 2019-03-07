@@ -7,7 +7,17 @@ tags:
   metaprogramming
   ranges
   sufficiently-smart-compiler
+excerpt: |
+  Back in December, Eric Niebler made some waves in the C++ twitterverse with a post titled
+  ["Standard Ranges"](http://ericniebler.com/2018/12/05/standard-ranges/) (2018-12-05).
 ---
+
+UPDATE: Reddit points out that it wasn't fair of me to use `std::cout` in every case but the simplest one.
+I've previously reported on the [surprisingly huge iostreams penalty](/blog/2018/04/27/pq-replace-top/#obvious-bottleneck-1-iostreams)
+(2018-04-27).
+So I've now appended numbers substituting `printf` for `cout` in each case below.
+
+----
 
 Back in December, Eric Niebler made some waves in the C++ twitterverse with a post titled
 ["Standard Ranges"](http://ericniebler.com/2018/12/05/standard-ranges/) (2018-12-05).
@@ -24,6 +34,8 @@ to compile on Godbolt Compiler Explorer, and produces 715 lines of machine code.
 You can [run it on Wandbox](https://wandbox.org/permlink/A463wD3MB6VIwZnO) and see that it produces
 the correct answer.
 
+([Printf version](https://godbolt.org/z/-QK7f3): 10 seconds to compile. 677 lines of machine code.)
+
 ----
 
 [Here is a Coroutines version of the same code](https://godbolt.org/z/icY6RZ) ([backup](/blog/code/2019-03-06-triples-coro.cc)).
@@ -32,6 +44,8 @@ This code is 53 lines long. It takes 2 seconds to compile on Godbolt Compiler Ex
 produces 437 lines of machine code.
 You can [run it on Wandbox](https://wandbox.org/permlink/uZI03C6UkLP3GMl4) and see that it produces
 the correct answer.
+
+([Printf version](https://godbolt.org/z/rgl1ob): 0.8 seconds to compile. 394 lines of machine code.)
 
 ----
 
@@ -42,14 +56,18 @@ produces 93 lines of machine code.
 You can [run it on Wandbox](https://wandbox.org/permlink/eY20LSEEuE8VEn6f) and see that it produces
 the correct answer.
 
+([Printf version](https://godbolt.org/z/DceWlI): 1.1 seconds to compile. 58 lines of machine code.)
+
 ----
 
 [Here is a C++17 "vanilla" version of the same code](https://godbolt.org/z/IH14zJ) ([backup](/blog/code/2019-03-06-triples-vanilla.cc)).
 
-This code is 16 lines long. It takes 0.2 seconds to compile on Godbolt Compiler Explorer, and
-produces 59 lines of machine code.
+This code is 16 lines long. [Its iostreams version](https://godbolt.org/z/iXRMuP) takes 1 second to
+compile on Godbolt Compiler Explorer, and produces 87 lines of machine code.
 You can [run it on Wandbox](https://wandbox.org/permlink/m02zKulIgyi488Td) and see that it produces
 the correct answer.
+
+(Printf version: 0.2 seconds to compile. 59 lines of machine code.)
 
 ----
 
@@ -65,3 +83,39 @@ other filter that checks for the Pythagorean-ness of each triple.
 
 Each approach has its similarities and differences with the others, and its corresponding upsides and downsides.
 All I would recommend is that whatever job you have to do, you should try to use the right tool for it. :)
+
+----
+
+UPDATE 2: A comment from Steven Wright alerts me to the fact that the Ranges version reifies each layer of
+the nested loop as a separate lambda, which means that the compiler can't hoist constants through the loops.
+(The hoisted constants would have to become new lambda captures, and changing the number of captures in a lambda
+is an ABI-visible change that no compiler will ever be willing to make on its own.)
+
+So you can achieve a runtime speedup (which I unscientifically measured at 11%)
+simply by changing the original
+
+    auto triples =
+      for_each(iota(1), [](int z) {
+        return for_each(iota(1, z+1), [=](int x) {
+          return for_each(iota(x, z+1), [=](int y) {
+            return yield_if(x*x + y*y == z*z,
+              make_tuple(x, y, z));
+          });
+        });
+      });
+
+to manually hoist loop invariants out of the inner loops:
+
+    auto triples =
+      for_each(iota(1), [](int z) {
+        return for_each(iota(1, z+1), [=, z2=z*z](int x) {
+          return for_each(iota(x, z+1), [=, x2=x*x](int y) {
+            return yield_if(x2 + y*y == z2,
+              make_tuple(x, y, z));
+          });
+        });
+      });
+
+With the vanilla and callback-based versions, the compiler does this optimization for you automatically.
+With the coroutines version, my impression is that the compiler *should* be able to do this optimization,
+even though Clang currently does not.
