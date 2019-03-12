@@ -5,6 +5,7 @@ date: 2019-02-06 00:02:00 +0000
 tags:
   library-design
   metaprogramming
+  pearls
 ---
 
 I'm currently working on a reference implementation of

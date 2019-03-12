@@ -4,8 +4,8 @@ title: "`const` is a contract"
 date: 2019-01-03 00:01:00 +0000
 tags:
   c++-style
-  memes
   move-semantics
+  slogans
 excerpt: |
   Here's a slogan that needs more currency:
 

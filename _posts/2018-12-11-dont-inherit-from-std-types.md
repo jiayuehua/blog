@@ -7,6 +7,7 @@ tags:
   class-template-argument-deduction
   library-design
   pitfalls
+  slogans
 ---
 
 [Puzzle of the day:](https://wandbox.org/permlink/92O8YK10Ebh5EUoA)
