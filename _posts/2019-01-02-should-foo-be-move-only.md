@@ -6,6 +6,7 @@ tags:
   concepts
   library-design
   move-semantics
+  type-erasure
 ---
 
 Earlier today Vinnie Falco asked if I had an opinion on whether the Networking TS's
