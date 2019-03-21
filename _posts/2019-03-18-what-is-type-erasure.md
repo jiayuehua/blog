@@ -11,10 +11,10 @@ tags:
 I love type erasure in C++. But I find every so often I'll be in a conversation with someone,
 and they'll use the phrase, and they won't mean quite the same thing as I mean, and it'll
 take a while before we realize that we're talking about completely different ideas.
-So I think it'll be useful to write down what I mean by it.
+So I think it'll be useful to write down what I mean by the phrase "type erasure" in C++.
 
 
-## C++ is not Java
+## C++ type erasure is not Java type erasure
 
 First of all, in some languages, such as Java, "type erasure"
 [means something completely different](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html).
@@ -64,6 +64,15 @@ Assuming that `Circle` inherits from `Shape`, the most-constrained value of `T` 
 (`find<Object>` is not real Java code, by the way. Java has no syntax to refer to "a particular specialization"
 of a generic method, because generic methods cannot be specialized. In Java, `find<Object>` is the *only* version
 of `find`, and so having a special syntax to refer to it would be redundant.)
+
+> UPDATE: Thanks to Reddit commenter [jonathansharman](https://www.reddit.com/r/cpp/comments/b2nef8/what_is_type_erasure/eiuxp81),
+> I now know that Java does have a syntactic feature
+> called [type witnesses](https://stackoverflow.com/questions/24932177/type-witness-in-java-generics) which
+> [allows you to write](https://wandbox.org/permlink/wBpBGfyUcS0umIBV) calls like `Foo.<Object>find(someShapes, myCircle)`
+> and `Foo.<Shape>find(someShapes, myCircle)`.
+> The type in angle brackets overrides the compiler's normal deduction of `T` — which doesn't really affect anything except for
+> the call's return type. You can't "call a different specialization" this way, because there's still only
+> one version of `find` being codegenned.
 
 Anyway, my original point was: In the Java world, the process of replacing all the `T`s in a generic method
 (or generic class) with `Object`s is referred to as "type erasure." But this process does not happen in the
