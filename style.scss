@@ -302,6 +302,27 @@ footer {
   float: right;
 }
 
+.google-maps {
+  position: relative;
+  padding-bottom: 75%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
+  @include mobile {
+    padding-bottom: 150%;  // aspect ratio
+  }
+}
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  @include mobile {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
