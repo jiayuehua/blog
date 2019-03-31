@@ -368,7 +368,7 @@ The upside is that proper SFINAE-ability enables all sorts of clever metaprogram
 The downside is that proper SFINAE-ability... enables all sorts of clever metaprogramming tricks.
 
 
-### Conclusion
+## Conclusion
 
 These are just the "knobs" I thought of on the first pass. I bet there are more!
 
@@ -379,3 +379,194 @@ types is merged; and (most importantly, I say!) why I think it's important for e
 write their own type-erasing wrapper. There are just too many knobs for any single library solution to
 *perfectly* solve your codebase's needs. If you care about micro-optimization — and what C++ programmer doesn't? ;) —
 then you will probably end up writing two or three type-erased function types in your career.
+
+-----
+
+**UPDATE, 2019-03-31:** I forgot about some knobs I meant to include! And Reddit suggested one more, too.
+
+## What about (varargs) ellipses?
+
+Does it make sense to support `F<int(const char *, ...)>`? That would neatly communicate "anything callable with
+the same signature as `printf`."  However, C++ perfect forwarding and old-school C varargs do not mix;
+you're not going to be able to implement the guts of `F<int(const char *, ...)>` so that it can forward to
+`printf`. The impossibility of forwarding old-school varargs is the reason `va_list` and `vprintf` exist!
+
+So `F<int(const char *, ...)>` is a non-starter.
+
+
+## What about const-correctness?
+
+Type-erased function types must deal with `const` in much the same way as they deal with copyability. When you call an
+arbitrary callable type (such as a lambda), sometimes it'll be "const callable" and sometimes it won't be.
+(Just like sometimes a lambda is copyable and sometimes it's not.)
+
+    template<class T>
+    void use(const T& some_lambda) {
+        some_lambda();
+    }
+
+    auto cc = [i=0]() { return i+1; };
+    auto ncc = [j=0]() mutable { return ++j; };
+
+    use(cc);  // OK
+    use(ncc);  // ERROR
+
+So, when we wrap up a lambda into our type-erased `F`, we must decide whether `F::operator()` is going to be const-qualified
+or not. (Just as we must decide whether `F` is going to have a copy constructor or not.)
+
+There are at least three alternatives here. First, we could make `F` const-callable, which naturally requires
+that every wrapped `T` be const-callable. This would mean that we couldn't wrap `ncc`
+into an `F` object (because it's not const-callable).
+
+Second, we could make `F::operator()` *not* const-qualified. This would let us wrap up `ncc`
+into an `F` object; and it would also let us wrap `cc` (for the same reason that `unique_function` can easily hold
+a lambda whose move-constructor is tantamount to its copy-constructor). However, non-const-callable types interact
+pretty annoyingly with the rest of C++:
+
+    const auto& cc = [i=0]() { return i+1; };
+    cc();  // OK
+    const F<int()>& fcc = cc;  // OK
+    fcc();  // ERROR
+
+Here, there is no way to call `operator()` on a `const F<int()>` object, because its `operator()` is not const-qualified.
+
+A third alternative is to do as `std::function` does: make `F` const-callable, but have it internally *cast away the `const`*
+from the wrapped `T` object, so that it ends up calling `T`'s non-const-qualified `operator()` (if `T` has one). This produces
+the most ergonomic experience for the user —
+
+    auto cc = [i=0]() { return i+1; };
+    const F<void()> f1 = cc;  // OK
+    f1();  // OK
+
+    auto ncc = [j=0]() mutable { return ++j; };
+    F<void()> f2 = ncc;  // OK
+    f2();  // OK
+
+— but at the cost of const-correctness
+[and therefore at the cost of thread-safety](https://www.justsoftwaresolutions.co.uk/cplusplus/const-and-thread-safety.html).
+In the code below, we end up invoking `f2`'s `operator() const` from two threads concurrently, which should be fine; but
+in reality it's not fine, because `f2`'s `operator() const` invokes `operator()` (non-const) on the wrapped copy of `ncc`,
+and so our two modifications to the captured `j` will race with each other.
+
+    auto ncc = [j=0]() mutable { return ++j; };
+    F<void()> f2 = ncc;  // OK
+    auto thread_body = [](const auto& f) { return f(); };
+    return std::async(thread_body, f2).get() + std::async(thread_body, f2).get();
+
+Yet a fourth alternative would be for our `F` to provide *both* signatures — both `operator()` and `operator() const` — and
+require `T` to be callable as both const and non-const. But this is almost indistinguishable in practice from our first
+alternative. Such an `F` cannot wrap any `T` which is not const-callable.
+
+
+### `F<int()>` could be different from `F<int() const>`
+
+Perhaps the cleanest way out of the const-correctness mess is to put the choice back on the user.
+C++ lets us name both `int()` and `int() const`; the latter is an
+[abominable function type](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0172r0.html).
+So it is tempting for us to say that `F<int()>` should be non-const-callable (and not require const-callability of its `T`),
+whereas `F<int() const>` should be const-callable (and require const-callability of its `T`). Most users will probably
+get by just fine with `F<int()>`, and then the few who really *need* const-callability can just slap some `const`s inside
+their angle brackets and continue on their way.
+
+This is the solution preferred by [`folly::Function`](https://github.com/facebook/folly/blob/master/folly/docs/Function.md),
+by [`fu2::function`](https://naios.github.io/function2/#how-to-use), and (currently) by the proposed
+[`std::unique_function`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0228r3.html).
+
+
+## What about ref-qualifiers?
+
+Once we open the Pandora's box of abominable function types, we must ask: What is the meaning of `F<int() volatile>`?
+What is the meaning of `F<int()&>`? What is the meaning of `F<int()&&>`?
+
+`F<int()&&>` is particularly interesting because it's been historically attractive to armchair library designers.
+
+
+### Should `F<int()&&>` be rvalue-callable?
+
+If `F<int() const>` is const-callable with the signature `operator()(...) const`, then surely it's only logical that
+`F<int()&&>` (if it is well-formed at all) should be rvalue-callable with the signature `operator()(...) &&`.
+That is, the user would write something like
+
+    void foo(F<int()&&> callback) {
+        std::move(callback)();
+    }
+
+Because we've been trained not to do anything with a moved-from object, we intuit that `callback` will
+be called only once along any given codepath. We might use the signature `F<int()&&>` to communicate a little
+extra information about a callback that was going to be used to satisfy a future, or was going to be sent off
+to a thread pool.
+
+However, is this another case of foisting unnecessary complication on the user? I'm not aware of any rvalue-callable
+objects already existing in real-world code, so the difference between `F<int()>` and `F<int()&&>` seems purely
+cosmetic, so far.
+
+> Notice that `std::function<int()>` is rvalue-callable only because it is const-callable;
+> and `std::function<int()&&>` is ill-formed.
+
+
+### Should `F<int()&&>` be "one-shot"?
+
+If we did implement an rvalue-callable `F`, then we might wonder whether calling `F` should put it into the
+"moved-from" state. If we say yes, then this choice interacts with our previous choices about the behavior of
+that moved-from state. If the moved-from state is visibly "empty," then we support code like this:
+
+    void use(int x, F<int()&&> callback) {
+        if (x == 0) {
+            std::move(callback)();
+        }
+        if (callback) {
+            puts("I guess x wasn't 0");
+        }
+    }
+
+
+## What about `noexcept` qualifiers?
+
+Now that `noexcept` is part of the typesystem in C++17, we have a new postfix qualifier that can appear in a function type.
+In C++17 and later, `F<int() noexcept>` is a *different type* from `F<int()>`, although it is not abominable.
+
+`std::function<int() noexcept>` is ill-formed. Should `F<int() noexcept>` be well-formed?
+
+If so, clearly `F<int() noexcept>::operator()` should itself be `noexcept`. And then we have the same situation with
+`noexcept` that we had with `const` — or for that matter with non-nothrow-movable types. Either we rigidly enforce that
+`F<int() noexcept>` can wrap only nothrow-callable types, or else we break "noexcept-correctness" and risk a call
+to `std::terminate`.
+
+    auto lam = []() { puts("hello world"); };
+    static_assert(!noexcept(lam()));
+
+    F<void() noexcept> wrapped = lam;  // OK?
+    static_assert(noexcept(wrapped()));
+
+
+## What about multiple overloaded signatures?
+
+Reddit commenter NotAYakk points out that [David Krauss's `cxx_function`](https://github.com/potswa/cxx_function/)
+supports overloaded signatures. So we can imagine an `F` that permits something like this:
+
+    F<void(int), void(std::string)> visitor = ...;
+    std::variant<int, std::string> visitee = ...;
+    std::visit(visitor, visitee);
+
+Here `std::visit` will dynamically call either `visitor(42)` or `visitor("hello")`, depending on the active member of
+`visitee`. So `F<void(int), void(std::string)>` needs to have two different overloads of `operator()`, and each
+wrapped type `T` must _afford_ both behaviors:
+
+    void operator()(int x) { return ptr_->callme_with_int(x); }
+    void operator()(std::string s) { return ptr_->callme_with_string(s); }
+
+So for example
+
+    auto alpha = [](int x) { std::cout << x; };
+    visitor = alpha;  // ERROR
+
+would be an error because `alpha` does not _afford_ calling-with-a-string-argument; but
+
+    auto beta = [](const auto& x) { std::cout << x; };
+    visitor = beta;  // OK!
+
+would be okay, because `beta` _affords_ both calling-with-an-int and calling-with-a-string.
+
+Since type erasure requires an explicitly enumerated list of affordances, there is no way to
+make a type-erased function type that can take *any parameter at all*. That is, there's no way
+to make an "`F<void(auto)>`," even if that syntax were grammatically available, which it's not.
