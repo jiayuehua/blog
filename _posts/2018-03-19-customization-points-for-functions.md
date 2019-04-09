@@ -3,6 +3,7 @@ layout: post
 title: Customization point design for library functions
 date: 2018-03-19 00:03:00 +0000
 tags:
+  argument-dependent-lookup
   customization-points
   library-design
   memes
