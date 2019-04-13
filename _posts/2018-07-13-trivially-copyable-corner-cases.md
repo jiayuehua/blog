@@ -28,7 +28,8 @@ optimize volatile loads and stores into `memcpy`, which causes tearing
 of reads and writes.
 
 I have written a draft proposal
-[here](http://quuxplusone.github.io/draft/volatile-subobjects.html)
+[EDIT 2019-04-13: published as
+[P1153R0 "Copying volatile subobjects is not trivial"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1153r0.html)]
 — coauthored with JF Bastien, and seeking as many coauthors as possible! — 
 to solve this problem once and for all.
 
