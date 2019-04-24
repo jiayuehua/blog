@@ -21,7 +21,17 @@ Here's a new integer sequence that does not appear to be in the OEIS yet:
     n=8   0  3  6  7  7  7  7  7  0
     n=9   0  4  7  8  8  8  8  8  8  0
     n=10  0  4  7  9  9  9  9  9  9  9  0
-    n=11  0  4  .  .  .  .  .  .  .  . 10  0
+    n=11  0  4  8 10 10 10 10 10 10 10 10  0
+    n=12  0  4  8 11 11 11 11 11 11 11 11 11  0
+    n=13  0  4  .  . 12 12 12 12 12 12 12 12 12  0
+    n=14  0  4  .  . 13 13 13 13 13 13 13 13 13 13  0
+    n=15  0  4  .  .  . 14 14 14 14 14 14 14 14 14 14  0
+    n=16  0  4  .  .  . 15 15 15 15 15 15 15 15 15 15 15  0
+    n=17  0  5  .  .  .  . 16 16 16 16 16 16 16 16 16 16 16  0
+    n=18  0  5  .  .  .  . 17 17 17 17 17 17 17 17 17 17 17 17  0
+    n=19  0  5  .  .  .  .  . 18 18 18 18 18 18 18 18 18 18 18 18  0
+    n=20  0  5  .  .  .  .  . 19 19 19 19 19 19 19 19 19 19 19 19 19  0
+
 
 However, I admit that my OEIS-fu isn't very good. I've seen that when there's a
 triangular sequence like this, it'll generally be entered into OEIS in row-major
@@ -35,6 +45,7 @@ such as $$1,2,2,2,3,3,3,4,3,3,5,4,3,6,5,4,4,6,6,5,4,7,7,6,5,$$—.
 
 I wonder whether the OEIS's search function automatically looks for such variations
 on a sequence being searched for, and how much work it would be to do so.
+(UPDATE: It does not automatically look for such variations.)
 
 ----
 
@@ -62,5 +73,6 @@ you'd just test seven of your animals individually and then use the results to d
 species of the eighth. But how can you find the two wolves in _fewer_ than seven tests?
 
 I have a brute-force solver [on GitHub](https://github.com/Quuxplusone/wolves-and-sheep).
-It finds the answers up to $$n=9$$ pretty quickly; has some slowdown on $$n=10$$; and then
-takes forever on $$n=11$$.
+It finds the answers up to $$n=9$$ pretty quickly; has some slowdown on $$n=10$$;
+and takes quite a while on $$n=11$$. It can produce a solution for $$(10,2,7)$$ in
+about 5 seconds, and for $$(11,2,8)$$ in just under a minute.
