@@ -125,17 +125,19 @@ However...
 
 Suppose we code up our "dangling-reference-proof" `String` class. And then after it's
 shipped, we get a bug report from a user. The following code
-[doesn't compile anymore](https://godbolt.org/z/jZMMp0):
+[doesn't compile anymore](https://godbolt.org/z/-pwzef):
 
     void print_it(std::string_view param) {
         std::cout << param << std::endl;
     }
 
     void test() {
-        use_it(String("hello world"));
+        String hello("hello");
+        String world("world");
+        print_it(hello + world);
     }
 
-See, here we've made a temporary `String` object out of `"hello world"`, and we're trying to
+See, here the expression `hello + " world"` yields a temporary `String` object, and we're trying to
 pass that `String` to a function that takes a `string_view` parameter. There's nothing intrinsically
 wrong with this code. `string_view` even seems like the *most correct* parameter type for `print_it` —
 given that `print_it` is not going to modify its parameter, and doesn't care what its actual type is,
