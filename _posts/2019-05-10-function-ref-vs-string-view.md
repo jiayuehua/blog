@@ -38,7 +38,7 @@ _by value_.
 Or consider:
 
     std::string two(std::string_view arg) {
-        std::string local = arg;
+        std::string local(arg);
         return local;
     }
 
@@ -48,7 +48,8 @@ Or consider:
     }
 
 `arg` is a view to a temporary, but by converting it to `std::string local`, we get a copy
-_by value_.
+_by value_. (Notice that this conversion is marked `explicit`, so `std::string local = arg;`
+won't compile — thanks to Jason Cobb for the correction!)
 
 But consider:
 
