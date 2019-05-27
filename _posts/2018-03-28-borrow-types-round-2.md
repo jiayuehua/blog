@@ -5,7 +5,13 @@ date: 2018-03-28 00:01:00 +0000
 tags:
   c++-style
   paradigm-shift
+  parameter-types
 ---
+
+> EDIT, 2019-05-27: I've pulled a Scott Meyers and decided that "borrow type" is just
+> a confusing name for this notion. My current pet term is "parameter type" or
+> "parameter-only type," but I doubt I've hit on the best term yet.
+> Anyway, this blog post uses "borrow type" for now.
 
 I wasn't planning to write another post about "borrow types" quite so soon as this,
 but my [previous post on the subject](/blog/2018/03/27/string-view-is-a-borrow-type/)

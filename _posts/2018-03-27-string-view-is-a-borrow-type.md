@@ -5,6 +5,7 @@ date: 2018-03-27 00:01:00 +0000
 tags:
   c++-style
   paradigm-shift
+  parameter-types
   pitfalls
 ---
 
@@ -79,6 +80,11 @@ is always wrong.
 This suggests to me that we have a relatively new entrant into the field of
 "well-understood kinds of types" in C++. The two relatively old kinds of types are
 *object* types and *value* types. The new kid on the block is the *borrow* type.
+
+> EDIT, 2019-05-27: I've pulled a Scott Meyers and decided that "borrow type" is just
+> a confusing name for this notion. My current pet term is "parameter type" or
+> "parameter-only type," but I doubt I've hit on the best term yet.
+> Anyway, this blog post uses "borrow type" for now.
 
 - *Object* types are generally immobile (deleted copy constructor, for example) and lack
   an assignment operator; they are identified by memory address; they rely on mutation;

@@ -4,6 +4,7 @@ title: "The space of design choices for `std::function`"
 date: 2019-03-27 00:01:00 +0000
 tags:
   library-design
+  parameter-types
   type-erasure
 ---
 
