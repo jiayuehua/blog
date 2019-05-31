@@ -171,14 +171,18 @@ and further assuming that `pthread_mutex_t` is 40 bytes):
 
 |                 | `monotonic` | `unsync` | `sync` |
 | --------------- | ----------- | -------- | ------ |
-| Bloomberg BDE   | 616?        | 56?      | 112?   |
+| Bloomberg BDE   | 320         | 28       | 60     |
 | Boost.Container | 48          | 72       | 80     |
 | mine (naïve)    | 64          | 56       | 104    |
-| mine (current)  | 56          | 40       | 88     |
+| mine (original post)  | 56    | 40       | 88     |
+| mine (current)  | 48          | 40       | 88     |
 
-(I didn't try compiling BDL to find out how big its types were; I just
-counted the fields by hand. The question marks reflect my uncertainty in re
-my skill at counting.)
+(UPDATE, 2019-05-31: In my initial post I just eyeballed the sizes of the BDL types,
+and guessed them all amazingly incorrectly. I have since checked an actual BDL install
+and report correct sizes in the table above. Also, in the 12 months since this post was made,
+my `monotonic_buffer_resource` has shrunk to the size of Boost.Container's,
+thanks to the favorable resolution of [LWG issue 3120](https://cplusplus.github.io/LWG/issue3120).
+This is the subject of the next section.)
 
 
 ## How my `monotonic_buffer_resource` loses on data size
@@ -239,6 +243,13 @@ and doesn't say anything about what to do with the _non_-allocated memory from t
 If we read the standard's silence literally, as a requirement _not_ to reuse the
 original buffer, then Boost.Container's behavior is conforming and my implementation's
 behavior is non-conforming.)
+
+(UPDATE, 2019-05-31: My `monotonic_buffer_resource` no longer stores an
+explicit `next_buffer_size_`,
+thanks to the favorable resolution of [LWG issue 3120](https://cplusplus.github.io/LWG/issue3120).
+So I'm no longer spending an _extra_ 8 bytes of footprint; I'm just using 8 bytes
+_differently_ from Boost.Container's version. They store `next_buffer_size_`;
+I use those 8 bytes to store the original non-allocated buffer instead.)
 
 
 ## How my `synchronized_pool_resource` loses on data size
