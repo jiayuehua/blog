@@ -57,7 +57,7 @@ Here are two solutions for five armies. On the left, encampments of size
 $$\sim 0.0298$$; on the right, encampments of size
 $$\frac{7}{225} \approx 0.0311$$. Thanks to Benoît Jubin for doing the math on
 the latter! Benoît also informs me that you can _very slightly_ widen the central
-encampment here to achieve encampments of size $$\sim 0.31188383$$.
+encampment here to achieve encampments of size $$\sim 0.031188383$$.
 
 |:-----------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|
 | [![Five encampments of size 0.0298 each](/blog/images/2019-01-21-five-army-0298.png)][12] | [![Five encampments of size 0.0311 each](/blog/images/2019-01-21-five-army-0311.png)][7] |
@@ -70,7 +70,7 @@ Again I haven't done the math to describe these algebraically.
 | [![Six encampments of size 0.0104 each](/blog/images/2019-01-21-six-army-0104.png)][8]  | [![Six encampments of size 0.0133 each](/blog/images/2019-01-21-six-army-0133.png)][9]  |
 | [![Six encampments of size 0.0140 each](/blog/images/2019-01-21-six-army-0140.png)][10] | [![Six encampments of size 0.0210 each](/blog/images/2019-01-21-six-army-0211.png)][11] |
 
-For seven armies, a solution of size $$\sim 0.149$$.
+For seven armies, a solution of size $$\sim 0.0149$$.
 
 |:-------------------------------------------------------------------------------------------:|
 | [![Seven encampments of size 0.0149 each](/blog/images/2019-01-21-seven-army-0149.png)][13] |
@@ -79,7 +79,7 @@ My best solution for eight armies is based on a solution to the [eight queens pu
 specifically, arrangement number 10 on Wikipedia's list of the 12 distinct arrangements that solve the puzzle.
 Solutions based on the other 11 arrangements are
 [available on my GitHub](https://github.com/Quuxplusone/PeacefulEncampments/tree/eightqueens-solutions)
-in a rough, unfinished form. This solution has armies of size $$\sim 0.115$$.
+in a rough, unfinished form. This solution has armies of size $$\sim 0.0115$$.
 
 |:-------------------------------------------------------------------------------------------:|
 | [![Eight encampments of size 0.0115 each](/blog/images/2019-01-21-eight-army-0115.png)][14] |
