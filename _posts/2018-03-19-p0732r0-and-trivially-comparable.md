@@ -6,6 +6,7 @@ tags:
   jacksonville-2018
   language-design
   naming
+  operator-spaceship
   templates
   wg21
 ---

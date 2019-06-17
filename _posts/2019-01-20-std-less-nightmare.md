@@ -4,6 +4,7 @@ title: "Pointer comparisons with `std::less<void>`: a horror story"
 date: 2019-01-20 00:01:00 +0000
 tags:
   metaprogramming
+  operator-spaceship
   rant
   standard-library-trivia
   undefined-behavior
