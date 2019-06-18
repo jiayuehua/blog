@@ -10,7 +10,7 @@ tags:
 excerpt: |
   Here's my second post from C++Now 2019!
 
-  [On Friday morning](https://cppnow2019.sched.com/event/Mj46/exceptions-demystified),
+  [On Friday morning](https://www.youtube.com/watch?v=kO0KVB-XIeE),
   Andreas Weis gave a very good summary of how exception handling works in C++. I particularly
   liked that he didn't just focus on the Itanium ABI (as I would certainly have been tempted to
   do), but showed in-depth knowledge of how exception handling works on MSVC and also on
@@ -21,7 +21,7 @@ excerpt: |
 
 Here's my second post from C++Now 2019!
 
-[On Friday morning](https://cppnow2019.sched.com/event/Mj46/exceptions-demystified),
+[On Friday morning](https://www.youtube.com/watch?v=kO0KVB-XIeE),
 Andreas Weis gave a very good summary of how exception handling works in C++. I particularly
 liked that he didn't just focus on the Itanium ABI (as I would certainly have been tempted to
 do), but showed in-depth knowledge of how exception handling works on MSVC and also on
