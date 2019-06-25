@@ -3,7 +3,7 @@ layout: post
 title: "On `function_ref` and `string_view`"
 date: 2019-05-10 00:01:00 +0000
 tags:
-  cppnow-2019
+  cppnow
   library-design
   pitfalls
 ---

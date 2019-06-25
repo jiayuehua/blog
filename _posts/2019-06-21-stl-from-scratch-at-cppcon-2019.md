@@ -3,7 +3,8 @@ layout: post
 title: '"The STL From Scratch" is back!'
 date: 2019-06-21 00:01:00 +0000
 tags:
-  cppcon-2019
+  conferences
+  cppcon
 ---
 
 Registrations for CppCon 2019 are open, and so are registrations for my two-day

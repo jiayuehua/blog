@@ -4,6 +4,7 @@ title: 'CppCon 2018 Early Bird Registration closes on July 7th'
 date: 2018-07-02 00:01:00 +0000
 tags:
   conferences
+  cppcon
 excerpt: |
   Right now you can register for a full week of CppCon 2018 for the
   low low price of only $845.  On July 7th, early-bird registration

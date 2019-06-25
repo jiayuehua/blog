@@ -3,7 +3,6 @@ layout: post
 title: 'Trivially Relocatable FAQ'
 date: 2018-10-04 00:01:00 +0000
 tags:
-  conferences
   relocatability
 ---
 

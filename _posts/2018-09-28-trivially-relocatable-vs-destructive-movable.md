@@ -4,6 +4,7 @@ title: 'Trivially Relocatable versus Destructive Movable'
 date: 2018-09-28 00:01:00 +0000
 tags:
   conferences
+  cppcon
   relocatability
 ---
 

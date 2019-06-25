@@ -5,7 +5,7 @@ date: 2018-09-24 00:01:00 +0000
 tags:
   c++-style
   concepts
-  cppcon-2018
+  cppcon
   paradigm-shift
 ---
 

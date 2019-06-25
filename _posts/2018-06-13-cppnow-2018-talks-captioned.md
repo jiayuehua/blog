@@ -5,6 +5,7 @@ date: 2018-06-13 00:01:00 +0000
 tags:
   allocators
   conferences
+  cppnow
   relocatability
 ---
 

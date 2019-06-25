@@ -3,7 +3,7 @@ layout: post
 title: "MSVC can't handle move-only exception types"
 date: 2019-05-11 00:01:00 +0000
 tags:
-  cppnow-2019
+  cppnow
   exception-handling
   pitfalls
   relocatability
