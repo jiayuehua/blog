@@ -164,8 +164,8 @@ for `T*`).
 ----
 
 Personally, I find the Lakos Rule for `noexcept`
-[easy to explain](https://quuxplusone.github.io/blog/2018/04/25/the-lakos-rule/#each-library-function-having-a-w)
-but [annoying in practice](https://quuxplusone.github.io/blog/2018/04/25/the-lakos-rule/#personally-i-am-not-a-fan-of-thi);
+[easy to explain](/blog/2018/04/25/the-lakos-rule/#each-library-function-having-a-w)
+but [annoying in practice](/blog/2018/04/25/the-lakos-rule/#personally-i-am-not-a-fan-of-thi);
 I would like to see `noexcept` used more liberally.
 
 However, today I think I do want a "Lakos-ish Rule" for comparisons; I would like to see

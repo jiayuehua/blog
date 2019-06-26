@@ -18,7 +18,7 @@ I have submitted four papers for San Diego. I present them here in order of sign
 - [P1153 "Copying volatile subobjects is non-trivial."](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1153r0.html)
 This one is a conservative attempt to solve the problem identified in my blog post
 ["When is a trivially copyable object not trivially
-copyable?"](https://quuxplusone.github.io/blog/2018/07/13/trivially-copyable-corner-cases/) (2018-07-13).
+copyable?"](/blog/2018/07/13/trivially-copyable-corner-cases/) (2018-07-13).
 It has been coauthored and will be shepherded at San Diego by JF Bastien, along with his own
 [P1152 "Deprecating `volatile`"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1152r0.html)
 at the same time. I suspect that P1152 will perform better than P1153 for social reasons,
@@ -40,7 +40,7 @@ I won't just have to _update_ that talk but maybe I'll no longer have to give it
 David Stone is a coauthor and shepherd on this paper, along with his own related but orthogonal
 [P0527R1 "Implicitly move from rvalue references in return statements."](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0527r1.html)
 I am uncertain whether P0527 is a slam-dunk, although it has nice ramifications as discussed
-[here](https://quuxplusone.github.io/blog/2018/09/25/perfect-backwarding/#but-it-occurs-to-me-that-we-can).
+[here](/blog/2018/09/25/perfect-backwarding/#but-it-occurs-to-me-that-we-can).
 My tentative hope is that we can get both P1155 _and_ P0527 for C++2a. P1155 includes proposed wording
 relative to the current working draft and also relative to the-working-draft-with-P0527-applied.
 
@@ -61,4 +61,4 @@ If you'd like to see P1144 in Clang, and you are a reviewer for Clang/LLVM, plea
 for his intensive commenting so far.
 
 For more information on P1144 trivial relocatability, see
-[its tag category on this blog](https://quuxplusone.github.io/blog/tags/#relocatability).
+[its tag category on this blog](/blog/tags/#relocatability).

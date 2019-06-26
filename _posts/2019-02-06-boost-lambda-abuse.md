@@ -54,7 +54,7 @@ as opposed to the pre-modern approach of writing your own functor class from scr
     );
 
 (Could I have written `auto&& x` in both cases to achieve the same effect?
-[I sure could.](https://quuxplusone.github.io/blog/2018/12/15/autorefref-always-works/))
+[I sure could.](/blog/2018/12/15/autorefref-always-works/))
 
 ----
 

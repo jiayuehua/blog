@@ -208,7 +208,7 @@ is destroyed, taking the `pair<KeyReference, ValueReference>` with it.
 
 Notice that in our finished `arrow_proxy`, the `operator->()` is a non-const member function.
 This goes against everything we've been taught! (See
-["`const` is a contract" (2019-01-03)](https://quuxplusone.github.io/blog/2019/01/03/const-is-a-contract/).)
+["`const` is a contract" (2019-01-03)](/blog/2019/01/03/const-is-a-contract/).)
 Normally, `operator->` represents the "dereferencing" operation, and you don't
 need to modify an iterator in order to dereference it. That's why
 `zip_iterator::operator->() const` is declared `const`.

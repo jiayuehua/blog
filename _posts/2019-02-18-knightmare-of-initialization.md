@@ -135,7 +135,7 @@ Simple guidelines for variable initialization in C++:
 
 - Use initializer-list syntax `{}` only for element initializers (of containers and aggregates).
 
-- Use function-call syntax `()` to call a constructor, viewed as an [object-factory](https://quuxplusone.github.io/blog/2018/06/21/factory-vs-conversion/).
+- Use function-call syntax `()` to call a constructor, viewed as an [object-factory](/blog/2018/06/21/factory-vs-conversion/).
 
 Thus:
 

@@ -37,7 +37,7 @@ and the attribute.
 > safe to memcpy, but then another developer makes a distant change that makes my class
 > no longer safe to memcpy? I get undefined behavior; isn't this bad?
 
-(This question led me to blog about [Pray-Mister-Babbage problems](https://quuxplusone.github.io/blog/2018/09/26/pray-mister-babbage/).)
+(This question led me to blog about [Pray-Mister-Babbage problems](/blog/2018/09/26/pray-mister-babbage/).)
 
 The situation being described here is (I imagine) something like
 
@@ -183,7 +183,7 @@ plus expert-level knowledge of namespaces, plus a subexpert-level tolerance for 
 
 The second problem is that this idea implies a *feedback loop* between the library
 type-trait and the core-language propagation rules, which would be not only
-[contrary to the spirit of C++](https://quuxplusone.github.io/blog/2018/04/15/built-in-library-types/),
+[contrary to the spirit of C++](/blog/2018/04/15/built-in-library-types/),
 but extremely confusing (and perhaps difficult) to implement.
 
     struct A { A(A&&); };
@@ -196,7 +196,7 @@ but extremely confusing (and perhaps difficult) to implement.
     static_assert(std::is_trivially_relocatable_v<B>, "????");
 
 Philosophically, as usual, we're talking about the design of a customization point; and
-[every customization point has two pieces](https://quuxplusone.github.io/blog/2018/03/19/customization-points-for-functions/).
+[every customization point has two pieces](/blog/2018/03/19/customization-points-for-functions/).
 In P1144's design, piece A (the "warrant") is named `[[trivially_relocatable]]` and piece B
 (the "detection mechanism") is named `std::is_trivially_relocatable`.
 

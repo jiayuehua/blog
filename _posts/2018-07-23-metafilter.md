@@ -88,7 +88,7 @@ of partial specializations rather than `conditional_t`:
 
 Now we instantiate `tuple_cat` only exactly as many times as `Pred<H>::value` is `true`.
 (Here I am also trying to demonstrate my newfound appreciation for
-[SCARY metafunctions](https://quuxplusone.github.io/blog/2018/07/09/scary-metafunctions/).)
+[SCARY metafunctions](/blog/2018/07/09/scary-metafunctions/).)
 
 ![expanding brain phase 3](/blog/images/2018-07-23-expanding-brain-phase-3.jpg){: .float-right}
 But we can still do better!

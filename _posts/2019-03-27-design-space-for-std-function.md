@@ -337,7 +337,7 @@ and you want `target` to respect class hierarchies as much as possible. [You can
 ## Implicit conversions and SFINAE
 
 - Can I implicitly convert `F<int()>` to `F<void()>`? `std::function` silently lets you do this, but anecdotally,
-    [I found a fair number of typo-bugs in HyperRogue](https://quuxplusone.github.io/blog/2019/01/06/hyper-function/#incidentally-today-i-learned-tha)
+    [I found a fair number of typo-bugs in HyperRogue](/blog/2019/01/06/hyper-function/#incidentally-today-i-learned-tha)
     when I wrote my own `F` that incidentally caught this implicit conversion.
 
 - Can I implicitly convert `F<long()>` to `F<int()>`?

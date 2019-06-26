@@ -15,7 +15,7 @@ Today we're talking about `const_iterator`. First of all — you know this —
 `const_iterator` is different from `iterator const`, in exactly the same way that
 `const int *` is different from `int *const`.
 
-(I am ["west const" for life](https://quuxplusone.github.io/blog/2018/03/15/east-const-west-const/),
+(I am ["west const" for life](/blog/2018/03/15/east-const-west-const/),
 but even a west-conster can write the `const` on the east-hand side when it is pedagogically useful!)
 
     struct MyContainer {

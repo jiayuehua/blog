@@ -86,7 +86,7 @@ The Standard already provides three types kinda-sorta of this nature: `stack`, `
 Come to think of it, this boils down to just _one_ difference: `priority_queue` is backed by a
 _resizable, owning STL container_, whereas `ring_span` is backed by a _raw range_.
 If we designed a `priority_queue` backed by a raw range, then either it would not be resizable
-(which is actually a [perfectly cromulent design for a priority queue!](https://quuxplusone.github.io/blog/2018/04/27/pq-replace-top/#in-other-words-the-operation-tha))
+(which is actually a [perfectly cromulent design for a priority queue!](/blog/2018/04/27/pq-replace-top/#in-other-words-the-operation-tha))
 or else it would have to keep track of its "current size" (`size_`) as a data member — at
 which point, passing it around by value would be just as dangerous as passing around a
 `ring_span` or a `dynamic_string_buffer` by value.

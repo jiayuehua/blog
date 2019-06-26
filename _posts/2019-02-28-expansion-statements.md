@@ -137,7 +137,7 @@ Here `CT`'s _type_ comes from a pack-expansion (Example 1), but its _value_ come
 ## Packs of packs, revisited
 
 Because of its special case for `constexpr tuple`, P1306 hits
-[a familiar problem: packs of packs](https://quuxplusone.github.io/blog/2019/02/11/tilde-notation-for-exploding-tuples/).
+[a familiar problem: packs of packs](/blog/2019/02/11/tilde-notation-for-exploding-tuples/).
 
     template<class... Tuples>
     void f4(Tuples... tuples) {  // A
@@ -171,7 +171,7 @@ Now, the mention of `tuples` on line A must be referring to a single element of 
 `tuple<int, float>`) and `elt` must be referring to an element _of that tuple_ (that is, `elt` has type `int` or `float`).
 
 I suspect that this can be used to create complicated ambiguities similarly to
-["Packs of packs"](https://quuxplusone.github.io/blog/2019/02/11/tilde-notation-for-exploding-tuples/) (2019-02-11),
+["Packs of packs"](/blog/2019/02/11/tilde-notation-for-exploding-tuples/) (2019-02-11),
 but I haven't fully thought it out yet.
 
 You could definitely remove all ambiguity by eliminating the special case for `constexpr tuple`, and un-conflating

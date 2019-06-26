@@ -12,5 +12,5 @@ bright and early Tuesday morning,
 ["The Best Type Traits That C++ Doesn't Have."](https://cppnow2018.sched.com/event/EC77/the-best-type-traits-that-c-doesnt-have)
 
 (Stop clickbait: Those type traits are `is_trivially_relocatable_v<T>`,
-[`is_trivially_comparable_v<T>`](https://quuxplusone.github.io/blog/2018/03/19/p0732r0-and-trivially-comparable/),
+[`is_trivially_comparable_v<T>`](/blog/2018/03/19/p0732r0-and-trivially-comparable/),
 and `tombstone_traits<T>`.)

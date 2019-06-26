@@ -7,7 +7,7 @@ tags:
   llvm
   proposal
 excerpt: |
-  [Yesterday I blogged about](https://quuxplusone.github.io/blog/2018/08/13/fixing-adl-field-test/)
+  [Yesterday I blogged about](/blog/2018/08/13/fixing-adl-field-test/)
   a Clang patch I made that I claimed was an implementation of Herb Sutter's proposal
   [P0934R0 "A Modest Proposal: Fixing ADL"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0934r0.pdf) (February 2018).
   (You can find the patch [here](https://github.com/Quuxplusone/clang/commit/9ff89141fedd36af27820f5cc3a0edd8a1bef2db),
@@ -17,7 +17,7 @@ excerpt: |
   that I had utterly missed about two-thirds of Herb's proposal!
 ---
 
-[Yesterday I blogged about](https://quuxplusone.github.io/blog/2018/08/13/fixing-adl-field-test/)
+[Yesterday I blogged about](/blog/2018/08/13/fixing-adl-field-test/)
 a Clang patch I made that I claimed was an implementation of Herb Sutter's proposal
 [P0934R0 "A Modest Proposal: Fixing ADL"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0934r0.pdf) (February 2018).
 (You can find the patch [here](https://github.com/Quuxplusone/clang/commit/9ff89141fedd36af27820f5cc3a0edd8a1bef2db),

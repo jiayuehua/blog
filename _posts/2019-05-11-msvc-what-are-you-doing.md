@@ -127,7 +127,7 @@ be stack-allocated.
 Notice that even though we wrote `catch (...)`, MSVC still knows how to call the copy constructor
 of `Widget` and how to call the destructor of `Widget`. Those two pieces of information are held
 in MSVC's exception-handling data structures (essentially a form of
-[type erasure](https://quuxplusone.github.io/blog/2019/03/18/what-is-type-erasure/)).
+[type erasure](/blog/2019/03/18/what-is-type-erasure/)).
 
 However, what if we were to throw an exception object that was not copyable at all?
 Well, technically, that would be ill-formed. [[except.throw/5](http://eel.is/c++draft/except.throw#5)]:

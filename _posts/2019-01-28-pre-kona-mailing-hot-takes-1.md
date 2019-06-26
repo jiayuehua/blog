@@ -100,7 +100,7 @@ But read on!
 
 [P1206R1 "`ranges::to`: A function to convert any range to a container"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1206r1.pdf):
 `to` is such a great userspace identifier! _Please_ don't drop it into
-[the black hole of ADL!](https://quuxplusone.github.io/blog/2018/11/04/std-hash-value/)
+[the black hole of ADL!](/blog/2018/11/04/std-hash-value/)
 
 The one interesting (and perhaps redeeming?) quality of this proposal is that it is proposing
 to give a standard meaning to
@@ -126,7 +126,7 @@ note that P1206 proposes to be useable without `operator|` as well:
     std::vector<char> vec = ranges::to<std::vector>(std::move(str));
 
 Also, notice that the `<std::vector>` in the angle brackets is (A) not a typo and (B) nothing
-to do with [CTAD](https://quuxplusone.github.io/blog/2018/12/09/wctad/).
+to do with [CTAD](/blog/2018/12/09/wctad/).
 The idea is that the library implementor would write _two different overloaded templates_,
 both named `to`:
 

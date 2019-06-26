@@ -141,7 +141,7 @@ from the requirements of the `swap` template?
 
 No, it should not!
 
-[One particular kind of type](https://quuxplusone.github.io/blog/2018/03/27/string-view-is-a-borrow-type/)
+[One particular kind of type](/blog/2018/03/27/string-view-is-a-borrow-type/)
 is often trivially relocatable but not
 move-assignable. In the standard, `string_view` is assignable and
 `optional<T&>` doesn't exist, but you can imagine versions of
