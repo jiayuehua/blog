@@ -387,6 +387,9 @@ For example,
 - An argument of type `NS::SomeClass::SomeNestedTemplate<NA::A>` gives us three associated types (itself, `NA::A`,
     and `NS::SomeClass`) and two associated namespaces (`NS` and `NA`). ([Godbolt.](https://godbolt.org/z/pAJZas))
 
+- An argument of type `NA::A`, where `NA::A` inherits (even privately!) from `NB::B`, gives us two
+    associated types (`NA::A` and `NB::B`) and two associated namespaces (`NA` and `NB`).
+
 This list of rules is not exhaustive; and not every rule is applied recursively.
 For example, although class `A::B::C` has associated type `A::B` and class `A::B` has associated type `A`,
 that doesn't imply that `A::B::C` must have associated type `A` — in fact it doesn't! ([Godbolt.](https://godbolt.org/z/jfMQWY))
