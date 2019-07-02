@@ -136,7 +136,7 @@ they all break some of the general rules for borrow types:
   because, well, it's a reference.
 
 - `string_view` is assignable: `sv1 = sv2`. Assignment has shallow semantics (of course —
-  the viewed strings are immutable), even through comparison `sv1 == sv2` has deep semantics.
+  the viewed strings are immutable), even though comparison `sv1 == sv2` has deep semantics.
 
 If I were designing `reference_wrapper` and `string_view`, I would have given them no assignment
 operator at all; this would prevent any confusion about the meaning of assignment, and additionally
