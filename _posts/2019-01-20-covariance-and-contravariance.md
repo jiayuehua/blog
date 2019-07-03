@@ -431,3 +431,8 @@ of a good one, tell me about it!
 
 The "implementation variance" on some of these variadic-template examples is
 the subject of [CWG1430](http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_active.html#1430).
+
+----
+
+For a sequel to this post, see 
+["P1616R0 and health insurance"](blog/2019/07/03/contravariant-health-insurers) (2019-07-03).
