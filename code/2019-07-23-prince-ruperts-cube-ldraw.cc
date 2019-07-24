@@ -51,19 +51,7 @@ static constexpr Point X1 = {0.5, 0.5, 0.5};
 static constexpr Point X2 = X1 + Point{6, 6, 3};
 #endif
 
-inline double sqr(double x) { return x * x; }
-
-// http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html
-inline double squared_distance_to_hole_centerline(Point X0)
-{
-    Point X1_X0 = (X1 - X0);
-    static constexpr Point X2_X1 = (X2 - X1);
-    double numerator = (X1_X0.mag2() * X2_X1.mag2()) - sqr(X1_X0.dot(X2_X1));
-    static constexpr double denominator = X2_X1.mag2();
-    return numerator / denominator;
-}
-
-inline double distance_to_vertical_plane(Point X0)
+inline double signed_distance_to_vertical_plane(Point X0)
 {
     // N is the direction of the vertical plane's normal vector.
     static constexpr Point N = {X2.y - X1.y, X1.x - X2.x, 0};
@@ -73,11 +61,11 @@ inline double distance_to_vertical_plane(Point X0)
     static constexpr double d = -(a*X1.x + b*X1.y + c*X1.z);
     // The equation of the vertical plane is ax+by+cz+d = 0.
     static const double denominator = sqrt(a*a + b*b + c*c);
-    double numerator = fabs(a*X0.x + b*X0.y + c*X0.z + d);
+    double numerator = a*X0.x + b*X0.y + c*X0.z + d;
     return numerator / denominator;
 }
 
-inline double distance_to_horizontal_plane(Point X0)
+inline double signed_distance_to_horizontal_plane(Point X0)
 {
     // dir1 is the direction of the vertical plane's normal vector.
     static constexpr Point dir1 = {X2.y - X1.y, X1.x - X2.x, 0};
@@ -91,24 +79,17 @@ inline double distance_to_horizontal_plane(Point X0)
     static constexpr double d = -(a*X1.x + b*X1.y + c*X1.z);
     // The equation of the vertical plane is ax+by+cz+d = 0.
     static const double denominator = sqrt(a*a + b*b + c*c);
-    double numerator = fabs(a*X0.x + b*X0.y + c*X0.z + d);
+    double numerator = a*X0.x + b*X0.y + c*X0.z + d;
     return numerator / denominator;
 }
-
-double max_d1 = -1;
-double max_d2 = -1;
 
 inline bool is_in_hole(double x, double y, double z)
 {
     Point p = {x, y, z};
-    double d1 = distance_to_vertical_plane(p);
-    double d2 = distance_to_horizontal_plane(p);
-    assert(d1 >= 0);
-    assert(d2 >= 0);
-    max_d1 = std::max(d1, max_d1);
-    max_d2 = std::max(d2, max_d2);
-    static const double half_side_of_hole = 0.5;
-    return (d1 <= half_side_of_hole && d2 <= half_side_of_hole);
+    double d1 = signed_distance_to_vertical_plane(p);
+    double d2 = signed_distance_to_horizontal_plane(p);
+    double F = sqrt(2) / (4 * SIDE);  // "F" for "fudge"
+    return (-(0.5+F) <= d1 && d1 < (0.5+F)) && (-(0.5+F/2) <= d2 && d2 < (0.5+F/2));
 }
 
 inline bool is_solid_plate(T x, T y, T z)
@@ -118,7 +99,6 @@ inline bool is_solid_plate(T x, T y, T z)
     double zd = double(z) / (SIDE*5);
     return !is_in_hole(xd, yd, zd);
 }
-
 
 struct Lego {
     int x, y, z;
@@ -159,7 +139,7 @@ int main()
         for (T y = 0; y < SIDE*2; ++y) {
             for (T x = 0; x < SIDE*2; ++x) {
                 if (is_solid_plate(x, y, z)) {
-                    if (z == SIDE*5 - 1) {
+                    if (z == SIDE*5 - 1 || !is_solid_plate(x, y, z+1)) {
                         all_tiles.emplace_back(x,y,z);
                     } else {
                         all_plates.emplace_back(x,y,z);

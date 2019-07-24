@@ -23,6 +23,10 @@ like a pretty close fit, right? ...Right?
 
 ![Transporter accident](/blog/images/2019-07-23-prince-rupert-passthru.png)
 
+UPDATE: There, this new version looks better. Click to download the LDRAW file.
+
+[![A better version of the passthrough.](/blog/images/2019-07-23-prince-rupert-32x32x80.png)](/blog/code/2019-07-23-prince-rupert-32x32x80.ldr)
+
 ----
 
 Note to anyone who tries to build the thing based on these LDRAW files: I made my program use a bunch of differently sized
