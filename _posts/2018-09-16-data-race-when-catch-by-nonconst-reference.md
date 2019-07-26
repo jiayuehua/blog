@@ -5,7 +5,7 @@ date: 2018-09-16 00:01:00 +0000
 tags:
   c++-style
   copy-elision
-  exceptions
+  exception-handling
 ---
 
 People say "always catch exceptions by `const` reference," which I think is good advice.
