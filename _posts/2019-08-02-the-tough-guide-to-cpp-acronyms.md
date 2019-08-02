@@ -36,7 +36,7 @@ respectively. (See also ["The Knightmare of Initialization in C++"](/blog/2019/0
 
 "Argument-dependent lookup." See ["What is ADL?"](/blog/2019/04/26/what-is-adl/) (2019-04-26).
 
-## BMI
+## BMI, CMI
 
 "Binary Module Interface." Just as .cpp files are compiled into .o files, and some compilers provide
 ways to "pre-compile" .h files into [PCHes](#pch), compilers that support C++2a Modules will have to provide
@@ -50,7 +50,10 @@ formats may be governed by other standards, such as [ELF](https://en.wikipedia.o
 gives a very high-level sketch of the BMI format that Microsoft calls "IFC," and which is modeled
 on something else called ["Internal Program Representation" (IPR)](https://github.com/GabrielDosReis/ipr).
 
-_Modules are not a distribution format._ When you distribute a module, you'll be distributing its source
+Because BMIs are not necessarily "binary" (in the sense of being highly compressed), [GCC calls them](https://gcc.gnu.org/wiki/cxx-modules)
+"Compiled Module Interfaces" (CMI).
+
+_BMI files are not a distribution format._ When you distribute a module, you'll be distributing its source
 code (as one or more files [maybe with the extension .mpp](https://www.youtube.com/watch?v=E8EbDcLQAoc&t=11m00s)).
 You won't distribute the BMI file (extension .ifc) that MSVC produces, any more than you'd distribute the
 object file (extension .obj) that MSVC produces — in fact the urge to distribute .ifc files should be
