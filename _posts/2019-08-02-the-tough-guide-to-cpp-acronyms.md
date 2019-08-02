@@ -145,7 +145,7 @@ These are the main working groups of the [ISO C++ Committee](https://isocpp.org/
 
 - The Core Working Group (CWG) reviews core-language wording.
 
-- The Language Evolution Working Group Incubator (LEWGI, pronounced "lewgie"; a.k.a. SG18) evaluates proposals for standard library facilities.
+- The Library Evolution Working Group Incubator (LEWGI, pronounced "lewgie"; a.k.a. SG18) evaluates proposals for standard library facilities.
 
 - The Library Evolution Working Group (LEWG) designs standard library facilities.
 
