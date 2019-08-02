@@ -40,7 +40,7 @@ respectively. (See also ["The Knightmare of Initialization in C++"](/blog/2019/0
 
 "Binary Module Interface." Just as .cpp files are compiled into .o files, and some compilers provide
 ways to "pre-compile" .h files into [PCHes](#pch), compilers that support C++2a Modules will have to provide
-some way to compile C++ modules into some format that is precompiled, binary, perhaps compressed,
+some way to compile C++ modules into some format that is precompiled, perhaps binary, perhaps compressed,
 to make `import` statements quick to compile.
 
 The term "BMI" is not used by the paper standard. There is no standard BMI format. Each vendor will have
@@ -230,7 +230,8 @@ is violated by the user's program,* no diagnostic is required. So you'll have an
 (which by definition is "not C++"). Because no diagnostic is required, your C++ compiler is not
 required to tell you that its input was "not C++"; but, because the input wasn't C++, your C++ compiler
 is not required to produce any particular output. It might produce
-[nasal demons](http://www.catb.org/jargon/html/N/nasal-demons.html).
+[nasal demons](http://www.catb.org/jargon/html/N/nasal-demons.html). It might even [ICE](#ice), although
+that wouldn't be nice.
 
 Frequently, the distinction between "IFNDR" and "[UB](#ub)" is that "IFNDR" connotes a static property
 of the code, whereas "UB" connotes a runtime property. A division routine
@@ -379,6 +380,55 @@ That is, _PCH files are not a distribution format._ See also: [BMI](#bmi).
 "Pointer to IMPLementation." Variously capitalized "PIMPL," "PImpl," or "pImpl," this is a technique
 for moving expensive implementation details out of your most commonly traveled .h files and
 into separately compiled .cpp files. See [cppreference](https://en.cppreference.com/w/cpp/language/pimpl).
+
+## PMR
+
+"Polymorphic Memory Resources." C++17 added the PMR library, mostly in the header `<memory_resource>`,
+and mostly in the nested namespace `std::pmr`. The most important components are
+`std::pmr::memory_resource`, which is a traditional abstract base class; and
+`std::pmr::polymorphic_allocator<T>`, which is an allocator (similar to `std::allocator<T>`) which
+holds within itself a pointer to a `memory_resource` that it uses to fulfill requests for memory.
+
+For more on PMR, see "[`<memory_resource>` for libc++](/blog/2018/06/05/libcpp-memory-resource/)" (2018-06-05)
+and my talk "[An Allocator is a Handle to a Heap](https://www.youtube.com/watch?v=0MdSJsCTRkY)"
+(C++Now 2018, CppCon 2018).
+
+## POCCA, POCMA, POCS
+
+"`propagate_on_container_copy_assignment`," "`propagate_on_container_move_assignment`,"
+and "`propagate_on_container_swap`," respectively. When you have an STL container (such as `std::vector`)
+with a custom allocator type, you can write
+
+    A a1("foo");
+    A a2("bar");
+    assert(a1 != a2);  // for the sake of argument
+    std::vector<int, A> v1(a1);
+    std::vector<int, A> v2(a2);
+    v1 = v2;             // A
+    v1 = std::move(v2);  // B
+    std::swap(v1, v2);   // C
+
+Before line A, we clearly have `v1.get_allocator() == a1`. After line A, does `v1.get_allocator()` equal
+`a1`, or `a2`? What about after line B? What about after line C?
+
+The standard library's [`std::allocator_traits<A>`](https://en.cppreference.com/w/cpp/memory/allocator_traits)
+exposes member typedefs named `propagate_on_container_copy_assignment`, `propagate_on_container_move_assignment`,
+and `propagate_on_container_swap` that control these behaviors; they're inherited from the allocator type
+`A` if possible, or else defaulted to `false_type`. If they're all `false_type`, then you have a traditional
+allocator that fully enables "pilfering" the allocation from one vector into another (in cases B and C above).
+If they're all `true_type`, then you have a "sticky" allocator that inhibits pilfering in cases where the
+source and destination containers have different allocators. C++17's [PMR](#pmr) allocators are "sticky."
+If some of POCCA/POCMA/POCS are `true_type` and some are `false_type` for the same allocator type,
+then you probably have a bug.
+
+(If your allocator type is stateless and/or sets `is_always_equal`, then the settings of
+POCCA/POCMA/POCS don't really matter and might just as well be inconsistent.
+For [historical reasons](https://stackoverflow.com/questions/42051917/why-does-stdallocator-require-propagate-on-container-move-assignment-to-be-tru),
+`std::allocator` falls into that category.)
+
+For more on this topic, see my talk "[An Allocator is a Handle to a Heap](https://www.youtube.com/watch?v=0MdSJsCTRkY)"
+(C++Now 2018, CppCon 2018) and my training course
+[_The STL From Scratch_](/blog/2019/06/21/stl-from-scratch-at-cppcon-2019/).
 
 ## RAII
 
@@ -558,5 +608,5 @@ or an underscore followed by a capital letter, because those are [also verboten]
 "Universal Function Call Syntax," a name for some kind of feature that would let you write `x.f(y)`
 and `f(x, y)` interchangeably. Nobody really knows how to get this into C++. For an excellent
 rundown of all the different proposals and their differences and difficulties,
-see Barry Revzin's blog post ["What is UFCS anyway?"](https://brevzin.github.io/c++/2019/04/13/ufcs-history)
+see Barry Revzin's blog post "[What is UFCS anyway?](https://brevzin.github.io/c++/2019/04/13/ufcs-history)"
 (April 2019).
