@@ -100,7 +100,7 @@ directions that if we do not explore them _before_ shipping C++2a, we will likel
 act on them at all.
 
 WG21 has no plans to add C++2a Coroutines support to the C++2a standard library. The current synopsis
-of the `<coroutine>` header is startlingly short](http://eel.is/c++draft/coroutine.syn) and I have it on
+of the `<coroutine>` header is [startlingly short](http://eel.is/c++draft/coroutine.syn) and I have it on
 good authority that it will stay that way (unless Coroutines is ripped out of C++2a or unless
 additions to C++2a are entertained). There are semi-active proposals for a `std::task<T>` type similar to what
 you get from `cppcoro` or `Quuxplusone/coro`, but these proposals (Lewis Baker and Gor Nishanov's

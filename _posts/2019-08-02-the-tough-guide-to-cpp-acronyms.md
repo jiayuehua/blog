@@ -36,6 +36,19 @@ respectively. (See also ["The Knightmare of Initialization in C++"](/blog/2019/0
 
 "Argument-dependent lookup." See ["What is ADL?"](/blog/2019/04/26/what-is-adl/) (2019-04-26).
 
+## ADT
+
+"Abstract data type"; that is, any class type with which the user interacts only via a
+high-level ("abstract") interface. In C++, thanks to [linguistic interference](http://www.glottopedia.org/index.php/Interference)
+from other meanings of the word "abstract," you might see "ADT" used specifically to refer to
+STL-style class templates, such as `std::priority_queue`; that is, any class template which
+is parameterized ("abstracted") over an open set of parameter types.
+
+All ADTs are also _user-defined types_ (UDTs). Due to confusion over whether library types such as
+`std::string` were or were not "user-defined," the paper standard has mostly stopped using the term
+"UDT" in favor of "[program-defined type](http://eel.is/c++draft/definitions#defns.prog.def.type)."
+`std::string` is not a "program-defined type."
+
 ## BMI, CMI
 
 "Binary Module Interface." Just as .cpp files are compiled into .o files, and some compilers provide
@@ -161,6 +174,35 @@ By the way, "ISO WG21" stands for Working Group 21 of the
 [International Organization for Standardization](https://en.wikipedia.org/wiki/International_Organization_for_Standardization);
 and "SG17" means "Study Group 17." For a list of study groups, see [isocpp.org](https://isocpp.org/std/the-committee).
 
+When you see "CWG" or "LWG" followed by a number, as in "[CWG1430](http://cwg-issue-browser.herokuapp.com/cwg1430)"
+or "[LWG3237](https://cplusplus.github.io/LWG/issue3237)," it's referring to an _issue_ on CWG's
+or LWG's plate — an open question raised by the wording of the Standard. LWG's FAQ gives
+[an exhaustive list](https://cplusplus.github.io/LWG/lwg-active.html#Status) of states
+an issue can be in, including resolved states such as "[DR](#dr)" and "NAD" (Not A Defect).
+See "[A faster WG21 CWG issue browser](/blog/2019/05/22/cwg-issue-browser/)" (2019-05-22).
+
+## DR
+
+"Defect Report." This means a defect or open question raised by the wording of the Standard, which
+has been discussed and prospectively resolved by [CWG and/or LWG](#cwg-ewg-ewgi-lewg-lewgi-lwg), resulting in an
+amendment or erratum to the Standard of a technical nature (as opposed to a merely editorial fixup).
+Formally, I believe the term "DR" refers to the _question_ or _problem_, whereas the ultimately
+adopted _solution_ is formally a "technical corrigendum" (TC). In common parlance, you'll hear
+"ah, that issue was resolved by DR 409" — "DR 409" being a colloquial shorthand for "the resolution
+of the DR arising from [LWG issue 409](https://cplusplus.github.io/LWG/issue409)," and it is only from
+context that we can tell it was LWG 409, not [CWG 409](http://cwg-issue-browser.herokuapp.com/cwg409).
+Defect Reports themselves are not numbered, _per se_.
+
+DRs are often applied retroactively. For example,
+[N3922 "New Rules for auto deduction from braced-init-list"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html) (James Dennett, February 2014),
+being associated with an (unnumbered) DR,
+was not merely adopted into the C++17 working draft, but also retroactively applied
+to the already-published C++11 and C++14 standards.
+This manifests as a [difference in `-std=c++11` behavior](https://godbolt.org/z/AI7WpW) between Clang 3.5.1
+(shipped January 2015) and Clang 3.8 (shipped March 2016) — not as a difference between `-std=c++11` and
+`-std=c++17` on any compiler! So in this sense, to "resolve _foo_ as a DR" connotes "to apply the same fix
+uniformly across all language modes."
+
 ## EBO, EBCO
 
 "[Empty Base (Class) Optimization](https://en.cppreference.com/w/cpp/language/ebo)."
@@ -198,6 +240,57 @@ it needs in order to unwind the stack back to the appropriate handler. TDEH pays
 up-front cost in _data size_; `setjmp`/`longjmp` exception handling pays a relatively larger runtime cost
 and also a larger cost in _code size_.
 
+## FAM
+
+"[Flexible array member](https://en.wikipedia.org/wiki/Flexible_array_member)."
+This is the C99 feature that lets you write
+
+    struct S {
+        int x, y, z;
+        char extra_space[];
+    };
+    struct S *ps = malloc(sizeof(S) + 10);
+    strcpy(ps->extra_space, "some data");
+
+The "flexible" member must have no array bound, and must appear as the last member of the struct.
+
+Flexible array members are not part of C++, and likely never will be, officially.
+Accessing off the end of an object will always technically be undefined behavior.
+Nevertheless, C++2a's [destroying `delete`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0722r1.html)
+facility was designed specifically to support FAM-like techniques.
+
+## GCC
+
+Originally the "GNU C Compiler" (where "[GNU](https://en.wikipedia.org/wiki/GNU)"
+famously stands for "GNU's Not Unix"). Since 1999 ([source](https://gcc.gnu.org/wiki/History)), the
+acronym has stood for "GNU Compiler Collection." One of the big three C++ compiler vendors, besides
+Clang and [MSVC](#msvc).
+
+## HALO
+
+"Heap Allocation eLision Optimization." This is the optimization on C++2a coroutines
+referred to in [Gor Nishanov's talk](https://www.youtube.com/watch?v=8C8NnE1Dg4A&t=6m00s)
+on the "disappearing coroutine" (CppCon 2016).
+See "[Announcing `Quuxplusone/coro`](https://quuxplusone.github.io/blog/2019/07/03/announcing-coro-examples/)" (2019-07-03),
+specifically [this example](https://coro.godbolt.org/z/5vjlk8); see also
+[P0981 "HALO: the joint response"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0981r0.html)
+(Richard Smith & Gor Nishanov, March 2018).
+
+Normally, each time you enter at the top of a C++2a coroutine and create its return object
+(regardless of whether you're multi-threading)
+you'll have to heap-allocate enough space to store the coroutine's stack frame. However, in
+some specific cases where the compiler can statically determine the lifetime of the coroutine
+frame — determine that it will never "escape" from a very localized region of the code — then
+the compiler can find a place higher up on the stack to allocate space for it. In that case,
+the heap-allocation becomes unnecessary and can be "elided." This can happen quite often in the
+generator/`co_yield` use-case, if your generator type is carefully crafted.
+My understanding is that HALO will basically never happen in the multi-threaded/`co_await` use-case.
+
+Even when the heap-allocation cannot be elided, C++2a `std::coroutine_traits` provides
+rudimentary hooks for the programmer to customize the heap allocation mechanism. See
+"[C++ Coroutines: Understanding the promise type](https://lewissbaker.github.io/2018/09/05/understanding-the-promise-type#customising-coroutine-frame-memory-allocation)"
+(Lewis Baker, September 2018).
+
 ## ICE
 
 "Internal compiler error." A compiler (for C++ or any other language) should always be able to compile
@@ -210,6 +303,14 @@ inventor of the term.
 If the compiler segfaults or dies from an unhandled exception, you could reasonably call that an
 "internal compiler error" too. Some compilers will install signal handlers or exception handlers
 to turn such bugs into assertion failures that actually print "internal compiler error"; some won't.
+
+Sadly for clarity of communication, "ICE" is also the initialism for "integral constant expression."
+
+> An _integral constant expression_ is an expression of integral or unscoped enumeration type,
+> implicitly converted to a prvalue, where the converted expression is a core constant expression.
+> [Note: Such expressions may be used as bit-field lengths, as enumerator initializers if the
+> underlying type is not fixed, and as alignments. —end note]
+> —[N4810 [expr.const]/5](http://eel.is/c++draft/expr.const#7)
 
 ## IFNDR
 
@@ -280,6 +381,21 @@ and so that you don't have to scroll around while reading the code. The end resu
 For a dangerous example of using IILEs with C++2a Coroutines, see
 ["C++2a Coroutines and dangling references"](https://quuxplusone.github.io/blog/2019/07/10/ways-to-get-dangling-references-with-coroutines/#exciting-new-way-to-dangle-a-reference) (2019-07-10).
 
+## LTO
+
+"Link-Time Optimization." Any kind of optimization that requires looking at the whole program —
+thus also sometimes known as "whole-program optimization" (WPO) or "whole-program analysis" (WPA).
+This is a special case of
+"[interprocedural optimization](https://en.wikipedia.org/wiki/Interprocedural_optimization)" (IPO).
+
+LLVM's docs have [a great example](https://llvm.org/docs/LinkTimeOptimization.html#example-of-link-time-optimization)
+showing how LTO can iteratively remove dead (but non-static) functions, and then update global
+invariants to cause even more code to go dead.
+
+When I worked at Green Hills, their linker was known for its super aggressive link-time optimizations
+such as [function outlining](https://jakewharton.com/r8-optimization-method-outlining/)
+(i.e., the opposite of function inlining) and unused virtual function deletion (UVFD).
+
 ## MSVC
 
 Microsoft Visual C++ — in C++ contexts, essentially a synonym for Microsoft Visual Studio (VS or MSVS).
@@ -311,6 +427,30 @@ A template type parameter is like `template<class C>`.
 A template template parameter is like `template<template<class> class TC>`.
 
 A non-type template parameter is like `template<int V>` or `template<auto V>`.
+
+## NVI
+
+"Non-virtual interface." This rare acronym refers to the increasingly common (and, in my view, good)
+practice of [separating the two pieces of the customization
+point](https://quuxplusone.github.io/blog/2018/03/19/customization-points-for-functions/) even for plain
+old classical polymorphism. The piece specialized by the derived class stays as a virtual
+function (but becomes private); the piece invoked by the caller stays public (but becomes non-virtual).
+
+    class AbstractWidget {
+        virtual void do_frobnicate() = 0;
+    public:
+        void frobnicate() { this->do_frobnicate(); }
+    };
+
+    class DerivedWidget : public AbstractWidget {
+        // note: implicitly "private"
+        void do_frobnicate() override { ... }
+    }
+
+The Non-Virtual Interface pattern is used in `<iostream>`
+([public non-virtual `sputn` and protected virtual `xsputn`](https://en.cppreference.com/w/cpp/io/basic_streambuf/sputn)),
+and also in [PMR](#pmr)
+([public non-virtual `allocate` and private virtual `do_allocate`](https://en.cppreference.com/w/cpp/memory/memory_resource)).
 
 ## ODR
 
@@ -378,6 +518,18 @@ include one PCH, and it must be the very first non-comment line in the file. And
 
 That is, _PCH files are not a distribution format._ See also: [BMI](#bmi).
 
+## PGO
+
+"[Profile-Guided Optimization](https://en.wikipedia.org/wiki/Profile-guided_optimization),"
+occasionally called "profile-driven optimization" (PDO).
+You compile your program with profiling instrumentation;
+then you run it through its paces to collect a profile; and then you feed that profile back
+into a second invocation of the compiler. From the profile, the compiler can tell what loops
+are hot, what functions are frequently called together, and so on; which can lead to better
+codegen the second time around.
+
+This is a topic that I wish I knew more about.
+
 ## PIMPL
 
 "Pointer to IMPLementation." Variously capitalized "PIMPL," "PImpl," or "pImpl," this is a technique
@@ -433,9 +585,14 @@ For more on this topic, see my talk "[An Allocator is a Handle to a Heap](https:
 (C++Now 2018, CppCon 2018) and my training course
 [_The STL From Scratch_](/blog/2019/06/21/stl-from-scratch-at-cppcon-2019/).
 
+## POD
+
+"[Plain Old Data](https://en.cppreference.com/w/cpp/named_req/PODType)."
+This term has been deprecated in C++2a, along with the type trait `std::is_pod<T>`.
+
 ## RAII
 
-"Resource Allocation Is Initialization." This is a brush capable of very broad strokes, but it
+"Resource Acquisition Is Initialization." This is a brush capable of very broad strokes, but it
 boils down to the idea that you should have destructors that free your resources, copy constructors
 that duplicate your resources, and copy-assignment operators that do both. It's as broad and vague
 a slogan as "move semantics" or "value semantics," though; different people might express its
@@ -512,6 +669,51 @@ used to store an object, then we might say that our type has a "Small Object Opt
 If our buffer is being used to store a string, then we have a "Small String Optimization" (SSO).
 For slightly more on SBO/SOO/SSO, see
 "[The space of design choices for `std::function`](/blog/2019/03/27/design-space-for-std-function/#sbo-affects-semantics)" (2019-03-27).
+
+## SCARY iterators
+
+This silly initialism was introduced in
+[N2911 "Minimizing Dependencies within Generic Classes for Faster and Smaller Programs"](http://www.open-std.org/jtc1/sc22/WG21/docs/papers/2009/n2911.pdf)
+(Tsafrir, Wisniewski, Bacon, Stroustrup; June 2009). It refers to the template-metaprogramming technique
+of keeping "policy parameters" such as allocators at the outermost possible level and not letting them
+pollute the lower levels of the system. It's the difference between
+
+    template<class T, class A>
+    class vector {
+        struct iterator { ... };
+    };
+
+    // Many distinct iterator classes
+    static_assert(not std::is_same_v<
+        vector<int, A1>::iterator,
+        vector<int, A2>::iterator
+    >);
+
+and
+
+    template<class T>
+    class vector_iterator { ... };
+
+    template<class T, class A>
+    class vector {
+        using iterator = vector_iterator<T>;
+    };
+
+    // Fewer iterator classes: hotter code
+    static_assert(std::is_same_v<
+        vector<int, A1>::iterator,
+        vector<int, A2>::iterator
+    >);
+
+To quote the paper:
+
+> The acronym <b>SCARY</b> describes assignments and initializations that are <b>S</b>eemingly erroneous
+> (appearing <b>C</b>onstrained by conflicting generic parameters), but <b>A</b>ctually work with
+> the <b>R</b>ight implementation (unconstrained b<b>Y</b> the conflict due to minimized dependencies).
+
+See also: "[SCARY metafunctions](/blog/2018/07/09/scary-metafunctions/)" (2018-07-09).
+
+For another example of an initialism that doesn't come (entirely) from initials, see [HALO](#halo).
 
 ## SEH
 
@@ -613,3 +815,15 @@ and `f(x, y)` interchangeably. Nobody really knows how to get this into C++. For
 rundown of all the different proposals and their differences and difficulties,
 see Barry Revzin's blog post "[What is UFCS anyway?](https://brevzin.github.io/c++/2019/04/13/ufcs-history)"
 (April 2019).
+
+## VLA
+
+"Variable-length array." This is the C99 feature that lets you write
+
+    int main(int argc, char **argv) {
+        int arg_values[argc - 1];
+    }
+
+VLAs are not part of standard C++ ([and never will be](https://stackoverflow.com/questions/1887097/why-arent-variable-length-arrays-part-of-the-c-standard)).
+Furthermore, C11 made VLAs a "conditional feature" which even C compilers needn't support. C11-and-later
+compilers which don't support VLAs are supposed to define `__STDC_NO_VLA__` to `1`.
