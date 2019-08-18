@@ -4,6 +4,7 @@ title: 'Copy Elision in Throw Statements'
 date: 2018-04-09 00:01:00 +0000
 tags:
   copy-elision
+  exception-handling
   move-semantics
   sufficiently-smart-compiler
 ---
