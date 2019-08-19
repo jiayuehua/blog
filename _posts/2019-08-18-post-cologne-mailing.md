@@ -91,11 +91,10 @@ was brought up for a vote in plenary. The vote was not "do we want this feature,
 My P1837 cross-references another paper, P1821 "The Spaceship Needs To Be Grounded," which I expected to see
 in the post-Cologne mailing after it was [discussed in EWG](http://wiki.edg.com/bin/view/Wg21cologne2019/D1821R0-EWG).
 However, I guess the author abandoned the paper after that mostly fruitless discussion.
-(The main fruit of the discussion, I think, was pull-quotes such as "You don't need to love spaceship
-to vote in favor [of it] [...] I think we might have been better off
-if we didn't get it, but it is too late." This mantra never ceases in WG21:
-individually we don't like the direction we're going, but we're powerless to stop it
-because it is always _too late_.)
+([EDIT: At this point I quoted a sentence from that discussion, without attribution.
+The quotation involved the phrase "too late." I have removed the quotation after objection on Reddit.]
+This mantra never ceases in WG21: individually we don't like the direction we're going,
+but we're powerless to stop it because it is always _too late_.)
 
 
 ## The release of C++2a should be delayed past 2020
