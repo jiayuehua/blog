@@ -47,8 +47,8 @@ the program's control flow back over itself, but control flow
 in Befunge-93 is still entirely static; there's no way to "name" a
 function so that it can be "called" from anywhere.
 
-But Befunge-98 is overcomplicated enough that there ought to be a way
-to do it!
+But [Befunge-98](https://github.com/catseye/Funge-98/blob/master/doc/funge98.markdown#funge-98-final-specification)
+is overcomplicated enough that there ought to be a way to do it!
 
 First I looked at the "fingerprint" feature, which lets you use
 special subroutine-like semantics for instructions `A` through `Z`.
@@ -123,6 +123,16 @@ use the dig/bury helpers above.
 
 ----
 
+Incidentally, this helper is also useful:
+
+    > N1+u:N2+{1u\1u\03-uN1+}0N1+-u
+        Copy the entry from under N other entries on the SOSS, to the top of the TOSS.
+        (Remember that the SOSS is 2 entries bigger than you might think, because of the saved storage offset.)
+        12345 0{ 678 31+u:32+{1u\1u\03-u31+}031+-u  is the same as  12345 0{ 6784
+        67890 0{ 123 41+u:42+{1u\1u\03-u41+}041+-u  is the same as  67890 0{ 1238
+
+----
+
 So, we can make our Church booleans! Our input expression will be
 a stack of function names (that is, line numbers; that is, y-coordinates),
 which we feed to our fundamental building block `EXEC`, defined as
@@ -160,7 +170,7 @@ then `TRUE` doesn't need the `0{{2u2}2}` dance to figure out its own y-coordinat
 
 ----
 
-Conclusion: I made ["Church booleans" in Befunge-98](https://codegolf.stackexchange.com/questions/190325/church-booleans/190810),
+Conclusion: I made ["Church booleans" in Befunge-98](https://codegolf.stackexchange.com/a/190810/11791),
 and found a way to jump to any absolute address from within a Befunge-98 program
 (even if it ended up not really being needed in this case), and ways to dig and bury
 entries on the Befunge-98 stack.
