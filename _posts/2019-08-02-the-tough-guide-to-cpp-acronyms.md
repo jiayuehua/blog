@@ -760,6 +760,55 @@ For more on SFINAE, see several of my conference talks:
 - [Template Normal Programming, Part 2](https://www.youtube.com/watch?v=VIz6xBvwYd8) (CppCon 2016)
 - [A Soupçon of SFINAE](https://www.youtube.com/watch?v=ybaE9qlhHvw) (CppCon 2017)
 
+## SIOF
+
+The "[Static Initialization Order Fiasco](https://isocpp.org/wiki/faq/ctors#static-init-order)."
+
+C++ guarantees ([[expr.const]/2](http://eel.is/c++draft/expr.const#2)) that certain kinds of global
+initializations — like `int i = 42;` — will get baked into the data section. The C++2a draft even
+adds a new keyword, `constinit`, so that you can write
+
+    constinit int i = i_sure_hope_this_function_is_constexpr(6, 9);
+
+which means that the compiler _must_ put it in the data section or else give you a compiler error.
+
+But for dynamically initialized global variables —
+
+    std::string s = "hello";
+    std::string t = s + " world";
+
+If `s` and `t` are defined in the same [TU](#tu), then C++ guarantees their initializers will run
+in the order you'd expect. But if they're defined in two different TUs, the linker might decide to
+order the initializer for `t` _before_ the initializer for `s`. So `t`'s initialization uses `s`
+as a string before `s` has actually been constructed, leading to [UB](#ub) at runtime.
+([Wandbox](https://wandbox.org/permlink/qycov99Bj0TUPxsP).)
+
+## TBAA
+
+"Type-based alias analysis." This is what lets the compiler conclude that in the following
+snippet ([Godbolt](https://godbolt.org/z/pVVlZM)), `*pi` and `*pf` cannot alias each other.
+
+    int foo(int *pi, float *pf) {
+        *pi = 42;
+        *pf = 3.14;
+        return *pi;
+    }
+
+Since it would be [UB](#ub) to write `3.14` into a memory location and then read an `int`
+back from that same memory location, and UB never happens in a correct program, the compiler
+infers that `pi` must point somewhere different from `pf`. The generated code "remembers" the
+value that was stored into `*pi` and returns 42 directly from the function, instead of generating
+a load from memory.
+
+On the other hand, if you changed `pi` from `int*` to `float*`, you would see the load happening,
+because loading a `float` from a memory location that contains a `float` is _not_ UB.
+So in that case the compiler couldn't assume that `pi` and `pf` don't alias. Other types that
+might alias `float` include [plain `char`](https://godbolt.org/z/flEMi9) and
+[`struct ContainsFloat`](https://godbolt.org/z/rJA1gW).
+
+Type-based alias analysis is also known as "strict aliasing," because the analysis
+[can be disabled](https://godbolt.org/z/SK3DUP) with the compiler option `-fno-strict-aliasing`.
+
 ## TMP
 
 "Template metaprogramming." Personally, I find that the acronym "TMP" has a vague whiff of C++98
