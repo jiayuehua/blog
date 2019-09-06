@@ -381,6 +381,9 @@ and so that you don't have to scroll around while reading the code. The end resu
 For a dangerous example of using IILEs with C++2a Coroutines, see
 ["C++2a Coroutines and dangling references"](https://quuxplusone.github.io/blog/2019/07/10/ways-to-get-dangling-references-with-coroutines/#exciting-new-way-to-dangle-a-reference) (2019-07-10).
 
+The C++2a draft standard's [notion of "immediate invocation"](http://eel.is/c++draft/expr.const#def:immediate_invocation)
+has absolutely nothing to do with IILEs; it has to do with the evaluation of C++2a `consteval` functions.
+
 ## LTO
 
 "Link-Time Optimization." Any kind of optimization that requires looking at the whole program —
@@ -516,7 +519,7 @@ include one PCH, and it must be the very first non-comment line in the file. And
 > The precompiled header file must have been produced by the same compiler binary
 > as the current compilation is using.
 
-That is, _PCH files are not a distribution format._ See also: [BMI](#bmi).
+That is, _PCH files are not a distribution format._ See also: [BMI](#bmi-cmi).
 
 ## PGO
 
@@ -782,6 +785,37 @@ in the order you'd expect. But if they're defined in two different TUs, the link
 order the initializer for `t` _before_ the initializer for `s`. So `t`'s initialization uses `s`
 as a string before `s` has actually been constructed, leading to [UB](#ub) at runtime.
 ([Wandbox](https://wandbox.org/permlink/qycov99Bj0TUPxsP).)
+
+## STL
+
+The "Standard Template Library." This name originally referred specifically to the library developed
+by Alexander Stepanov and others at Silicon Graphics (the "SGI STL";
+[PDF documentation here](http://stepanovpapers.com/STL/DOC.PDF)) and proposed for standardization
+in 1993. Ironically, the name "Standard Template Library" _far_ preceded any ISO standard for C++!
+
+The SGI STL became the basis for a lot of the C++98 Standard Library. Since "SL"
+doesn't make for a great acronym, and since most of the standard library is templated in some way,
+it is common for C++ programmers to refer to the entire C++ standard library as "the STL."
+Others might use the term more narrowly to refer to the parts of the library that deal with
+containers, iterators, algorithms, allocators, adaptors, and function objects (such as `std::less`),
+excluding for example `std::shared_ptr` and `std::valarray`.
+Still others might include only those parts of the modern Standard Library inherited directly from SGI,
+excluding for example `std::unordered_set` and `std::move_iterator`.
+
+Notably, [iostreams were invented by Bjarne Stroustrup circa 1984](https://stackoverflow.com/a/2753094/1424877);
+therefore they are part of the "STL" only in that phrase's most inclusive (and most common) sense.
+
+In [_Effective STL_](https://amzn.to/2ZGM0Tu) (2008), Scott Meyers defines his use of the term "STL"
+as "the parts of C++'s Standard Library that work with iterators." (He explicitly excludes the
+container adaptors `stack`, `queue`, and `priority_queue`, even though those _were_ part of the SGI STL,
+on the grounds that they are not iterable.)
+As for [_Mastering the C++17 STL_](https://amzn.to/34rWnt9) (O'Dwyer, 2017), I freely admit that
+I used "STL" purely as a short form of the phrase "Standard Library" optimized for book covers and
+search engines.
+
+The other meaning of "STL" in C++ contexts is as the initials and preferred nickname of
+Stephan T. Lavavej ([pronounced "Steh-fin Lah-wah-wade"](https://twitter.com/StephanTLavavej)).
+As of 2019, STL happens to work on [MSVC](#msvc)'s implementation of _the_ STL.
 
 ## TBAA
 

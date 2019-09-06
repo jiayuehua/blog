@@ -88,7 +88,8 @@ and Mathias Stearn!) ([Godbolt.](https://coro.godbolt.org/z/tMaVXY))
         }
     }
 
-This version uses an immediately invoked lambda expression (IILE — we love our acronyms!) where the
+This version uses an immediately invoked lambda expression (IILE — we love our
+[acronyms](/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#iile)!) where the
 body of the lambda is itself a coroutine (because it uses `co_yield`). In this version, `explode` is
 not a coroutine; it's just a plain old subroutine.
 
