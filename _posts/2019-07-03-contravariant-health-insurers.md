@@ -4,6 +4,7 @@ title: 'P1616R0 and health insurance'
 date: 2019-07-03 00:01:00 +0000
 tags:
   concepts
+  implementation-divergence
   metaprogramming
   templates
   wg21

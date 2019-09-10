@@ -3,6 +3,7 @@ layout: post
 title: "`operator auto`"
 date: 2018-07-12 00:01:00 +0000
 tags:
+  implementation-divergence
   metaprogramming
   proposal
   rant

@@ -4,6 +4,7 @@ title: "Covariance and contravariance in C++"
 date: 2019-01-20 00:02:00 +0000
 tags:
   concepts
+  implementation-divergence
   metaprogramming
   templates
 ---
