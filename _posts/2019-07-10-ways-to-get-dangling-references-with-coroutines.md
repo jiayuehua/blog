@@ -4,7 +4,7 @@ title: 'C++2a Coroutines and dangling references'
 date: 2019-07-10 00:01:00 +0000
 tags:
   coroutines
-  parameter-types
+  parameter-only-types
   pitfalls
 ---
 

@@ -6,7 +6,7 @@ tags:
   c++-learner-track
   library-design
   metaprogramming
-  parameter-types
+  parameter-only-types
   pitfalls
   slogans
 excerpt: |

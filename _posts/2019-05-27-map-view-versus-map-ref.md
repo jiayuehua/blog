@@ -5,10 +5,11 @@ date: 2019-05-27 00:01:00 +0000
 tags:
   cppnow
   library-design
-  parameter-types
+  parameter-only-types
 ---
 
-Chandler Carruth gave a pretty great lightning talk at C++Now 2019 on his new ideas for a
+Chandler Carruth gave [a pretty great lightning talk](https://www.youtube.com/watch?v=kye4aD-KvTU)
+at C++Now 2019 on his new ideas for a
 `Map` API; that is, the API for a data structure that stores key-value pairs. I disagreed
 with some of his intuitions, such as the promiscuous use of overloading — in particular
 I recall that some member functions took lambdas and were overloaded based on their
@@ -77,10 +78,3 @@ as it has done in this simple case.
 
 Conclusion: You can sometimes think of a `view` type as a particularly ergonomic form of manual
 [loop-invariant code motion](https://en.wikipedia.org/wiki/Loop-invariant_code_motion).
-
-----
-
-Videos from C++Now 2019 are not up on YouTube yet, but they will be, eventually.
-Even the lightning talks!
-You can [subscribe to the C++Now (a.k.a. BoostCon) channel](https://www.youtube.com/user/BoostCon)
-to be notified of updates.
