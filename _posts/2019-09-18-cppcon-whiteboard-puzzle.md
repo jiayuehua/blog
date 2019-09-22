@@ -32,6 +32,12 @@ Anyway, I wrote "can't be done," which generated some fun discussion just now.
 I'll present the discussion separated by horizontal lines, with spoilers below
 each line.
 
+> I guess I should mention that another correct response is "You shouldn't try to do that,"
+> or "you're asking the wrong question." C++2a Concepts aren't designed to discriminate
+> based on function signatures; they're designed to deal with syntactic well-formedness
+> of expressions. But it's still fun, and perhaps educational, to try to answer the
+> question as it was originally asked.
+
 ----
 
 Step one: let's try to use valid C++2a syntax!
@@ -179,13 +185,49 @@ Now `concept Foo` correctly rejects our `EvilS`, _because_ `&(EvilS::foo)` is pe
 whereas well-behaved models of our concept permit `&T::foo` but _not_ `&(T::foo)`.
 
 We still have to find a way to reject member function templates which can be
-_instantiated_ through type deduction to match the signature `int (S::*)(double)` —
+_instantiated_ through type deduction to match the signature `int (S::*)(double)`.
 
     struct S {
         template<class T> int foo(T);
     };
     static_assert(Foo<S>);  // oops!
 
-— but I suspect that's doable. And then we have to find out how to break _that_ concept!
+Spoiler below the line.
 
-[Here's a Godbolt](https://concepts.godbolt.org/z/6IFegX) of the test cases so far.
+----
+
+As far as I know, any function template that's callable as `t.foo(x)` is also
+callable as `t.foo<>(x)`. The angle brackets just mean "here come the template arguments,
+if any"; it's totally fine to provide none. So we can test for whether `foo` is a template
+similarly to how we tested if it was a static data member:
+
+    template<class T>
+    concept AlsoNotFoo = requires (T t) {
+        { helper<T, &T::template foo<>>{} };
+    };
+
+    template<class T>
+    concept Foo = requires (T t) {
+        { helper<T, &T::foo>{} };
+    } && !NotFoo<T> && !AlsoNotFoo<T>;
+
+Unfortunately, _this_ concept is too _restrictive_ — do you see how?
+
+----
+
+We might have _both_ a `foo` member function template and a `foo` member function with
+the appropriate signature!
+
+    struct S {
+        template<class T> int foo(T);
+        int foo(double);
+    };
+    static_assert(not Foo<S>);  // oops!
+
+Since `&S::template foo<>` is well-formed, our latest concept rejects this `S`; but in
+fact this `S` _does_ have a member function with the signature `int foo(double)`, so we
+shouldn't have rejected it at all!
+
+Can you figure out the next step?
+
+[Here's a Godbolt](https://concepts.godbolt.org/z/NtXgkn) of the test cases so far.
