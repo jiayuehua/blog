@@ -910,3 +910,9 @@ see Barry Revzin's blog post "[What is UFCS anyway?](https://brevzin.github.io/c
 VLAs are not part of standard C++ ([and never will be](https://stackoverflow.com/questions/1887097/why-arent-variable-length-arrays-part-of-the-c-standard)).
 Furthermore, C11 made VLAs a "conditional feature" which even C compilers needn't support. C11-and-later
 compilers which don't support VLAs are supposed to define `__STDC_NO_VLA__` to `1`.
+
+## VTT
+
+"Virtual table table." In the Itanium ABI, this data structure sits alongside
+the more familiar "vtable" and is used during construction and destruction of classes with virtual bases.
+See ["What is the virtual table table?"](/blog/2019/09/30/what-is-the-vtt/) (2019-09-30).
