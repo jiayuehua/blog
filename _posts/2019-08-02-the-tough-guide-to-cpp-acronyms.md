@@ -49,6 +49,20 @@ All ADTs are also _user-defined types_ (UDTs). Due to confusion over whether lib
 "UDT" in favor of "[program-defined type](http://eel.is/c++draft/definitions#defns.prog.def.type)."
 `std::string` is not a "program-defined type."
 
+## ARM
+
+[_The Annotated C++ Reference Manual_](https://amzn.to/31LFuYL) (Ellis and Stroustrup, 1990).
+This work — vastly outdated as of the mid-’90s, of course — consists of a reference manual for
+pre-standard C++, plus annotations and commentary by Stroustrup which "discuss what is not included
+in the language, why certain features are defined as they are, and how one might implement
+particular features."
+
+Confusingly for C++ programmers, [ARM](https://en.wikipedia.org/wiki/ARM_architecture)
+(originally "[Acorn](https://en.wikipedia.org/wiki/Acorn_Computers) RISC Machine")
+is also the name of a processor architecture used by many embedded devices, including
+most Android smartphones. Your C++ compiler might produce code to run _on_ ARM, but
+your C++ compiler almost certainly does not accept the dialect of C++ described _by_ the ARM!
+
 ## BMI, CMI
 
 "Binary Module Interface." Just as .cpp files are compiled into .o files, and some compilers provide
@@ -180,6 +194,13 @@ or LWG's plate — an open question raised by the wording of the Standard. LWG's
 [an exhaustive list](https://cplusplus.github.io/LWG/lwg-active.html#Status) of states
 an issue can be in, including resolved states such as "[DR](#dr)" and "NAD" (Not A Defect).
 See "[A faster WG21 CWG issue browser](/blog/2019/05/22/cwg-issue-browser/)" (2019-05-22).
+
+## D&E
+
+[_The Design and Evolution of C++_](https://amzn.to/2obnhVK), a book by Bjarne Stroustrup first published
+in 1994. [In Stroustrup's words](http://www.stroustrup.com/books.html),
+"D&E discusses why C++ is the way it is. It describes the design of C++.
+The emphasis is on the overall design goals, practical constraints, and people that shaped C++."
 
 ## DR
 
@@ -592,6 +613,32 @@ For more on this topic, see my talk "[An Allocator is a Handle to a Heap](https:
 
 "[Plain Old Data](https://en.cppreference.com/w/cpp/named_req/PODType)."
 This term has been deprecated in C++2a, along with the type trait `std::is_pod<T>`.
+
+## QoI
+
+"Quality of Implementation." This is the C/C++ committee wonk's version of
+["That's a hardware problem."](http://www.topedge.com/home/people/gaman/jokes/b15.htm)
+The C++ Standard mandates certain behaviors of a conforming C++ implementation; but
+the Standard is generally silent on issues of usability, performance, debuggability,
+cross-platform portability, and so on.
+
+Oh, your compiler [ICEs](#ice) when you try to compile
+`INT_MAX + 1`? That's not a conformance issue, it's a quality-of-implementation issue.
+Bring it up with your compiler vendor.
+
+If one compiler supports function types with up to 1024 parameters, and another
+compiler supports only up to 16 parameters, which one is "right"? Neither. Both.
+That's a QoI issue.
+
+In [D&E](#de), Bjarne Stroustrup gives the following (non-exhaustive) examples of QoI issues:
+vtable layout; name-mangling scheme; debuggability; the compiler's behavior
+when confronted with an [ODR](#odr) violation; and the availability of a
+[Boehm-style garbage collector](https://en.wikipedia.org/wiki/Boehm_garbage_collector).
+For other QoI issues, consult the Standard's
+[list of implementation-defined behaviors](http://eel.is/c++draft/impldefindex)
+and [list of _suggested_ minimum implementation limits](http://eel.is/c++draft/implimits).
+
+> Not to be confused with [the Klingon verb](https://mughom.fandom.com/wiki/Qol) "Qol."
 
 ## RAII
 
