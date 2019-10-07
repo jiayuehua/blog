@@ -32,6 +32,53 @@ instead of
 
 respectively. (See also ["The Knightmare of Initialization in C++"](/blog/2019/02/18/knightmare-of-initialization/) (2019-02-18).)
 
+## ABI, API
+
+"Application Binary Interface" and "Application Programming Interface," respectively. The API of a library
+is the interface you program against, in a more or less high-level language. This could be as general as
+saying "My library provides a Python API" (that is, to interface with my library, you'll use Python); or
+as specific as saying "`std::map<K, V>::operator[]` accepts a parameter of type `K`." The API of a library
+describes its interface in terms relevant to the human programmer.
+
+[Louis Dionne says](https://youtube.com/watch?v=DZ93lP1I7wU&t=2m04s), "I like to think of ABI as being
+like API, but for machine code." The ABI of a library describes its interface in terms relevant to the
+_machine_. For example, "Symbol
+`_ZNSt3mapI1K1VSt4lessIS0_ESaISt4pairIKS0_S1_EEEixERS5_` identifies a function that expects to be passed
+the address of a `map` object in `%rdi` and the address of a `K` object in `%rsi`. It returns the address
+of a `V` object in `%rax`."
+
+- If you change the fundamental ideas behind your library,
+    then your users may have to re-design their whole system architecture.
+
+- If you leave your library's fundamentals alone but change its API,
+    then your users won't have to touch their system architecture;
+    but they may have to make changes to their programs (i.e., re-translate their programs into C++ source code).
+
+- If you leave your library's API alone but change its ABI,
+    then your users won't have to touch their C++ source code;
+    but they may have to recompile everything (i.e., re-translate their programs from C++ into machine code).
+
+An example of an ABI break that is not an API break would be if you changed one of the
+function signatures in your library from
+`Item getItem(int index)` to `Item getItem(const int& index)`.
+At the C++ API level, these functions are called using exactly the same syntax.
+Yet the ABI of the former is "pass `index` in register `%rdi`"; the ABI of the latter is
+"pass the _address_ of `index` in `%rdi`." If you linked together two object files, one compiled
+with the old ABI and one with the new ABI, they wouldn't work together — you'd probably get a segfault.
+
+Vice versa, an example of an API break that is not an ABI break would be if you changed
+`extern "C" Item getItem(const int& index)` to `extern "C" Item getItem(const int *index)`.
+These functions have the same ABI — they expect the address of an `int` in `%rdi` — but at the C++ API
+level they're called with different syntax. Anyone using the old API would have to modify
+their C++ code — change `getItem(i)` to `getItem(&i)` — in order to compile it with the new API.
+
+When we talk about "[the Itanium C++ ABI](https://itanium-cxx-abi.github.io/cxx-abi/)"
+or "the MSVC ABI," we're talking more broadly about the
+collection of rules and relationships that go into defining the ABI of any C++ code — for example,
+the rules for name-mangling, for parameter-passing, for class layout and vtable layout, and so on.
+Two compilers that adhere to the same ABI (in this sense) can take API-compatible C++ source files
+and produce object files that are ABI-compatible (in the previous sense).
+
 ## ADL
 
 "Argument-dependent lookup." See ["What is ADL?"](/blog/2019/04/26/what-is-adl/) (2019-04-26).
