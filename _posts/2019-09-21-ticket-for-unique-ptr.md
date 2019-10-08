@@ -8,7 +8,8 @@ tags:
   relocatability
 ---
 
-In Chandler Carruth's CppCon 2019 talk "There Are No Zero-Cost Abstractions," he talked a
+In [Chandler Carruth's CppCon 2019 talk "There Are No Zero-Cost Abstractions,"](https://www.youtube.com/watch?v=rHIkrotSwcc)
+he talked a
 lot (not exclusively, but a lot) about the hidden performance cost of `std::unique_ptr`.
 See, `unique_ptr` may be the same _size_ as a native pointer, but because it has a
 user-defined destructor, it is "non-trivial for purposes of ABI," and that means
