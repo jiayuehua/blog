@@ -29,7 +29,7 @@ is languishing.
 
 ----
 
-I've wrote a C++ program to brute-force the maximum number of queens that can be placed
+I've written a C++ program to brute-force the maximum number of queens that can be placed
 peacefully on an NxN chessboard in the 2-army and 3-army cases. Much of the search space
 can be short-circuited, similarly to my [_meta-sudoku_ brute-forcer](/blog/2018/10/26/sudoku-stories/)
 as seen on this blog (October 2018).
@@ -126,19 +126,19 @@ Here are my solutions, for the record:
     WWW.......
     ......BBBB
 
-11x11: 9 white, 8 black, 8 red
+11x11: 11 white, 8 black, 8 red
 
-    ...WWWW....
-    ...WWW.....
-    ..........R
-    ..........R
-    ......WW...
-    ..B........
+    ...RRR.....
+    ...RRR.....
+    ...RR......
+    .........WW
+    ..........W
+    ...........
     .BB........
     BBB........
-    BB.........
-    ........RRR
-    ........RRR
+    BBB........
+    ......WWWW.
+    .......WWWW
 
 12x12: 11 white, 10 black, 10 red
 
@@ -171,7 +171,7 @@ Here are my solutions, for the record:
     BBB..........
     ........WWWW.
 
-Notice the similarity between my conjectured 9x9, 12x12, and 13x13 solutions and my
+Notice the similarity between my conjectured 8x8-and-larger solutions and my
 conjectured solution to the continuous "Peaceful Encampments" puzzle for three armies:
 
 |:---------------------------------------------------------------------------------------:|
