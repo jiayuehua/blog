@@ -40,6 +40,9 @@ saying "My library provides a Python API" (that is, to interface with my library
 as specific as saying "`std::map<K, V>::operator[]` accepts a parameter of type `K`." The API of a library
 describes its interface in terms relevant to the human programmer.
 
+[Bob Steagall says](https://www.youtube.com/watch?v=S7gGtYqtNNo&t=5m23s) an API is "a precise and complete
+specification of [a component's] guaranteed user-visible behavior." Visible to which user? The human programmer.
+
 [Louis Dionne says](https://youtube.com/watch?v=DZ93lP1I7wU&t=2m04s), "I like to think of ABI as being
 like API, but for machine code." The ABI of a library describes its interface in terms relevant to the
 _machine_. For example, "Symbol
