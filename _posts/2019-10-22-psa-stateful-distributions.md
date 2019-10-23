@@ -50,7 +50,9 @@ any internal state (other than the parameters `min` and `max`); but all vendors 
 continue to mark `uniform_int_distribution::operator()()` as non-const, for two reasons:
 
 - The Standard mandates that they do it. Vendors are not free to arbitrarily add `const`
-    to random member functions.
+    to random member functions. [EDIT: Oops! [[member.functions]/2](http://eel.is/c++draft/conforming#member.functions-2)
+    seems to say that vendors _are_ free to do that! Really? Thanks to Tim Song for bringing
+    this to my attention.)
 
 - It protects against [Hyrum's Law](https://www.hyrumslaw.com). If your code compiles with
     `uniform_real_distribution` but [fails to compile](https://godbolt.org/z/FAWIP-) when you change
