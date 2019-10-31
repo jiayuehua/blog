@@ -35,14 +35,23 @@ queens each can all be encamped peaceably on a $$c\times c$$ board.
     n=14   196 28 14 10  6  4  4  2  2  1  1  1  1  1  0
     n=15   225 32 16 11  9  4  4  2  2  2  1  1  1  1  1  0
     n=16   256 37 18 13  9  5  4  3  2  2  1  1  1  1  1  1  0
+    n=17   289 42 20 14  9  5  4  3  2  2  2  1  1  1  1  1  1  0
+    n=18   324 47 23 16 11  6  4  3  3  2  2  2  1  1  1  1  1  1  0
+    n=19   361 52 25 18 12  7  5  4  3  2  2  2  1  1  1  1  1  1  1  0
+    n=20   400 56 28 20 16  8  6  4  3  3  2  2  2  1  1  1  1  1  1  1  0
+    n=21   441 60 31 22 16  9  6  4  4  3  2  2  2  1  1  1  1  1  1  1  1  0
+    n=22   484 68 34 24 16  9  6  5  4  3  2  2  2  2  1  1  1  1  1  1  1  1  0
+    n=23   529 72 37 26 18 11  7  5  4  4  3  2  2  2  2  1  1  1  1  1  1  1  1  0
+    n=24   576 78 40 29 19 11  8  6  4  4  3  2  2  2  2  1  1  1  1  1  1  1  1  1  0
+    n=25   625 86 44 31 25 12  9  6  5  4  3  3  2  2  2  2  1  1  1  1  1  1  1  1  1  0
 
 Column $$c=2$$ of this table is [OEIS A250000](https://oeis.org/A250000).
 Column $$c=3$$ of this table is [OEIS A328283](https://oeis.org/A328283).
 Diagonal $$c=n$$ represents the existence of solutions to the $$n$$-queens problem
 (that is, it's 1 for all $$n$$ except 2 and 3).
 
-Columns for $$c\ge 3$$ are merely my best lower bounds based on Dmitry Kamenetsky's program;
-they should not be taken as gospel.
+These numbers are merely my best lower bounds based on Dmitry Kamenetsky's program;
+any numbers not already listed in OEIS should not be taken as gospel.
 
 The clever solution for $$f(5,10)=4$$ is just the 2x2 tessellation of the solution to $$f(5,5)=1$$;
 and likewise the clever solution to $$f(7,14)=4$$.
@@ -65,17 +74,26 @@ By definition, $$g(c,n)\geq f(c,n)$$.
     n=7     49  7  6  4  7  4  1  0
     n=8     64 10  8  4  4  7  4  1  0
     n=9     81 12  9  5  9  2  7  4  1  0
-    n=10   100 15  8  5  4  4 12  7  4  1  0
+    n=10   100 15  8  5  4  5 12  7  4  1  0
     n=11   121 19 11  7  6  8  3 12  9  4  1  0
     n=12   144 21 11  7 10  4  7  2 12  8  4  1  0
-    n=13   169 25 12  9  9  4  9  4 18 12  8  4  1  0
-    n=14   196 29 14 10 10  6  4  7  2 18 11  7  4  1  0
+    n=13   169 25 12  9  9  4 10  4 18 13  8  4  1  0
+    n=14   196 29 14 10 10  6  4  8  3 18 12  7  4  1  0
     n=15   225 34 17 12  9  9  6 13  6  2 18 12  8  4  1  0
-    n=16   256 37 19 13 16 10  5  4 11  5 23 17 12  7  4  1  0
+    n=16   256 37 19 13 16 10  5  4 11  5 24 17 12  7  4  1  0
+    n=17   289 42 24 15 17  9  7  5 10  8  3 18 14 10  7  4  1  0
+    n=18   324 48 23 16 12  9  9  7  3 10  5  2 20 15 10  7  4  1  0
+    n=19   361 52 28 19 13  9  6  5  6 13  7  4 25 19 13 10  6  4  1  0
+    n=20   400 56 30 20 16  9  9  8  8  3 10  5  2 25 20 15 10  7  4  1  0
+    n=21   441 64 33 23 20 18  8  7  4  4 15  8  4 32 25 18 15 11  6  4  1  0
+    n=22   484 68 35 24 16 12  8  6  6  7 17 11  6  3 31 22 19 14  9  7  4  1  0
+    n=23   529 73 39 27 21 11 10  7  8  4  4 14  9  5  3 31 25 17 12 10  6  4  1  0
+    n=24   576 83 41 29 21 14 10  7  8  4  6 19 11  9  4 36 33 23 19 13 11  6  4  1  0
+    n=25   625 87 45 32 25 21 11  9  5  9  8  4 15 12  6  3 37 29 23 18 12  9  7  3  1  0
 
 Row `c=2` of this table is [OEIS A308632](https://oeis.org/A308632).
 
-Columns for $$c\ge 3$$ are merely my best guesses based on Dmitry Kamenetsky's program;
+Again, these numbers are merely my best guesses based on Dmitry Kamenetsky's program;
 they should not be taken as gospel. They are neither upper bounds nor lower bounds!
 For example, on a 12x12 board you can definitely encamp 10+4+4+4+4 queens, so 4 is a hard
 lower bound for $$f(5,12)$$; but $$g(5,12)$$ might be either greater than 10 or
