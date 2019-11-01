@@ -14,7 +14,7 @@ Dmitry Kamenetsky has written [a Java program](https://oeis.org/A250000/a250000_
 that heuristically finds solutions (not necessarily best-possible solutions) to the "peaceable
 coexisting queens" problem, for any size board $$n$$ and any number of colors $$c$$.
 
-Here's a tabular display of the largest integer $$f(c,n)$$ such that $$c$$ armies of $$f(c,n)$$
+Here's a table of the largest integers $$f(c,n)$$ such that $$c$$ armies of $$f(c,n)$$
 queens each can all be encamped peaceably on a $$c\times c$$ board.
 
     k=       1  2  3  4  5  6  ...
@@ -38,12 +38,7 @@ queens each can all be encamped peaceably on a $$c\times c$$ board.
     n=17   289 42 20 14  9  5  4  3  2  2  2  1  1  1  1  1  1  0
     n=18   324 47 23 16 11  6  4  3  3  2  2  2  1  1  1  1  1  1  0
     n=19   361 52 25 18 12  7  5  4  3  2  2  2  1  1  1  1  1  1  1  0
-    n=20   400 56 28 20 16  8  6  4  3  3  2  2  2  1  1  1  1  1  1  1  0
-    n=21   441 60 31 22 16  9  6  4  4  3  2  2  2  1  1  1  1  1  1  1  1  0
-    n=22   484 68 34 24 16  9  6  5  4  3  2  2  2  2  1  1  1  1  1  1  1  1  0
-    n=23   529 72 37 26 18 11  7  5  4  4  3  2  2  2  2  1  1  1  1  1  1  1  1  0
-    n=24   576 78 40 29 19 11  8  6  4  4  3  2  2  2  2  1  1  1  1  1  1  1  1  1  0
-    n=25   625 86 44 31 25 12  9  6  5  4  3  3  2  2  2  2  1  1  1  1  1  1  1  1  1  0
+    n=20   400 58 28 20 16  8  6  4  3  3  2  2  2  1  1  1  1  1  1  1  0
 
 Column $$c=2$$ of this table is [OEIS A250000](https://oeis.org/A250000).
 Column $$c=3$$ of this table is [OEIS A328283](https://oeis.org/A328283).
@@ -58,7 +53,7 @@ and likewise the clever solution to $$f(7,14)=4$$.
 
 ----
 
-Here's a tabular display of the largest integer $$g(c,n)$$ such that
+Here's a table of the largest integers $$g(c,n)$$ such that
 $$c-1$$ armies of $$f(c,n)$$ queens each, plus one army of $$g(c,n)$$ queens,
 can all be encamped peaceably on a $$c\times c$$ board.
 By definition, $$g(c,n)\geq f(c,n)$$.
@@ -81,15 +76,10 @@ By definition, $$g(c,n)\geq f(c,n)$$.
     n=14   196 29 14 10 10  6  4  8  3 18 12  7  4  1  0
     n=15   225 34 17 12  9  9  6 13  6  2 18 12  8  4  1  0
     n=16   256 37 19 13 16 10  5  4 11  5 24 17 12  7  4  1  0
-    n=17   289 42 24 15 17  9  7  5 10  8  3 18 14 10  7  4  1  0
+    n=17   289 42 24 15 17 11  7  5 10  8  3 18 14 10  7  4  1  0
     n=18   324 48 23 16 12  9  9  7  3 10  5  2 20 15 10  7  4  1  0
-    n=19   361 52 28 19 13  9  6  5  6 13  7  4 25 19 13 10  6  4  1  0
-    n=20   400 56 30 20 16  9  9  8  8  3 10  5  2 25 20 15 10  7  4  1  0
-    n=21   441 64 33 23 20 18  8  7  4  4 15  8  4 32 25 18 15 11  6  4  1  0
-    n=22   484 68 35 24 16 12  8  6  6  7 17 11  6  3 31 22 19 14  9  7  4  1  0
-    n=23   529 73 39 27 21 11 10  7  8  4  4 14  9  5  3 31 25 17 12 10  6  4  1  0
-    n=24   576 83 41 29 21 14 10  7  8  4  6 19 11  9  4 36 33 23 19 13 11  6  4  1  0
-    n=25   625 87 45 32 25 21 11  9  5  9  8  4 15 12  6  3 37 29 23 18 12  9  7  3  1  0
+    n=19   361 53 28 19 13  9  6  5  6 13  7  4 25 19 13 10  6  4  1  0
+    n=20   400 59 31 20 16  9  9  8  8  3 10  5  2 25 20 15 10  7  4  1  0
 
 Row `c=2` of this table is [OEIS A308632](https://oeis.org/A308632).
 

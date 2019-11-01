@@ -236,3 +236,8 @@ conjectured solution to the continuous "Peaceful Encampments" puzzle for three a
 | [![Three encampments of size 0.0718 each](/blog/images/2019-01-21-three-armies.png)][1] |
 
 [1]: http://club.cc.cmu.edu/~ajo/disseminate/encamp4.html?q=%7B%22v%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.246%2C%22color%22%3A%22red%22%7D%2C%7B%22minInvariant%22%3A0.246%2C%22maxInvariant%22%3A0.566%2C%22color%22%3A%22green%22%7D%5D%2C%22h%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.291%2C%22color%22%3A%22green%22%7D%2C%7B%22minInvariant%22%3A0.53%2C%22maxInvariant%22%3A0.889%2C%22color%22%3A%22red%22%7D%5D%2C%22s%22%3A%5B%7B%22minInvariant%22%3A0%2C%22maxInvariant%22%3A0.699%2C%22color%22%3A%22green%22%7D%2C%7B%22minInvariant%22%3A0.699%2C%22maxInvariant%22%3A1.107%2C%22color%22%3A%22red%22%7D%5D%2C%22b%22%3A%5B%7B%22minInvariant%22%3A-0.441%2C%22maxInvariant%22%3A0%2C%22color%22%3A%22green%22%7D%2C%7B%22minInvariant%22%3A0.345%2C%22maxInvariant%22%3A1%2C%22color%22%3A%22red%22%7D%5D%7D
+
+----
+
+UPDATE: ["Discrete Peaceful Encampments, with tables"](/blog/2019/10/18/discrete-peaceful-encampments-with-tables/) (2019-10-18)
+contains a more complete table of results — and for all numbers of armies, not just three.
