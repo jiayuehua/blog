@@ -14,7 +14,7 @@ is practically guaranteed to change over the next couple of years, but this seem
 how it works right now in trunk.
 
 For instructions on how to build Clang trunk in the first place,
-see ["How to build LLVM from source"](/blog/2018/04/16/building-llvm-from-source/) (2018-04-16).
+see ["How to build LLVM from source"](/blog/2019/11/09/llvm-from-scratch) (2019-11-09).
 
 Thanks to Steven Cook and Steve Downey for helping me puzzle this out today on Slack!
 

@@ -7,7 +7,11 @@ tags:
   llvm
 ---
 
-If I write this down, maybe I won't forget it next time!
+<b>UPDATE, November 2019: The old llvm-mirror on GitHub is dead; long live
+the monorepo!</b> Updated instructions on how to build LLVM from source are
+available in [this later blog post](/blog/2019/11/09/llvm-from-scratch).
+
+----
 
 There are two plausible sources of the LLVM codebase:
 `https://llvm.org/git/$FOO.git` and `https://github.com/llvm-mirror/$FOO.git`.
