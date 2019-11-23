@@ -55,3 +55,46 @@ without any code highlighting) just so that I can maintain typing speed. But I r
 to do that! I just want to be able to type Markdown at speed and have it render the way I've grown used to.
 
 If you know someone who works at Slack, please feel free to send them a link to this post!
+
+----
+
+<b>Front-page-of-Hacker-News UPDATE:</b> First of all, whoa! I didn't expect this post
+to go [quite this viral](https://www.vice.com/en_us/article/pa7nbn/slacks-new-rich-text-editor-shows-why-markdown-still-scares-people).
+But very cool. :)
+
+Funny story: This blog runs on Jekyll, which means I write these posts in Markdown.
+I pushed this post so quickly that I didn't notice until a day later that I had accidentally
+put both the "raw Markdown" and "rendered" examples above into code blocks, so that readers
+were seeing raw Markdown syntax (with backticks) for both the "before" and "after" cases.
+Nobody seems to have remarked on that, which I take to mean that the 50,000-some people who
+read this blog (before my free plan with Mixpanel stopped tracking the hits) are pretty much
+comfortable seeing "<code>bar.`foo()`</code>" and mentally interpreting it, without any loss
+of fluency, as "bar.<code>foo()</code>."
+
+When I posted, I had tested my two examples in Safari; I didn't think to check whether they reproduced in other browsers.
+As of 2019-11-22, here's what I see in my two browsers of choice:
+My first example above reproduces in Safari but not in Chrome; and actually in Safari you have to hit
+right-arrow _instead_ of space, not in addition to space.
+My second example reproduces in both Safari and Chrome.
+
+Here's a third example, reproducible in both Safari and Chrome. If you type
+
+    increment `self._private_member` by one
+
+into the new WYSIWYG editor, it will display as:
+
+    increment <code>self.<i>private</i>member</code> by one
+
+Here I had to switch from Markdown to HTML in the "rendered" version, because (as far as I know)
+there is literally no way to generate "italic teletype text" font in Markdown.
+For example, [Alexander Dupuy says:](https://gist.github.com/dupuy/1855764#font-faces---emphasis-and-examples)
+
+> Markdown allows monospaced text within bold or italic sections, but not vice versa
+
+Being a C++ programmer, I use multiple underscores in code _a lot_. I would like them not to be messed with, please.
+
+Finally, as long as I'm getting traffic to this post, this might be the place to mention that
+besides [talking about C++ a lot for free](https://www.youtube.com/playlist?list=PLXTVlgmc2KcD3mgkZfrq3jJl8RNaAz-lp),
+I also do corporate training! If you're looking for a multi-day training course, with exercises,
+on pretty much any aspect of the C++ language, feel free to shoot me an email by clicking on
+the leftmost icon below.
