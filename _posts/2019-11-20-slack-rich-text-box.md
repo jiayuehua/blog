@@ -98,3 +98,16 @@ besides [talking about C++ a lot for free](https://www.youtube.com/playlist?list
 I also do corporate training! If you're looking for a multi-day training course, with exercises,
 on pretty much any aspect of the C++ language, feel free to shoot me an email by clicking on
 the leftmost icon below.
+
+----
+
+<b>Partial Victory update:</b> As of 2019-12-03, Slack has added an option to the browser version:
+"Preferences > Advanced > Format messages with markup." See full details [here](https://www.howtogeek.com/450030/how-to-enable-classic-markdown-text-formatting-in-slack/)
+(Chris Hoffman, 2019-12-03). Setting the option in your "Preferences" for a given workspace will
+cause it to carry over to that workspace, in the browser, on any computer. However, setting the option
+for one workspace will not affect any other workspace; and setting the option in the browser will
+not affect that workspace on the Android mobile app.
+
+On the Android mobile app, "Preferences" is called "Settings", and it's hiding at the bottom of the overflow
+menu as described [here](https://slack.com/help/articles/360019434914-Use-dark-mode-in-Slack). It has an
+"Advanced" section, but no markdown-related options in there as far as I was able to tell.
