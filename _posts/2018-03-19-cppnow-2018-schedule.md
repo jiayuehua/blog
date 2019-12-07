@@ -2,6 +2,8 @@
 layout: post
 title: 'The C++Now 2018 schedule is out'
 date: 2018-03-19 00:02:00 +0000
+tags:
+  cppnow
 ---
 
 [The schedule for C++Now 2018 has been announced!](http://cppnow.org/announcements/2018/03/2018-program-announced/)

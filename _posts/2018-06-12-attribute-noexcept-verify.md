@@ -3,6 +3,7 @@ layout: post
 title: 'Attribute `noexcept_verify`'
 date: 2018-06-12 00:01:00 +0000
 tags:
+  exception-handling
   proposal
 ---
 

@@ -2,6 +2,9 @@
 layout: post
 title: On `raise` versus `throw`, and the Mandela Effect
 date: 2018-03-14 00:01:00 +0000
+tags:
+  coroutines
+  exception-handling
 ---
 
 I should really buy a copy of [_The Design and Evolution of C++_](https://amzn.to/2RCz1gM). It apparently

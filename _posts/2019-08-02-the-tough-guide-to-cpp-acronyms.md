@@ -490,6 +490,19 @@ This term has gained some currency lately because of Corentin Jabot's proposal f
 whose type is deduced (at class-definition time) from the type of their initializer.
 `auto` NSDMIs are not (yet?) part of any draft standard.
 
+## NTBS
+
+"Null-Terminated Byte String." Not to be confused with the [NTSB](https://en.wikipedia.org/wiki/National_Transportation_Safety_Board).
+Most C and C++ functions that take a parameter of type `const char *` expect that it points to
+the first character of an NTBS. `"hello world"` is an example of an NTBS.
+
+Here, "null-terminated" means it ends with a `'\0'` byte (ASCII NUL), and "byte string" just means that
+we're [ignoring all encoding-related nonsense](/blog/2019/02/03/on-teaching-unicode/).
+Cppreference distinguishes NTBS from [NTMBS](https://en.cppreference.com/w/c/string/multibyte)
+("null-terminated multibyte string," e.g., UTF8-encoded) and even
+[NTWS](https://en.cppreference.com/w/c/string/wide) ("null-terminated wide string",
+i.e., a sequence of `wchar_t`s ending with `wchar_t(0)`).
+
 ## NTTP
 
 "Non-type template parameter." This is a weird one, because you'd think by symmetry it ought to
