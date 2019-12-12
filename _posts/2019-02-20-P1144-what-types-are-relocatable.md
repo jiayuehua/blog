@@ -64,8 +64,8 @@ Key:
 | `list<T,A>`                          | No | No | C |  No |
 | `{multi,}map<K,V,C,A>`               | No | No | ? |  No |
 | `{multi,}set<T,C,A>`                 | No | No | ? |  No |
-| `unordered_{multi,}map<K,V,H,C,A>`   | CD | ? | ? |   No |
-| `unordered_{multi,}set<T,H,C,A>`     | CD | ? | ? |   No |
+| `unordered_{multi,}map<K,V,H,C,A>`   | CD | No | ? |   No |
+| `unordered_{multi,}set<T,H,C,A>`     | CD | No | ? |   No |
 | `vector<T>`                          | D | ✓ | ✓ |  No |
 | `vector<T,A>`                        | CD | C | C |  No |
 | `stack<T,C>`                         | C | C | C |   C |
