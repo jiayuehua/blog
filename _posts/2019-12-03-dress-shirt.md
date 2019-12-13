@@ -5,6 +5,7 @@ date: 2019-12-03 00:01:00 +0000
 tags:
   classical-polymorphism
   rant
+  slack
 ---
 
 Here's a C++ problem where I still don't know what's a good way to deal with it.
@@ -187,3 +188,48 @@ Is this really the only elegant way out of our difficulty?
 Am I missing some idiom or pattern that would make our original
 `DressShirt` less wonky? If you know a good answer not mentioned
 here, please let me know!
+
+----
+
+<b>Update</b> (2019-12-12): Benjamin Kaufmann writes in with an alternative solution.
+His solution stems from Scott Meyers' advice ([_More Effective C++_](https://amzn.to/35nshHu), item 33):
+"Make non-leaf classes abstract." Since `Shirt` is a non-leaf class, we should make it abstract,
+which means creating the concrete class `PlainShirt` as a new leaf off of `Shirt`.
+
+    class Garment {
+        virtual void do_don() = 0;
+    public:
+        void don() { this->do_don(); }
+    };
+
+    class Shirt : public Garment {
+        Sleeves sleeves_;
+        void do_don() final {
+            sleeves_.insert_arms();
+            this->do_subshirt_specific_don();
+        }
+        virtual void do_subshirt_specific_don() = 0;
+    };
+
+    class PlainShirt final : public Shirt {
+        void do_subshirt_specific_don() final {}
+    };
+
+    class DressShirt final : public Shirt {
+        Cufflinks cufflinks_;
+        void do_subshirt_specific_don() final {
+            cufflinks_.apply();
+        }
+    };
+
+This version inverts Kevin Zheng's approach. In Kevin's version, we had to hope that the _child_ class
+would (A) override `do_don` correctly and (B) remember to call `shirt_specific_don` in its
+implementation of `do_don`. In Ben's version, we solve (A) by introducing a new pure virtual function
+`do_subshirt_specific_don` which all children of `Shirt` _must_ override. We solve (B) by calling
+the `Shirt`-specific code `sleeves_.insert_arms()` as part of `Shirt::do_don` and by marking
+`Shirt::do_don` as `final` so that no ill-behaved child class can mess with it. Children of `Shirt`
+cannot mess with the implementation of `Garment::don`, nor with the implementation of `Shirt::do_don`;
+they are allowed only to implement `do_subshirt_specific_don`, and in fact they _must_ implement
+`do_subshirt_specific_don` — even if it's a no-op, as in `class PlainShirt`.
+
+I like Ben's solution very much!
