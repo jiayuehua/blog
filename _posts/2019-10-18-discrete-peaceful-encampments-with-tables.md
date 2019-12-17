@@ -76,10 +76,10 @@ By definition, $$g(c,n)\geq f(c,n)$$.
     n=14   196 29 14 10 10  6  4  8  3 18 12  7  4  1  0
     n=15   225 34 17 12  9  9  6 13  6  2 18 12  8  4  1  0
     n=16   256 37 19 13 16 10  5  4 11  5 24 17 12  7  4  1  0
-    n=17   289 42 24 15 17 11  7  5 10  8  3 20 15 10  7  4  1  0
-    n=18   324 48 24 16 13 10  9  7  4 10  5  2 20 15 10  7  4  1  0
-    n=19   361 53 28 19 13 14  6  5  6 13  7  4 26 19 14 10  6  4  1  0
-    n=20   400 59 31 20 16 10  9  8  8  3 10  5  3 26 20 15 10  7  4  1  0
+    n=17   289 42 24 15 17 11  7  5 10  8  3 20 15 11  7  4  1  0
+    n=18   324 48 24 16 13 11  9  7  4 10  5  2 20 15 11  7  4  1  0
+    n=19   361 53 28 19 13 14  6  5  6 13  8  4 26 19 14 10  6  4  1  0
+    n=20   400 59 31 20 16 10 10  8  8  3 10  5  3 26 20 15 10  7  4  1  0
 
 Row `c=2` of this table is [OEIS A308632](https://oeis.org/A308632).
 
@@ -98,4 +98,4 @@ but it would be reasonable to imagine defining some related sequence $$h$$ such 
 I have ported Dmitry's Java program to C++14 and made it compute the entire triangle
 (that is, compute all the entries in parallel and periodically write its best results to a file on disk).
 A complete listing of its "best" solutions is [here](/blog/code/2019-10-18-discrete-encampments-best-results.txt),
-and the C++14 source code itself is [here](/blog/code/2019-10-18-dek.cc).
+and the C++14 source code itself is [here](/blog/code/2019-10-18-discrete-encampments.cc).
