@@ -1,0 +1,45 @@
+diff --git a/clang/CMakeLists.txt b/clang/CMakeLists.txt
+index 60937aa9db3..88f44f6c589 100644
+--- a/clang/CMakeLists.txt
++++ b/clang/CMakeLists.txt
+@@ -256,6 +256,8 @@ if (NOT(CLANG_DEFAULT_CXX_STDLIB STREQUAL "" OR
+     "Default C++ stdlib to use (\"libstdc++\" or \"libc++\", empty for platform default" FORCE)
+ endif()
+ 
++set(CLANG_XCODE_TOOLCHAIN_ROOT "" CACHE PATH "Xcode toolchain directory.")
++
+ set(CLANG_DEFAULT_RTLIB "" CACHE STRING
+   "Default runtime library to use (\"libgcc\" or \"compiler-rt\", empty for platform default)")
+ if (NOT(CLANG_DEFAULT_RTLIB STREQUAL "" OR
+diff --git a/clang/include/clang/Config/config.h.cmake b/clang/include/clang/Config/config.h.cmake
+index 68125dbc6d4..953511e145d 100644
+--- a/clang/include/clang/Config/config.h.cmake
++++ b/clang/include/clang/Config/config.h.cmake
+@@ -20,6 +20,9 @@
+ /* Default C++ stdlib to use. */
+ #define CLANG_DEFAULT_CXX_STDLIB "${CLANG_DEFAULT_CXX_STDLIB}"
+ 
++/* On Darwin the c++ std library not in /usr with recent Xcode. */
++#define CLANG_XCODE_TOOLCHAIN_ROOT "${CLANG_XCODE_TOOLCHAIN_ROOT}"
++
+ /* Default runtime library to use. */
+ #define CLANG_DEFAULT_RTLIB "${CLANG_DEFAULT_RTLIB}"
+ 
+diff --git a/clang/lib/Driver/ToolChains/Darwin.cpp b/clang/lib/Driver/ToolChains/Darwin.cpp
+index b43766e98bf..97b9ff1c700 100644
+--- a/clang/lib/Driver/ToolChains/Darwin.cpp
++++ b/clang/lib/Driver/ToolChains/Darwin.cpp
+@@ -1961,7 +1961,12 @@ void DarwinClang::AddClangCXXStdlibIncludeArgs(
+   case ToolChain::CST_Libcxx: {
+     // On Darwin, libc++ is installed alongside the compiler in
+     // include/c++/v1, so get from '<install>/bin' to '<install>/include/c++/v1'.
+-    {
++	if (*CLANG_XCODE_TOOLCHAIN_ROOT) {
++      llvm::SmallString<128> P(CLANG_XCODE_TOOLCHAIN_ROOT);
++      // Note that P can be relative, so we have to '..' and not parent_path.
++      llvm::sys::path::append(P, "usr", "include", "c++", "v1");
++      addSystemInclude(DriverArgs, CC1Args, P);
++	} else {
+       llvm::SmallString<128> P = llvm::StringRef(getDriver().getInstalledDir());
+       // Note that P can be relative, so we have to '..' and not parent_path.
+       llvm::sys::path::append(P, "..", "include", "c++", "v1");
