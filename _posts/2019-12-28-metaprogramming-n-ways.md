@@ -193,6 +193,8 @@ treats any `Tc<Ts...>` as a list. Every other solution
 has to spend at least two lines of code transforming `TypeList<Ts...>`
 into `lib::something<Ts...>` and back again. In Mp11, _it just works._
 
+(Thanks to Ilya Popov for improving this code!)
+
     #include <boost/mp11/algorithm.hpp>
     #include <boost/mp11/integral.hpp>
     namespace lib = boost::mp11;
@@ -200,12 +202,9 @@ into `lib::something<Ts...>` and back again. In Mp11, _it just works._
     template<class T1, class T2>
     using SizeofGT = lib::mp_bool<(sizeof(T1) > sizeof(T2))>;
 
-    template<class T>
-    using IsEmpty = lib::mp_bool<std::is_empty_v<T>>;
-
     template<class TL>
     using SortedAndFiltered = lib::mp_sort<
-        lib::mp_remove_if<TL, IsEmpty>,
+        lib::mp_remove_if<TL, std::is_empty>,
         SizeofGT
     >;
 
