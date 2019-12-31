@@ -258,16 +258,14 @@ parameter of `unpack` — and `sort<...>` as the continuation parameter of
     template<template<class...> class Tc, class... Ts>
     struct SortedAndFilteredImpl<Tc<Ts...>> {
         using type = lib::call<
-            lib::unpack<
-                lib::remove_if<
-                    lib::cfe<std::is_empty>,
-                    lib::sort<
-                        lib::cfe<SizeofGT>,
-                        lib::cfe<Tc>
-                    >
+            lib::remove_if<
+                lib::cfe<std::is_empty>,
+                lib::sort<
+                    lib::cfe<SizeofGT>,
+                    lib::cfe<Tc>
                 >
             >,
-            Tc<Ts...>
+            Ts...
         >;
     };
 
