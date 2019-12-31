@@ -253,24 +253,23 @@ parameter of `unpack` — and `sort<...>` as the continuation parameter of
     template<class T1, class T2>
     using SizeofGT = lib::bool_<(sizeof(T1) > sizeof(T2))>;
 
-    template<class> struct SortedAndFilteredImpl;
-
+    template<class> struct AsLambda;
     template<template<class...> class Tc, class... Ts>
-    struct SortedAndFilteredImpl<Tc<Ts...>> {
-        using type = lib::call<
+    struct AsLambda<Tc<Ts...>> : lib::cfe<Tc> {};
+
+    template<class TL>
+    using SortedAndFiltered = lib::call<
+        lib::unpack<
             lib::remove_if<
                 lib::cfe<std::is_empty>,
                 lib::sort<
                     lib::cfe<SizeofGT>,
-                    lib::cfe<Tc>
+                    AsLambda<TL>
                 >
-            >,
-            Ts...
-        >;
-    };
-
-    template<class TL>
-    using SortedAndFiltered = typename SortedAndFilteredImpl<TL>::type;
+            >
+        >,
+        TL
+    >;
 
 
 ## Boost.Hana
