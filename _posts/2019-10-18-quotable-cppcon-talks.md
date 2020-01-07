@@ -4,6 +4,7 @@ title: "CppCon 2019 talks are up"
 date: 2019-10-18 00:01:00 +0000
 tags:
   cppcon
+  slogans
 ---
 
 I've been watching a lot of CppCon talks on YouTube over the past couple of weeks.
