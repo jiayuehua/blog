@@ -82,6 +82,11 @@ and print out the best known solution for any $$(n,d)$$.
 
     Verified. This is a solution for t(14, 3) <= 12.
 
+My file contains some very large instances for $$d=2$$ developed by Zhao Hui Du; the largest at the
+moment is $$t(1090, 2)\le 27$$. See his blog post ["两瓶毒酒问题"](https://emathgroup.github.io/blog/two-poisoned-wine)
+(October 2019); the data file is found at the last link on that page (currently
+[here](https://emathgroup.github.io/d7c7ee4b784829e5df9268fa6cd338cf/poisonall.txt)).
+
 I'd be interested to see some more examples of "irreducible" $$d$$-separable matrices for small $$n$$.
 If you know where to find such examples, please send them my way! I'll add them to my text file
 [here](/blog/code/2020-01-10-wolfy-out.txt).
