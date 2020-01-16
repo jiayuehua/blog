@@ -54,7 +54,7 @@ and $$t(104,5)\le 59$$.
 As with "Discrete Peaceful Encampments," I provide a text file of best known solutions
 for many different $$n$$ and $$d$$ (not just the integer $$t(n,d)$$ for each pair, but an actual
 $$t\times n$$ matrix which is verifiably $$d$$-separable).
-You can find the current file [here](/blog/code/2019-01-10-wolves-and-sheep-best-results.txt).
+You can find the current file [here](/blog/code/2020-01-10-wolves-and-sheep-best-results.txt).
 
 Unlike "Discrete Peaceful Encampments," _many_ of the solutions to "Wolves and Sheep" are trivially
 derived from the solutions to "adjacent" instances of the problem. For example, the solution for
@@ -89,4 +89,4 @@ moment is $$t(1090, 2)\le 27$$. See his blog post ["两瓶毒酒问题"](https:/
 
 I'd be interested to see some more examples of "irreducible" $$d$$-separable matrices for small $$n$$.
 If you know where to find such examples, please send them my way! I'll add them to my text file
-[here](/blog/code/2020-01-10-wolfy-out.txt).
+[here](/blog/code/2020-01-10-wolves-and-sheep-best-results.txt).
