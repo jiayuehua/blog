@@ -59,7 +59,8 @@ feature branch; my feature branches will track `origin`.
 ## Step 3: Build!
 
 Unfortunately, if you're on Mac OSX like me, then this step is extra complicated.
-I don't really understand why, but, to build Clang on OSX you'll need to
+I don't really understand why, but, to build Clang so that it can find the
+standard headers on OSX you'll need to
 [apply this patch](/blog/code/2019-11-09-Jens-Jorgensen-clang-patch.diff)
 (hat tip to Jens Jorgensen for writing it) and pass an extra parameter to CMake.
 
@@ -96,6 +97,25 @@ If something goes wrong, you can usually recover via
 
 and, absolute worst case, you can `rm -rf $ROOT/llvm-project/build` and start over.
 
+----
+
+If you succeed in building `clang`, but then when you run it you get errors about
+the standard headers, like this, then you probably forgot to apply Jens Jorgensen's
+patch.
+
+    $ bin/clang++ test.cc
+    test.cc:1:10: fatal error: 'stdio.h' file not found
+    #include <stdio.h>
+             ^~~~~~~~~
+    1 error generated.
+
+Alternatively, maybe you set `CLANG_XCODE_TOOLCHAIN_ROOT` inappropriately.
+The appropriate setting seems to have changed between OSX 10.13 and 10.14,
+or between Xcode versions, or something.
+On 10.14.6, it looks like I need to set it to `/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk` instead.
+
+----
+
 Notice that I'm building only Clang, not libc++. Ever since libc++ moved to an explicit
 list of exported linker symbols, it can't be built with any compiler that doesn't support
 both `__int128` and `__float128` — and OSX's system compiler doesn't qualify. So in order to
@@ -110,6 +130,8 @@ getting linker errors like the following, that's what's going on:
       "typeinfo for __int128 const*", referenced from:
          -exported_symbol[s_list] command line option
 
+----
+
 Furthermore, I'm not building `check-clang` yet, because, ironically enough,
 it uses features from my own paper
 [P1155 "More Implicit Moves"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1155r3.html)
@@ -119,6 +141,8 @@ what's going on:
     $ROOT/llvm-project/clang/lib/DirectoryWatcher/mac/DirectoryWatcher-mac.cpp:246:10:
     error: no viable conversion from returned value of type 'std::unique_ptr<DirectoryWatcher>'
     to function return type 'llvm::Expected<std::unique_ptr<DirectoryWatcher> >'
+
+----
 
 Finally, remember that the Clang that we built in this first step will use Xcode's own C++ headers
 by default. When you compile a .cpp file with this Clang, it will not have access to newer headers

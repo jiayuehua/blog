@@ -69,7 +69,7 @@ _mostly_ documented). Each of `lab` and `ptn` is an array of `int`. For example:
     ptn: 1 1 0 1 0 1 0
 
 This example makes vertices {2,5,4} red, vertices {0,3} blue, and vertices {1,6} green.
-`lab` should be a permutation of the integers $$[0,n)$$, and `ptn` is should consist of
+`lab` should be a permutation of the integers $$[0,n)$$, and `ptn` should consist of
 blocks of zero-or-more consecutive 1s followed by single 0s. Each `ptn[i]==0` indicates that
 a color-partition ends with element `i`. (If you set `ptn[n-1]!=0`, then I assume bad things happen.)
 
