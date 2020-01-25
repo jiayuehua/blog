@@ -401,3 +401,5 @@ let me know.
         std::string response = my::receive_http_message(bio.get());
         printf("%s", response.c_str());
     }
+
+This series continues with ["OpenSSL client and server from scratch, part 2."](/blog/2020/01/25/openssl-part-2/)
