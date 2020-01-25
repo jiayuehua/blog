@@ -374,3 +374,5 @@ but you can see the code on Godbolt [here](https://godbolt.org/z/vL77MT) anyway.
         }
         printf("\nClean exit!\n");
     }
+
+This series continues with ["OpenSSL client and server from scratch, part 3."](/blog/2020/01/26/openssl-part-3/)
