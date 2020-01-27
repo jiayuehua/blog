@@ -121,7 +121,7 @@ secure approach in the world; but suitable for our purposes.
     if (SSL_CTX_use_certificate_file(ctx.get(), "server-certificate.pem", SSL_FILETYPE_PEM) <= 0) {
         my::print_errors_and_exit("Error loading server certificate");
     }
-    if (SSL_CTX_use_PrivateKey_file(ctx.get(), "server-private-key.pem", SSL_FILETYPE_PEM) <= 0 ) {
+    if (SSL_CTX_use_PrivateKey_file(ctx.get(), "server-private-key.pem", SSL_FILETYPE_PEM) <= 0) {
         my::print_errors_and_exit("Error loading server private key");
     }
 
@@ -204,7 +204,7 @@ Nifty!
 ----
 
 Godbolt Compiler Explorer doesn’t support _running_ programs that do networking,
-but you can see the code on Godbolt [here](https://godbolt.org/z/8eN2UP) anyway.
+but you can see the code on Godbolt [here](https://godbolt.org/z/Zga7r7) anyway.
 
     #include <memory>
     #include <signal.h>
@@ -365,7 +365,7 @@ but you can see the code on Godbolt [here](https://godbolt.org/z/8eN2UP) anyway.
         if (SSL_CTX_use_certificate_file(ctx.get(), "server-certificate.pem", SSL_FILETYPE_PEM) <= 0) {
             my::print_errors_and_exit("Error loading server certificate");
         }
-        if (SSL_CTX_use_PrivateKey_file(ctx.get(), "server-private-key.pem", SSL_FILETYPE_PEM) <= 0 ) {
+        if (SSL_CTX_use_PrivateKey_file(ctx.get(), "server-private-key.pem", SSL_FILETYPE_PEM) <= 0) {
             my::print_errors_and_exit("Error loading server private key");
         }
 

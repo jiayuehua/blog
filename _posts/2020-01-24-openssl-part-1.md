@@ -11,6 +11,14 @@ Lately I've been struggling through the quagmire that is OpenSSL, and now that I
 some things working, I figure it's a good time to make a series of blog posts about them
 for posterity.
 
+This blog series consists of the following posts:
+
+* [Part 1: HTTP client](/blog/2020/01/24/openssl-part-1/) (2020-01-24)
+* [Part 2: HTTP server](/blog/2020/01/25/openssl-part-2/) (2020-01-25)
+* [Part 3: HTTPS server](/blog/2020/01/26/openssl-part-3/) (2020-01-26)
+* [Part 4: HTTPS client](/blog/2020/01/27/openssl-part-4/) (2020-01-27)
+* [Part 5: HTTPS proxy client and server](/blog/2020/01/28/openssl-part-5/) (2020-01-28)
+
 
 ## Work with smart pointers by default
 
