@@ -204,7 +204,7 @@ Nifty!
 ----
 
 Godbolt Compiler Explorer doesn’t support _running_ programs that do networking,
-but you can see the code on Godbolt [here](https://godbolt.org/z/D7JK4m) anyway.
+but you can see the code on Godbolt [here](https://godbolt.org/z/8eN2UP) anyway.
 
     #include <memory>
     #include <signal.h>
@@ -308,10 +308,10 @@ but you can see the code on Godbolt [here](https://godbolt.org/z/D7JK4m) anyway.
     std::string receive_http_message(BIO *bio)
     {
         std::string headers = my::receive_some_data(bio);
-        char *end_of_headers = strstr(headers.c_str(), "\r\n\r\n");
+        char *end_of_headers = strstr(&headers[0], "\r\n\r\n");
         while (end_of_headers == nullptr) {
             headers += my::receive_some_data(bio);
-            end_of_headers = strstr(headers.c_str(), "\r\n\r\n");
+            end_of_headers = strstr(&headers[0], "\r\n\r\n");
         }
         std::string body = std::string(end_of_headers+4, &headers[headers.size()]);
         headers.resize(end_of_headers+2 - &headers[0]);
@@ -394,3 +394,5 @@ but you can see the code on Godbolt [here](https://godbolt.org/z/D7JK4m) anyway.
         }
         printf("\nClean exit!\n");
     }
+
+This series continues with ["OpenSSL client and server from scratch, part 4."](/blog/2020/01/27/openssl-part-4/)

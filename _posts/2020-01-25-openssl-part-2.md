@@ -46,7 +46,7 @@ take the socket BIO we started with, and filter it through an SSL filter BIO.
 
     auto bio = my::UniquePtr<BIO>(BIO_new_connect("duckduckgo.com:443"));
     if (BIO_do_connect(bio.get()) <= 0) {
-        my::print_errors_and_exit("Error in BIO_do_connect on connect BIO");
+        my::print_errors_and_exit("Error in BIO_do_connect");
     }
     bio = std::move(bio) | my::UniquePtr<BIO>(BIO_new_ssl(ctx.get(), 1));
 
@@ -211,7 +211,7 @@ Another way to test the server program is to use the command-line utility [`curl
     okay cool
 
 Godbolt Compiler Explorer doesn’t support _running_ programs that do networking,
-but you can see the code on Godbolt [here](https://godbolt.org/z/vL77MT) anyway.
+but you can see the code on Godbolt [here](https://godbolt.org/z/DGjD5L) anyway.
 
     #include <memory>
     #include <signal.h>
@@ -307,10 +307,10 @@ but you can see the code on Godbolt [here](https://godbolt.org/z/vL77MT) anyway.
     std::string receive_http_message(BIO *bio)
     {
         std::string headers = my::receive_some_data(bio);
-        char *end_of_headers = strstr(headers.c_str(), "\r\n\r\n");
+        char *end_of_headers = strstr(&headers[0], "\r\n\r\n");
         while (end_of_headers == nullptr) {
             headers += my::receive_some_data(bio);
-            end_of_headers = strstr(headers.c_str(), "\r\n\r\n");
+            end_of_headers = strstr(&headers[0], "\r\n\r\n");
         }
         std::string body = std::string(end_of_headers+4, &headers[headers.size()]);
         headers.resize(end_of_headers+2 - &headers[0]);

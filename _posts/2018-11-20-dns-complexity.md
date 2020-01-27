@@ -3,6 +3,7 @@ layout: post
 title: 'How DNS got so complicated'
 date: 2018-11-20 00:01:00 +0000
 tags:
+  networking
   sre
   wg21
 ---
