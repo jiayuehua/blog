@@ -486,3 +486,5 @@ but you can see the code on Godbolt [here](https://godbolt.org/z/__HUeH) anyway.
         std::string response = my::receive_http_message(ssl_bio.get());
         printf("%s", response.c_str());
     }
+
+This series continues with ["OpenSSL client and server from scratch, part 5."](/blog/2020/01/28/openssl-part-5/)
