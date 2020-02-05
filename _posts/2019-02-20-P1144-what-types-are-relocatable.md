@@ -3,6 +3,7 @@ layout: post
 title: "What library types are `trivially_relocatable` in practice?"
 date: 2019-02-20 00:01:00 +0000
 tags:
+  implementation-divergence
   kona-2019
   relocatability
 ---

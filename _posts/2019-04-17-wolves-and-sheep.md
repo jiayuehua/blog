@@ -51,7 +51,7 @@ on a sequence being searched for, and how much work it would be to do so.
 
 The sequence above is defined as the solution to the following puzzle for various
 values of $$(n,k)$$. Paraphrasing
-[Jyoti Robin on Puzzling StackExchange](https://puzzling.stackexchange.com/questions/81737/):
+[Jyotish Robin on Puzzling StackExchange](https://puzzling.stackexchange.com/questions/81737/):
 
 > You have $$n$$ sheep. Unfortunately, you have been informed that exactly $$k$$
 > of these sheep are really wolves in disguise. You have at your disposal a blood test
