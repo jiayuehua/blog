@@ -45,7 +45,7 @@ which was mainly standardizing behaviors that various compiler vendors had alrea
 It will be... interesting... to see whether C++2a's implicit move from rvalue references is hailed as a
 simplification or a complexification.
 
-Note that P0527/P1155 were accepted as [DRs](https://quuxplusone.github.io/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#dr),
+Note that P0527/P1155 were accepted as [DRs](/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#dr),
 which means that future compilers will implement "implicit move from rvalue references"
 even in C++11 mode. Exciting times.
 

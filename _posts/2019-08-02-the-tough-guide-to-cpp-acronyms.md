@@ -152,7 +152,7 @@ That is, a CPO is an _object_ (not a function); it's callable; it's constexpr-co
 
 (WG21 has a fetish for describing concept constraints as "semantic requirements,"
 even though C++2a Concepts are a purely syntactic feature because
-[nobody knows how to specify semantic requirements](https://quuxplusone.github.io/blog/2018/09/08/problems-concepts-should-solve/#okay-so-to-recap-here-are-the-bi).
+[nobody knows how to specify semantic requirements](/blog/2018/09/08/problems-concepts-should-solve/#okay-so-to-recap-here-are-the-bi).
 The compiler can ensure that some `T` provides syntax for both `==` and `!=`, but it won't check their semantics.)
 
 In practice, this looks more or less like
@@ -177,7 +177,7 @@ something colloquially known as the "poison pill"; but I observed, and Eric conf
 that the poison pill hasn't been necessary ever since C++17 introduced a SFINAE-friendly `std::swap`.)
 
 The benefit of a CPO over a named function is that it separates [the two pieces of the customization
-point](https://quuxplusone.github.io/blog/2018/03/19/customization-points-for-functions/):
+point](/blog/2018/03/19/customization-points-for-functions/):
 
 - A, the piece the user is required to specialize; and
 
@@ -342,7 +342,7 @@ Clang and [MSVC](#msvc).
 "Heap Allocation eLision Optimization." This is the optimization on C++2a coroutines
 referred to in [Gor Nishanov's talk](https://www.youtube.com/watch?v=8C8NnE1Dg4A&t=6m00s)
 on the "disappearing coroutine" (CppCon 2016).
-See "[Announcing `Quuxplusone/coro`](https://quuxplusone.github.io/blog/2019/07/03/announcing-coro-examples/)" (2019-07-03),
+See "[Announcing `Quuxplusone/coro`](/blog/2019/07/03/announcing-coro-examples/)" (2019-07-03),
 specifically [this example](https://coro.godbolt.org/z/5vjlk8); see also
 [P0981 "HALO: the joint response"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0981r0.html)
 (Richard Smith & Gor Nishanov, March 2018).
@@ -450,7 +450,7 @@ and so that you don't have to scroll around while reading the code. The end resu
     }
 
 For a dangerous example of using IILEs with C++2a Coroutines, see
-["C++2a Coroutines and dangling references"](https://quuxplusone.github.io/blog/2019/07/10/ways-to-get-dangling-references-with-coroutines/#exciting-new-way-to-dangle-a-reference) (2019-07-10).
+["C++2a Coroutines and dangling references"](/blog/2019/07/10/ways-to-get-dangling-references-with-coroutines/#exciting-new-way-to-dangle-a-reference) (2019-07-10).
 
 The C++2a draft standard's [notion of "immediate invocation"](http://eel.is/c++draft/expr.const#def:immediate_invocation)
 has absolutely nothing to do with IILEs; it has to do with the evaluation of C++2a `consteval` functions.
@@ -519,7 +519,7 @@ A non-type template parameter is like `template<int V>` or `template<auto V>`.
 
 "Non-virtual interface." This rare acronym refers to the increasingly common (and, in my view, good)
 practice of [separating the two pieces of the customization
-point](https://quuxplusone.github.io/blog/2018/03/19/customization-points-for-functions/) even for plain
+point](/blog/2018/03/19/customization-points-for-functions/) even for plain
 old classical polymorphism. The piece specialized by the derived class stays as a virtual
 function (but becomes private); the piece invoked by the caller stays public (but becomes non-virtual).
 

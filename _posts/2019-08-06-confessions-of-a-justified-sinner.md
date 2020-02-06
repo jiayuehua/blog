@@ -129,7 +129,7 @@ profligate and libertinous brother George, which Gil-Martin terms a "_kind offic
 for ... be assured of this, that the sooner he falls, the fewer crimes will he have to
 answer for, and his estate in the other world will be proportionally more tolerable,
 than if he spent a long unregenerate life steeped in iniquity."
-(Sophistry worthy of [Boethius](https://quuxplusone.github.io/blog/2019/07/19/blog-roundup/#the-consolation-of-philosophy-bo).)
+(Sophistry worthy of [Boethius](/blog/2019/07/19/blog-roundup/#the-consolation-of-philosophy-bo).)
 
 > "Nothing can be more plain or more pertinent," said I: "therefore I fly to perform
 > that which is both a duty toward God and toward man!"

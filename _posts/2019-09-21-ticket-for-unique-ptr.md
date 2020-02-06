@@ -95,4 +95,4 @@ this fantasy syntax:
 (Here I've renamed `ticket` to `ticket_view`, and given it an implicit constructor
 from `unique_ptr`, and given it an explicit conversion to `unique_ptr` instead of
 a named method `redeem()`. This emphasizes its similarity to `string_view` as a
-[parameter-only type](https://quuxplusone.github.io/blog/tags/#parameter-only-types).)
+[parameter-only type](/blog/tags/#parameter-only-types).)
