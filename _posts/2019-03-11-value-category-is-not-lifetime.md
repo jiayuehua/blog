@@ -138,7 +138,7 @@ shipped, we get a bug report from a user. The following code
         print_it(hello + world);
     }
 
-See, here the expression `hello + " world"` yields a temporary `String` object, and we're trying to
+See, here the expression `hello + world` yields a temporary `String` object, and we're trying to
 pass that `String` to a function that takes a `string_view` parameter. There's nothing intrinsically
 wrong with this code. `string_view` even seems like the *most correct* parameter type for `print_it` —
 given that `print_it` is not going to modify its parameter, and doesn't care what its actual type is,
