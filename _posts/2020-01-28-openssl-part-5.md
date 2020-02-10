@@ -276,7 +276,7 @@ Hooray!
 
 ## Complete code for the client
 
-You can see the client code on Godbolt [here](https://godbolt.org/z/n9QmHx).
+You can see the client code on Godbolt [here](https://godbolt.org/z/hLz5g7).
 
     #include <memory>
     #include <stdarg.h>
@@ -500,7 +500,7 @@ You can see the client code on Godbolt [here](https://godbolt.org/z/n9QmHx).
             ;
         SSL_set_tlsext_host_name(my::get_ssl(inner_bio.get()), "api.ipify.org");
     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
-        SSL_set1_host(my::get_ssl(ssl_bio.get()), "api.ipify.org");
+        SSL_set1_host(my::get_ssl(inner_bio.get()), "api.ipify.org");
     #endif
         if (BIO_do_handshake(inner_bio.get()) <= 0) {
             my::print_errors_and_exit("Error in inner BIO_do_handshake");

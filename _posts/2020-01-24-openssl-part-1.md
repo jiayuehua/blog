@@ -266,9 +266,7 @@ with OpenSSL 1.1.0+, it should fetch the home page of [duckduckgo.com](https://d
 over an unencrypted HTTP connection.
 
 Godbolt Compiler Explorer doesn't support _running_ programs that do networking, but you can see the
-code on Godbolt [here](https://godbolt.org/z/JkXUP4) anyway. I know cutting-and-pasting
-code snippets from this blog doesn't work well but I don't know why; if you know the trick,
-let me know.
+code on Godbolt [here](https://godbolt.org/z/JkXUP4) anyway.
 
     #include <memory>
     #include <stdexcept>
