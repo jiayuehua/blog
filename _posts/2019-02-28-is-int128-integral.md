@@ -3,6 +3,7 @@ layout: post
 title: "Is `__int128` integral? A survey"
 date: 2019-02-28 00:01:00 +0000
 tags:
+  implementation-divergence
   standard-library-trivia
 ---
 
@@ -140,5 +141,5 @@ is a hard error](https://godbolt.org/z/t6v1CJ).
 
 ----
 
-[I have also done some comparison of GCC and Clang codegen for `__uint128_t` arithmetic](https://github.com/Quuxplusone/WideIntProofOfConcept#wide-integer-math-proof-of-concept),
-but I have not yet written it up in a blog post.
+For more on `__uint128_t` arithmetic, see
+["The abstraction penalty for wide integer math on x86-64"](/blog/2020/02/13/wide-integer-proof-of-concept/) (2020-02-13).
