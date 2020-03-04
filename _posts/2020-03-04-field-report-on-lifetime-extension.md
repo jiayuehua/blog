@@ -52,6 +52,10 @@ is lowered by the front-end into the moral equivalent of
 
 Since copy elision exists, I cannot think of any reason for the lowering to use `auto&&`
 instead of `decltype(auto)`. But the language standard says `auto&&`, so that's what we get.
+(EDIT: Mathias Stearn points out that if you wanted to respecify the feature using `decltype(auto)`,
+you'd also have to wrap the range expression in an extra pair of parens. `decltype(auto) r1 = a;`
+and `decltype(auto) r1 = (a);` have different semantics, and we want the latter.)
+
 In this example, the lifetime of the temporary returned by `getVector()` is extended to match
 the lifetime of `__range1`. But this happens "behind the scenes"; we don't want to discourage
 the use of ranged `for`-loops in general. So we suppress the diagnostic in this case.
