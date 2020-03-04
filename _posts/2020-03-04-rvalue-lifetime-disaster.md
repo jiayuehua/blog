@@ -180,7 +180,9 @@ Arno makes another modest proposal ([@18:47](https://www.youtube.com/watch?v=s9v
 I would tweak that last sentence — it's always been bad, but it only became really glaringly out-of-place
 once C++17 introduced delayed temporary materialization. (See
 ["Guaranteed Copy Elision Does Not Elide Copies"](https://blog.tartanllama.xyz/guaranteed-copy-elision/)
-(Sy Brand, December 2018).)
+(Sy Brand, December 2018).) However, I can't say that it has _no_ reasonable uses. See these posts
+of mine:
 
-I decided to see what it would look like if Clang warned about lifetime extension.
-That'll be the subject of my next blog post.
+* ["On lifetime extension and `decltype(auto)`"](/blog/2018/04/05/lifetime-extension-grudgingly-accepted/) (2018-04-05)
+
+* ["Field-testing 'Down with lifetime extension!'"](/blog/2020/03/04/field-report-on-lifetime-extension/) (2020-03-04)

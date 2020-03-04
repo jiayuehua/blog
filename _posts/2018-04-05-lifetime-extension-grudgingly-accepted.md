@@ -4,6 +4,7 @@ title: 'On lifetime extension and `decltype(auto)`'
 date: 2018-04-05 00:02:00 +0000
 tags:
   c++-style
+  lifetime-extension
   move-semantics
 ---
 

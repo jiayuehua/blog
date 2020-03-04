@@ -4,6 +4,7 @@ title: '`std::string_view` is a borrow type'
 date: 2018-03-27 00:01:00 +0000
 tags:
   c++-style
+  lifetime-extension
   paradigm-shift
   parameter-only-types
   pitfalls
