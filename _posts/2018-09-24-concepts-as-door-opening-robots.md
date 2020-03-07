@@ -37,7 +37,7 @@ commutative. Did we mean for `+` to be commutative? (`Numeric` types presumably
 have commutative `+`. Although _that_ might not even be true, for things like
 [ordinal numbers](https://en.wikipedia.org/wiki/Ordinal_number).)
 
-I'm a big fan of Don Norman's book [_The Design of Everyday Things_](https://amzn.to/2C2sm5O).
+I'm a big fan of Don Norman's book [_The Design of Everyday Things_](https://amzn.to/39INVrT).
 The takeaway from that book is that everyday objects present certain visual or tactile
 appearances that connote behaviors — what Norman calls _affordances_. A door whose handle
 is a long vertical bar _affords_ pulling-to-open. A long horizontal bar _affords_ pushing.

@@ -52,7 +52,7 @@ In fact, the phrasing "knows how to clean up after itself" is the key intuition 
 non-owning?" is just an abstract way of asking, "Should `F` know how to destroy its controlled object `t`, or
 not?" It's a question of affordances, which is to say, it's a question about what belongs in `F`'s (notional)
 "vtable." (Recall _affordances_ from my previous post ["What is Type Erasure?"](/blog/2019/03/18/what-is-type-erasure),
-which borrows the idea from Don Norman's book [_The Design of Everyday Things_](https://amzn.to/2Og5PZ2).)
+which borrows the idea from Don Norman's book [_The Design of Everyday Things_](https://amzn.to/39INVrT).)
 
 
 ### Copyable or non-copyable?

@@ -301,7 +301,7 @@ it currently "knows" how it behaves when called (via its virtual `call` method) 
 
 When you implement type erasure (in C++ or even in Go), it always starts with making a list of
 the things you want to be able to do with your type-erased object — call it, destroy it, copy it,
-and so on. Don Norman, in the book [_The Design of Everyday Things_](https://amzn.to/2Og5PZ2) (1988),
+and so on. Don Norman, in the book [_The Design of Everyday Things_](https://amzn.to/39INVrT) (1988),
 calls this a list of _affordances_. A `std::function` _affords_ copying and calling. A `std::any`
 _affords_ copying, but not calling. A [`unique_function`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0228r3.html)
 _affords_ calling and moving, but not copying.
