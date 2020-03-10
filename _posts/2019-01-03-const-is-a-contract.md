@@ -572,4 +572,4 @@ Of course this ambiguity is eliminated if you use idiomatic variable definitions
 
     const bool my_value = true;
 
-— but that's a subject for a different post. :)
+— but that's a subject for [a different post](/blog/2019/02/18/knightmare-of-initialization/). :)
