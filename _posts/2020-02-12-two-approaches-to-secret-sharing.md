@@ -63,7 +63,7 @@ Then we shoot the locksmith. Now nobody knows the secret word; the only place it
 recorded is as the Y-intercept of the locksmith's polynomial, which nobody knows.
 
 Any director alone cannot reconstruct the polynomial. For example, director 2
-cannot reconstruct the polynomial knowing only his personal key `(2, 0x35861100)`.
+cannot reconstruct the polynomial knowing only his personal key `(2, 0x35861100, 0x16098b2cd)`.
 However, if two directors get together and share their keys, they can reconstruct
 the polynomial. For example, the first two directors can solve for $$a_1$$ like
 this:
