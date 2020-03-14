@@ -33,7 +33,7 @@ Norman writes:
 > If an error is possible, someone will make it.
 >
 > The designer must assume that all possible errors will occur and design so as to minimize
-> the change of the error in the first place, or its effects once it gets made.
+> the chance of the error in the first place, or its effects once it gets made.
 > Errors should be easy to detect, they should have minimal consequences, and, if possible,
 > their effects should be reversible.
 
