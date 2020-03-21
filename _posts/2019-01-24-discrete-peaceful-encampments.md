@@ -239,5 +239,8 @@ conjectured solution to the continuous "Peaceful Encampments" puzzle for three a
 
 ----
 
-UPDATE: ["Discrete Peaceful Encampments, with tables"](/blog/2019/10/18/discrete-peaceful-encampments-with-tables/) (2019-10-18)
-contains a more complete table of results — and for all numbers of armies, not just three.
+For more thorough treatment of this problem, see:
+
+* ["Discrete Peaceful Encampments, with tables"](/blog/2019/10/18/discrete-peaceful-encampments-with-tables/) (2019-10-18)
+
+* ["Discrete Peaceful Encampments, Bernie Sanders version"](/blog/2020/03/21/discrete-peaceful-encampments-bernie-sanders-version/) (2020-03-21)
