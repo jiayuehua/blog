@@ -27,6 +27,7 @@ but even a west-conster can write the `const` on the east-hand side when it is p
 
 Remember that [const-qualifying the return type of a function that _returns by value_
 is never, ever useful; and quite often is a pessimization.](https://stackoverflow.com/questions/8716330/purpose-of-returning-by-const-value)
+See ["`const` is a contract"](/blog/2019/01/03/const-is-a-contract/) (2019-01-03).
 
 Okay, so we all agree: we should be writing our containers like this —
 
