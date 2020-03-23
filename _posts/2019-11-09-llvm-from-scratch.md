@@ -12,6 +12,12 @@ This is an update of my previous post
 which is now out-of-date. LLVM has moved to a "monorepo" design instead of a collection
 of smaller tool-specific repositories. So this new post has fewer steps!
 
+UPDATE, 2020-03-22: Patch [D69221](https://reviews.llvm.org/D69221) seems to have made
+the procedure much simpler, eliminating the need for Jens Jorgensen's patch,
+at least on OSX 10.14.6. Therefore I have shortened this post considerably.
+You can find the old version [in the blog's git history](https://github.com/Quuxplusone/blog/commits/master/_posts/2019-11-09-llvm-from-scratch.md)
+or [on the Wayback Machine](https://web.archive.org/web/20200323024244/https://quuxplusone.github.io/blog/2019/11/09/llvm-from-scratch/).
+
 ----
 
 The LLVM codebase's official home is [`https://github.com/llvm/llvm-project`](https://github.com/llvm/llvm-project).
@@ -58,25 +64,14 @@ feature branch; my feature branches will track `origin`.
 
 ## Step 3: Build!
 
-Unfortunately, if you're on Mac OSX like me, then this step is extra complicated.
-I don't really understand why, but, to build Clang so that it can find the
-standard headers on OSX you'll need to
-[apply this patch](/blog/code/2019-11-09-Jens-Jorgensen-clang-patch.diff)
-(hat tip to Jens Jorgensen for writing it) and pass an extra parameter to CMake.
-
-I've also updated this step to use `-G Ninja` instead of `-G 'Unix Makefiles'`,
-just because all the cool kids seem to be using Ninja these days.
-
-    cd $ROOT/llvm-project
-    patch -p1 < 2019-11-09-Jens-Jorgensen-clang-patch.diff
-
     mkdir $ROOT/llvm-project/build
     cd $ROOT/llvm-project/build
-    cmake -G 'Ninja' \
-        -DCLANG_XCODE_TOOLCHAIN_ROOT=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain \
-        -DLLVM_ENABLE_PROJECTS="clang" \
+    cmake -G Ninja \
+        -DDEFAULT_SYSROOT="$(xcrun --show-sdk-path)" \
+        -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
         -DCMAKE_BUILD_TYPE=Release ../llvm
     ninja clang
+    ninja cxx
 
 Making `clang` will build both `clang` and `clang++`.
 
@@ -100,8 +95,7 @@ and, absolute worst case, you can `rm -rf $ROOT/llvm-project/build` and start ov
 ----
 
 If you succeed in building `clang`, but then when you run it you get errors about
-the standard headers, like this, then you probably forgot to apply Jens Jorgensen's
-patch.
+the standard C-language headers, like this,
 
     $ bin/clang++ test.cc
     test.cc:1:10: fatal error: 'stdio.h' file not found
@@ -109,44 +103,12 @@ patch.
              ^~~~~~~~~
     1 error generated.
 
-Alternatively, maybe you set `CLANG_XCODE_TOOLCHAIN_ROOT` inappropriately.
-The appropriate setting seems to have changed between OSX 10.13 and 10.14,
-or between Xcode versions, or something.
-On 10.14.6, it looks like I need to set it to `/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk` instead.
+then you may have set `DEFAULT_SYSROOT` inappropriately.
+On 10.14.6, when I run `xcrun --show-sdk-path`, I get `/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk`.
+Your results may vary.
 
-----
-
-Notice that I'm building only Clang, not libc++. Ever since libc++ moved to an explicit
-list of exported linker symbols, it can't be built with any compiler that doesn't support
-both `__int128` and `__float128` — and OSX's system compiler doesn't qualify. So in order to
-build libc++ we'll need to build Clang first, and then bootstrap libc++ (see below). If you're
-getting linker errors like the following, that's what's going on:
-
-    Undefined symbols for architecture x86_64:
-      "__ZTIDu", referenced from:
-         -exported_symbol[s_list] command line option
-      "typeinfo for __float128", referenced from:
-         -exported_symbol[s_list] command line option
-      "typeinfo for __int128 const*", referenced from:
-         -exported_symbol[s_list] command line option
-
-----
-
-Furthermore, I'm not building `check-clang` yet, because, ironically enough,
-it uses features from my own paper
-[P1155 "More Implicit Moves"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1155r3.html)
-which post-date Xcode's compiler release. If you get compiler errors like the following, that's
-what's going on:
-
-    $ROOT/llvm-project/clang/lib/DirectoryWatcher/mac/DirectoryWatcher-mac.cpp:246:10:
-    error: no viable conversion from returned value of type 'std::unique_ptr<DirectoryWatcher>'
-    to function return type 'llvm::Expected<std::unique_ptr<DirectoryWatcher> >'
-
-----
-
-Finally, remember that the Clang that we built in this first step will use Xcode's own C++ headers
-by default. When you compile a .cpp file with this Clang, it will not have access to newer headers
-such as  `<optional>` which don't exist in Xcode yet.
+If you get errors about the C++ headers, such as `<vector>`, it's because you still
+need to build libc++: run `ninja cxx`.
 
 
 ## Step 4: Bootstrap `check-clang` and libc++.
@@ -154,27 +116,19 @@ such as  `<optional>` which don't exist in Xcode yet.
 Here we will instruct CMake to build Clang again, using the Clang we just built.
 There is apparently [an official way to bootstrap Clang](https://llvm.org/docs/AdvancedBuilds.html)
 (probably out-of-date). However, I use an approach inspired by
-[the CMake FAQ](https://gitlab.kitware.com/cmake/community/wikis/FAQ#how-do-i-use-a-different-compiler).
+[the CMake FAQ](https://gitlab.kitware.com/cmake/community/-/wikis/FAQ#how-do-i-use-a-different-compiler).
 Note that we will *not* be installing Clang over top of the system compiler; that would be super dangerous
 and you should never do it!
-
-First, make sure you have <b>reverted</b> Jens Jorgensen's patch from Step 3.
-During the bootstrap step, we don't want that `CLANG_XCODE_TOOLCHAIN_ROOT` stuff to exist anymore.
-
-    cd $ROOT/llvm-project
-    patch -R -p1 < 2019-11-09-Jens-Jorgensen-clang-patch.diff
 
     mkdir $ROOT/llvm-project/build2
     cd $ROOT/llvm-project/build2
     CXX="$ROOT/llvm-project/build/bin/clang++" \
-    cmake -G 'Ninja' \
+    cmake -G Ninja \
+        -DDEFAULT_SYSROOT="$(xcrun --show-sdk-path)" \
         -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo ../llvm
     ninja clang cxx
     ninja check-clang check-cxx
-
-Notice that we're enabling more projects this time: `clang;libcxx;libcxxabi`.
-(Unfortunately, `compiler-rt` will not build on OSX.)
 
 Now you have built two versions of `clang++`: `$ROOT/llvm-project/build/bin/clang++` is the version
 built with your system compiler, and `$ROOT/llvm-project/build2/bin/clang++` is the version built with
@@ -183,6 +137,7 @@ _that_ version. You can extend this to `build3`, `build4`, etc.
 Making `cxx` will build `libc++.dylib`, `libc++.a`, and `libc++abi.dylib`.
 Making `cxxabi` will build `libc++abi.a`.
 Making `check-cxx` will build `libc++experimental.a`.
+(Unfortunately, `compiler-rt` will not build on OSX.)
 
 This time, `cmake` takes about 58 seconds; `ninja clang` takes about 153 minutes.
 `ninja check-clang` takes another 53 minutes:
