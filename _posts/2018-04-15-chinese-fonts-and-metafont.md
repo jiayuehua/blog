@@ -4,6 +4,7 @@ title: 'Chinese fonts, and METAFONT'
 date: 2018-04-15 00:02:00 +0000
 tags:
   blog-roundup
+  esolang
   knuth
   typography
 ---

@@ -4,6 +4,7 @@ title: 'Field-testing "Down with lifetime extension!"'
 date: 2020-03-04 00:02:00 +0000
 tags:
   copy-elision
+  initializer-list
   lifetime-extension
   llvm
   proposal
