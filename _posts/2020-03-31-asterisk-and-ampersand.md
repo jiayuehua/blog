@@ -70,10 +70,11 @@ When a lambda has no captures, then C++ gives the underlying struct one more met
 a _conversion function_ to the appropriate function pointer type. Our `two` is basically
 equivalent to the following struct:
 
+    using FuncPtr = void(*)();
     struct TwoType {
         static void behavior() { puts("two"); }
         void operator()() const { behavior(); }
-        operator void*() const { return &behavior; }
+        operator FuncPtr() const { return &behavior; }
     };
     auto two = TwoType();
 
@@ -82,7 +83,6 @@ the lambda that requires a scalar type. Commonly, idiomatically, the "coerce to 
 operator is unary `+`. (Unlike unary `-`, unary `+` works just fine on pointer types.)
 
     auto pf = +[]() { puts("two"); };
-    using FuncPtr = void(*)();
     static_assert(std::is_same_v<FuncPtr, decltype(pf)>);
 
 ----
