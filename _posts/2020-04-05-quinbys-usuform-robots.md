@@ -35,9 +35,10 @@ who developed glossolalia just to exercise his vocal unit.
 > connection with the writer was established were, "This feels good. Thanks, boss."
 
 Quinby's robots are not "uniform" but "usuform" — formed following function — and thus
-not android at all. The story being set in an Asimov-esque universe where "robot" is practically
-a synonym for "android," the reactions to Quinby's productions range from skepticism
-to visceral disgust.
+not android at all. The story being set in an
+[Asimov](https://friendsofatticus.wordpress.com/2014/10/21/i-robot-by-isaac-asimov/)-esque
+universe where "robot" is practically a synonym for "android," the reactions to Quinby's
+productions range from skepticism to visceral disgust.
 
 > I'd seen Thuringer's face red before, but never purple. He had trouble speaking,
 > but he finally spluttered out, "Somebody did a lousy job of sterilization on your
