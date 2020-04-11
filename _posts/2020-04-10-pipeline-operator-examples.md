@@ -178,6 +178,7 @@ parentheses — either `(x + y) |> f()` or `x + (y |> f())` — the same way
 | `x |> get()++`                     | `get(x)++`                         | Syntax error                          |
 | `x |> ++get()`                     | Syntax error                       | Syntax error                          |
 | `++x |> get()`                     | `++get(x)`                         | `get(++x)`                            |
+| `x |> (y |> z())`                  | Syntax error                       | Syntax error                          |
 | `x |> f().g<0>(0)`                 | `f(x).g<0>(0)`                     | `f().g<0>(x,0)`                       |
 | `-3 |> std::abs()`                 | `-std::abs(3)`                     | `std::abs(-3)`                        |
 | `co_await x |> via(e)`             | `co_await via(x, e)`               | `via(co_await x, e)`                  |
@@ -241,5 +242,5 @@ a placeholder, such as `#`? If it did, then we'd have
 |  Expression                            | P2011R0 (hypothetically)   | This post (hypothetically)    |
 |:---------------------------------------|:---------------------------|:------------------------------|
 | `x |> f(#) |> # + 3 |> g(#)`           | `f(x) + g(3)`              | `g(f(x) + 3)`                 |
-| `r = ints |> # + 3 |> # * 2 |> vec(#)` | `ints + 3 * vec(2)`        | `vec((ints + 2) * 3)`         |
+| `r = ints |> # + 3 |> # * 2 |> vec(#)` | `ints + 3 * vec(2)`        | `vec((ints + 3) * 2)`         |
 {:.smaller}
