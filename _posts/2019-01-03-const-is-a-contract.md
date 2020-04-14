@@ -557,7 +557,7 @@ This advice was removed via an erratum in 2009, and in 2014 Meyers' [_Effective 
 ## Grep your codebase today!
 
     # Look for pass-by-const-value typos
-    git grep '[(,]const [A-Za-z0-9_:]* [A-Za-z0-9_:]*\(,\|)\| =\)'
+    git grep '[(,] *const [A-Za-z0-9_:]* [A-Za-z0-9_:]* *[,)=]'
 
     # Look for return-by-const-value typos
     git grep 'const [A-Za-z0-9_:]* [A-Za-z0-9_:]*([^")]*) const'
