@@ -7,6 +7,7 @@ tags:
   implementation-divergence
   metaprogramming
   templates
+  variadic-templates
 ---
 
 Today I'd like to try to explain _covariance and contravariance_, and the many places we

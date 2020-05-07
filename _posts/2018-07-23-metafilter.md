@@ -5,6 +5,7 @@ date: 2018-07-23 00:02:00 +0000
 tags:
   metaprogramming
   templates
+  variadic-templates
 ---
 
 Thanks to Jeff Trull for [this example](https://github.com/jefftrull/coroutine_experiments/blob/f86c720/meta.hpp#L62-L80)

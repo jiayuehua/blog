@@ -6,6 +6,7 @@ tags:
   kona-2019
   metaprogramming
   pitfalls
+  variadic-templates
 ---
 
 At the Kona committee meeting, it was voted (by someone, probably LEWG, I forget the story,

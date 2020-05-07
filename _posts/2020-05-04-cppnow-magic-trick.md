@@ -17,9 +17,12 @@ You can find it [here](https://www.youtube.com/watch?v=XO0p9zNCCDE).
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XO0p9zNCCDE" frameborder="0"
  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-To see me present the trick "live," join the Munich C++ Meetup's
+I presented the trick again, "live," at the Munich C++ Meetup's
 [virtual meetup on May 7, 2020](https://www.meetup.com/MUCplusplus/events/269946215/),
-at 7pm Munich time (1pm ET, 10am PT), where I'll also be presenting my
-full-length C++Now submission, "The Complete Guide to `return x`."
+where I also presented my full-length C++Now submission, "The Complete Guide to `return x`."
 
 If I hear of anyone else recording their C++Now 2020 lightning talks, I'll link to them here.
+
+- Arthur O'Dwyer: ["A C++20 Magic Trick"](https://www.youtube.com/watch?v=XO0p9zNCCDE) (3m26s)
+
+- Conor Hoekstra: ["The STL Algorithm Cheat Sheet"](https://www.youtube.com/watch?v=LMmFpOhcQhA) (6m57s)
