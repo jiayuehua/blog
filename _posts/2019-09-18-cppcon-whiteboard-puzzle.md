@@ -6,6 +6,7 @@ tags:
   concepts
   conferences
   cppcon
+  slack
 ---
 
 Seen on the whiteboard outside the Aurora D conference room at CppCon 2019:
@@ -231,3 +232,44 @@ shouldn't have rejected it at all!
 Can you figure out the next step?
 
 [Here's a Godbolt](https://concepts.godbolt.org/z/NtXgkn) of the test cases so far.
+
+----
+
+UPDATE: Circa April 2020, Jason Cobb came up with this solution that correctly
+accepts our `S` above.
+
+    template<class T, int (T::*first)(double), int (T::*second)(double)>
+    concept NotEq = (first != second);
+
+    template<class T>
+    concept Foo = requires (T t) {
+        { helper<T, &T::foo>{} };
+    } && !NotFoo<T> && (!AlsoNotFoo<T> || NotEq<T, &T::foo, &T::template foo<>>);
+
+This clever piece of code checks (at compile time) to see whether converting `&T::foo`
+to a member function pointer produces the same pointer as converting `&T::foo<>`.
+There are three possibilities here:
+
+* If `&T::foo<>` is ill-formed, then we have no template member at all, and we want to accept.
+      (This is the `!AlsoNotFoo<T>` case.)
+
+* If `&T::foo<> == &T::foo`, then there is a template member,
+      and `&T::foo` _also_ refers to the template member, so there must be no _non_-template member,
+      and so we want to reject.
+
+* If `&T::foo<> != &T::foo`, then there is a template member, but there is also a
+      different non-template member, so we should accept.
+
+Looking for further loopholes, I see that the original question asked to match
+any type that _has_ a member function with the given signature; it's not clear
+whether this is intended to include _inherited_ member functions or not.
+The solution we've been building since the introduction of `helper<T, &T::foo>`
+has a problem: it doesn't work for inherited member functions.
+
+    struct Base { int foo(double); };
+    struct Inherited : Base {};
+    static_assert(not Foo<Inherited>);  // oops!
+
+Can you figure out the next step, if there is one?
+
+[Here's a Godbolt](https://concepts.godbolt.org/z/-_rrop) of the test cases so far.
