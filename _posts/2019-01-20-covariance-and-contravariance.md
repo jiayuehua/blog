@@ -437,4 +437,4 @@ the subject of [CWG1430](http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_active.
 ----
 
 For a sequel to this post, see 
-["P1616R0 and health insurance"](blog/2019/07/03/contravariant-health-insurers) (2019-07-03).
+["P1616R0 and health insurance"](/blog/2019/07/03/contravariant-health-insurers) (2019-07-03).
