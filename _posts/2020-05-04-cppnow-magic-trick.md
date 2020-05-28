@@ -20,6 +20,11 @@ You can find it [here](https://www.youtube.com/watch?v=XO0p9zNCCDE).
 I presented the trick again, "live," at the Munich C++ Meetup's
 [virtual meetup on May 7, 2020](https://www.meetup.com/MUCplusplus/events/269946215/),
 where I also presented my full-length C++Now submission, "The Complete Guide to `return x`."
+([YouTube.](https://www.youtube.com/watch?v=80TXwV_sdCY))
+
+I presented the trick _again_, "live," at C++ London's
+[virtual meetup on May 18, 2020](https://www.meetup.com/CppLondon/events/268533324/).
+([YouTube.](https://www.youtube.com/watch?v=vzi0lTVyb-g&t=38m58s))
 
 If I hear of anyone else recording their C++Now 2020 lightning talks, I'll link to them here.
 
