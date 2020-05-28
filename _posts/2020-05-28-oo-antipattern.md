@@ -3,6 +3,7 @@ layout: post
 title: 'The "OO" Antipattern'
 date: 2020-05-28 00:01:00 +0000
 tags:
+  blog-roundup
   c++-learner-track
   c++-style
   slogans
@@ -76,7 +77,9 @@ it needs to update member data and thus cannot be const.
     std::cout << DominoTilingCounter(4, 7).count() << '\n';
         // Fails to compile!
 
-We can fix this issue incidentally, just by applying a little more logic.
+(Hacker News points out that this _does_ compile; class prvalues are not const
+the way scalar prvalues are. Oops.)
+Anyway, we can fix this issue incidentally, just by applying a little more logic.
 
 
 ## The logical leap
@@ -184,3 +187,11 @@ All I'm saying is:
 
 When you have to compute a value, don't write a `ValueComputer` class.  
 Write a `compute_value` function instead.
+
+----
+
+For other takes on this topic, see:
+
+- ["Execution in the Kingdom of Nouns"](http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html) (Steve Yegge, March 2006)
+
+- ["Stop Writing Classes"](https://www.youtube.com/watch?v=o9pEzgHorH0) (Jack Diederich, PyCon 2012)
