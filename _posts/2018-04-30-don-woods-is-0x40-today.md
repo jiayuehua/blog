@@ -5,6 +5,7 @@ date: 2018-04-30 00:01:00 +0000
 tags:
   adventure
   board-games
+  knuth
 ---
 
 Today (April 30th) is the birthday of [Don Woods](https://en.wikipedia.org/wiki/Don_Woods_(programmer)),

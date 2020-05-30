@@ -4,6 +4,8 @@ title: "A bug in _Adventure_'s endgame"
 date: 2020-02-06 00:01:00 +0000
 tags:
   adventure
+  knuth
+  war-stories
 ---
 
 WARNING: This post contains <b>major spoilers</b> related to

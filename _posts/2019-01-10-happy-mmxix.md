@@ -4,6 +4,7 @@ title: "Happy birthday, Donald Knuth! and Peaceful Encampments"
 date: 2019-01-10 00:01:00 +0000
 tags:
   adventure
+  knuth
   litclub
   math
   puzzles
