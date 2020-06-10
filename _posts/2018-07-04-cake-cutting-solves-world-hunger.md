@@ -74,16 +74,16 @@ by Bob? Which party is represented by Carol?
 
 > In addition to the desired properties of the final partitions, there are also
 > desired properties of the division process. One of these properties is
-> _truthfulness_ (a.k.a. _incentive compatibility_), which comes in two levels.
+> <b>truthfulness</b> (a.k.a. <b>incentive compatibility</b>), which comes in two levels.
 >
-> *Weak truthfulness* means that if the partner reveals his true value measure to
+> <b>Weak truthfulness</b> means that if the partner reveals his true value measure to
 > the algorithm, he is guaranteed to receive his fair share (e.g. 1/n of the
 > value of the entire cake, in case of proportional division), regardless of
 > what other partners do. Even if all other partners make a coalition with
 > the only intent to harm him, he will still receive his guaranteed proportion.
 > Most cake-cutting algorithms are truthful in this sense.
 >
-> *Strong truthfulness* means that no partner can gain from lying; i.e., telling
+> <b>Strong truthfulness</b> means that no partner can gain from lying; i.e., telling
 > the truth is a [dominant strategy](https://en.wikipedia.org/wiki/Strategic_dominance).
 > Most cake-cutting protocols are not strongly truthful.
 

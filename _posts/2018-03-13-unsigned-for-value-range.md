@@ -70,8 +70,8 @@ That is *not* what signed versus unsigned types are for.
 
 As Lawrence himself wrote:
 
-> **If integer overflow is undefined behavior, then it is wrong.**
-> Tools can **detect wrong programs** and report them.
+> <b>If integer overflow is undefined behavior, then it is wrong.</b>
+> Tools can <b>detect wrong programs</b> and report them.
 
 The contrapositive is: "If the programmer is using a type where integer overflow
 is well-defined to wrap, then we can assume that the program relies on that

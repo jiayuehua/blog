@@ -18,13 +18,13 @@ inclined toward the circus arts, and to be moderately steeped in the conventions
 > JESUS (jocularly). Now. How can you take a speck of sawdust out of your brother's eye,
 > when all the time there's this great plank in your own?
 >
-> JOHN (playing the straight man). I don't know, how *can* you take the speck of sawdust
+> JOHN (playing the straight man). I don't know, how <b>can</b> you take the speck of sawdust
 > out of your brother's eye when all the time there's this great plank in your own?
 >
 > JESUS (rounding on him). Yewww hypocrite!  First you take the plank out of your own eye,
 > so you can see clearly to take the speck of sawdust out of your brother's!
 >
-> &nbsp;&nbsp;JOHN ponders.
+> &nbsp;&nbsp;&nbsp;&nbsp;(JOHN ponders.)
 >
 > JOHN. Waaaait a minute. That's no answer to the question.
 >

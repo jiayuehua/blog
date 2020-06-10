@@ -14,9 +14,9 @@ I just ran across this neat little thought experiment via
 The article starts, and ends, with the sort of self-proclaimed "rationalist" silliness associated with
 unironic use of terms such as "basilisk" and "superintelligence"; but in the middle, I quite liked this part.
 
-> *Counterfactual mugging* is a decision theory problem that goes like this: God comes to you and says,
+> <b>Counterfactual mugging</b> is a decision theory problem that goes like this: God comes to you and says,
 > "Yesterday I decided that I would flip a coin today. I decided that if it came up heads, I would ask
-> you for $5. And I decided that if it came up tails, then I would give you $1,000,000 *if and only if*
+> you for $5. And I decided that if it came up tails, then I would give you $1,000,000 <b>if and only if</b>
 > I predict that you would say yes and give Me $5 in the world where it came up heads. (My predictions
 > are always right.) Well, turns out, it came up heads. Would you like to give Me $5?"
 >
@@ -26,7 +26,7 @@ unironic use of terms such as "basilisk" and "superintelligence"; but in the mid
 >
 > But if you were designing an AI, you would probably want to program it to give God the money in this
 > situation — after all, that determines whether it will get $1 million in the other branch of the hypothetical.
-> And the same argument suggests that *you* should self-modify, right now, to become the kind of person
+> And the same argument suggests that <b>you</b> should self-modify, right now, to become the kind of person
 > who would give God the money. And a version of that argument where making the decision is kind of like deciding
 > "what kind of person you are" or "how you're programmed" suggests that you should also give up the money
 > in the original hypothetical.

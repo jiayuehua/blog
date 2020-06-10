@@ -84,7 +84,7 @@ in these terms:
 > _Opportunistic programmers_ [i.e., the lowest tier] work from the bottom up on their current task
 > and do not want to worry about the low-level details. They want to get their code working and
 > quickly as possible without having to understand any more of the underlying APIs than they have to.
-> *They are the most common persona* [emphasis added] and prefer simple and easy-to-use languages [...]
+> <b>They are the most common persona</b> [emphasis added] and prefer simple and easy-to-use languages [...]
 
 So of course they'll love an API that allows `foo = new FooClass;` to compile! Such an API allows them
 to more quickly [move on from the boring activity of _writing_ code](https://youtu.be/D7Sd8A6_fYU?t=40m55s)
@@ -162,44 +162,44 @@ the experimental subjects after the experiment. Quoted in full here:
 > for the create-set-call [two-phase initialization] pattern. Following are some of the
 > justifications they gave for their preference.
 >
-> - *Initialization flexibility:* By allowing objects to be created before all the property
+> - <b>Initialization flexibility:</b> By allowing objects to be created before all the property
 > values are known, create-set-call allows objects to be created in one place and initialized
 > somewhere else, possibly in another class or package. This was a common justification given
 > by pragmatic [i.e., mid-expertise] programmers.
 >
-> - *Less restrictive:* In general, APIs should let their consumers decide how to do things,
+> - <b>Less restrictive:</b> In general, APIs should let their consumers decide how to do things,
 > and not force one way over another.
 >
-> - *Consistency:* Most APIs have default constructors, and so people will expect them.
+> - <b>Consistency:</b> Most APIs have default constructors, and so people will expect them.
 > This reason was given by two programmers who created APIs that were used by other members
 > of their teams.
 >
-> - *More control:* Several systematic [i.e., high-expertise] programmers cited the fact
+> - <b>More control:</b> Several systematic [i.e., high-expertise] programmers cited the fact
 > that create-set-call let them attempt to set each property individually and deal with any
 > errors that might come up using return-codes, while constructors only allowed for exceptions.
 
 These are all quite valid and familiar arguments in favor of giving your C++ types a default constructor.
 For the sake of argument, I'll construct my most weaselly counter-arguments for each one:
 
-- *No mutable aliases:* By disallowing objects to be created before all the property values
+- <b>No mutable aliases:</b> By disallowing objects to be created before all the property values
   are known, we prevent the common antipattern of creating an object in one place and then
   passing the partially formed object as an "in-out parameter" to the place that really knows
   how to construct it. Better to let that place do the actual construction itself, and return
   by value. (Notice that this advice has changed since the experiment was performed in 2005!)
 
-- *More restrictive:* In general, APIs should be
+- <b>More restrictive:</b> In general, APIs should be
   [easy to use and hard to misuse](https://lwn.net/Articles/275780/) — see also
   [Ben Deane's session of that title at C++Now 2018](https://cppnow2018.sched.com/event/EC7i/).
   If one way is _more correct_, we should funnel our users into that way and disallow anything
   more error-prone.
 
-- *Everyone else is doing it:* Well, this was the point of
+- <b>Everyone else is doing it:</b> Well, this was the point of
   [my previous rant about `Regular`](/blog/2018/05/10/regular-should-not-imply-default-constructible).
   "Because everyone else is doing it" is a hard argument to overcome; the only way I know to
   overcome it is to [refute the major premise](/blog/2018/05/02/trivial-abi-101) by training
   everyone else to do the right thing instead!
 
-- *Error handling:* It's true, error handling is a stumbling block, and another valid reason to
+- <b>Error handling:</b> It's true, error handling is a stumbling block, and another valid reason to
   fall back on two-phase initialization for _certain_ "business-logicky" types. In exception-free code,
   operations that can fail _must not_ be expressed as constructors, and usually also _must not_ be
   expressed as overloaded operators, because there's no way for something like `Path("/foo/bar")`

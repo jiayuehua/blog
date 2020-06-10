@@ -469,7 +469,7 @@ I wrote:
 > Having created sets of associated namespaces and associated types for each argument,
 > we merge them all together (and add our current namespace and all its parents, too,
 > of course) and do a lookup for declarations of the name `f` in
-> *any* of these namespaces. Our overload resolution for this call will consider all the
+> <b>any</b> of these namespaces. Our overload resolution for this call will consider all the
 > function declarations that we found in any of those places.
 
 ADL will consider only _function declarations_ (and, as usual, function templates).
