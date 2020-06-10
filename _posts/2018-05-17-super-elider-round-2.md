@@ -10,7 +10,7 @@ tags:
 ---
 
 Remember my suggestion from ["The Superconstructing Super Elider"](/blog/2018/03/29/the-superconstructing-super-elider)
-that maybe our containers ought to have a "directly-emplacing, never-moving" facility like this?
+(2018-03-29) that maybe our containers ought to have a "directly-emplacing, never-moving" facility like this?
 
     template<class F>
     T& emplace_back_with_result_of(const F& factory_fn) {

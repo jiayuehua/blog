@@ -234,7 +234,7 @@ I suggest that a relatively plausible way this could happen is by the introducti
 an attribute which I am going to call `__attribute__((value_semantic))`. (Another option
 would be to recycle `__attribute__((pure))`, as in "pure value".
 I am specifically *not* going to use C++11 `[[attr]]` syntax in this blog post, so as
-not to open [that can of worms](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2761.pdf).)
+not to open _that_ can of worms (["The Ignorable Attributes Rule"](/2018/05/15/the-ignorable-attributes-rule/) (2018-05-15)).
 
     struct Widget __attribute__((value_semantic)) {
         int value_;
@@ -313,3 +313,9 @@ The proof-of-concept would be an inliner that could optimize
     Widget y2(42);                               // B
 
 into the same exact machine instructions. If you've got one, I'd love to see it!
+
+----
+
+See also:
+
+* ["Superconstructing super elider, round 2"](/blog/2018/05/17/super-elider-round-2/) (2018-05-17)
