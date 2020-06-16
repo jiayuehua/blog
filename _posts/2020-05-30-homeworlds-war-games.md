@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Homeworlds: War Games"
+title: "Homeworlds Puzzle: War Games"
 date: 2020-05-30 00:01:00 +0000
 tags:
   board-games
@@ -16,8 +16,6 @@ see [yesterday's post](/blog/2020/05/29/homeworlds-mini-doomsday-machine/).
 
 
 ## The puzzle
-
-This puzzle is called ["War Games."](https://puzzling.stackexchange.com/questions/98690/homeworlds-war-games)
 
 ![A graphical representation of the game state.](/blog/images/2020-05-30-war-games.png)
 
@@ -46,3 +44,7 @@ The stash contains `r3r3 y2 g1g2g3 b1b1b2b2b3b3`.
 
 Lee to play and mate in 1. (That is, you must find the unique move which Lee can make,
 such that no matter what Ray replies, Lee will win on the very next turn.)
+
+----
+
+For the solution, see [the discussion of this puzzle on BoardGameGeek](https://boardgamegeek.com/thread/2438157/).

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Homeworlds: Mini Doomsday Machine"
+title: "Homeworlds Puzzle: Mini Doomsday Machine"
 date: 2020-05-29 00:02:00 +0000
 tags:
   board-games
@@ -58,8 +58,6 @@ as PNG. For my purposes, I just took a screenshot and cropped it.
 
 ## The puzzle
 
-This puzzle is called ["Mini Doomsday Machine."](https://puzzling.stackexchange.com/questions/98604/homeworlds-mini-doomsday-machine)
-
 ![A graphical representation of the game state.](/blog/images/2020-05-29-mini-doomsday-machine.png)
 
     Lee (0, g3b2) r1r3g1b1-
@@ -82,3 +80,7 @@ but nevertheless, there is only one path to the quick checkmate.
 
 Lee to play and mate in 1. (That is, you must find the unique move which Lee can make,
 such that no matter what Ray replies, Lee will win on the very next turn.)
+
+----
+
+For the solution, see [the discussion of this puzzle on BoardGameGeek](https://boardgamegeek.com/thread/2436984/).
