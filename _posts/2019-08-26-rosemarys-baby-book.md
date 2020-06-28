@@ -16,8 +16,11 @@ so, here's my transcription and close reading of _All Of Them Witches_.
 Fair warning: if you didn't arrive here by freeze-framing _Rosemary's Baby_ and
 googling a piece of text from it, this post may not hold much for you.
 
-If you recognize the provenance of any of the "unknown source" snippets below,
-please tell me about it and I'll update the post!
+UPDATE, 2020-06-28: When I wrote this post I'd tracked down one page of text to
+Gillian Tindall's _A Handbook on Witches_ (1965).
+[The Internet Archive has a borrowable copy of _A Handbook on Witches_](https://archive.org/details/lccn_66012995),
+which has now allowed me to verify that every one of the lines I'd originally
+credited to "unknown sources" also came from various places in Tindall's book.
 
 ----
 
@@ -36,7 +39,9 @@ adaptation, and Polanski didn't know he was allowed to change things.)
 Rosemary flips quickly through most of the pages. The only recto page
 that I can actually read (1:27:19) is a bit of an Easter egg: it has a
 bit on "the universally held belief in the power of fresh blood"
-stuck in the middle of a page from an unknown source. The same phrase shows up
+stuck in the middle of some text from
+[Tindall page 72](https://archive.org/details/lccn_66012995/page/72).
+The same phrase shows up
 in the [novel](https://archive.org/details/LevinIraRosemary1RosemarysBaby2010Norton/page/n136)
 and [screenplay](http://www.sellingyourscreenplay.com/wp-content/uploads/screenplay/scripts/Rosemarys-Baby.pdf),
 suggesting that this page might have been meant for use in a shot
@@ -60,49 +65,55 @@ that was cut from the final film.
 
     Another possible explanation of witches' flights is that they were
     dreaming, or were in a state of self-hypnosis. To dream of flying
-    is very common among ... of popular psy-
-    chology will ... The 'dream' theory has in fact been ad-
+    is very common among women, as any manual of popular psy-
+    chology will emphasize. The 'dream' theory has in fact been ad-
     vanced, by those who believe that witches were victims of sexual
-    hysteria, as an explanation for the whole night, ... and all;
-    but there is too much ... the sub-
-    ... It was probably
+    hysteria, as an explanation for the whole night, Sabat and all;
+    but there is too much positive and consistent evidence on the sub-
+    ject of the meetings to make this generally likely. It was probably
     ...
 
+Interestingly, the inserted text does not _replace_ any of Tindall's text;
+in Tindall's book the words "Another possible explanation..." immediately
+follow the paragraph that ends with "...construed as 'flying'."
+
 A fleetingly visible verso page (1:27:20) quotes from Reginald Scot's
-[_Discoverie of Witchcraft_](https://archive.org/details/discoverieofwitc00scot/page/472) (1584),
-but I don't know the source of the text that's doing the quoting.
-The word "Dôme" here is part of a reference to the
+[_Discoverie of Witchcraft_](https://archive.org/details/discoverieofwitc00scot/page/472) (1584);
+the source doing the quoting is
+[Tindall page 38](https://archive.org/details/lccn_66012995/page/38).
+
+Note the reference to the
 [temple of Mercury on the summit of the Puy de Dôme](https://fr.wikipedia.org/wiki/Temple_de_Mercure_(puy_de_Dôme)).
 
-    made a heath into the prototype-... it was ...
-    There were, however, many possible places. Reginald Scot
+    made a heath into the prototype-site for a witch meeting.
+    There were, however, many possible places. Reginald Scot wrote
     (1584):
-    "As for the places of Magical Circles, they are
+    "As for the places of Magical Circles, they are to be chosen
     melancholy, doleful, dark and lonely; either in Woods or Deserts,
-    or amongst ruins of Castles, Abbeys, Monasteries, &c., or upon
-    the Seashore when the Moon shines clear, or else in some
+    or amongst ruins of Castles, Abbeys, Monasteries, etc., or upon
+    the Seashore when the Moon shines clear, or else in some large
     Parlor hung with black and the floor covered with the same, with
     doors and windows closely shut, and waxen candles lighted."
-    The recent D... of the ...
-    Scot was writing, ...
-    ing places for witches in the way of ...
-    Monasteries. The use of such ...
-    deliberate profanation ...
-    to re-use existing holy places. One of the ...
-    witches' meeting places, ...
-    Dôme in central France, ...
-    Mercury. Long before that, perhaps, it was ...
-    acknowledged dwelling of a ...-god, be it ...
-    came.
-    A ...
-    very popular ...
-    witches coming ...
-    pagan world a ..
-    who, though a virgin moon-goddess, was also ...
-    ... another incarnation of Persephone, goddess of the ...
-    anything-but-virgin wife of the god of the Underworld ...
-    the ...
-    Earth. ...
+    The recent Dissolution of the Monasteries in England, when
+    Scot was writing, must have provided many splendid new meet-
+    ing places for witches in the way of ruined Abbeys and
+    Monasteries. The use of such sites, though it may have been
+    deliberate profanation, does reflect the basic tendency of cults
+    to re-use existing holy places. One of the most famous of all
+    witches' meeting places, the summit of the spectacular Puy de
+    Dôme in central France, has on it the ruins of a temple of
+    Mercury. Long before that, perhaps, it may have been the
+    acknowledged dwelling of a fire-god, for it is an extinct vol-
+    cano.
+    A cross-roads, or, in particular, a meeting of three ways, was a
+    very popular site for a Sabat, and this was not just because
+    witches coming from various directions converged there. In the
+    pagan world a meeting of three ways was sacred to Diana-Hecate,
+    who, though a virgin moon-goddess, was also considered at times
+    as another incarnation of Persephone, goddess of the seasons and
+    anything-but-virgin wife of the god of the Underworld. Thus
+    the female-fertility spirit of the Old Religion (popularly called the
+    Earth Mother) acquired some of Diana's attributes. The ninth-
     ...
 
 Finally Rosemary lights on the page for [Thomas Colley](https://en.wikipedia.org/wiki/Thomas_Colley)
@@ -110,9 +121,10 @@ Finally Rosemary lights on the page for [Thomas Colley](https://en.wikipedia.org
 [William Lilly](https://en.wikipedia.org/wiki/William_Lilly)
 ([William Marshall](https://en.wikipedia.org/wiki/William_Marshall_(illustrator)), 1647;
 [National Portrait Gallery](https://www.npg.org.uk/collections/search/portrait/mw136179/William-Lilly)).
-The text on the recto page is from three different sources, neither of which I can identify.
-You'd think the phrase "wickerwork dummy of the Pope" should be relatively unique,
-but in fact it's been cribbed back and forth by a whole host of writers at this point.
+The text on the recto page is from three different sources:
+[Tindall page 100](https://archive.org/details/lccn_66012995/page/100),
+three lines from [Tindall page 17](https://archive.org/details/lccn_66012995/page/17),
+and [Tindall page 31](https://archive.org/details/lccn_66012995/page/31).
 
     CHAPTER SIX
     THOMAS COLLEY
@@ -154,14 +166,17 @@ The caption under it seems
 to say "[Mary Butters](https://en.wikipedia.org/wiki/Carnmoney#Mary_Butters),"
 but that's probably not right, as the famous Mary Butters pre-dated
 photography. ([FilmDope](http://filmdope.com/forums/101050-books-films-3.html)
-has a screencap including the caption.) The text's two sources are a mystery to me.
+has a screencap including the caption.) The text comes from
+[Tindall page 43](https://archive.org/details/lccn_66012995/page/43)
+(with four lines chopped out between "...god/Devil" and "reports...")
+and [Tindall page 31](https://archive.org/details/lccn_66012995/page/31).
 
     CHAPTER SEVEN
     PRUDENCE DUVERNOY
 
     The popular prejudice is in favour of them eating dead babies,
     but the reality seems to have been rather more complex. The
-    weekly _ezbat_ was mainly a business meeting to discuss any pro-
+    weekly _esbat_ was mainly a business meeting to discuss any pro-
     jects afoot, there would be some sort of meal at it but not much
     in the way of religious ceremony. It was usually held at night
     for the reasons mentioned in the last chapter (convenience) but
@@ -187,18 +202,20 @@ has a screencap including the caption.) The text's two sources are a mystery to 
     ...
 
 1:27:27: Rosemary pauses again at a custom-written paragraph about
-"Devil's Pepper" (i.e., tannis root) sandwiched between snippets of text
-reused from the Colley and Duvernoy pages.
+"Devil's Pepper" (i.e., tannis root) sandwiched between snippets of
+[Tindall page 31](https://archive.org/details/lccn_66012995/page/31)
+reused from the Colley and Duvernoy pages. Again
+the inserted text does not _replace_ any of Tindall's words.
 
     It is important to bear in mind that the word 'witch' denotes
     different things at different eras. 'Witchcraft' is whatever the
     standard, established cult is _not_. Witches in the ancient world
-    would hardly be persecuted for rites concerning a Horned ...
+    would hardly be persecuted for rites concerning a Hornèd God,
     since such fertility rites were then a part of established religion.
     And even after the coming of Christianity, some of the old rites
     continued to be tolerated (see previous chapter). It was a number
     of centuries before those who practised ancient rituals — or per-
-    haps idiosyncratic ones — began to be regarded with real horror
+    sonal, idiosyncratic ones — began to be regarded with real horror
     or fear.
 
     In their rituals they often use the fungus called Devil's
@@ -213,12 +230,15 @@ reused from the Colley and Duvernoy pages.
     religion is ever entirely new. Christian dogma contained (and con-
     tains) a number of ideas which are older than itself and which
     seem to form a kind of mythological staple in most religions. The
-    ...stic three-in-one,
+    Holy Trinity were foreshadowed by a similar mystic three-in-one,
     ...
 
 The "Adrian Marcato" page appears in its entirety (1:27:40).
-It seems to contain snippets from three sources, in addition to
-the first two custom-written paragraphs.
+In addition to the two custom-written paragraphs at the beginning,
+it contains snippets from
+[Tindall page 52](https://archive.org/details/lccn_66012995/page/52),
+the bottom of [Tindall page 94](https://archive.org/details/lccn_66012995/page/94), and
+the top of [Tindall page 30](https://archive.org/details/lccn_66012995/page/30).
 
     CHAPTER FOUR
     ADRIAN MARCATO
@@ -253,14 +273,11 @@ the first two custom-written paragraphs.
     both southwards into Africa and northwards into Europe. This
 
 She turns to the next page (1:28:01).
-The full page is visible, except for the dog-eared upper right corner —
-and we know what it says under the dog-ear because finally we _do_
-have the original source for this page! This page comes from
-[_A Handbook on Witches_](https://books.google.com/books?id=uu99AAAAMAAJ&q=riven)
-(Gillian Tindall, 1965).
+The full page is visible, except for the dog-eared upper right corner;
+the text comes from [Tindall page 83](https://archive.org/details/lccn_66012995/page/83).
 Tindall is describing the 1662 trial of Scottish witch
 [Isobel Gowdie](https://en.wikipedia.org/wiki/Isobel_Gowdie).
-(The giveaway was the phrase "riven upon iron harrows, and worse.")
+(The original giveaway was the phrase "riven upon iron harrows, and worse.")
 Tindall describes Gowdie as having been hanged and cremated;
 in fact there is no historical record of her execution.
 
