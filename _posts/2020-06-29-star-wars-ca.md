@@ -243,7 +243,7 @@ Also, the north and south edges of the grid (about 10 cells off-screen in either
 constantly seeded with random noise, producing a steady influx of "immigrants" to the
 galaxy.
 
-[LifeWiki](https://www.conwaylife.com/wiki/OCA:Star_Wars) quotes John Elliott as
+[LifeWiki](https://www.conwaylife.com/wiki/OCA:Star_Wars) quotes John M. G. Elliott as
 observing that Star Wars is "active to a degree almost reminiscent of [Brian's] Brain,
 with the distinction that it likes to build fixed Lego-like skeletal structures."
 If you leave it running long enough, the galaxy will ossify — the Lego-like structures
