@@ -34,9 +34,9 @@
 //   0x4 + 0x4 = 0x4
 //   0x4 + 0x8 = 0x0
 
-function starWars(canvas, pixelsPerCell, busyBorders, wrapBorders) {
-    var W = 20 + ~~(canvas.width / pixelsPerCell);
-    var H = 20 + ~~(canvas.height / pixelsPerCell);
+function starWars(canvas, margin, pixelsPerCell, busyBorders, wrapBorders) {
+    var W = 2*margin + ~~(canvas.width / pixelsPerCell);
+    var H = 2*margin + ~~(canvas.height / pixelsPerCell);
 
     var peacefulCell = function (x, y) {
         if (0 <= x && x < W && 0 <= y && y < H) {
@@ -63,6 +63,7 @@ function starWars(canvas, pixelsPerCell, busyBorders, wrapBorders) {
     var result = {
         W: W,
         H: H,
+        Margin: margin,
         data: null,
         initial_data: null,
         displayIndices: null,
@@ -165,8 +166,8 @@ function starWars(canvas, pixelsPerCell, busyBorders, wrapBorders) {
             for (var i = 0; i < datalength; ++i) {
                 var cy = ~~(i / canvas.width);
                 var cx = i % canvas.width;
-                var py = 10 + ~~((H - 20) * cy / canvas.height);
-                var px = 10 + ~~((W - 20) * cx / canvas.width);
+                var py = margin + ~~((H - 2*margin) * cy / canvas.height);
+                var px = margin + ~~((W - 2*margin) * cx / canvas.width);
                 this.displayIndices[i] = py*W+px;
             }
         },
@@ -212,8 +213,8 @@ function hookUpCanvasEditing(life, canvas) {
         var rect = canvas.getBoundingClientRect();
         var cx = (event.clientX - rect.left);
         var cy = (event.clientY - rect.top);
-        var px = 10 + ~~((life.W - 20) * cx / canvas.width);
-        var py = 10 + ~~((life.H - 20) * cy / canvas.height);
+        var px = life.Margin + ~~((life.W - 2 * life.Margin) * cx / canvas.width);
+        var py = life.Margin + ~~((life.H - 2 * life.Margin) * cy / canvas.height);
         if (px != previous_x || py != previous_y) {
             life.draw_dragging_through(px, py);
             previous_x = px;
@@ -229,11 +230,12 @@ function hookUpCanvasEditing(life, canvas) {
 function starWarsWithButtons(canvas, {
     buttons=['play', 'step', 'reset'],
     pixelsPerCell=2, busyBorders=false, wrapBorders=false,
+    margin=10,
     millisecondsPerFrame=50,
     initialPattern=null,
     initiallyAdvance=0,
 }) {
-    var life = starWars(canvas, pixelsPerCell, busyBorders, wrapBorders);
+    var life = starWars(canvas, margin, pixelsPerCell, busyBorders, wrapBorders);
     if (initialPattern !== null) {
         life.initializeWithPattern(initialPattern);
     } else {
