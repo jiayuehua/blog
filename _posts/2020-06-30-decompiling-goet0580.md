@@ -68,3 +68,13 @@ how to proceed with decrypting the messages in version B03. We know (most of) th
 the ciphertext; we have some (but not all) knowledge of the compression algorithm; but we don't know
 the encryption algorithm at all (except insofar as one might reverse-engineer it from the Z80 machine
 code in "adv.com"). That's a job for Not Me.
+
+----
+
+Postscript, 2020-07-06: While I haven't made any progress on decrypting the munged
+data back into A-code, the question is now pretty much moot, because I've gotten
+in touch with Mike Goetz and received a copy of the _original_ A-code source files
+(and the original munger and interpreter, both written in K&R C) for Goetz's version C01.1,
+circa March 1987. These files are now on their way to the
+[Interactive Fiction Archive](https://www.ifarchive.org/indexes/if-archive/unprocessed/)
+and I'll update this post again once they're available.
