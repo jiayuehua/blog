@@ -517,7 +517,8 @@ The parts I consciously neglected in this blog post are:
 
 - The ways ADL is used behind the scenes by ranged-`for` in C++11 and structured binding in C++17
 
-- Idioms that rely on ADL, such as the `std::swap` two-step, hidden friends, and niebloids
+- Idioms that rely on ADL, such as [the `std::swap` two-step](/blog/2020/07/11/the-std-swap-two-step) (2020-07-11),
+    hidden friends, and niebloids
     (I hope to write more on each of these in future posts, and will link them from here when I do)
 
 For more information on on ADL, see these resources:
