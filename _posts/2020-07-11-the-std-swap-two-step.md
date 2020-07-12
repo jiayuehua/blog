@@ -285,6 +285,16 @@ the case. Lots of type authors provide an ADL `swap`. No type author has ever pr
 > In generic code, yes; because `std::begin(x)` works for array types like `int[10]`
 > whereas `x.begin()` works only for class types.
 
+UPDATE, 2020-07-12: Reddit points out that `std::directory_iterator` is a type with an ADL `begin` and no
+member `begin`. I should have remembered this because I wrote the rejected proposal
+[P0757 "`regex_iterator` should be iterable"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0757r0.html)
+(September 2017)! Michael Hava reports that Microsoft's C++/CX also provides an
+ADL [`begin`](https://docs.microsoft.com/en-us/cpp/cppcx/begin-function)
+taking an [`IVector<T>^`](https://docs.microsoft.com/en-us/uwp/api/windows.foundation.collections.ivector-1)
+(both in the `Windows::Foundation::Collections` namespace), thus enabling you to loop `for (auto&& elt : myVec)`
+without dereferencing `myVec` first. These are good examples of real types providing ADL `begin`
+in lieu of member `begin`. "Good _example_" does not mean "good _role model_," though!
+
 
 ### Should I use the two-step in generic code lacking a fallback?
 
