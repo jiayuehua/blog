@@ -132,6 +132,10 @@ function starWars(canvas, margin, pixelsPerCell, busyBorders, wrapBorders) {
             }
             return 0;
         },
+        tweak_one_random_cell: function () {
+            var i = Math.floor(Math.random() * (W*H)) % (W*H);
+            this.data[i] = (this.data[i] & ~3) | ((this.data[i] + 1) & 3);
+        },
         next_step: function () {
             var result = Array(W*H);
             for (var x = 0;  x < W; ++x) {
@@ -232,6 +236,7 @@ function starWarsWithButtons(canvas, {
     pixelsPerCell=2, busyBorders=false, wrapBorders=false,
     margin=10,
     millisecondsPerFrame=50,
+    tweakForEternalInterest=false,
     initialPattern=null,
     initiallyAdvance=0,
 }) {
@@ -258,6 +263,9 @@ function starWarsWithButtons(canvas, {
             } else {
                 intervalId = window.setInterval(function () {
                     life.next_step();
+                    if (tweakForEternalInterest) {
+                        life.tweak_one_random_cell();
+                    }
                     life.display(canvas);
                 }, millisecondsPerFrame);
                 playButton.innerHTML = 'Pause';
