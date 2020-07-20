@@ -3,6 +3,7 @@ layout: post
 title: "_Confessions of a Justified Sinner_"
 date: 2019-08-06 00:01:00 +0000
 tags:
+  gilbert-and-sullivan
   litclub
   morality
   old-shit
