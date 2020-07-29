@@ -78,3 +78,6 @@ in touch with Mike Goetz and received a copy of the _original_ A-code source fil
 circa March 1987. These files are now on their way to the
 [Interactive Fiction Archive](https://www.ifarchive.org/indexes/if-archive/unprocessed/)
 and I'll update this post again once they're available.
+
+Postscript, 2020-07-29: The files are now available in the IF Archive!
+The path is [/games/cpm/cpm-advent-c01.zip](https://www.ifarchive.org/indexes/if-archive/games/cpm/).
