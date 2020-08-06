@@ -9,7 +9,7 @@ tags:
   sre
 ---
 
-The other day, prompted by someone's question on SciFi Stack Exchange, I tracked
+The other day, prompted by someone's question on SciFi StackExchange, I tracked
 down Anthony Boucher's short story "Q.U.R." It first appeared in
 the March 1943 _Astounding Science Fiction_, but today you can find
 it in [_The Compleat Boucher_](https://amzn.to/2JCqvZA) (2013).

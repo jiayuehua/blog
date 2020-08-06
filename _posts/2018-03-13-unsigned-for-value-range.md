@@ -3,6 +3,7 @@ layout: post
 title: 'The "`unsigned` for value range" antipattern'
 date: 2018-03-13 00:02:00 +0000
 tags:
+  antipatterns
   c++-style
   rant
   undefined-behavior

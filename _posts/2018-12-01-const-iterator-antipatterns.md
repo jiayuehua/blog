@@ -3,6 +3,7 @@ layout: post
 title: 'Pitfalls and decision points in implementing `const_iterator`'
 date: 2018-12-01 00:01:00 +0000
 tags:
+  antipatterns
   c++-style
   constructors
   library-design

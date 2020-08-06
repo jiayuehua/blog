@@ -33,4 +33,4 @@ it'll do one thing and otherwise it'll do the other thing. But watch:
 This [prints](https://wandbox.org/permlink/yBKPKpCEwny8Go5L) "ONE TWO".
 
 This just came up in the wild, so to speak,
-[on the CodeReview StackExchange](https://codereview.stackexchange.com/questions/203435/c-multithread-pool-class/).
+[on the Code Review StackExchange](https://codereview.stackexchange.com/questions/203435/c-multithread-pool-class/).

@@ -7,7 +7,7 @@ tags:
   slogans
 ---
 
-Via [Ben Antonellis on CodeReview Stack Exchange](https://codereview.stackexchange.com/questions/239381/implementing-any-of-in-c/):
+Via [Ben Antonellis on Code Review StackExchange](https://codereview.stackexchange.com/questions/239381/implementing-any-of-in-c/):
 
     template<class F>
     void call_twice(F *f) {

@@ -9,7 +9,7 @@ tags:
   standard-library-trivia
 ---
 
-Twice in the past week I've run into this issue (once on [CodeReview](https://codereview.stackexchange.com/)
+Twice in the past week I've run into this issue (once on [Code Review StackExchange](https://codereview.stackexchange.com/)
 and once on [Slack](https://cppalliance.org/slack/)), so I thought I'd make a blog post about it.
 
 > Distributions are stateful!

@@ -3,6 +3,7 @@ layout: post
 title: 'The "OO" Antipattern'
 date: 2020-05-28 00:01:00 +0000
 tags:
+  antipatterns
   blog-roundup
   c++-learner-track
   c++-style
