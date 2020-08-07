@@ -136,3 +136,7 @@ proposal [N3853 "Range-Based For-Loops: The Next Generation"](http://open-std.or
 (January 2014). This paper proposed that `for (elt : range)` should be accepted as a shorthand
 syntax (`auto&&` being inserted implicitly by the compiler); but it was rejected over quite valid
 concerns about what should happen if some (perhaps global) variable `elt` is already in scope.)
+
+See also:
+
+* ["`for (auto&& elt : range)` Still Always Works"](/blog/2018/12/27/autorefref-still-always-works) (2018-12-27)
