@@ -90,3 +90,11 @@ moment is $$t(1090, 2)\le 27$$. See his blog post ["两瓶毒酒问题"](https:/
 I'd be interested to see some more examples of "irreducible" $$d$$-separable matrices for small $$n$$.
 If you know where to find such examples, please send them my way! I'll add them to my text file
 [here](/blog/code/2020-01-10-wolves-and-sheep-best-results.txt).
+
+----
+
+Find further StackExchange discussions
+[here](https://puzzling.stackexchange.com/questions/100999/finding-the-number-of-poisoned-bottles),
+[here](https://math.stackexchange.com/questions/639/logic-problem-identifying-poisoned-wines-out-of-a-sample-minimizing-test-subje),
+and
+[here](https://mathoverflow.net/questions/59939/identifying-poisoned-wines).

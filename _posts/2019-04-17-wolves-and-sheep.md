@@ -9,7 +9,7 @@ tags:
 
 Here's a new integer sequence that does not appear to be in the OEIS yet:
 
-    k=       1  2  3  4  5  6  ...
+    d=       1  2  3  4  5  6  ...
           0
     n=1   0  0
     n=2   0  1  0
@@ -50,10 +50,10 @@ on a sequence being searched for, and how much work it would be to do so.
 ----
 
 The sequence above is defined as the solution to the following puzzle for various
-values of $$(n,k)$$. Paraphrasing
+values of $$(n,d)$$. Paraphrasing
 [Jyotish Robin on Puzzling StackExchange](https://puzzling.stackexchange.com/questions/81737/):
 
-> You have $$n$$ sheep. Unfortunately, you have been informed that exactly $$k$$
+> You have $$n$$ sheep. Unfortunately, you have been informed that exactly $$d$$
 > of these sheep are really wolves in disguise. You have at your disposal a blood test
 > that can reliably detect wolf DNA: given a vial of blood from any number of subject
 > animals, a single test will tell you whether all of the subjects were innocent sheep
@@ -62,12 +62,12 @@ values of $$(n,k)$$. Paraphrasing
 > The testing lab is in a distant city; therefore you must collect all your blood samples
 > before you have learned any of the results. You cannot use the result of one test to
 > inform your strategy for the other tests. Also, your testing strategy must have a 100%
-> success rate at identifying all $$k$$ wolves; "99% probability of success" is not good
+> success rate at identifying all $$d$$ wolves; "99% probability of success" is not good
 > enough for this puzzle.
 >
 > How can you minimize the number of tests required?
 
-The first really interesting case is $$(n,k)=(8,2)$$. Suppose you have eight sheep, and
+The first really interesting case is $$(n,d,t)=(8,2,6)$$. Suppose you have eight sheep, and
 you know that two of them are wolves. Certainly you could find the wolves in seven tests:
 you'd just test seven of your animals individually and then use the results to deduce the
 species of the eighth. But how can you find the two wolves in _fewer_ than seven tests?
@@ -76,3 +76,19 @@ I have a brute-force solver [on GitHub](https://github.com/Quuxplusone/wolves-an
 It finds the answers up to $$n=9$$ pretty quickly; has some slowdown on $$n=10$$;
 and takes quite a while on $$n=11$$. It can produce a solution for $$(10,2,7)$$ in
 about 5 seconds, and for $$(11,2,8)$$ in just under a minute.
+
+----
+
+UPDATE, 2020-08-11: This problem is also commonly phrased in terms of $$n$$ bottles of wine,
+$$d$$ of which are poisoned; it is generally known as "non-adaptive group testing."
+This blog post used to refer to $$(n,k,t)$$; I've updated it to refer to $$(n,d,t)$$ instead.
+
+Whereas our wolves-and-sheep problem was phrased in terms of minimizing the number of tests $$t$$
+for a given $$(n,d)$$ ("To identify 2 wolves among 1000 sheep, you need no more than 27 tests"),
+poisoned-wine solutions are often phrased in terms of maximizing the number of sheep $$n$$
+that can be identified for a given $$(d,t)$$ ("Given 2 wolves and exactly 27 tests,
+you can handle a flock of no less than 1065 sheep").
+
+See also:
+
+* ["Wolves and Sheep, with tables"](/blog/2020/01/10/wolves-and-sheep-with-tables) (2020-01-10)
