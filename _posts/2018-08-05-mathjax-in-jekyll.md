@@ -104,3 +104,8 @@ in "tex2jax.js"!
 
 The fix for this issue, of course, was to find out that Kramdown math blocks were a better solution
 than "tex2jax.js".
+
+----
+
+UPDATE, 2020-08-19: Since this post was written, I've upgraded to MathJax v3.0.5.
+See ["MathJax v3 in Jekyll"](/blog/2020/08/19/mathjax-v3-in-jekyll) for an update.
