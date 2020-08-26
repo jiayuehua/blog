@@ -140,3 +140,5 @@ concerns about what should happen if some (perhaps global) variable `elt` is alr
 See also:
 
 * ["`for (auto&& elt : range)` Still Always Works"](/blog/2018/12/27/autorefref-still-always-works) (2018-12-27)
+
+* ["`-Wrange-loop-bind-reference` and `auto&&`"](/blog/2020/08/26/wrange-loop-analysis) (2020-08-26)

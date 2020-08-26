@@ -41,3 +41,7 @@ So,
 need to know about the "Clear cache & recompile" button in the lower left corner of the compiler pane.
 I had to click it about a dozen times before Eric's toy program managed to sneak in under CE's
 eight-second limit on compilation time.)
+
+See also:
+
+* ["`-Wrange-loop-bind-reference` and `auto&&`"](/blog/2020/08/26/wrange-loop-analysis) (2020-08-26)
