@@ -58,7 +58,8 @@ through by stealing a lot of code from "2048"; see
 ["Three variants on 2048"](https://quuxplusone.github.io/blog/2019/11/16/sqrt-2048/) (2019-11-16).
 
 As of this writing, the only play mode is "human versus AI."
-The current AI is based on Koki Suetsugu and Yusuke Orita's 2018 paper "機械学習を用いないガイスターの行動アルゴリズム開発"
+The current AI is based on Koki Suetsugu and Yusuke Orita's 2018 paper
+["機械学習を用いないガイスターの行動アルゴリズム開発"](https://ipsj.ixsq.nii.ac.jp/ej/?action=repository_action_common_download&item_id=186127&item_no=1&attribute_id=1&file_no=1)
 ("Developing geister algorithms without machine learning").
 Koki Suetsugu answered several questions for me via email; many thanks!
 The AI is very easy to beat at the moment, but I'm hoping to make it more challenging in the future.
