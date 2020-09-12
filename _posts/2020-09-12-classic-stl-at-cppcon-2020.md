@@ -14,7 +14,7 @@ on the fence about whether CppCon is right for you, I think 2020 would be a grea
 try it out: You can "attend" from home, for a
 [vastly reduced conference ticket price](https://cppcon.org/registration/)
 of only $300 for the whole five-day conference.
-(My understanding is that the $50 student-price tickets have sold out.)
+(I have been informed that $50 student-price tickets, also, are still available as of this writing.)
 
 The conference program officially starts on Sunday, September 13th — that's tomorrow! —
 with an "Open House" and welcome reception hosted in Remo's virtual conference center. You can
