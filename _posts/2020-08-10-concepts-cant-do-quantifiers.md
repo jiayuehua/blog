@@ -4,6 +4,17 @@ title: "Concepts can't do quantifiers"
 date: 2020-08-10 00:01:00 +0000
 tags:
   concepts
+excerpt: |
+  People frequently ask how to do things like this in C++20:
+
+  * Make a concept `Renderer` that is satisfied if and only if `t.render(u)` is valid for all `Printable` types `U`.
+      (From [/r/cpp](https://www.reddit.com/r/cpp/comments/i6elbg/concepts_question_constraint_type_to_have_a/).)
+
+  * Make a concept `ValidSize` that is satisfied if and only if `t` is convertible to some integral type `U`.
+      (From [the standard](http://eel.is/c++draft/alg.modifying.operations#alg.copy-11).)
+
+  The key words above are "all" and "some." In mathematics, these are known as the _universal_ and _existential_ quantifiers.
+  C++20 Concepts do not support either quantifier.
 ---
 
 People frequently ask how to do things like this in C++20:
