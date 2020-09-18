@@ -6,7 +6,7 @@ tags:
   conferences
   cppcon
 excerpt: |
-  ![Spoiler for question #4](/blog/images/2020-09-16-virtual-inheritance.jpg){: .float-right}
+  ![Spoiler for question #4](/blog/images/2020-09-16-anagram-time-1.jpg){: .float-right}
   [CppCon 2020](https://cppcon.org/cppcon-2020-program/) is half over;
   this afternoon I gave [my B2B talk on algebraic data types](https://cppcon2020.sched.com/event/e7Ad/).
   On Friday I give [my B2B talk on concurrency](https://cppcon2020.sched.com/event/e7Ab/),
@@ -48,7 +48,7 @@ when our winning team of the night was Team Undefined Behavior.
 This year I told people not to choose "Undefined Behavior" as their team name,
 and to be more creative. Serves me right, I guess.)
 
-![Spoiler for question #4](/blog/images/2020-09-16-virtual-inheritance.jpg){: .float-right}
+![Spoiler for question #4](/blog/images/2020-09-16-anagram-time-1.jpg){: .float-right}
 Since we're doing it all in cyberspace this year, there were more moving parts than
 usual. We met in Remo room `generate_n()`. I sat at a table in the back and used the general chat
 to tell people to sit up front, and also to join a Google Meet I'd set up. I read questions
@@ -112,3 +112,7 @@ Even if you're not virtually at CppCon already, there's still time for you to
 and get online in time to kick some butt at Pub Quiz!
 
 Oh, and there's some great conference talks Thursday and Friday, too.
+
+See also:
+
+* ["C++ Pub Quiz at CppCon 2020, Game Two"](/blog/2020/09/18/cppcon-2020-pub-quiz-2/) (2020-09-18)
