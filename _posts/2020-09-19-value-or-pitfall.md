@@ -6,6 +6,7 @@ tags:
   c++-learner-track
   cppcon
   pitfalls
+  war-stories
 ---
 
 In my Back to Basics talk on "Algebraic Data Types," I cut some slides at the
