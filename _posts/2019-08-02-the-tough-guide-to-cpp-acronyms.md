@@ -116,7 +116,7 @@ your C++ compiler almost certainly does not accept the dialect of C++ described 
 ## BMI, CMI
 
 "Binary Module Interface." Just as .cpp files are compiled into .o files, and some compilers provide
-ways to "pre-compile" .h files into [PCHes](#pch), compilers that support C++2a Modules will have to provide
+ways to "pre-compile" .h files into [PCHes](#pch), compilers that support C++20 Modules will have to provide
 some way to compile C++ modules into some format that is precompiled, perhaps binary, perhaps compressed,
 to make `import` statements quick to compile.
 
@@ -128,7 +128,9 @@ gives a very high-level sketch of the BMI format that Microsoft calls "IFC," and
 on something else called ["Internal Program Representation" (IPR)](https://github.com/GabrielDosReis/ipr).
 
 Because BMIs are not necessarily "binary" (in the sense of being highly compressed), [GCC calls them](https://gcc.gnu.org/wiki/cxx-modules)
-"Compiled Module Interfaces" (CMI).
+"Compiled Module Interfaces" (CMI); and as of October 2020, the as-yet-unpublished
+["Modules Ecosystem Technical Report"](https://github.com/cplusplus/modules-ecosystem-tr) (or "METeR")
+glosses "BMI" as "_Built_ Module Interface."
 
 _BMI files are not a distribution format._ When you distribute a module, you'll be distributing its source
 code (as one or more files [maybe with the extension .mpp](https://www.youtube.com/watch?v=E8EbDcLQAoc&t=11m00s)).
@@ -336,6 +338,38 @@ Originally the "GNU C Compiler" (where "[GNU](https://en.wikipedia.org/wiki/GNU)
 famously stands for "GNU's Not Unix"). Since 1999 ([source](https://gcc.gnu.org/wiki/History)), the
 acronym has stood for "GNU Compiler Collection." One of the big three C++ compiler vendors, besides
 Clang and [MSVC](#msvc).
+
+## GMF, PMF
+
+"Global module fragment" and "private module fragment." In C++20 Modules syntax, the global module
+fragment is the portion of a module unit (that is, a [TU](#tu) containing a _module-declaration_
+such as `module hello;`) which appears at the very top of the source code, preceded by the line
+`module;` and followed by the _module-declaration_.
+
+The private module fragment appears at the very bottom, preceded by the line
+`module :private;`. Things in the PMF are not `export`ed; you can modify things in module
+`hello`'s PMF without needing to recompile other TUs that `import hello`.
+
+    module;
+    #include <unistd.h>   // this is part of the GMF
+    extern int gmf();     // provided by some non-modules third-party code
+
+    module hello;
+    export void pmf();
+    export void foo() { gmf(); pmf(); }
+
+    module :private;
+    void pmf() { }    // this is part of the PMF
+
+
+I don't fully understand why the PMF is needed; it seems like we could have put the definition of
+`void pmf()` up in the module, and simply refrained from marking that _definition_ as `export`.
+But perhaps I'm missing something. Anyway, for more on module fragments, see `vector<bool>`'s blog post
+["Understanding C++ Modules, Part 3"](https://vector-of-bool.github.io/2019/10/07/modules-3.html)
+(October 2019).
+
+"PMF" also happens to be an acronym for "pointer to member function," as in the
+expression `&Foo::setValue` or the type `void (Foo::*)(int)`.
 
 ## HALO
 
@@ -895,6 +929,20 @@ in the order you'd expect. But if they're defined in two different TUs, the link
 order the initializer for `t` _before_ the initializer for `s`. So `t`'s initialization uses `s`
 as a string before `s` has actually been constructed, leading to [UB](#ub) at runtime.
 ([Wandbox](https://wandbox.org/permlink/qycov99Bj0TUPxsP).)
+
+## SMF
+
+"Special member function." According to the C++20 standard ([special/1](http://eel.is/c++draft/special#1)),
+the special member functions are "default constructors, copy constructors, move constructors,
+copy assignment operators, move assignment operators, and prospective destructors."
+(The phrase "prospective destructor" acknowledges that a C++20 class may have many constrained
+member functions all named `~T`, all of which are special member functions, but only one of which
+will ultimately be selected as _the_ destructor for the class.)
+
+Notice that "specialness" is imperfectly correlated with the ability to `=default` the member function.
+`Foo::Foo(int=0)` is a default constructor (and thus an SMF of `Foo`), but cannot be `=default`ed.
+In C++20, `operator<=>` and `operator==` can both be defaulted, yet neither of them is an SMF.
+
 
 ## STL
 
