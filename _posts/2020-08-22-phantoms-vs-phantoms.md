@@ -55,7 +55,7 @@ I decided to implement _Phantoms vs Phantoms_ in JavaScript (just as I've implem
 favorite abstracts, [Homeworlds](https://github.com/Quuxplusone/Homeworlds)
 and [Hanabi](https://github.com/Quuxplusone/Hanabi), in C++). I'm very bad at JavaScript, but I muddled
 through by stealing a lot of code from "2048"; see
-["Three variants on 2048"](https://quuxplusone.github.io/blog/2019/11/16/sqrt-2048/) (2019-11-16).
+["Three variants on 2048"](/blog/2019/11/16/sqrt-2048/) (2019-11-16).
 
 As of this writing, the only play mode is "human versus AI."
 The current AI is based on Koki Suetsugu and Yusuke Orita's 2018 paper

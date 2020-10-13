@@ -17,7 +17,7 @@ This came out of a blog post by Colby Pike:
 ["Eliminating the Static Overhead of Ranges"](https://vector-of-bool.github.io/2019/10/21/rngs-static-ovr.html) (October 2019).
 
 The idea of the "pizza operator" `|>` is that it provides syntactic sugar, sort of related to
-[UFCS](https://quuxplusone.github.io/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#ufcs).
+[UFCS](/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#ufcs).
 Suppose you want to write a chain of method calls like
 
     // Ideal-for-this-purpose class-based API

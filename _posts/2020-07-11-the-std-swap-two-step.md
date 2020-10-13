@@ -355,7 +355,7 @@ you'd call `std::rethrow_exception` or `std::from_chars`.
     }
 
 `std::ranges::swap` is not a function
-but a [CPO](https://quuxplusone.github.io/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#cpo),
+but a [CPO](/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#cpo),
 i.e., a global variable with a templated `operator()` that has been defined to do the two-step internally
 so that you don't have to.
 
