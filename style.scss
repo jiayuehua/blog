@@ -323,6 +323,16 @@ footer {
   }
 }
 
+.rotate-on-hover {
+  transition: transform .8s ease-in-out;
+}
+.rotate-on-hover:hover {
+  transform: rotate(180deg);
+}
+.rotate-on-hover.inverted {
+  transform: rotate(180deg);
+}
+
 .smaller {
   font-size: smaller;
 }
