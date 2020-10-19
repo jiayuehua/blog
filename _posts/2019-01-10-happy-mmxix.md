@@ -4,6 +4,7 @@ title: "Happy birthday, Donald Knuth! and Peaceful Encampments"
 date: 2019-01-10 00:01:00 +0000
 tags:
   adventure
+  celebration-of-mind
   knuth
   litclub
   math
@@ -22,10 +23,9 @@ The beautiful (and fairly informative, and fairly entertaining) result is
 Knuth's [_Selected Papers on Fun & Games_](https://amzn.to/2RhoZTb) (2011).
 
 I met Dr. Knuth a couple of times in real life. The first time was at the Martin Gardner
-Celebration of Mind at UC Berkeley in 2014. (Ambigram expert Scott Kim, familiar to readers of
-Douglas Hofstadter's [_Gödel, Escher, Bach_](https://amzn.to/2SJTwW8), does the Celebration of Mind
-logo every year. I once collected some of them
-[over here](http://www.club.cc.cmu.edu/~ajo/disseminate/mg-ambigrams.html).)
+Celebration of Mind at UC Berkeley in 2014. (In those days ambigram expert Scott Kim, familiar to readers of
+Douglas Hofstadter's [_Gödel, Escher, Bach_](https://amzn.to/2SJTwW8), did a new logo for the
+Celebration of Mind every year. See ["Scott Kim's rotational ambigrams"](/blog/2020/10/18/scott-kim-gardner-ambigrams/) (2020-10-18).)
 
 Knuth's pet puzzle of the day, that day, was a sort of continuous version of a
 [nonattacking queens](https://math.stackexchange.com/questions/687298/maximum-nonattacking-black-and-white-queens-on-infinite-chessboard)
