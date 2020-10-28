@@ -149,6 +149,9 @@ In C++17, `constexpr` static data members don't need out-of-line definitions.
 (In C++17 and later, you could even use `static inline const int`; but I see no advantage to `static inline const`
 over `static constexpr`.)
 
+For more on this subject, see ["Why do I get a linker error with `static const` and `value_or`?"](/blog/2020/09/19/value-or-pitfall/) (2020-09-19).
+
+
 ### The undefined entity is a vtable
 
 If you see an undefined reference to "vtable for SomeClass," [like this:](https://godbolt.org/z/nLybBN)
