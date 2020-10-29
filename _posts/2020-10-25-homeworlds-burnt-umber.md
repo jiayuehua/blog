@@ -10,9 +10,8 @@ tags:
 Here's another [Binary Homeworlds](https://boardgamegeek.com/boardgame/14634/homeworlds) puzzle.
 I posted it to BoardGameGeek back in early September, but might as well record it here too.
 
-For details of how I created the puzzle, how I created the image (thanks to Sleafar on Puzzling
-StackExchange!), and where to get your own physical set of Homeworlds pieces,
-see [the first post in this series](/blog/2020/05/29/homeworlds-mini-doomsday-machine/).
+For details of how I created the puzzle, and how I created the image (thanks to Sleafar on Puzzling
+StackExchange!), see [the first post in this series](/blog/2020/05/29/homeworlds-mini-doomsday-machine/).
 
 According to Looney Labs' website, the Pyramid Quartet standalone Homeworlds set goes on sale
 November 12. You can [preorder it from Looney Labs!](http://store.looneylabs.com/Homeworlds)
