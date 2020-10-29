@@ -32,6 +32,11 @@ instead of
 
 respectively. (See also ["The Knightmare of Initialization in C++"](/blog/2019/02/18/knightmare-of-initialization/) (2019-02-18).)
 
+## ABC
+
+"Abstract base class." That is, a class with at least one pure virtual function, intended for
+use as the root of a class hierarchy in classical OOP ("object-oriented programming").
+
 ## ABI, API
 
 "Application Binary Interface" and "Application Programming Interface," respectively. The API of a library
