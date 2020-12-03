@@ -3,6 +3,7 @@ layout: post
 title: "How different compilers deal with provably unused entities"
 date: 2020-12-02 00:01:00 +0000
 tags:
+  access-control
   implementation-divergence
   llvm
   language-design
@@ -84,16 +85,17 @@ and `-Wall -Wextra -O0 -O1 -O2 -O3` on the other three.
 <br>
 
 |------------------------------------------------------|-------|-----|-----|------|
-| Do we optimize out an unused... (lower is better)    | Clang | GCC | ICC | MSVC |
+| Do we optimize out an unused...                      | Clang | GCC | ICC | MSVC |
 |------------------------------------------------------|-------|-----|-----|------|
 | static function                                      |  -O0  | -O1 | -O0 | -Od  |
 | static variable                                      |  -O0  | -O0 | -O1 | -Od  |
-| private static data member                           |       |     |     |      |
-| private member function                              |       |     |     |      |
-| private static member function                       |       |     |     |      |
-| static data member of private class                  |       |     |     |      |
-| member function of private class                     |       |     |     |      |
-| static member function of private class              |       |     |     |      |
+| private data member                                  |   —   |  —  |  —  |  —   |
+| private static data member                           |   —   |  —  |  —  |  —   |
+| private member function                              |   —   |  —  |  —  |  —   |
+| private static member function                       |   —   |  —  |  —  |  —   |
+| static data member of private class                  |   —   |  —  |  —  |  —   |
+| member function of private class                     |   —   |  —  |  —  |  —   |
+| static member function of private class              |   —   |  —  |  —  |  —   |
 | anonymous-namespaced function                        |  -O0  | -O1 | -O0 |      |
 | anonymous-namespaced variable                        |  -O0  | -O0 | -O1 | -Od  |
 | static data member of anonymous-namespaced class     |  -O0  | -O0 | -O1 |      |
@@ -106,3 +108,12 @@ I claim that there's a fair bit of room for improvement here!
 
 Or am I missing some subtle mechanism by which "unused" private members
 might actually be referenced from other TUs?
+
+UPDATE: Yes, I am! See my followup:
+
+* ["How to use a private member from outside the class"](/blog/2020/12/03/steal-a-private-member)
+
+I have placed "–" in table cells where this loophole makes the suggested optimization
+technically impossible for a conforming compiler. All compilers' diagnostics could
+use improvement, but the new optimization table shows that everyone (except MSVC)
+is doing the best they can, optimization-wise.

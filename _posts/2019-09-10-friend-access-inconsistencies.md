@@ -3,6 +3,7 @@ layout: post
 title: "Implementation divergence with `friend`"
 date: 2019-09-10 00:01:00 +0000
 tags:
+  access-control
   classical-polymorphism
   implementation-divergence
   metaprogramming
