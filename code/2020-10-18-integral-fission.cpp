@@ -13,6 +13,7 @@
 // Newly found terms will be appended to the file.
 // If the specified file doesn't exist, it will be created.
 
+#include <cassert>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -21,11 +22,53 @@
 #include <utility>
 #include <vector>
 
-using Integer = int;  // to compute term 29729, change this to "long long"
+using Integer = long long;  // to compute term 29729, change this to "long long"
 
-class Primes {
-    std::vector<Integer> all_primes_;
+class sieverator {
+public:
+    explicit sieverator() {
+        m_pq.emplace(9, 3);
+        m_current = 3;
+    }
+    sieverator(const sieverator&) = delete;
+    sieverator& operator=(const sieverator&) = delete;
 
+    Integer next() {
+        while (true) {
+            m_current += 2;
+            while (m_current > m_pq.top().next_crossed_off_value) {
+                auto x = m_pq.top();
+                m_pq.reemplace_top(x.next_crossed_off_value + x.prime_increment, x.prime_increment);
+            }
+            if (m_current == m_pq.top().next_crossed_off_value) {
+                while (m_current == m_pq.top().next_crossed_off_value) {
+                    auto x = m_pq.top();
+                    m_pq.reemplace_top(x.next_crossed_off_value + x.prime_increment, x.prime_increment);
+                }
+            } else {
+                // Found a new prime. Start crossing off multiples of it, and return.
+                if (m_current < std::numeric_limits<Integer>::max() / m_current) {
+                    m_pq.emplace(m_current * m_current, m_current);
+                }
+                return m_current;
+            }
+        }
+    }
+
+    std::vector<Integer> extract_primes(Integer n) const {
+        std::vector<Integer> result;
+        result.reserve(m_pq.size() + 2);
+        result.push_back(2);
+        result.push_back(3);
+        for (const auto& pair : m_pq.vector()) {
+            result.push_back(pair.prime_increment);
+        }
+        std::sort(result.begin(), result.end());
+        result.erase(std::lower_bound(result.begin(), result.end(), n), result.end());
+        return result;
+    }
+
+private:
     template<class T, class Container, class Compare>
     class PQ : public std::priority_queue<T, Container, Compare>
     {
@@ -36,7 +79,6 @@ class Primes {
         }
 
         void sift_down() {
-            using std::swap;
             int i = 0;
             int n = this->size();
             while (2*i+1 < n) {
@@ -56,6 +98,9 @@ class Primes {
             }
         }
     public:
+        Container& vector() { return this->c; }
+        const Container& vector() const { return this->c; }
+
         template<class... Args>
         void reemplace_top(Args&&... args) {
             this->c.front() = T(static_cast<Args&&>(args)...);
@@ -63,58 +108,10 @@ class Primes {
         }
     };
 
-template<class Int, Int Increment>
-class iotarator {
-    Int value = 0;
-public:
-    explicit iotarator() = default;
-    explicit iotarator(Int v) : value(v) {}
-    Int operator*() const { return value; }
-    iotarator& operator++() { value += Increment; return *this; }
-    iotarator operator++(int) = delete;
-
-    bool operator==(const iotarator& rhs) const {
-        return value == rhs.value;
-    }
-    bool operator!=(const iotarator& rhs) const { return !(*this == rhs); }
-};
-
-template<class Int, class Iter>
-class sieverator {
-    Int m_current;
-    Iter m_iter;
-
-    explicit sieverator() {}  // used by .end()
-public:
-    explicit sieverator(Iter it) :
-        m_current(*it),
-        m_iter(it)
-    {}
-    sieverator begin() { return std::move(*this); }
-    sieverator end() const { return sieverator{}; }
-    bool operator==(const sieverator&) const { return false; }
-    bool operator!=(const sieverator&) const { return true; }
-
-    Int operator*() const {
-        return m_current;
-    }
-
-    sieverator& operator++() {
-        cross_off_multiples_of_prime(m_current);
-        do {
-            ++m_iter;
-            m_current = *m_iter;
-        } while (is_already_crossed_off(m_current));
-        return *this;
-    }
-
-    sieverator& operator++(int) = delete;
-
-private:
     struct pair {
-        Int next_crossed_off_value;
-        Int prime_increment;
-        explicit pair(Int a, Int b) : next_crossed_off_value(a), prime_increment(b) {}
+        Integer next_crossed_off_value;
+        Integer prime_increment;
+        explicit pair(Integer a, Integer b) : next_crossed_off_value(a), prime_increment(b) {}
         bool operator<(const pair& rhs) const {
             return next_crossed_off_value < rhs.next_crossed_off_value ? true
                  : next_crossed_off_value > rhs.next_crossed_off_value ? false
@@ -123,43 +120,29 @@ private:
         bool operator>(const pair& rhs) const { return rhs < *this; }
     };
     template<class T> using min_heap = PQ<T, std::vector<T>, std::greater<>>;
+
     min_heap<pair> m_pq;
-
-    void cross_off_multiples_of_prime(Int value) {
-        if (value < std::numeric_limits<Int>::max() / value) {
-            m_pq.emplace(value * value, value);
-        }
-    }
-
-    bool is_already_crossed_off(Int value) {
-        if (value != m_pq.top().next_crossed_off_value) {
-            return false;
-        } else {
-            do {
-                auto x = m_pq.top();
-                m_pq.reemplace_top(x.next_crossed_off_value + x.prime_increment, x.prime_increment);
-            } while (value == m_pq.top().next_crossed_off_value);
-            return true;
-        }
-    }
+    Integer m_current;
 };
+
+class Primes {
+    std::vector<Integer> all_primes_;
 
 public:
     void build_sieve(Integer limit) {
         if (limit <= 2) return;
-        all_primes_.push_back(2);
-        iotarator<Integer, 2> iota(3);
-        sieverator<Integer, decltype(iota)> sieve(iota);
-        Integer next_percentage_mark = limit / 100;
-        for (Integer p : sieve) {
+        sieverator sieve;
+        Integer next_percentage_mark = 0;
+        while (true) {
+             Integer p = sieve.next();
              if (p > next_percentage_mark) {
-                 std::cerr << "Building prime sieve (" << ((100.0 * p) / limit) << "%)...\r" << std::flush;
+                 std::cerr << "Building prime sieve (" << int((100.0 * p) / limit) << "%)...\r" << std::flush;
                  next_percentage_mark += limit / 100;
             }
             if (p >= limit) break;
-            all_primes_.push_back(p);
         }
         std::cerr << "\nDone building sieve\n";
+        all_primes_ = sieve.extract_primes(limit);
     }
     void add_known_prime(Integer n) {
         assert((all_primes_.empty() && n == 2) || (n > all_primes_.back()));
