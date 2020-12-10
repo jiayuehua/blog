@@ -148,8 +148,8 @@ public:
         assert((all_primes_.empty() && n == 2) || (n > all_primes_.back()));
         all_primes_.push_back(n);
     }
-    std::vector<Integer> prime_factorize(Integer n) const {
-        std::vector<Integer> factors;
+    std::vector<Integer> prime_factorize(Integer n, std::vector<Integer> factors) const {
+        factors.clear();
         for (Integer p : all_primes_) {
             while (n % p == 0) {
                 factors.push_back(p);
@@ -235,6 +235,8 @@ class Tree {
     }
 
 public:
+    using Shape = std::vector<bool>;
+
     explicit Tree(Integer n) {
         occupied_.reserve(40);
         occupied_.push_back(true);
@@ -274,6 +276,10 @@ public:
         }
     }
 
+    const Shape& shape() const {
+        return occupied_;
+    }
+
     bool identical_shape(const Tree& rhs) const {
         return occupied_ == rhs.occupied_;
     }
@@ -291,23 +297,51 @@ public:
     }
 
     friend std::istream& operator>>(std::istream& is, Tree& rhs) {
+        rhs.occupied_.clear();
+        rhs.factors_.clear();
         rhs.leafcount_ = 0;
         rhs.subtree_scan(is, 0);
         return is;
     }
 };
 
-int main(int argc, char **argv) {
-    int idx = 1;  // the OEIS sequence starts "1 2 4 8..." but we won't print the "1"
-    Integer n = 1;
+class NoveltySeeker {
+public:
+    bool might_be_novel_with_leafcount(int lc) const {
+        assert(lc < std::size(seen_of_leafcount));
+        return (lc >= unseen_of_leafcount.size() || unseen_of_leafcount[lc] != 0);
+    }
 
-    std::vector<Tree> seen_of_leafcount[64];  // this is good up to 2^64
-    int unseen_of_leafcount[] = {
+    bool add_tree_if_novel(const Tree& tree) {
+        int lc = tree.leafcount();
+        assert(lc < std::size(seen_of_leafcount));
+        auto it = std::lower_bound(seen_of_leafcount[lc].begin(), seen_of_leafcount[lc].end(), tree.shape());
+        if (it != seen_of_leafcount[lc].end() && *it == tree.shape()) {
+            return false;
+        }
+        seen_of_leafcount[lc].insert(it, tree.shape());
+        if (lc < unseen_of_leafcount.size()) {
+            assert(unseen_of_leafcount[lc] > 0);
+            unseen_of_leafcount[lc] -= 1;
+        }
+        return true;
+    }
+
+private:
+    std::vector<Tree::Shape> seen_of_leafcount[64];  // this is good up to 2^64; kept sorted
+    std::vector<int> unseen_of_leafcount = {
         0, 1, 1, 2, // two distinct trees with 3 factors
         5, 14, 42, 132, 429, 1430, 4862,  // with 10 factors
         16796, 58786, 208012, 742900, 2674440, 9694845,
         35357670, 129644790, 477638700, 1767263190,
     };
+};
+
+int main(int argc, char **argv) {
+    int idx = 1;  // the OEIS sequence starts "1 2 4 8..." but we won't print the "1"
+    Integer n = 1;
+
+    NoveltySeeker novelty;
 
     std::ofstream outfile;
 
@@ -318,13 +352,9 @@ int main(int argc, char **argv) {
         n = 1;
         while (input >> idx >> n >> tree) {
             std::cout << idx << " " << n << " " << tree << "\n";
-            int lc = tree.leafcount();
-            assert(lc < std::size(seen_of_leafcount));
-            seen_of_leafcount[lc].push_back(std::move(tree));
-            if (lc < std::size(unseen_of_leafcount)) {
-                assert(unseen_of_leafcount[lc] > 0);
-                unseen_of_leafcount[lc] -= 1;
-            }
+            assert(novelty.might_be_novel_with_leafcount(tree.leafcount()));
+            bool success = novelty.add_tree_if_novel(tree);
+            assert(success);
         }
         // Record all primes, up to and including n.
         g_primes.build_sieve(n+1);
@@ -340,32 +370,23 @@ int main(int argc, char **argv) {
         n = 2;
     }
 
+    std::vector<Integer> prime_factors;
     for ( ; true; ++n) {
-        auto prime_factors = g_primes.prime_factorize(n);
+        prime_factors = g_primes.prime_factorize(n, std::move(prime_factors));
         int lc = prime_factors.size();
         assert(lc >= 1);
         if (lc == 1) {
             g_primes.add_known_prime(n);
         }
-        assert(lc < std::size(seen_of_leafcount));
-        if (lc >= std::size(unseen_of_leafcount) || unseen_of_leafcount[lc] != 0) {
+        if (novelty.might_be_novel_with_leafcount(lc)) {
             auto tree = Tree(n);
             assert(tree.leafcount() == lc);
-            bool is_novel = std::none_of(
-                seen_of_leafcount[lc].begin(), seen_of_leafcount[lc].end(),
-                [&](const Tree& t) { return t.identical_shape(tree); }
-            );
-            if (is_novel) {
+            if (novelty.add_tree_if_novel(tree)) {
                 if (outfile) {
                     outfile << idx << " " << n << " " << tree << std::endl;
                 }
                 std::cout << idx << " " << n << " " << tree << std::endl;
                 ++idx;
-                seen_of_leafcount[lc].push_back(std::move(tree));
-                if (lc < std::size(unseen_of_leafcount)) {
-                    assert(unseen_of_leafcount[lc] > 0);
-                    unseen_of_leafcount[lc] -= 1;
-                }
             }
         }
     }
