@@ -152,9 +152,17 @@ fonts and so on (one might say the "more derived" parts). This might result in a
 window of time during which the base functionality is visible — producing potentially
 surprising and unintended results for anyone who happens to glance at their screen right then.
 
-Admittedly, web pages usually care about such a "flash" happening during the web
-equivalent of _construction_, whereas in C++ the serious problems seem to surface
-during _destruction_.
+Web pages usually care about such a "flash" happening during the web
+equivalent of _construction_. The serious problem we observed with `NeuteredStatusDaemon`
+surfaced during _destruction_.
+
+UPDATE, 2020-12-10: Reddit commenter "goranlepuz" points out that our constructor also has UB:
+the first call to `do_action` races with the construction of the `StatusDaemon`
+parts of the object. This is partly because I oversimplified — our real code uses a
+separate `start` method to kick off the thread — but to be honest, (1) I didn't realize
+that my rewrite was introducing that extra bug, and (2) it's not obvious who should be
+responsible for calling `start`! Probably the best way to fix our issue in this case
+is to pull out a `start` method and then ensure that our unit test _does not call it._
 
 
 ## Putting it all together
@@ -167,4 +175,4 @@ provides the `<semaphore>` header already), and `-lgtest -lgtest_main` plus
 whatever `-I -L` options you need for your local install of GTest.
 
 Running with `./a.out --gtest_repeat=-1` should eventually reproduce the
-segfault — it does on my machine, anyway!
+segfault — at least it does on my machine!
