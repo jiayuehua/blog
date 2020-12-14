@@ -323,6 +323,12 @@ footer {
   }
 }
 
+.meme {
+  display: block;
+  max-width: 450px;
+  text-align: center;
+}
+
 .rotate-on-hover {
   transition: transform .8s ease-in-out;
 }

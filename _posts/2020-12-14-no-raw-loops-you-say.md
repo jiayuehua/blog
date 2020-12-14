@@ -14,7 +14,7 @@ excerpt: |
   However, every time I watch one of his talks where he uses STL algorithms
   to solve some programming problem, I come away feeling like
 
-  ![Let's see who's really under that mask! Why, it's old Mr. Accumulate and his brother For_each!](/blog/images/2020-12-14-why-its-old-mister-accumulate.png)
+  ![Let's see who's really under that mask! Why, it's old Mr. Accumulate and his brother For_each!](/blog/images/2020-12-14-why-its-old-mister-accumulate.png){: .meme}
 
   Let's look at two examples of "using STL algorithms to solve problems" in this limited sense,
   and how else we might solve them. Both of these examples are taken from Conor's CppCon 2020 talk
@@ -26,11 +26,11 @@ Conor Hoekstra gives great talks on algorithms. Notably, ["Algorithm Intuition"]
 However, every time I watch one of his talks where he uses STL algorithms
 to solve some programming problem, I come away feeling like
 
-![Let's see who's really under that mask! Why, it's old Mr. Accumulate and his brother For_each!](/blog/images/2020-12-14-why-its-old-mister-accumulate.png)
+![Let's see who's really under that mask! Why, it's old Mr. Accumulate and his brother For_each!](/blog/images/2020-12-14-why-its-old-mister-accumulate.png){: .meme}
 
 Or maybe
 
-![You: for / Me, an intellectual: std::ranges::for_each](/blog/images/2020-12-14-me-an-intellectual.png)
+![You: for / Me, an intellectual: std::ranges::for_each](/blog/images/2020-12-14-me-an-intellectual.png){: .meme}
 
 Let's look at two examples of "using STL algorithms" in this limited sense,
 and how we might solve the same problems differently (maybe using the STL, maybe not).
