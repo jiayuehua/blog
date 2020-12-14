@@ -5,6 +5,7 @@ date: 2020-09-12 00:01:00 +0000
 tags:
   conferences
   cppcon
+  stl-classic
   training
 ---
 

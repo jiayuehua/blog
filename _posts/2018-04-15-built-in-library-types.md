@@ -3,6 +3,7 @@ layout: post
 title: _Contra_ built-in library types
 date: 2018-04-15 00:01:00 +0000
 tags:
+  implementation-divergence
   language-design
   operator-spaceship
   rant

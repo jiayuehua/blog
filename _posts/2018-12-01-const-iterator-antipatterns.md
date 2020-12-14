@@ -9,6 +9,7 @@ tags:
   library-design
   metaprogramming
   pitfalls
+  stl-classic
 ---
 
 This antipattern keeps coming up, so here's the blog post I can point people to.
