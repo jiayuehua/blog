@@ -93,7 +93,7 @@ Meanwhile, here's what I would call the actually "STL classic" solution to Conor
     // IMP3
     auto stl_solution(const auto& v) {
         int top[2] = {};
-        std::ranges::partial_sort_copy(v, top);
+        std::ranges::partial_sort_copy(v, top, std::greater());
         return std::inner_product(top, std::end(top), top, 0);
     }
 
@@ -106,11 +106,12 @@ In fact, libstdc++'s `std::ranges::partial_sort_copy` is somehow worse than thei
 `std::partial_sort_copy` — as of this writing, you can actually generate strictly better code
 by replacing
 
-    std::ranges::partial_sort_copy(v, top);
+    std::ranges::partial_sort_copy(v, top, std::greater());
 
 with
 
-    std::partial_sort_copy(std::begin(v), std::end(v), top, std::end(top));
+    std::partial_sort_copy(std::begin(v), std::end(v),
+        top, std::end(top), std::greater());
 
 You're probably wondering why I bothered to write `std::end(top)`
 when I could have written `top+2`, right? Well, I wanted to highlight
@@ -217,7 +218,7 @@ However, if you do this, then again the codegen suffers, compared to the baselin
 Is there a "classic STL" version of this algorithm? I don't think so, because it's really
 just a numeric operation: it takes in _one_ number (not a collection of elements), and it
 produces _one_ number (not a collection). I think `IMP3` is the best solution, not just
-because its codegen is better, but because it most clearly explains the problem being solved.
+because its codegen is better, but because it most clearly explains what it's doing.
 The closest I can get to a "classic STL" solution would be, like,
 
     // IMP6
