@@ -5,6 +5,7 @@ date: 2020-06-09 00:01:00 +0000
 tags:
   litclub
   us-politics
+  weird-fiction
 ---
 
 One of my cousins is a Trump voter. We don't talk much in normal life,
