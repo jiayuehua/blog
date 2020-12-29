@@ -25,7 +25,7 @@ The LLVM codebase's official home is [`https://github.com/llvm/llvm-project`](ht
 (However, to submit patches to LLVM projects, you must use
 [the official Phabricator](https://reviews.llvm.org/differential/diff/create/);
 don't submit GitHub pull requests against `llvm/llvm-project`!
-At least not as of November 2019.)
+At least not as of December 2020.)
 
 
 ## Step 1: Fork!
@@ -125,7 +125,7 @@ and you should never do it!
     CXX="$ROOT/llvm-project/build/bin/clang++" \
     cmake -G Ninja \
         -DDEFAULT_SYSROOT="$(xcrun --show-sdk-path)" \
-        -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
+        -DLLVM_ENABLE_PROJECTS="clang;compiler-rt;libcxx;libcxxabi" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo ../llvm
     ninja clang cxx
     ninja check-clang check-cxx
@@ -137,7 +137,8 @@ _that_ version. You can extend this to `build3`, `build4`, etc.
 Making `cxx` will build `libc++.dylib`, `libc++.a`, and `libc++abi.dylib`.
 Making `cxxabi` will build `libc++abi.a`.
 Making `check-cxx` will build `libc++experimental.a`.
-(Unfortunately, `compiler-rt` will not build on OSX.)
+Making `compiler-rt` will build `libclang_rt.asan_osx_dynamic.dylib` and `libclang_rt.ubsan_osx_dynamic.dylib`,
+which are needed by Clang's `-fsanitize=address` and `-fsanitize=undefined` options.
 
 This time, `cmake` takes about 58 seconds; `ninja clang` takes about 153 minutes.
 `ninja check-clang` takes another 53 minutes:
