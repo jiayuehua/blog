@@ -23,7 +23,7 @@ Bernstein writes:
 > consecutive popular-vote victory; the last time that happened was the party's
 > run from 1932 through 1948. So what should we make of that?
 
-Well, maybe I'm just being a [clueless millennial](https://same.energy/?q=The+funniest+part+in+%22Napoleon+Dynamite%22+was+when+the+recession+hadn%27t+happened+yet.)
+Well, maybe I'm just being a [clueless millennial](https://t.same.energy/?q=The+funniest+part+in+%22Napoleon+Dynamite%22+was+when+the+recession+hadn%27t+happened+yet.)
 here, but isn't it obvious what happened a-little-bit-before-1932 and again a-little-bit-before-2008
 to cause ordinary people to vote Democratic for a minute? It's often been said that
 "Republicans get us into recessions and Democrats get us out," and
