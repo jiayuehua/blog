@@ -1006,6 +1006,25 @@ might alias `float` include [plain `char`](https://godbolt.org/z/flEMi9) and
 Type-based alias analysis is also known as "strict aliasing," because the analysis
 [can be disabled](https://godbolt.org/z/SK3DUP) with the compiler option `-fno-strict-aliasing`.
 
+## TCO
+
+"Tail call optimization." This is a compiler optimization that takes what appears in the source code
+as a function call (which usually pushes an activation frame onto the _call stack_) and turns
+it into a plain old jump (which does not push a frame on the call stack). This is possible only
+when the function call appears at the very tail end of the function — something like `return bar()`.
+The compiler is saying, "Look, I know `bar` is going to end by returning to its caller; that's just
+me, and I have nothing left to do. So let's just trick `bar` into returning to _my_ caller!"
+
+Tail call optimization is often possible for `return bar();` but not for, e.g., `return bar()+1;`
+— because there I _do_ have something left to do: add 1 to the result. In some languages and/or
+programming idioms, instead of doing that plus-1 myself, I can tell `bar` to do it and
+take my own stack frame out of the picture; this is known as _continuation-passing style_ (CPS).
+
+In the case that the function being tail-called is the same as the current function (recursively),
+you might call it _tail recursion optimization_ (TRO).
+
+See ["It's not always obvious when tail-call optimization is allowed"](/blog/2021/01/09/tail-call-optimization) (2021-01-09).
+
 ## TMP
 
 "Template metaprogramming." Personally, I find that the acronym "TMP" has a vague whiff of C++98
@@ -1015,7 +1034,7 @@ If you have lots of structs with `::type` and `::value` members, you're probably
 
 ## TU
 
-"Translation Unit." This is what language-lawyers say instead of ".cpp file." When you invoke the compiler
+"Translation unit." This is what language-lawyers say instead of ".cpp file." When you invoke the compiler
 to translate your C++ code into machine code, you give it just one _translation unit_ (TU) at a time.
 [Formally](http://eel.is/c++draft/lex.separate), a "TU" is the sequence of tokens that you get
 after preprocessing an input file so that all its `#include` directives have been expanded and all its
