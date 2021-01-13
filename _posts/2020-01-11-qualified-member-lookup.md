@@ -5,6 +5,7 @@ date: 2020-01-11 00:02:00 +0000
 tags:
   implementation-divergence
   language-design
+  name-lookup
   slack
   templates
   today-i-learned
