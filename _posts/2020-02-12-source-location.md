@@ -5,6 +5,7 @@ date: 2020-02-12 00:01:00 +0000
 tags:
   c++-style
   pearls
+  preprocessor
 ---
 
 Today on the std-proposals mailing list, I posted what I understand to be the

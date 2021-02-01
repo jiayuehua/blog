@@ -4,7 +4,7 @@ title: 'The `FORCE_CONSTEXPR` macro'
 date: 2018-08-07 00:02:00 +0000
 tags:
   c++-style
-  pearls
+  preprocessor
   sufficiently-smart-compiler
 ---
 

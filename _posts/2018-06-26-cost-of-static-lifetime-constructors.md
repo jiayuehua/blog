@@ -6,6 +6,7 @@ tags:
   hyperrogue
   initializer-list
   pitfalls
+  war-stories
 ---
 
 I was looking at HyperRogue again this week (see [my previous post](/blog/2018/06/17/std-size)).
