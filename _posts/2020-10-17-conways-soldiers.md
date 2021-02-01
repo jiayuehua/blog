@@ -27,7 +27,7 @@ of the winning strategy, which provably must use every single one of the pegs:
 ----
 
 Incidentally, Conway died earlier this year, of COVID-19, causing me to update
-["Hello Muddah, Hello Faddah (Coronavirus Version)"](https://quuxplusone.github.io/blog/2020/04/08/hello-muddah/) (2020-04-08)
+["Hello Muddah, Hello Faddah (Coronavirus Version)"](/blog/2020/04/08/hello-muddah/) (2020-04-08)
 with another verse:
 
 > Rest in peace, John / Horton Conway,  

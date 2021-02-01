@@ -52,4 +52,4 @@ where that data member itself is of type `U`."
 
 See also:
 
-* ["Implementation divergence with `friend`"](https://quuxplusone.github.io/blog/2019/09/10/friend-access-inconsistencies/) (2019-09-10)
+* ["Implementation divergence with `friend`"](/blog/2019/09/10/friend-access-inconsistencies/) (2019-09-10)
