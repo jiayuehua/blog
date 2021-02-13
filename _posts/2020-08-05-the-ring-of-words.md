@@ -3,6 +3,7 @@ layout: post
 title: "What I'm reading lately: _The Ring of Words_"
 date: 2020-08-05 00:01:00 +0000
 tags:
+  etymology
   litclub
   old-shit
   today-i-learned

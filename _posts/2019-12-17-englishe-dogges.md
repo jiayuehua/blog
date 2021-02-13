@@ -4,6 +4,7 @@ title: '_De Canibus Britannicis_'
 date: 2019-12-17 00:01:00 +0000
 tags:
   blog-roundup
+  etymology
   litclub
   memes
   old-shit
