@@ -554,6 +554,13 @@ A template template parameter is like `template<template<class> class TC>`.
 
 A non-type template parameter is like `template<int V>` or `template<auto V>`.
 
+## NUA
+
+`[[no_unique_address]]`, an attribute that is new in C++20. I would never abbreviate it myself,
+but I'm starting to notice people using "NUA" in Slack, so, into the glossary it goes!
+
+C++20 introduced `[[no_unique_address]]` basically to get rid of the need for the [EBO](#ebo-ebco).
+
 ## NVI
 
 "Non-virtual interface." This rare acronym refers to the increasingly common (and, in my view, good)
@@ -947,7 +954,6 @@ will ultimately be selected as _the_ destructor for the class.)
 Notice that "specialness" is imperfectly correlated with the ability to `=default` the member function.
 `Foo::Foo(int=0)` is a default constructor (and thus an SMF of `Foo`), but cannot be `=default`ed.
 In C++20, `operator<=>` and `operator==` can both be defaulted, yet neither of them is an SMF.
-
 
 ## STL
 
