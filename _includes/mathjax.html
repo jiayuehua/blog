@@ -11,7 +11,7 @@ window.MathJax = {
       MathJax.startup.defaultReady();
       const Macro = MathJax._.input.tex.Symbol.Macro;
       const MapHandler = MathJax._.input.tex.MapHandler.MapHandler;
-      const Array = MathJax._.input.tex.ams.AmsMethods.default.Array;
+      const Array = MathJax._.input.tex.ams.AmsMethods.AmsMethods.Array;
       const env = new Macro('psmallmatrix', Array, [null, '(', ')', 'c', '.333em', '.2em', 'S', 1]);
       MapHandler.getMap('AMSmath-environment').add('psmallmatrix', env);
     }
