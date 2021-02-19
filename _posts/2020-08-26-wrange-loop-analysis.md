@@ -4,6 +4,7 @@ title: '`-Wrange-loop-bind-reference` and `auto&&`'
 date: 2020-08-26 00:01:00 +0000
 tags:
   c++-style
+  compiler-diagnostics
   lifetime-extension
   llvm
 ---

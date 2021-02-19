@@ -4,6 +4,7 @@ title: 'Two musings on the design of compiler warnings'
 date: 2020-09-02 00:01:00 +0000
 tags:
   c++-style
+  compiler-diagnostics
   language-design
   rant
 ---

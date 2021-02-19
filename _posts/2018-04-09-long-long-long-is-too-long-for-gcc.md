@@ -3,6 +3,7 @@ layout: post
 title: 'A modest proposal for a GCC diagnostic'
 date: 2018-04-09 00:02:00 +0000
 tags:
+  compiler-diagnostics
   memes
   pitfalls
   this-should-exist

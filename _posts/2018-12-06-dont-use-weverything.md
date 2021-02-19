@@ -4,6 +4,7 @@ title: "Don't put `-Weverything` in your build flags"
 date: 2018-12-06 00:01:00 +0000
 tags:
   c++-style
+  compiler-diagnostics
   llvm
 ---
 

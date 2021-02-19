@@ -4,10 +4,11 @@ title: "How different compilers deal with provably unused entities"
 date: 2020-12-02 00:01:00 +0000
 tags:
   access-control
+  compiler-diagnostics
   implementation-divergence
   llvm
-  language-design
   proposal
+  sufficiently-smart-compiler
 ---
 
 The other day, I was asked whether we should worry about the space

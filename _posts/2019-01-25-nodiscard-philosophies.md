@@ -4,6 +4,7 @@ title: "`nodiscard` philosophies"
 date: 2019-01-25 00:01:00 +0000
 tags:
   attributes
+  compiler-diagnostics
   library-design
 ---
 
