@@ -144,6 +144,20 @@ object file (extension .obj) that MSVC produces — in fact the urge to distribu
 even _rarer_ than the urge to distribute .obj files. Probably the best analogy really is to .pch files —
 one of the things C++2a Modules are aiming to replace.
 
+## CAS
+
+Usually stands for "[compare and swap](https://en.wikipedia.org/wiki/Compare-and-swap),"
+a primitive atomic operation. The C++ standard library consistently calls this operation
+[`compare_exchange`](https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange),
+and provides `_strong` (no-spurious-failure) and `_weak` (spurious-failure-possible) versions.
+
+Sometimes you might see "CAS" used to mean
+"[copy and swap](https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom),"
+a C++ idiom that implements copy-assignment in terms of copy-constructing and then swapping.
+Compared to "open-coding" your assignment operator, the copy-and-swap idiom provides a simple,
+mechanical way to achieve both correctness and the strong exception guarantee. Some people
+say it's overhyped or overused. Personally, I recommend it — and I never abbreviate it!
+
 ## CPO
 
 "Customization point object." This is a notion introduced by Eric Niebler's Ranges library,
