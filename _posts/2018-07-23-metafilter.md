@@ -3,6 +3,7 @@ layout: post
 title: 'Template metaprogramming: Iteration is better than recursion'
 date: 2018-07-23 00:02:00 +0000
 tags:
+  compile-time-performance
   metaprogramming
   templates
   variadic-templates

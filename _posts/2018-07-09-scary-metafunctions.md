@@ -3,6 +3,7 @@ layout: post
 title: 'SCARY metafunctions'
 date: 2018-07-09 00:02:00 +0000
 tags:
+  compile-time-performance
   library-design
   metaprogramming
 ---
