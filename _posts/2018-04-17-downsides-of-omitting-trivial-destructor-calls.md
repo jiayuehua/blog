@@ -27,7 +27,7 @@ Which of these two functions — `foo` or `bar` — do you expect to give better
         v.pop_back();
     }
 
-[Compile both with GCC and libstdc++.](https://godbolt.org/g/nn2Xfc)
+[Compile both with GCC and libstdc++.](https://godbolt.org/z/rsx45K)
 Did you guess correctly?
 
     foo:
@@ -58,3 +58,10 @@ is dead, and *cannot* eliminate the multiplication by `0xDEADBEEF`.
 This happens for all trivial destructors, not just for pseudo-destructors like `~int()`.
 Replace our `~Integer() {}` with `~Integer() = default;` and watch the `imull` instruction
 reappear!
+
+----
+
+UPDATE, March 2021: Trivially destructible objects' lifetimes are now correctly
+ended by pseudo-destructor calls. This was one of the effects of Richard Smith's
+[P0593 "Implicit creation of objects for low-level object manipulation,"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p0593r6.html#7543-destruction-exprprimiddtor)
+adopted into C++20 (but implemented by GCC 11 in all language modes, thank goodness).
