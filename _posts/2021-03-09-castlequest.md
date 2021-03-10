@@ -28,7 +28,7 @@ _Adventure_'s actual source code). _Castlequest_ opens like this:
     the shutters.  There is a nightstand nearby with a single wooden
     drawer.  The door west creaks in the breeze.  A macabre portrait
     hangs to the left of an empty fireplace.
-
+    The shutters are closed.
     There is a silver bullet here.
 
 Similar to _Adventure_, there are wandering nuisance monsters — but this
