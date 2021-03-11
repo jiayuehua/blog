@@ -53,14 +53,14 @@ Funny story...
 
 See, one of the few references to _Castlequest_ on the Internet prior to
 this decade was on the website of the U.S. Copyright Office. Back in 1981,
-Mike Holtzman had submitted the program for archival — a service the USCTO
+Mike Holtzman had submitted the program for archival — a service the USCO
 still provides, even though all creative works are automatically _protected_
 under U.S. copyright law whether they're submitted for archival or not.
 So it was overkill on Holtzman's part, legally speaking... but I'm sure glad
 he did it! The documentation submitted by Holtzman was assigned the
 number [TXu000091366](https://cocatalog.loc.gov/cgi-bin/Pwebrecon.cgi?Search_Arg=TXu000091366&Search_Code=REGS&CNT=10&HIST=1),
 and remained on file somewhere in the depths of Washington, D.C., for
-forty years. However, the USCTO entry doesn't say what kind of documentation
+forty years. However, the USCO entry doesn't say what kind of documentation
 was submitted. (I assumed it would be a game transcript or walkthru.)
 
 I made contact with Mike Holtzman for just a couple of months in 2016,
@@ -71,8 +71,8 @@ that he'd forgotten.)
 
 Then, in 2020, I got an email from the _other_ author, Mark Kershenblatt,
 whom I _did_ persuade to attempt retrieval! The retrieval process required
-USCTO employees to search the physical archive, which meant that it was
-very slow: the coronavirus pandemic had reduced the USCTO's headcount and
+USCO employees to search the physical archive, which meant that it was
+very slow: the coronavirus pandemic had reduced the USCO's headcount and
 hours. But just a week ago, Mark emailed me to say that the records had
 been found, copied, and snail-mailed to him!
 
@@ -81,7 +81,7 @@ a transcript — it was the full Fortran source code and data files for the
 entire game, all 78 pages, printed out in _remarkably_ high quality!
 (Naturally, Mike did it on his office printer. Times haven't changed a bit.)
 
-So the USCTO sent Mark copies of all 78 pages; Mark went to Staples,
+So the USCO sent Mark copies of all 78 pages; Mark went to Staples,
 scanned them in, and uploaded them to Dropbox; I downloaded them and...
 
 ...well, it turns out that even 16 years after the launch of Google Books,
@@ -104,7 +104,7 @@ plain-text version of the code!
 - 1981-10-22 ("81.295"): Holtzman, now employed at Grumman Data Systems,
     prints out the source code for the deposit.
 
-- 1981-11-06: The USCTO stamps Holtzman's deposit.
+- 1981-11-06: The USCO stamps Holtzman's deposit.
 
 - 1983-07-??: _Compute!_ magazine publishes a BASIC game by Timothy G. Baldwin,
     coincidentally also named "Castle Quest". Holtzman (and Kershenblatt?)
@@ -125,9 +125,9 @@ plain-text version of the code!
 
 - 2020-07-28: Mark Kershenblatt first emails me (from a gmail.com address).
 
-- 2020-10-06 (less "a couple of days"): Mark Kershenblatt begins the USCTO retrieval process.
+- 2020-10-06 (less "a couple of days"): Mark Kershenblatt begins the USCO retrieval process.
 
-- 2021-03-02: Mark Kershenblatt receives the packet of source code from the USCTO.
+- 2021-03-02: Mark Kershenblatt receives the packet of source code from the USCO.
 
 - 2021-03-09: I finish transcribing Mark's scanned PDF and upload the code to GitHub.
 
@@ -183,3 +183,9 @@ data files and in the code, begin with the digit character `0`.
 and date (`TOD`), initializing the random number generator (`RDMIN`),
 generating random real numbers (`RDM`), and maybe a couple
 other builtins I failed to notice.
+
+----
+
+UPDATE: The game _can_ be compiled! See:
+
+* ["Making _Castlequest_ compilable"](/blog/2021/03/11/castlequest-update/) (2021-03-11)
