@@ -7,6 +7,10 @@ tags:
   implicit-move
 ---
 
+> Language lawyers may want to read the UPDATE at the bottom of this post
+> before the rest. I think everything discussed here is, technically speaking,
+> ill-formed.
+
 As of C++20, thanks to [P1155 "More implicit move,"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1155r3.html)
 `throw x` gets the same implicit-move semantics as `return x`. So you can do, for example,
 
@@ -117,3 +121,24 @@ ill-formed (because `p` is a move-eligible _id-expression_, therefore an xvalue;
 constructible only from lvalues), and so `main` should return 2.
 
 At least, that's how I think `decltype(throw p)` should work. What do you think?
+
+----
+
+UPDATE, 2021-03-19: Reddit commenter "scatters" points out that C++20 `requires`-expressions
+permit us to express the trouble even more cleanly:
+
+    template<class T> requires requires (T p) { throw p; }
+    void f(T p) { return 1; }
+
+    template<class T>
+    void f(T p) { return 2; }
+
+    int main() { return f(AutoPtr()); }
+
+Clang and MSVC call #1; GCC hard-errors; ICC doesn't support `requires` yet.
+
+Interestingly, MSVC believes even that `requires (T& p) { throw p; }` is true,
+although it clearly is not. This discovery reminded me that actually _everything discussed
+in this entire post is ill-formed, diagnostic required._ See
+["MSVC can’t handle move-only exception types"](/blog/2019/05/11/msvc-what-are-you-doing/)
+(2019-05-11) and [[except.throw/5](http://eel.is/c++draft/except.throw#5)].
