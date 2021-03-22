@@ -513,4 +513,4 @@ that there's more to find:
 But I seem to have run out of areas to explore, again.
 To be continued...
 
-* ["Playing _Castlequest_ (1980), Part 2"](/blog/2021/03/20/all-the-adcastlequest-part-2/)
+* ["Playing _Castlequest_ (1980), Part 2"](/blog/2021/03/20/all-the-adcastlequest-part-2/) (2021-03-20)

@@ -226,3 +226,5 @@ so even my [298-line walkthru](/blog/code/2021-03-20-castlequest-walkthru.txt)
 counts as only about 210 moves.
 
 Tomorrow: some observations on the source code.
+
+* ["Observations on _Castlequest_'s code"](/blog/2021/03/21/castlequest-vs-adventure/) (2021-03-21)
