@@ -20,9 +20,7 @@ medium ship. Jonathan Baker has described an aggressive opening tactic called th
 when Lee's homeworld contains a small piece, Ray can take the second small as well as a big ship
 in that color, thus freezing Lee out of that color unless Lee trades his large ship.
 
-|:--------------------------------------------------------------------------:|
-| ![Instafreeze in green.](/blog/images/2021-02-21-instafreeze-in-green.png) |
-|:--------------------------------------------------------------------------:|
+![Instafreeze in green.](/blog/images/2021-02-21-instafreeze-in-green.png){: .meme}
 
 The instafreeze happens during setup, and is driven entirely by Ray; Lee's role is simply reactive.
 This next gambit — the one I noticed in the tournament — is set in motion by Lee, and is interactive.
