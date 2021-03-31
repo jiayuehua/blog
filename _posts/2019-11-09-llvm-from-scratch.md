@@ -146,6 +146,11 @@ This time, `cmake` takes about 58 seconds; `ninja clang` takes about 153 minutes
 `ninja cxx` takes about 84 seconds.
 `ninja check-cxx` takes about 50 minutes (but see the caveat below about `cxx_under_test`).
 
+You can invoke CMake with `-DCMAKE_BUILD_TYPE=Debug` to produce a `clang` binary with assertions enabled.
+This takes only about 60 minutes to build, but you wouldn't want to use the resulting binary for
+anything heavy-duty because it's so slow.
+
+
 ## Step 5: Run specific tests.
 
 Running a specific test or directory-of-tests for any product is easy:
@@ -153,7 +158,7 @@ Running a specific test or directory-of-tests for any product is easy:
     cd $ROOT/llvm-project/build2
     ./bin/llvm-lit -sv ../llvm/test/Analysis
     ./bin/llvm-lit -sv ../clang/test/ARCMT
-    ./bin/llvm-lit -sv ../libcxx/test/std/re
+    ./bin/llvm-lit -sv --param std=c++17 ../libcxx/test/std/re
 
 However, before you can successfully run one of these lines,
 you must have run the corresponding one of `make check-{llvm,clang,cxx}`
@@ -166,7 +171,7 @@ But watch out — both `make check-cxx` and `llvm-lit` will by default use your 
 to run the libc++ tests! This is not what you want! Tell `llvm-lit` to use your newly built Clang
 by passing the `cxx_under_test` parameter, like this:
 
-    ./bin/llvm-lit -sv --param cxx_under_test=`pwd`/bin/clang ../libcxx/test/
+    ./bin/llvm-lit -sv --param std=c++17 --param cxx_under_test=`pwd`/bin/clang ../libcxx/test/
 
 On my laptop, this command line again takes about 50 minutes to run all the libc++ tests,
 but this time it correctly uses the bootstrapped compiler.
