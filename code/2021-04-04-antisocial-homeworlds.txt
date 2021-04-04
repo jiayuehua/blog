@@ -1,0 +1,24 @@
+A (y2g1) g3-
+build g1
+move g3 to B (b3)
+build g1 at B
+sac g3; build g2 at A; build g2g2 at B
+trade g2 for y2 at B
+move g1 from B to C (b2)
+build g2 at C
+build g3 at B
+move g1 from C to D (y1)
+factory; build g3g3 at C
+trade g2 for r2 at C
+factory; build g2 at D; build y1 at B
+move y1 from B to E (b1)
+factory; build y1y2 at E
+factory; build y3y3 at B
+factory; build r1r1 at C
+sac y3; move r1 to F (b1); move r1 to G (b1); move y1 to H (b3)
+factory; build r1r2 at F
+factory; build r2r3 at G
+factory; build y3y3 at H
+sac y3 at B; move r3 to I (b2); move g2 to J (b2); move g3 to K (b3)
+factory; build r3r3 at I
+build y3 at B
