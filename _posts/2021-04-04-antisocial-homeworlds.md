@@ -131,7 +131,7 @@ out, would be 17 turns. But in fact you'll build only one ship on your first tur
 and at some point you'll probably have to trade colors, netting zero points for that
 turn. I don't know what the lowest _achievable_ number of turns is.
 
-So far, my best is 22 turns ([spoiler walkthru](/blog/code/2021-04-04-antisocial-homeworlds.txt)).
+So far, my best is 21 turns ([spoiler walkthru](/blog/code/2021-04-04-antisocial-homeworlds.txt)).
 Can you do better?
 
 ----
