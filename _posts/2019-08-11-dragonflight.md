@@ -17,6 +17,7 @@ Hit F1 (or alternatively, `';'`) to bring up the help screen.
 <script src="/blog/code/js-dos.js"></script>
 <script>
   Dos(document.getElementById("jsdos"), {
+    wdosboxUrl: "/blog/code/wdosbox.js",
   }).ready((fs, main) => {
     fs.extract("/blog/code/2019-08-11-dflight.zip").then(() => {
       main(["-c", "loop.bat"])
