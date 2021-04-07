@@ -77,7 +77,7 @@ attributes-friendness-storage-constness-virtualness-explicitness-signedness-leng
 
 <b>Signedness-length-type:</b> Write `unsigned long`, not `long unsigned`.
 Observe that `unsigned long int` is intimately related to `long int`
-way that `unsigned int` and `unsigned long int` are not:
+in a way that `unsigned int` and `unsigned long int` are not:
 there are [places](https://eel.is/c++draft/expr#basic.lval-11.2) where
 signedness is ignored by the language, and there's a
 [`make_signed` type trait](https://en.cppreference.com/w/cpp/types/make_signed)
