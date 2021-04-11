@@ -18,9 +18,8 @@ This time it's a multi-part series on the myth of the
 
 * ["Part I: Soldiers, Warriors, and..."](https://acoup.blog/2021/01/29/collections-the-universal-warrior-part-i-soldiers-warriors-and/)
 * ["Part IIa: The Many Faces of Battle"](https://acoup.blog/2021/02/05/collections-the-universal-warrior-part-iia-the-many-faces-of-battle/)
-* ["Part IIb: A Soldier’s Lot"](https://acoup.blog/2021/02/12/collections-the-universal-warrior-part-iib-a-soldiers-lot/)
-
-(As of this writing, Part III has yet to be released.)
+* ["Part IIb: A Soldier's Lot"](https://acoup.blog/2021/02/12/collections-the-universal-warrior-part-iib-a-soldiers-lot/)
+* ["Part III: The Cult of the Badass"](https://acoup.blog/2021/02/19/collections-the-universal-warrior-part-iii-the-cult-of-the-badass/)
 
 In the process, I learned that the word "shock" has many meanings — feeling shocked ([shocked!](https://www.youtube.com/watch?v=SjbPi00k_ME)),
 going into shock (cardiac, septic, hemorrhagic), getting an electric shock, being hit by a shock wave —
