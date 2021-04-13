@@ -148,8 +148,8 @@ all the other treasures), and then when we go back up in the elevator:
     Jump from where??
     > OUT
     There is no way to go in that direction.
-    OPEN DOOR
-    > I see no door here.
+    > OPEN DOOR
+    I see no door here.
     > HINT AXE
     Sorry, not available.
     > HINT ROOM
