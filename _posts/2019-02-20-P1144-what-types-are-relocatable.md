@@ -172,3 +172,8 @@ The following types aren't relocatable at all (because they aren't move-construc
 - `locale` and `exception_ptr` are just gussied-up (copy-only) `shared_ptr`s.
 
 - `valarray` is basically a `vector` as far as its memory management is concerned. It stores a pointer and a length.
+
+----
+
+See also Howard Hinnant's ["Container Survey"](http://howardhinnant.github.io/container_summary.html) (June 2015),
+which tabulates which containers' special member functions are `noexcept`.
