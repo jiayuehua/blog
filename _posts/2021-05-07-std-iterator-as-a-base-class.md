@@ -173,7 +173,8 @@ So `it` contains two empty base classes, _both_ of type
 `iterator<random_access_iterator_tag, T, ptrdiff_t, T*, T&>`. In C++, base-class subobjects
 are distinct objects in their own right, and two objects of the same type cannot occupy the same
 address; so the [EBO](/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#ebo-ebco) applies to
-only one of them. Our reversed reverse-iterator object ends up occupying 16 bytes, not just 8!
+only one of them. (Jonathan Wakely has called this the "empty-base exclusion principle.")
+Our reversed reverse-iterator object ends up occupying 16 bytes, not just 8!
 ([Godbolt](https://godbolt.org/z/7a946Tx6K) showing the behavior on libstdc++.)
 
 > If you try this on libc++, you'll find that the original `reverse_iterator` occupies 16 bytes
@@ -215,3 +216,31 @@ the `Widget` result in the wrong place and occupying the wrong number of bytes.
 
 Conclusion: For a library vendor, removing the deprecated empty base class from
 `reverse_iterator` counts an ABI break.
+
+----
+
+UPDATE, 2021-05-08: It's been brought to my attention that the C++20 Ranges library
+starts the whole damn cycle over again! Ranges provides a convenience base class
+
+    struct view_base {};
+
+which isn't even a template at all — it's literally no more than a tag type —
+but then the CRTP base class [`view_interface`](https://en.cppreference.com/w/cpp/ranges/view_interface)
+inherits from that, and then _every range adaptor_
+inherits from some specialization of `view_interface`!
+
+    template<class Crtp>
+    struct view_interface : view_base { ~~~ };
+
+    template<class V>
+    class reverse_view : public view_interface<reverse_view<V>> { ~~~ };
+
+The result is that you _would_ get the same bloated class layout from `reverse_view`
+as you get from `reverse_iterator`... except that Ranges
+actually does the "optimization" where reversing a `reverse_view`
+produces the original view again! That is, `std::views::reverse` is overloaded
+so that when its argument `x` is a `reverse_view`, the result of `std::views::reverse(x)`
+is just `x.base()`. ([Godbolt.](https://godbolt.org/z/nsWq1dMPq))
+
+If Ranges is still around 10 years from now, I predict at least a couple papers
+deprecating inheritance from `view_base`.
