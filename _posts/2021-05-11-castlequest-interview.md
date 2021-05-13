@@ -4,6 +4,8 @@ title: "An interview with Arthur O'Dwyer"
 date: 2021-05-11 00:01:00 +0000
 tags:
   adventure
+  castlequest
+  digital-antiquaria
 ---
 
 You might have noticed in your news feed recently a piece by David Cassel for

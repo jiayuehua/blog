@@ -4,6 +4,7 @@ title: "A bug in _Adventure_'s endgame"
 date: 2020-02-06 00:01:00 +0000
 tags:
   adventure
+  digital-antiquaria
   knuth
   war-stories
 ---

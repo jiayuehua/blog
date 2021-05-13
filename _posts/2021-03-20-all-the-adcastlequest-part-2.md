@@ -3,7 +3,8 @@ layout: post
 title: "Playing _Castlequest_ (1980), Part 2"
 date: 2021-03-20 00:01:00 +0000
 tags:
-  adventure
+  castlequest
+  digital-antiquaria
 ---
 
 Previously on this blog: ["Playing _Castlequest_ (1980), Part 1"](/blog/2021/03/19/all-the-adcastlequest-part-1/)

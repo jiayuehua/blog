@@ -4,6 +4,8 @@ title: "Nifty notebooks, and _Almazar_"
 date: 2021-05-13 00:01:00 +0000
 tags:
   adventure
+  castlequest
+  digital-antiquaria
 ---
 
 Thanks to my posts on _Castlequest_, I've been receiving the occasional email

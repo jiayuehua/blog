@@ -4,6 +4,8 @@ title: "Playing _Castlequest_ (1980), Part 1"
 date: 2021-03-19 00:01:00 +0000
 tags:
   adventure
+  castlequest
+  digital-antiquaria
 excerpt: |
   Earlier this week I posted that the source code for _Castlequest_ (Holtzman and Kershenblatt, 1980)
   had been found — ["_Castlequest_ exhumed!"](/blog/2021/03/09/castlequest/) (2021-03-09).

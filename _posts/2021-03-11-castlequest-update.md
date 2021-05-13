@@ -3,7 +3,8 @@ layout: post
 title: "Making _Castlequest_ compilable"
 date: 2021-03-11 00:01:00 +0000
 tags:
-  adventure
+  castlequest
+  digital-antiquaria
 ---
 
 Earlier this week I posted that the source code for _Castlequest_ (Holtzman and Kershenblatt, 1980)

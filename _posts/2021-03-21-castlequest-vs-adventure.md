@@ -4,6 +4,8 @@ title: "Observations on _Castlequest_'s code"
 date: 2021-03-21 00:01:00 +0000
 tags:
   adventure
+  castlequest
+  digital-antiquaria
 ---
 
 Holtzman and Kershenblatt's _Castlequest_ was inspired by Crowther and

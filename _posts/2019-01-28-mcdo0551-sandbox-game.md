@@ -4,6 +4,7 @@ title: "Colossal Cave Adventure: open world challenge"
 date: 2019-01-28 00:02:00 +0000
 tags:
   adventure
+  digital-antiquaria
   puzzles
   web
 ---

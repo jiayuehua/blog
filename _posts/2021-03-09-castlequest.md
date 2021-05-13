@@ -4,6 +4,8 @@ title: "_Castlequest_ exhumed!"
 date: 2021-03-09 00:01:00 +0000
 tags:
   adventure
+  castlequest
+  digital-antiquaria
 ---
 
 "Lost game" _Castlequest_ (1980) has been found!

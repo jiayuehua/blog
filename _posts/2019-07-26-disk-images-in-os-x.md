@@ -3,6 +3,7 @@ layout: post
 title: "Making floppy disk images under OS X"
 date: 2019-07-26 00:01:00 +0000
 tags:
+  digital-antiquaria
   how-to
   sre
 ---

@@ -4,6 +4,7 @@ title: "Decompiling GOET0580"
 date: 2020-06-30 00:01:00 +0000
 tags:
   adventure
+  digital-antiquaria
   esolang
 ---
 

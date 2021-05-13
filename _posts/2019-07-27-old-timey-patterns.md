@@ -4,6 +4,7 @@ title: "A cellular automaton that makes beautiful little patterns"
 date: 2019-07-27 00:01:00 +0000
 tags:
   cellular-automata
+  digital-antiquaria
   esolang
   math
   web

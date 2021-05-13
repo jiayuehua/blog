@@ -4,6 +4,7 @@ title: "Adventure 448 (SWEN0448): All the easter eggs"
 date: 2021-02-27 00:01:00 +0000
 tags:
   adventure
+  digital-antiquaria
 ---
 
 This week Jason Dyer played Adventure 448, in a couple of blog posts:
