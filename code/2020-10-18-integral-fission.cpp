@@ -113,9 +113,7 @@ private:
         Integer prime_increment;
         explicit pair(Integer a, Integer b) : next_crossed_off_value(a), prime_increment(b) {}
         bool operator<(const pair& rhs) const {
-            return next_crossed_off_value < rhs.next_crossed_off_value ? true
-                 : next_crossed_off_value > rhs.next_crossed_off_value ? false
-                 : prime_increment < rhs.prime_increment;
+            return next_crossed_off_value < rhs.next_crossed_off_value;
         }
         bool operator>(const pair& rhs) const { return rhs < *this; }
     };
