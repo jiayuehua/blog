@@ -27,28 +27,30 @@ using Integer = long long;  // to compute term 29729, change this to "long long"
 class sieverator {
 public:
     explicit sieverator() {
-        m_pq.emplace(9, 3);
-        m_current = 3;
+        m_pq.emplace(25, 10, 30);
+        m_current = 5;
+        m_d = 4;
     }
     sieverator(const sieverator&) = delete;
     sieverator& operator=(const sieverator&) = delete;
 
     Integer next() {
         while (true) {
-            m_current += 2;
+            m_d = 6 - m_d;
+            m_current += m_d;
             while (m_current > m_pq.top().next_crossed_off_value) {
                 auto x = m_pq.top();
-                m_pq.reemplace_top(x.next_crossed_off_value + x.prime_increment, x.prime_increment);
+                m_pq.reemplace_top(x.next_crossed_off_value + x.delta1, x.delta2 - x.delta1, x.delta2);
             }
             if (m_current == m_pq.top().next_crossed_off_value) {
                 while (m_current == m_pq.top().next_crossed_off_value) {
                     auto x = m_pq.top();
-                    m_pq.reemplace_top(x.next_crossed_off_value + x.prime_increment, x.prime_increment);
+                    m_pq.reemplace_top(x.next_crossed_off_value + x.delta1, x.delta2 - x.delta1, x.delta2);
                 }
             } else {
                 // Found a new prime. Start crossing off multiples of it, and return.
                 if (m_current < std::numeric_limits<Integer>::max() / m_current) {
-                    m_pq.emplace(m_current * m_current, m_current);
+                    m_pq.emplace(m_current * m_current, ((m_current % 3 == 1) ? 4 : 2) * m_current, 6 * m_current);
                 }
                 return m_current;
             }
@@ -61,7 +63,7 @@ public:
         result.push_back(2);
         result.push_back(3);
         for (const auto& pair : m_pq.vector()) {
-            result.push_back(pair.prime_increment);
+            result.push_back(pair.delta2 / 6);
         }
         std::sort(result.begin(), result.end());
         result.erase(std::lower_bound(result.begin(), result.end(), n), result.end());
@@ -110,8 +112,9 @@ private:
 
     struct pair {
         Integer next_crossed_off_value;
-        Integer prime_increment;
-        explicit pair(Integer a, Integer b) : next_crossed_off_value(a), prime_increment(b) {}
+        Integer delta1;
+        Integer delta2;
+        explicit pair(Integer a, Integer b, Integer c) : next_crossed_off_value(a), delta1(b), delta2(c) {}
         bool operator<(const pair& rhs) const {
             return next_crossed_off_value < rhs.next_crossed_off_value;
         }
@@ -121,6 +124,7 @@ private:
 
     min_heap<pair> m_pq;
     Integer m_current;
+    int m_d;
 };
 
 class Primes {
