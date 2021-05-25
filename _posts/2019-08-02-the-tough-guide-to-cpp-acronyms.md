@@ -235,6 +235,21 @@ than to remember what the feature does! It deduces the template arguments to the
 _class_ template. The arguments to any particular constructor template are deduced,
 as always, via [template argument deduction](https://en.cppreference.com/w/cpp/language/template_argument_deduction).)
 
+## CTRE
+
+"Compile-time regular expressions." Specifically,
+[Hana Dusíková's `ctre` library](https://github.com/hanickadot/compile-time-regular-expressions),
+which allows you to write things like
+
+    #include <ctre.hpp>
+    static_assert(ctre::match<"^h.*[wxyz]orl[^y]">("hello world"));
+
+The current version of CTRE relies on C++20's class-type [NTTPs](#NTTP). Before C++20, it relied on
+a compiler extension supported by GCC 8.x and Clang 5–11 (but no longer by either compiler's trunk):
+
+    using namespace ctre::literals;
+    static_assert("^h.*[wxyz]orl[^y]"_ctre.match("hello world"));
+
 ## CWG, EWG, EWGI, LEWG, LEWGI, LWG
 
 These are the main working groups of the [ISO C++ Committee](https://isocpp.org/std/the-committee)
