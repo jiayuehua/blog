@@ -238,3 +238,9 @@ on "number of function parameters in a function type."
 
 So now we've got a GUID-based solution permitting four-digit GUIDs.
 Can we do any better?
+
+----
+
+See also:
+
+* ["Overly interoperable libraries, part 3"](/blog/2021/05/26/after-you-solution/) (2021-05-26)

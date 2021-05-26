@@ -90,3 +90,11 @@ Even better would be a mechanism supporting 2<sup>64</sup> different GUIDs, or e
 GUIDs at all.
 
 Can you solve it?
+
+----
+
+See also:
+
+* ["Overly interoperable libraries, part 2"](/blog/2021/05/22/after-you-part-two/) (2021-05-22)
+
+* ["Overly interoperable libraries, part 3"](/blog/2021/05/26/after-you-solution/) (2021-05-26)
