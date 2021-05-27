@@ -26,10 +26,13 @@ for the whole three-day package.
 The schedule of talks for the "conference day" has not yet been announced,
 but judging from past years ([2020](https://cpponsea.uk/2020/schedule/),
 [2019](https://cpponsea.uk/2019/schedule/)), I'd predict that there will be
-about three tracks of about five talks each.
+about three tracks of about five talks each. (UPDATE, 2021-05-27:
+[The schedule has been announced](https://cpponsea.uk/2021/schedule/)
+as two tracks of five talks each, plus a plenary keynote.)
 
-The schedule of classes and workshops also has not yet been announced — I'll
-update this post when it is — but I can say with confidence that _one_ of the
+The schedule of classes and workshops also has not yet been announced (UPDATE:
+[yes it has been](/blog/2021/05/27/cpponsea-schedule-announced/))
+but I can say with confidence that _one_ of the
 classes you'll be able to attend will be Arthur O'Dwyer's "Modern STL Programming:
 Algorithms, Containers, Iterators."
 
