@@ -48,18 +48,18 @@ compute `(x < 0) ? -x : x`. If it's unsigned, we simply return `x`.
 
     // A
     template<class T>
-    T abs_impl(T x, std::true_type) {
+    T abs_impl(T x, std::false_type) {
         return (x < 0) ? -x : x;
     }
 
     template<class T>
-    T abs_impl(T x, std::false_type) {
+    T abs_impl(T x, std::true_type) {
         return x;
     }
 
     template<class T>
     T abs_value(T x) {
-        return abs_impl(x, std::is_signed<T>{});
+        return abs_impl(x, std::is_unsigned<T>{});
     }
 
     int main() {
@@ -180,6 +180,21 @@ My understanding is that _this_ is what Stroustrup refers to as
 
 ## Final thoughts
 
+> UPDATE, 2021-06-08: I've changed my snippets `F`, `G`, and `H` to
+> relax the `signed_integral` constraint into `integral`; originally, I'd relaxed
+> the `unsigned_integral` constraint. Reddit commenter "Quincunx271" rightly
+> [pointed out](https://www.reddit.com/r/cpp/comments/numb1c/tag_dispatch_versus_concept_overloading/h0ynpyj)
+> that that way was strictly worse. Our new version of `F` has one generic overload
+> that works correctly for all integral types, plus a faster overload for unsigned types.
+> (This is the same overall pattern as `D` and `E`.)
+> My original post's `F` had a generic overload that worked correctly for unsigned
+> types but _incorrectly_ for signed types, and then an overload "rescuing" the correct
+> behavior for signed types. That was unnecessarily silly of me.
+>
+> Reddit commenter "sphere991" observes that in real life we could use `if constexpr`.
+> I absolutely agree; I prefer `if constexpr` over any multi-function
+> approach. But this post wasn't about `if constexpr`; it was about "concept overloading." :)
+
 It seems to be the current wisdom that if you're writing an
 overload set with C++20 Concepts, you needn't go out of your way
 to make your constraints mutually exclusive. I claim that all of my
@@ -189,12 +204,12 @@ or the other of the overloads in snippet `B`, or relax it until
 it was no longer mutually exclusive. Thus:
 
     // F
-    template<std::signed_integral T>
+    template<std::integral T>  // note: NOT signed_integral
     T abs_value(T x) {
         return (x < 0) ? -x : x;
     }
 
-    template<std::integral T>  // note: NOT unsigned_integral
+    template<std::unsigned_integral T>
     T abs_value(T x) {
         return x;
     }
@@ -203,18 +218,18 @@ The tag-dispatch equivalent would be to replace `false_type` with an ellipsis:
 
     // G
     template<class T>
-    T abs_impl(T x, std::true_type) {
+    T abs_impl(T x, ...) {
         return (x < 0) ? -x : x;
     }
 
     template<class T>
-    T abs_impl(T x, ...) {
+    T abs_impl(T x, std::true_type) {
         return x;
     }
 
     template<class T>
     T abs_value(T x) {
-        return abs_impl(x, std::is_signed<T>{});
+        return abs_impl(x, std::is_unsigned<T>{});
     }
 
 or use a template of two parameters:
@@ -222,7 +237,7 @@ or use a template of two parameters:
     // H
     template<class T, class U>
     T abs_impl(T x, U) {
-        return x;
+        return (x < 0) ? -x : x;
     }
 
 Personally, I would vastly prefer to read snippet `A` than
