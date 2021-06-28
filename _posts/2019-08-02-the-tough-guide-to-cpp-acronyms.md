@@ -142,11 +142,11 @@ code (as one or more files [maybe with the extension .mpp](https://www.youtube.c
 You won't distribute the BMI file (extension .ifc) that MSVC produces, any more than you'd distribute the
 object file (extension .obj) that MSVC produces — in fact the urge to distribute .ifc files should be
 even _rarer_ than the urge to distribute .obj files. Probably the best analogy really is to .pch files —
-one of the things C++2a Modules are aiming to replace.
+one of the things C++20 Modules aim to replace.
 
 ## CAS
 
-Usually stands for "[compare and swap](https://en.wikipedia.org/wiki/Compare-and-swap),"
+Almost always stands for "[compare and swap](https://en.wikipedia.org/wiki/Compare-and-swap),"
 a primitive atomic operation. The C++ standard library consistently calls this operation
 [`compare_exchange`](https://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange),
 and provides `_strong` (no-spurious-failure) and `_weak` (spurious-failure-possible) versions.
@@ -158,10 +158,14 @@ Compared to "open-coding" your assignment operator, the copy-and-swap idiom prov
 mechanical way to achieve both correctness and the strong exception guarantee. Some people
 say it's overhyped or overused. Personally, I recommend it — and I never abbreviate it!
 
+In specialized contexts, you might see "CAS" used to mean
+"[content-addressed storage](https://en.wikipedia.org/wiki/Content-addressable_storage),"
+also known as "content-addressable memory" (CAM) or "associative storage."
+
 ## CPO
 
 "Customization point object." This is a notion introduced by Eric Niebler's Ranges library,
-which means it'll be new in C++2a.
+which means it's new in C++20.
 
 > A customization point object is a function object with a literal class type
 > that interacts with program-defined types while enforcing semantic requirements on that interaction.
@@ -172,7 +176,7 @@ That is, a CPO is an _object_ (not a function); it's callable; it's constexpr-co
 "interact with program-defined types"); and it's concept-constrained.
 
 (WG21 has a fetish for describing concept constraints as "semantic requirements,"
-even though C++2a Concepts are a purely syntactic feature because
+even though C++20 Concepts are a purely syntactic feature because
 [nobody knows how to specify semantic requirements](/blog/2018/09/08/problems-concepts-should-solve/#okay-so-to-recap-here-are-the-bi).
 The compiler can ensure that some `T` provides syntax for both `==` and `!=`, but it won't check their semantics.)
 
@@ -193,7 +197,7 @@ In practice, this looks more or less like
             return detail::swap_helper(a, b);
         };
 
-(The C++2a Committee Draft has a lot of wording inherited from Eric's Ranges-v3 to deal with
+(The C++20 standard has a lot of wording inherited from Eric's Ranges-v3 to deal with
 something colloquially known as the "poison pill"; but I observed, and Eric confirmed,
 that the poison pill hasn't been necessary ever since C++17 introduced a SFINAE-friendly `std::swap`.)
 
@@ -214,7 +218,7 @@ Maybe it should have been called a "C<sup>6</sup>O" instead!
 
 If you remove the adjectives "customizable, concept-constrained" from the above, then you have a
 function object that turns off ADL — but is not necessarily a customization point.
-The C++2a Ranges algorithms, such as `std::ranges::find`,
+The C++20 Ranges algorithms, such as `std::ranges::find`,
 [are like this](http://eel.is/c++draft/algorithms.requirements#2). Any callable, constexpr-constructible
 object is colloquially known as a "niebloid," in honor of Eric Niebler.
 A CPO is simply a niebloid that wraps a user-definable customization point.
@@ -363,7 +367,7 @@ The "flexible" member must have no array bound, and must appear as the last memb
 
 Flexible array members are not part of C++, and likely never will be, officially.
 Accessing off the end of an object will always technically be undefined behavior.
-Nevertheless, C++2a's [destroying `delete`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0722r1.html)
+Nevertheless, C++20's [destroying `delete`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0722r1.html)
 facility was designed specifically to support FAM-like techniques.
 
 ## GCC
@@ -407,7 +411,7 @@ expression `&Foo::setValue` or the type `void (Foo::*)(int)`.
 
 ## HALO
 
-"Heap Allocation eLision Optimization." This is the optimization on C++2a coroutines
+"Heap Allocation eLision Optimization." This is the optimization on C++20 coroutines
 referred to in [Gor Nishanov's talk](https://www.youtube.com/watch?v=8C8NnE1Dg4A&t=6m00s)
 on the "disappearing coroutine" (CppCon 2016).
 See "[Announcing `Quuxplusone/coro`](/blog/2019/07/03/announcing-coro-examples/)" (2019-07-03),
@@ -415,7 +419,7 @@ specifically [this example](https://coro.godbolt.org/z/5vjlk8); see also
 [P0981 "HALO: the joint response"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0981r0.html)
 (Richard Smith & Gor Nishanov, March 2018).
 
-Normally, each time you enter at the top of a C++2a coroutine and create its return object
+Normally, each time you enter at the top of a C++20 coroutine and create its return object
 (regardless of whether you're multi-threading)
 you'll have to heap-allocate enough space to store the coroutine's stack frame. However, in
 some specific cases where the compiler can statically determine the lifetime of the coroutine
@@ -425,7 +429,7 @@ the heap-allocation becomes unnecessary and can be "elided." This can happen qui
 generator/`co_yield` use-case, if your generator type is carefully crafted.
 My understanding is that HALO will basically never happen in the multi-threaded/`co_await` use-case.
 
-Even when the heap-allocation cannot be elided, C++2a `std::coroutine_traits` provides
+Even when the heap-allocation cannot be elided, C++20 `std::coroutine_traits` provides
 rudimentary hooks for the programmer to customize the heap allocation mechanism. See
 "[C++ Coroutines: Understanding the promise type](https://lewissbaker.github.io/2018/09/05/understanding-the-promise-type#customising-coroutine-frame-memory-allocation)"
 (Lewis Baker, September 2018).
@@ -517,11 +521,11 @@ and so that you don't have to scroll around while reading the code. The end resu
         // Now do several things that don't involve modifying `v`
     }
 
-For a dangerous example of using IILEs with C++2a Coroutines, see
+For a dangerous example of using IILEs with C++20 coroutines, see
 ["C++2a Coroutines and dangling references"](/blog/2019/07/10/ways-to-get-dangling-references-with-coroutines/#exciting-new-way-to-dangle-a-reference) (2019-07-10).
 
-The C++2a draft standard's [notion of "immediate invocation"](http://eel.is/c++draft/expr.const#def:immediate_invocation)
-has absolutely nothing to do with IILEs; it has to do with the evaluation of C++2a `consteval` functions.
+The C++20 standard's [notion of "immediate invocation"](http://eel.is/c++draft/expr.const#def:immediate_invocation)
+has absolutely nothing to do with IILEs; it has to do with the evaluation of C++20 `consteval` functions.
 
 ## LTO
 
@@ -750,7 +754,7 @@ For more on this topic, see my talk "[An Allocator is a Handle to a Heap](https:
 ## POD
 
 "[Plain Old Data](https://en.cppreference.com/w/cpp/named_req/PODType)."
-This term has been deprecated in C++2a, along with the type trait `std::is_pod<T>`.
+This term has been deprecated in C++20, along with the type trait `std::is_pod<T>`.
 
 ## QoI
 
@@ -842,7 +846,7 @@ but it is definitely still "deferred materialization of temporaries."
 I am not aware of any way to trigger "NRVO" other than via a `return` statement. It is
 technically allowed in `throw` statements as well, but
 [no compiler implements that feature](/blog/2018/04/09/elision-in-throw-statements/).
-It is also technically allowed in C++2a `co_return` statements, but neither Clang nor MSVC
+It is also technically allowed in C++20 `co_return` statements, but neither Clang nor MSVC
 implement that feature. (MSVC doesn't even do implicit move!)
 
 For more on this topic, see my talk
@@ -953,7 +957,7 @@ For more on SFINAE, see several of my conference talks:
 The "[Static Initialization Order Fiasco](https://isocpp.org/wiki/faq/ctors#static-init-order)."
 
 C++ guarantees ([[expr.const]/2](http://eel.is/c++draft/expr.const#2)) that certain kinds of global
-initializations — like `int i = 42;` — will get baked into the data section. The C++2a draft even
+initializations — like `int i = 42;` — will get baked into the data section. The C++20 standard even
 adds a new keyword, `constinit`, so that you can write
 
     constinit int i = i_sure_hope_this_function_is_constexpr(6, 9);
@@ -1076,7 +1080,7 @@ after preprocessing an input file so that all its `#include` directives have bee
 `#if` directives have been resolved.
 
 If you `#include` a file, then the text of that file becomes part of your translation unit.
-In C++2a Modules, if you `import` a module then that module's "module interface unit" (MIU)
+In C++20 Modules, if you `import` a module then that module's "module interface unit" (MIU)
 does _not_ become part of your translation unit. Rather, a module interface unit is itself a
 _kind_ of translation unit: it is translated in a separate step.
 
