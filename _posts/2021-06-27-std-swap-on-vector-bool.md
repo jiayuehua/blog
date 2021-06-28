@@ -87,7 +87,10 @@ unqualified lookup found a function template named `swap` in the current scope.
 Which in this case we have not got. So this expression is simply a parse error
 in C++17, regardless of what you put in the `...` part.
 
-But C++20 (specifically, [P1787 "Declarations and where to find them"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1787r6.html))
+But C++20 (specifically,
+[P0846 "ADL and Function Templates that are not Visible"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0846r0.html),
+subsequently refactored by
+[P1787 "Declarations and where to find them"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1787r6.html))
 changed the rules. Now
 
 > A `<` is interpreted as the delimiter of a _template-argument-list_
