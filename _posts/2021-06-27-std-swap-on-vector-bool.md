@@ -54,6 +54,18 @@ but it still surprises me that they can get away with it. Also,
 it's an error only in MSVC's `-std:c++latest` mode; it compiles
 fine in `-std:c++17` mode. I haven't tried to track down why.
 
+UPDATE, 2021-06-29: [Casey Carter explains](https://old.reddit.com/r/cpp/comments/o9e8fh/implementation_divergence_on_swapping_bools/h3eq6jx/)
+that Microsoft's `std::_Vb_reference<T>` has a hidden-friend `swap` in
+both C++17 and C++20. The trick is that MSVC's `-permissive` mode permits
+many non-conforming extensions, and one of those extensions is
+that hidden friends aren't actually hidden against qualified lookup.
+So in MSVC's `-permissive` mode, a qualified call to `std::swap(v[0], v[1])`
+successfully finds the hidden friend. Finally, `-permissive` is
+MSVC's default prior to C++20; but when you turn on `-std:c++latest`,
+it implicitly turns off `-permissive`.
+Passing `-std:c++17 -permissive-` rejects the qualified call ([Godbolt](https://godbolt.org/z/cq3ffTPnM)),
+and `-std:c++latest -permissive` accepts it.
+
 ----
 
 I also found it amusing that `std::swap(v[0], {})`, on GNU libstdc++,
