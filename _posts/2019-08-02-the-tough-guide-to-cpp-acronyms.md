@@ -749,23 +749,25 @@ For more on PMR, see "[`<memory_resource>` for libc++](/blog/2018/06/05/libcpp-m
 and my talk "[An Allocator is a Handle to a Heap](https://www.youtube.com/watch?v=0MdSJsCTRkY)"
 (C++Now 2018, CppCon 2018).
 
-## POCCA, POCMA, POCS
+## POCCA, POCMA, POCS, SOCCC
 
 "`propagate_on_container_copy_assignment`," "`propagate_on_container_move_assignment`,"
-and "`propagate_on_container_swap`," respectively. When you have an STL container (such as `std::vector`)
-with a custom allocator type, you can write
+"`propagate_on_container_swap`," and "`select_on_container_copy_construction`," respectively.
+When you have an STL container (such as `std::vector`) with a custom allocator type, you can write
 
     A a1("foo");
     A a2("bar");
     assert(a1 != a2);  // for the sake of argument
     std::vector<int, A> v1(a1);
     std::vector<int, A> v2(a2);
-    v1 = v2;             // A
-    v1 = std::move(v2);  // B
-    std::swap(v1, v2);   // C
+    v1 = v2;                     // A
+    v1 = std::move(v2);          // B
+    std::swap(v1, v2);           // C
+    std::vector<int, A> v3(v1);  // D
 
 Before line A, we clearly have `v1.get_allocator() == a1`. After line A, does `v1.get_allocator()` equal
-`a1`, or `a2`? What about after line B? What about after line C?
+`a1` or `a2`? What about after line B? What about after line C? After line D, does `v3.get_allocator()`
+equal `a1` or `A()` or something else?
 
 The standard library's [`std::allocator_traits<A>`](https://en.cppreference.com/w/cpp/memory/allocator_traits)
 exposes member typedefs named `propagate_on_container_copy_assignment`, `propagate_on_container_move_assignment`,
@@ -777,14 +779,20 @@ source and destination containers have different allocators. C++17's [PMR](#pmr)
 If some of POCCA/POCMA/POCS are `true_type` and some are `false_type` for the same allocator type,
 then you probably have a bug.
 
-(If your allocator type is stateless and/or sets `is_always_equal`, then the settings of
+Notice that `std::allocator_traits<A>::select_on_container_copy_construction(const A&)` is a static member function,
+not a simple compile-time `true_type` or `false_type`. For example, [PMR](#pmr) makes it return the runtime result of
+`std::pmr::get_default_resource()`. Also, there's no `select_on_container_move_construction`, because C++17 assumes
+that move construction is always kind of "invisible" (indistinguishable from copy elision) as far as allocators are
+concerned. (Read: PMR didn't need this specific customization point, so it wasn't included in the proposal.)
+
+If your allocator type is stateless and/or sets `is_always_equal`, then the settings of
 POCCA/POCMA/POCS don't really matter and might just as well be inconsistent.
 For [historical reasons](https://stackoverflow.com/questions/42051917/why-does-stdallocator-require-propagate-on-container-move-assignment-to-be-tru),
-`std::allocator` falls into that category.)
+`std::allocator` falls into that category.
 
 For more on this topic, see my talk "[An Allocator is a Handle to a Heap](https://www.youtube.com/watch?v=0MdSJsCTRkY)"
-(C++Now 2018, CppCon 2018) and my training course
-[_The STL From Scratch_](/blog/2019/06/21/stl-from-scratch-at-cppcon-2019/).
+(C++Now 2018, CppCon 2018). I also covered allocators in my training course
+[_The STL From Scratch_](/blog/2019/06/21/stl-from-scratch-at-cppcon-2019/) (CppCon 2017, 2018, 2019).
 
 ## POD
 

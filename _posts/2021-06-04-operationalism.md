@@ -155,4 +155,4 @@ Chang writes:
 > That, in turn, often necessitated "a modification of the operational criteria originally adopted for some of the central concepts"
 > (Hempel 1966, 95). Operationalism would stand in the way of such flexibility.
 
-Previously on this blog: [_Auftragstaktik_](https://quuxplusone.github.io/blog/2021/02/13/blog-roundup/) (2021-02-13).
+Previously on this blog: [_Auftragstaktik_](/blog/2021/02/13/blog-roundup/) (2021-02-13).
