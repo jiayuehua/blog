@@ -527,6 +527,41 @@ For a dangerous example of using IILEs with C++20 coroutines, see
 The C++20 standard's [notion of "immediate invocation"](http://eel.is/c++draft/expr.const#def:immediate_invocation)
 has absolutely nothing to do with IILEs; it has to do with the evaluation of C++20 `consteval` functions.
 
+## IWYU
+
+"Include What You Use." This is both a slogan _and_ the name of [a specific libclang-based tool](https://include-what-you-use.org/).
+Basically, "Include What You Use" means that if you use an entity, you should explicitly `#include`
+the header that is documented to provide that specific entity. Don't rely on its being provided transitively
+by including any other header, because what's true today might be false tomorrow.
+(See also: [Hyrum's Law](https://www.hyrumslaw.com/).)
+
+    #include <vector>
+    std::vector<std::unique_ptr<int>> v;  // IWYU violation
+
+Since `std::vector` depends on `std::allocator`, which is defined in `<memory>`, you might expect that
+`<vector>` needs to include `<memory>` — and indeed on libc++ 12.0 it does. But on libstdc++, MSVC, and
+libc++-sometime-in-the-future (as of July 2021), this [TU](#TU) fails to compile.
+To fix it, you should "Include What You Use":
+
+    #include <memory>  // for unique_ptr
+    #include <vector>  // for vector
+    std::vector<std::unique_ptr<int>> v;
+
+The `include-what-you-use` command-line tool (on OSX, simply `brew install include-what-you-use`) can detect
+and even suggest how to correct IWYU violations. Its output is usually pretty self-explanatory:
+
+    $ include-what-you-use test.cpp
+
+    test.cpp should add these lines:
+    #include <memory>  // for unique_ptr
+
+    test.cpp should remove these lines:
+
+    The full include-list for test.cpp:
+    #include <memory>  // for unique_ptr
+    #include <vector>  // for vector
+    ---
+
 ## LTO
 
 "Link-Time Optimization." Any kind of optimization that requires looking at the whole program —
