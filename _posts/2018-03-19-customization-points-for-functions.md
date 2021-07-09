@@ -118,9 +118,10 @@ For new code with no unusual concerns about compile time or portability backward
 I think I would currently recommend that *basically all* your library APIs should be
 provided as CPOs. Here's the C++14 CPO design I sent to John.
 
-First, we declare the utility type `priority_tag`. Everyone should have this utility type
-in their codebase somewhere. Its job is to help when we need to rank some overloads from
-"highest priority" to "lowest priority" for overload resolution.
+First, we declare the utility type [`priority_tag`](/blog/2021/07/09/priority-tag).
+Everyone should have this utility type in their codebase somewhere. Its job is to help
+when we need to rank some overloads from "highest priority" to "lowest priority"
+for overload resolution.
 
     template<size_t I> struct priority_tag : priority_tag<I-1> {};
     template<> struct priority_tag<0> {};

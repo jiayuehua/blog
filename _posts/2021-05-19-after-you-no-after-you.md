@@ -60,7 +60,7 @@ The old mechanism, the one that didn't work, was:
         std::enable_if_t<U::foolib_compatible>>
         : std::true_type {};
 
-We replace that with a [`priority_tag`](/blog/2018/03/19/customization-points-for-functions)-based
+We replace that with a [`priority_tag`](/blog/2021/07/09/priority-tag)-based
 function overload, where the priority of the tag is some globally unique random integer.
 
     template<class T, class U,
