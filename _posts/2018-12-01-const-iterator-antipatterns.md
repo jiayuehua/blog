@@ -106,12 +106,12 @@ So [we'll find that](https://godbolt.org/z/GnEdAg)
         // OOPS!
 
 [The libc++ implementation of `vector<bool>::iterator`](https://github.com/llvm-mirror/libcxx/blob/f017e1e/include/__bit_reference#L1112-L1114)
-currently falls into this exact trap. [Godbolt:](https://godbolt.org/z/B93c1E)
+currently falls into this exact trap. ([Godbolt.](https://godbolt.org/z/B93c1E))
 
 ----
 
 So if we shouldn't write the too-clever code above, what should we write?
-It turns out that all we have to do is be a *tiny* bit less clever. Thanks to Glen Fernandes
+It turns out that all we have to do is be a tiny bit less clever. Thanks to Glen Fernandes
 for pointing out that [this works](https://godbolt.org/z/15v7H6) —
 
     template<bool IsConst>
