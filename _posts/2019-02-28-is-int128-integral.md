@@ -13,7 +13,8 @@ Spoiler alert: libc++ thinks it's integral, libstdc++ thinks it's integral
 only in `-std=gnu++XX` mode(!), and MSVC thinks it doesn't exist at all.
 
 Many thanks to Rein Halbersma for alerting me to libstdc++'s different behavior
-in `-std=gnu++XX` mode versus `-std=c++XX` mode.
+in `-std=gnu++XX` mode versus `-std=c++XX` mode. (UPDATE, 2021-07-16: And
+to Jonathan Wakely for alerting me to libstdc++ 10.3's new behavior!)
 
 
 ## Compiler support
@@ -57,6 +58,11 @@ will pre-define these two macros:
 [As of July 2016-ish](https://bugs.llvm.org/show_bug.cgi?id=23156), Clang also
 defines these two macros in `-std=gnu++XX` mode.
 
+> You might wonder if these macros have any relationship with `_GNU_SOURCE`: They do not.
+> Both Clang and GCC unconditionally define `_GNU_SOURCE` in all modes, anyway.
+> If you're manually passing `-D_GNU_SOURCE` in your `CFLAGS`, like a lot of projects
+> I've seen, well, you can stop doing that.
+
 By the way, you can use the options `-dM -E` to view all your compiler's pre-defined macros:
 
     clang++ -std=c++17 -dM -E test.cc
@@ -66,11 +72,6 @@ The upshot is, if you compile in `-std=gnu++XX` mode, libstdc++ will treat `__in
 compile in the usual `-std=c++XX` mode, libstdc++ will not do any of that.
 
 On the other hand, libc++ treats `__int128` as an integer type, full stop.
-
-> I've worked on several projects that compiled with `-std=c++17 -D_GNU_SOURCE`. That
-> will give you a lot of GNU library extensions, but it will not give you `__int128` support.
-> libstdc++ is looking specifically for the two macros defined above, and `-D_GNU_SOURCE`
-> doesn't enable those macros.
 
 
 ## Relationship to integer types and `intmax_t`
@@ -103,23 +104,25 @@ integral values that do not fit in `intmax_t`! ([Godbolt.](https://godbolt.org/z
 
 ## Numeric limits
 
-In standard (non-`gnu++XX`) mode, libstdc++ does not specialize `numeric_limits` for `__int128` at all.
-This [has the unfortunate effect](https://godbolt.org/z/RpaD-7) of
+Prior to the GCC 10.3 release, libstdc++ specialized `numeric_limits<__int128>` only in non-`gnu++XX` mode.
+This [had the unfortunate effect](https://godbolt.org/z/RpaD-7) of
 
     constexpr __int128 int128_max =
         std::numeric_limits<__int128>::max();
-    static_assert(int128_max == 0);  // TRUE on libstdc++ in standard mode
+    static_assert(int128_max == 0);  // TRUE on libstdc++ in std mode before 10.3
 
-libc++ (and libstdc++ in `gnu++XX` mode) provides the appropriate specialization, so that
+However, since GCC 10.3
+(specifically [this August 2020 commit](https://github.com/gcc-mirror/gcc/commit/386fd16c551188e20d5b1684b7139e4269f9a739#diff-c454605c184994804a0a061dd4862ddc94799af2bb6961c144ab44c71b39cf60R1655-R1660)),
+libstdc++ has provided the appropriate specialization in all modes, just like libc++, so that
 `numeric_limits<__int128>::min()` and `numeric_limits<__int128>::max()`
 have the appropriate values instead of zero.
 
-On libc++ [`numeric_limits` reports `__int128` as an integral type](https://godbolt.org/z/ZR_nn6),
-whereas on libstdc++ in standard mode it doesn't (again because there is no specialization for
-`__int128` at all).
+Naturally, `numeric_limits<__int128>::is_integer` is `true` whenever the specialization is
+provided at all — i.e., unconditionally on libc++ and libstdc++ 10.3+, and on older libstdc++
+in `-std=gnu++XX` mode. So:
 
-    static_assert(std::numeric_limits<I128>::is_integer);
-        // TRUE on libc++, "it depends" on libstdc++
+    static_assert(std::numeric_limits<__int128>::is_integer);  // TRUE everywhere since August 2020
+    static_assert(std::is_integral_v<__int128>);  // still FALSE on libstdc++ in std mode
 
 
 ## Signedness
