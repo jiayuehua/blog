@@ -9,8 +9,8 @@ tags:
 excerpt: |
   C++Now 2021 is happening this week. Normally it's in Aspen, Colorado, but this year it's
   completely online. I presented two talks:
-  ["When Should You Give Two Things the Same Name?"](https://cppnow2021.sched.com/event/ixTD/)
-  and ["The Complete Guide to `return x`."](https://cppnow2021.sched.com/event/hhkU/)
+  ["When Should You Give Two Things the Same Name?"](https://www.youtube.com/watch?v=OQgFEkgKx2s)
+  and ["The Complete Guide to `return x`."](https://www.youtube.com/watch?v=OGKAJD7bmr8)
 
   In my `return x` talk, slide 77 showed a table illustrating how
   P2266's value-category changes affected five subtly different functions. One of the
@@ -23,10 +23,10 @@ excerpt: |
 C++Now 2021 is happening this week. Normally it's in Aspen, Colorado, but this year it's
 completely online. I presented two talks:
 
-* ["When Should You Give Two Things the Same Name?,"](https://cppnow2021.sched.com/event/ixTD/)
+* ["When Should You Give Two Things the Same Name?,"](https://www.youtube.com/watch?v=OQgFEkgKx2s)
     based on [this blog post of mine](/blog/2020/10/09/when-to-derive-and-overload/) from October 2020
 
-* ["The Complete Guide to `return x`,"](https://cppnow2021.sched.com/event/hhkU/)
+* ["The Complete Guide to `return x`,"](https://www.youtube.com/watch?v=OGKAJD7bmr8)
     based on my committee papers
     [P1155 "More Implicit Move"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1155r3.html)
     (adopted into C++20) and
