@@ -142,6 +142,32 @@ integral nor an enumeration type.)
 Incidentally, today I learned that `is_signed_v<float> == true` but [`make_signed_t<float>`
 is a hard error](https://godbolt.org/z/t6v1CJ).
 
+
+## Incrementability
+
+UPDATE, 2021-07-22: Jonathan Wakely alerted me to some new wrinkles in C++20. C++20 gives us
+at least two relevant library concepts: `std::integral` and `std::incrementable`.
+
+`std::integral` is true of integral types, i.e., `std::integral<T>` is true iff
+`std::is_integral_v<T>` is true. On libc++ (or libstdc++ in `-std=gnu++XX` mode)
+they're both true; on libstdc++ in `-std=c++XX` mode they're both false.
+
+`std::incrementable` refines `std::weakly_incrementable`, which is modeled by
+[integer-like types](https://en.cppreference.com/w/cpp/iterator/weakly_incrementable)
+and also by pointer-like, iterator-like types. It is significant because if a type does not
+satisfy `std::weakly_incrementable`, then (by definition) it is not integer-like, and
+that means that it can't be used as any iterator's `difference_type`. Since we certainly
+want to be able to use `__int128` as the `difference_type` of, say, `iota_view<__int128>`,
+it's important that `__int128` be considered "integer-like." Therefore,
+[libstdc++ in `-std=c++XX` mode specializes](https://github.com/gcc-mirror/gcc/commit/5e9ad288eb6fb366142b166e7985d16727b398e1)
+C++20's [`std::incrementable_traits`](https://en.cppreference.com/w/cpp/iterator/incrementable_traits)
+for both `__int128_t` and `__uint128_t`.
+
+On libc++, and libstdc++ in `-std=gnu++XX` mode, `__int128` is automatically `std::incrementable`
+by virtue of being `std::integral`; it doesn't need those additional specializations.
+(Note that `std::integral` does not _subsume_ `std::incrementable`;
+[that's another story.](/blog/2018/11/26/remember-the-ifstream))
+
 ----
 
 For more on `__uint128_t` arithmetic, see
