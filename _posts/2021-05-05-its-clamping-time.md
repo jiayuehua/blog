@@ -70,13 +70,19 @@ In fact we see this idiom consistently throughout the entire Stepanov-era STL:
     std::nth_element(first, pos, last)
     std::inplace_merge(first1, last1_also_first2, last2)
 
-We also see it in [Howard Hinnant's `combinations.h` library](https://howardhinnant.github.io/combinations/combinations.html):
-
-    for_each_permutation(first, mid, last, callback)
-
 There's no _physical_ reason Stepanov couldn't have written `rotate(first, last, new_first)` —
 the computer wouldn't care! But _humans_ find it easier to reason about things when their
 physical lexical order matches their expected semantic order.
+
+We also see this idiom in [Howard Hinnant's `combinations.h` library](https://howardhinnant.github.io/combinations/combinations.html):
+
+    for_each_permutation(first, mid, last, callback)
+
+We also see it in [Walter E. Brown's preferred `min` and `max` semantics](https://www.youtube.com/watch?v=e-TNCbX8mOQ&t=504s).
+Notice that `min` below is `std::min`, but `max` below is _not_ the standard `std::max`:
+
+    template<class T> auto& min(const T& a, const T& b) { return b < a ? b : a; }
+    template<class T> auto& max(const T& a, const T& b) { return b < a ? a : b; }
 
 
 ## Except for `std::clamp`
