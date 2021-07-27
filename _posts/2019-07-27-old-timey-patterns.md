@@ -7,6 +7,7 @@ tags:
   digital-antiquaria
   esolang
   math
+  pretty-pictures
   web
 ---
 

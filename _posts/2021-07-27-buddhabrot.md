@@ -4,6 +4,7 @@ title: 'Buddhabrot'
 date: 2021-07-27 00:01:00 +0000
 tags:
   math
+  pretty-pictures
 excerpt: |
   You've heard of the [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set), right?
   Basically, for each point $$c$$ on the complex plane, we iterate the function $$z = z^2+c$$

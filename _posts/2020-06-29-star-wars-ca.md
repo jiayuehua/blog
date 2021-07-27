@@ -5,6 +5,7 @@ date: 2020-06-29 00:01:00 +0000
 tags:
   cellular-automata
   esolang
+  pretty-pictures
   web
 ---
 

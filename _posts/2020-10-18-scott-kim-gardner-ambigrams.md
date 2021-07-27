@@ -5,6 +5,7 @@ date: 2020-10-18 00:01:00 +0000
 tags:
   celebration-of-mind
   math
+  pretty-pictures
   typography
   web
 ---
