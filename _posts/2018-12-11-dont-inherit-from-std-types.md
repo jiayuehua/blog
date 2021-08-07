@@ -7,6 +7,7 @@ tags:
   class-template-argument-deduction
   library-design
   pitfalls
+  sd-8-adjacent
   slogans
 ---
 
