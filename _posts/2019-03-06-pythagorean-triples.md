@@ -22,7 +22,7 @@ So I've now appended numbers substituting `printf` for `cout` in each case below
 Back in December, Eric Niebler made some waves in the C++ twitterverse with a post titled
 ["Standard Ranges"](http://ericniebler.com/2018/12/05/standard-ranges/) (2018-12-05).
 
-[Here is Eric's code](https://godbolt.org/z/BHODEL) ([backup](/blog/code/2019-03-06-triples-ranges.cc)), modified to use the range-v3 library,
+[Here is Eric's code](https://godbolt.org/z/BHODEL) ([backup](/blog/code/2019-03-06-triples-ranges.cpp)), modified to use the range-v3 library,
 and with all the concepts/constraints removed since they use syntax that — while valid C++2a —
 has never yet been implemented in either GCC or Clang. The constraints in his original code were there
 just for documentation; they weren't being used for any functional reason, such as to control overload
@@ -38,7 +38,7 @@ the correct answer.
 
 ----
 
-[Here is a Coroutines version of the same code](https://godbolt.org/z/icY6RZ) ([backup](/blog/code/2019-03-06-triples-coro.cc)).
+[Here is a Coroutines version of the same code](https://godbolt.org/z/icY6RZ) ([backup](/blog/code/2019-03-06-triples-coro.cpp)).
 
 This code is 53 lines long. It takes 2 seconds to compile on Godbolt Compiler Explorer, and
 produces 437 lines of machine code.
@@ -49,7 +49,7 @@ the correct answer.
 
 ----
 
-[Here is a C++17 callback-based version of the same code](https://godbolt.org/z/lHrSN2) ([backup](/blog/code/2019-03-06-triples-callback.cc))
+[Here is a C++17 callback-based version of the same code](https://godbolt.org/z/lHrSN2) ([backup](/blog/code/2019-03-06-triples-callback.cpp))
 
 This code is 50 lines long. It takes 2 seconds to compile on Godbolt Compiler Explorer, and
 produces 93 lines of machine code.
@@ -60,7 +60,7 @@ the correct answer.
 
 ----
 
-[Here is a C++17 "vanilla" version of the same code](https://godbolt.org/z/IH14zJ) ([backup](/blog/code/2019-03-06-triples-vanilla.cc)).
+[Here is a C++17 "vanilla" version of the same code](https://godbolt.org/z/IH14zJ) ([backup](/blog/code/2019-03-06-triples-vanilla.cpp)).
 
 This code is 16 lines long. [Its iostreams version](https://godbolt.org/z/iXRMuP) takes 1 second to
 compile on Godbolt Compiler Explorer, and produces 87 lines of machine code.

@@ -11,7 +11,7 @@ The other day on Slack, I learned a new acronym for my [C++ acronym glossary](/b
 "VTT." [Godbolt](https://godbolt.org/z/3Pu26_):
 
     test.o: In function `MyClass':
-    test.cc:3: undefined reference to `VTT for MyClass'
+    test.cpp:3: undefined reference to `VTT for MyClass'
 
 "VTT" in this context stands for <b>virtual table table</b>.
 It's an auxiliary data structure used (in the Itanium C++ ABI) during the construction of some

@@ -13,7 +13,7 @@ I wrote up this example on Wednesday morning for my presentation of
 at the Kona committee meeting.
 
 [Here's the complete code on Godbolt](https://p1144.godbolt.org/z/PjWgIM)
-([backup](/blog/code/2019-02-22-fixed-capacity-vector.cc)).
+([backup](/blog/code/2019-02-22-fixed-capacity-vector.cpp)).
 Consider a skeleton `fixed_capacity_vector`:
 
     template<class T, int Cap>
@@ -69,7 +69,7 @@ I suggest that a faster way would be to do this instead:
 With my P1144-enabled compiler and library, I compiled my test case nine different
 ways. The compiler command line looks like this:
 
-    clang++ -S test.cc -std=c++17 -O3 -DTYPE='int*'
+    clang++ -S test.cpp -std=c++17 -O3 -DTYPE='int*'
     wc -l test.s
     grep memcpy test.s
 

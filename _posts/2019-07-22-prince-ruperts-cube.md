@@ -58,7 +58,7 @@ Or maybe there are such things but Wikipedia doesn't mention them.)
 
 Wikipedia tells me that after we use Pieter Nieuwland's construction to cut a 1.0607-unit square hole through a unit cube,
 the remaining "crumpled ring" (consisting of two triangular prisms and two irregular tetrahedra) has
-volume $$\frac{25}{256} \approx 0.0976$$. My brute-force computer calculations ([code here](/blog/code/2019-07-22-prince-ruperts-cube.cc))
+volume $$\frac{25}{256} \approx 0.0976$$. My brute-force computer calculations ([code here](/blog/code/2019-07-22-prince-ruperts-cube.cpp))
 tell me that if we cut a 1.0-unit square hole along the space diagonal of the cube, the remainder
 (consisting of a single 3D-printable shape) has volume $$\sim 0.163$$.
 And if we cut a 1.0-unit square hole along Nieuwland's axis, the remainder (consisting of a single 3D-printable shape)

@@ -34,7 +34,7 @@ and points to the exact position where it believes a semicolon should be inserte
 GCC 7 goes even further, and suggests a _fixit_ — a machine-readable "spellcheck suggestion"
 that some IDEs are able to apply with a single click.
 
-    test.cc:1:12: error: expected ';' after struct definition
+    test.cpp:1:12: error: expected ';' after struct definition
      struct S {}
                 ^
                 ;

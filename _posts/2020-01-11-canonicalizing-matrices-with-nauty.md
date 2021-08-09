@@ -31,7 +31,7 @@ So I downloaded [Nauty/Traces](https://users.cecs.anu.edu.au/~bdm/nauty/), an op
 software library by Brendan McKay and Adolfo Piperno, and I wrote some code to canonicalize
 a Wolves and Sheep testing strategy (or any other {0,1}-matrix). Put in two matrices that are
 equivalent under row-and-column-permutation, get out two identical matrices. Neat!
-Find my code [on GitHub here](https://github.com/Quuxplusone/wolves-and-sheep/blob/master/canonicalize_matrix.cc).
+Find my code [on GitHub here](https://github.com/Quuxplusone/wolves-and-sheep/blob/master/canonicalize_matrix.cpp).
 
 I also submitted the `nauty` package to [Homebrew](https://github.com/Homebrew/homebrew-core)
 and got it accepted, so if you're on Mac OSX you can just type `brew install nauty`
@@ -108,4 +108,4 @@ after!
 This description is probably about as confusing as [the real docs](http://pallini.di.uniroma1.it/nug26.pdf) at this point;
 so if you got here looking for Nauty/Traces code to canonicalize a (non-directed, dense,
 perhaps bipartite) graph, you'll probably want to read my code
-[on GitHub here](https://github.com/Quuxplusone/wolves-and-sheep/blob/master/canonicalize_matrix.cc).
+[on GitHub here](https://github.com/Quuxplusone/wolves-and-sheep/blob/master/canonicalize_matrix.cpp).

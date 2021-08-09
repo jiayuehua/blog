@@ -65,7 +65,7 @@ defines these two macros in `-std=gnu++XX` mode.
 
 By the way, you can use the options `-dM -E` to view all your compiler's pre-defined macros:
 
-    clang++ -std=c++17 -dM -E test.cc
+    clang++ -std=c++17 -dM -E test.cpp
 
 The upshot is, if you compile in `-std=gnu++XX` mode, libstdc++ will treat `__int128` and
 `unsigned __int128` as integral types with the proper numeric limits; but if you

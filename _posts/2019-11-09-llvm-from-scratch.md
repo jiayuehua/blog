@@ -97,8 +97,8 @@ and, absolute worst case, you can `rm -rf $ROOT/llvm-project/build` and start ov
 If you succeed in building `clang`, but then when you run it you get errors about
 the standard C-language headers, like this,
 
-    $ bin/clang++ test.cc
-    test.cc:1:10: fatal error: 'stdio.h' file not found
+    $ bin/clang++ test.cpp
+    test.cpp:1:10: fatal error: 'stdio.h' file not found
     #include <stdio.h>
              ^~~~~~~~~
     1 error generated.

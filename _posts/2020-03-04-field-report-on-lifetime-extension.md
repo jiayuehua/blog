@@ -12,7 +12,7 @@ excerpt: |
   I hacked my local Clang to produce a warning every time [`Sema::checkInitializerLifetime`](https://github.com/llvm/llvm-project/blob/86565c13094236e022d2238f5653641aaca7d31f/clang/lib/Sema/SemaInit.cpp#L7341)
   detected that lifetime extension was necessary.
 
-      test.cc:31:16: warning: binding temporary of type 'int' to a reference
+      test.cpp:31:16: warning: binding temporary of type 'int' to a reference
       relies on lifetime extension [-Wlifetime-extension]
           const int& i2 = 42;
                           ^~
@@ -26,7 +26,7 @@ I hacked my local Clang to produce a warning every time [`Sema::checkInitializer
 detected that lifetime extension was necessary.
 (My patch is on GitHub [here](https://github.com/Quuxplusone/llvm-project/commit/wlifetime-extension).)
 
-    test.cc:31:16: warning: binding temporary of type 'int' to a reference
+    test.cpp:31:16: warning: binding temporary of type 'int' to a reference
     relies on lifetime extension [-Wlifetime-extension]
         const int& i2 = 42;
                         ^~

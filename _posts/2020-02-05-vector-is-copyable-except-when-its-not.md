@@ -17,7 +17,7 @@ advertises copyability?
 In practice, this often manifests as cryptic compiler errors in which the caret points somewhere completely
 useless. [For example:](https://godbolt.org/z/fGYxTv)
 
-    In file included from test.cc:1:
+    In file included from test.cpp:1:
     memory:1876:31: error: call to implicitly-deleted copy constructor of 'unique_ptr<int>'
                 ::new((void*)__p) _Up(_VSTD::forward<_Args>(__args)...);
                                   ^   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,7 +26,7 @@ useless. [For example:](https://godbolt.org/z/fGYxTv)
     'vector<unique_ptr<int>>::__construct_at_end<unique_ptr<int>*>' requested here
             __construct_at_end(__x.__begin_, __x.__end_, __n);
             ^
-    test.cc:6:8: note: in instantiation of member function
+    test.cpp:6:8: note: in instantiation of member function
     'vector<unique_ptr<int>>::vector' requested here
     struct Widget {
            ^

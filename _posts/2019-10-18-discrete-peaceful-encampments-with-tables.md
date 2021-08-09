@@ -14,7 +14,7 @@ Dmitry Kamenetsky has written [a Java program](https://oeis.org/A250000/a250000_
 that heuristically finds best-known solutions (not necessarily best-possible solutions) to the
 "peaceable coexisting queens" problem, for any size board $$n$$ and any number of colors $$c$$.
 
-I have [ported Dmitry's Java program to C++14](/blog/code/2019-10-18-discrete-encampments.cc)
+I have [ported Dmitry's Java program to C++14](/blog/code/2019-10-18-discrete-encampments.cpp)
 and made it concurrently run on many sizes of problem and periodically write its best results to
 a file on disk.
 
@@ -145,7 +145,7 @@ over the previous one.
 I have ported Dmitry's Java program to C++14 and made it compute the entire triangle
 (that is, compute all the entries in parallel and periodically write its best results to a file on disk).
 
-* The C++14 source code itself is [here](/blog/code/2019-10-18-discrete-encampments.cc), and also
+* The C++14 source code itself is [here](/blog/code/2019-10-18-discrete-encampments.cpp), and also
     [on GitHub](https://github.com/Quuxplusone/MetaSudoku/blob/master/discrete-encampments-kamenetsky-heuristic.cc).
 
 * A complete listing of its best $$g(n,c)$$ solutions (maximizing the smallest army, and then the biggest) is [here](/blog/code/2019-10-18-discrete-encampments-best-results.txt),

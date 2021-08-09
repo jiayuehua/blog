@@ -58,7 +58,7 @@ method `.value_or()`:
 And [suddenly your program fails to link!](https://godbolt.org/z/oqvMr5)
 
     /bin/ld: test.o: in function `Connection::timeoutMs() const':
-    test.cc:6: undefined reference to `Connection::DefaultTimeoutMs'
+    test.cpp:6: undefined reference to `Connection::DefaultTimeoutMs'
 
 The root cause here doesn't really have anything to do with `optional`,
 but I can't recall any time I've run into this problem _except_ when

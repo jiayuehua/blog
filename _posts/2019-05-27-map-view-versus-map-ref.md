@@ -53,7 +53,7 @@ can be faster than lookups in a fundamentally-mutable `Map`.
 
 I wrote a quick benchmark to test this intuition with respect to `const std::string&` versus
 C++17 `std::string_view`. [Here are the results](http://quick-bench.com/LMTAbv7DsLVWC14BjdYvVwR0w_A)
-([backup](/blog/code/2019-05-27-string-view-benchmark.cc)). Superficially, they support the
+([backup](/blog/code/2019-05-27-string-view-benchmark.cpp)). Superficially, they support the
 intuition above.
 
 Iterating over the elements of a string via

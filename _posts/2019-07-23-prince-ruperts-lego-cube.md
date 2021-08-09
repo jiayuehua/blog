@@ -11,7 +11,7 @@ tags:
 Following up on [yesterday's post about Prince Rupert's Cube](/blog/2019/07/22/prince-ruperts-cube/),
 I tweaked my quick and dirty volume-calculating program to output Lego bricks in the
 [LDRAW format](https://www.ldraw.org/article/218.html).
-The new source code is [here](/blog/code/2019-07-23-prince-ruperts-cube-ldraw.cc), and the resulting LDRAW files
+The new source code is [here](/blog/code/2019-07-23-prince-ruperts-cube-ldraw.cpp), and the resulting LDRAW files
 are available for download [here](/blog/code/2019-07-23-prince-rupert-naive.ldr) (the naïve space-diagonal method)
 and [here](/blog/code/2019-07-23-prince-rupert-peter.ldr) (Pieter Nieuwland's method).
 

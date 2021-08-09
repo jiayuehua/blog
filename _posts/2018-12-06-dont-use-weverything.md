@@ -63,13 +63,13 @@ start by writing a little test program:
 
 [Then compile it with `-Weverything`](https://godbolt.org/z/ej6zTh):
 
-    test.cc:1:10: warning: 'long long' is incompatible with C++98 [-Wc++98-compat-pedantic]
+    test.cpp:1:10: warning: 'long long' is incompatible with C++98 [-Wc++98-compat-pedantic]
     void foo(long long) {}
              ^
-    test.cc:1:23: warning: C++98 requires newline at end of file [-Wc++98-compat-pedantic]
+    test.cpp:1:23: warning: C++98 requires newline at end of file [-Wc++98-compat-pedantic]
     void foo(long long) {}
                           ^
-    test.cc:1:6: warning: no previous prototype for function 'foo' [-Wmissing-prototypes]
+    test.cpp:1:6: warning: no previous prototype for function 'foo' [-Wmissing-prototypes]
     void foo(long long) {}
          ^
     3 warnings generated.

@@ -66,7 +66,7 @@ Then, the program to produce an infinite stream of primes to `stdout` looks like
         }
     }
 
-As written, [my original program](/blog/code/2018-04-27-sieve-original.cc) produced the first 10,000,000 primes
+As written, [my original program](/blog/code/2018-04-27-sieve-original.cpp) produced the first 10,000,000 primes
 in about **97 seconds.**
 
     $ time ./a.out | head -10000000 |tail -1
@@ -104,10 +104,10 @@ My original code had done at least three things that might be slowing down my be
 
 - My original `iotarator` took a `step` parameter, which in practice was always set to `1`.
   (I removed this parameter already, in the code I quoted above, but you can see it in
-  [my original program](/blog/code/2018-04-27-sieve-original.cc).) I bet the compiler inlined
+  [my original program](/blog/code/2018-04-27-sieve-original.cpp).) I bet the compiler inlined
   away all the references to this parameter anyway, but just in case, let's remove it.
 
-[After undoing these premature pessimizations](/blog/code/2018-04-27-sieve-unpessimized.cc), we're down to **50 seconds.**
+[After undoing these premature pessimizations](/blog/code/2018-04-27-sieve-unpessimized.cpp), we're down to **50 seconds.**
 
 
 ## Bottleneck 3: `__sift_down`
@@ -186,7 +186,7 @@ In other words, the operation that we are really trying to do is
         };
     } // namespace nonstd
 
-([Here's the code.](/blog/code/2018-04-27-sieve-reemplace-portable.cc))
+([Here's the code.](/blog/code/2018-04-27-sieve-reemplace-portable.cpp))
 We can rewrite this in terms of the standard heap algorithms, but that doesn't
 change anything yet:
 
@@ -236,7 +236,7 @@ libc++ spells it, we'll write this:
         };
     } // namespace nonstd
 
-([Here's the code.](/blog/code/2018-04-27-sieve-reemplace-nonportable.cc))
+([Here's the code.](/blog/code/2018-04-27-sieve-reemplace-nonportable.cpp))
 The portable version (with two sifts) finds the 10,000,000th prime in
 about 50 seconds. The version above (with one sift) does the same thing
 in **28 seconds!**

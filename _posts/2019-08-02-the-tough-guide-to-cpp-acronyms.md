@@ -679,18 +679,18 @@ By "discarded statement," they mean the untaken branch of an `if constexpr`.
 
 The first quote above disallows programs like
 
-    // alpha.cc
+    // alpha.cpp
     int i = 0;
 
-    // beta.cc
+    // beta.cpp
     int i = 0;
 
 The second quote disallows programs like
 
-    // alpha.cc
+    // alpha.cpp
     inline int foo() { return 0; }
 
-    // beta.cc
+    // beta.cpp
     inline int foo() { return 1; }
 
 (but if you changed that `1` to a `0`, then the program would be well-formed).

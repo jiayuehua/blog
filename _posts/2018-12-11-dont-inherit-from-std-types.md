@@ -73,7 +73,7 @@ Change the definitions to
 
 and you'll see that [you now get a compiler error]().
 
-    prog.cc:23:29: error: cannot cast 'const Inheritance' to its
+    prog.cpp:23:29: error: cannot cast 'const Inheritance' to its
     private base class 'const std::__1::vector<int, std::__1::allocator<int> >'
         std::vector results = { t };
                                 ^

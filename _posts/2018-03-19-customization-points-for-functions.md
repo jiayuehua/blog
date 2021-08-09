@@ -455,6 +455,6 @@ to "glue together" unrelated libraries... but I'm not sure that that's a good tr
 what we do, as programmers, is to glue unrelated things together. Our libraries should make
 that *easy*, not hard.
 
-* The complete code for `CNL::halve` is available [here](/blog/code/2018-03-19-cnl-halve.cc).
+* The complete code for `CNL::halve` is available [here](/blog/code/2018-03-19-cnl-halve.cpp).
 
-* The complete code for `std2::swap` is available [here](/blog/code/2018-03-19-std2-swap.cc).
+* The complete code for `std2::swap` is available [here](/blog/code/2018-03-19-std2-swap.cpp).

@@ -48,7 +48,7 @@ We can each develop whatever we want in our own namespaces. Any unqualified `get
         int get_next(int);
     }
 
-    // AjoExtra.cc
+    // AjoExtra.cpp
     #include "AjoUtils.h"
     #include "SakUtils.h"
     namespace ajo {
@@ -97,7 +97,7 @@ So you could write things like this:
         std::ostream& operator<<(std::ostream&, bignum);
     }
 
-    // AjoExtra.cc
+    // AjoExtra.cpp
     #include "AjoBigNum.h"
     #include "SakBigNum.h"
     namespace ajo {
@@ -190,7 +190,7 @@ non-operator functions such as `swap` and `get_next`.
         bignum get_next(bignum);
     }
 
-    // AjoExtra.cc
+    // AjoExtra.cpp
     #include "AjoBigNum.h"
     #include "SakBigNum.h"
     namespace ajo {

@@ -22,11 +22,11 @@ Today one of my coworkers ran into this snippet of code:
 
 [Clang complains:](https://wandbox.org/permlink/CzJwe8RvryFzqnbw)
 
-    prog.cc: In function 'int main()':
-    prog.cc:8:33: error: cannot convert 'N::sockaddr*' to 'sockaddr*' in initialization
+    prog.cpp: In function 'int main()':
+    prog.cpp:8:33: error: cannot convert 'N::sockaddr*' to 'sockaddr*' in initialization
          struct sockaddr *x = N::foo();
                                      ^
-    prog.cc:2:12: note: class type 'N::sockaddr' is incomplete
+    prog.cpp:2:12: note: class type 'N::sockaddr' is incomplete
          struct sockaddr *foo();
                 ^~~~~~~~
 
