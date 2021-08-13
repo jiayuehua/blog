@@ -581,6 +581,58 @@ such as [function outlining](https://jakewharton.com/r8-optimization-method-outl
 
 Microsoft Visual C++ — in C++ contexts, essentially a synonym for Microsoft Visual Studio (VS or MSVS).
 
+## MVP
+
+Another overloaded acronym. Since it's so overloaded, you probably won't hear the initialism
+used without any context — and shouldn't use it that way, either.
+
+All the top Google hits are for
+"[Model–View–Presenter](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter),"
+a variation on Model–View–Controller (MVC).
+
+Microsoft identifies "MVPs" ("[Most Valuable Professionals](https://en.wikipedia.org/wiki/Microsoft_Most_Valuable_Professional)")
+in the community; the [list](https://mvp.microsoft.com/en-us/MvpSearch?&kw=c%2B%2B&ex=Developer+Technologies&ps=48&pn=1)
+as of 2021 includes such luminaries as Kate Gregory, Jon Kalb, and Jason Turner.
+
+Of course in baseball "MVP" stands for "[Most Valuable Player](https://en.wikipedia.org/wiki/Most_valuable_player),"
+and in Silicon Valley it often stands for "[Minimum Viable Product](https://en.wikipedia.org/wiki/Minimum_viable_product)."
+
+But its most C++-specific meaning is "Most Vexing Parse." The Most Vexing Parse
+affects old-school direct-initialization with parentheses, and goes like this:
+
+    const char *s = "foo.txt";
+    fs::path t(s);                // OK: t is a variable
+    fs::path u = std::string(s);  // OK: u is a variable
+    fs::path v(std::string(s));   // Yuck: v is a function!
+    fs::path w(std::string());    // Yuck: w is a function too!
+
+`v` and `w` are perfectly valid C++ code. In `v`, the compiler
+ignores the "redundant" parentheses around `s` and parses it
+as equivalent to
+
+    fs::path v(std::string s);    // v is a function
+
+In `w`, the compiler treats `std::string()` as a function type —
+the type of an unnamed function parameter — and decays it to produce
+the equivalent of
+
+    fs::path w(std::string (*param)());  // w is a function
+
+The simplest way to fix a Most Vexing Parse issue is to stop declaring things
+with `T x(y)` syntax, and use `T x = y` or `auto x = T(y)` instead.
+See ["The Knightmare of Initialization in C++"](/blog/2019/02/18/knightmare-of-initialization/) (2019-02-18).
+
+    auto v = fs::path(std::string(s));  // OK and best
+    auto w = fs::path(std::string());   // Also works for w
+
+Sillier alternatives, which satisfy the parser without improving
+readability for the programmer, are to replace the outer parentheses
+with curly braces, or to double them up, or to use a cast operator:
+
+    fs::path v{std::string(s)};   // OK but not best
+    fs::path v((std::string(s)));
+    fs::path v(static_cast<std::string>(s));
+
 ## NSDMI
 
 "Non-static data member initializer." This is the C++11 feature that allows you to write
@@ -592,7 +644,7 @@ Microsoft Visual C++ — in C++ contexts, essentially a synonym for Microsoft Vi
         int y = 2;         // NSDMI!
     };
 
-This term has gained some currency lately because of Corentin Jabot's proposal for
+This term gained currency in 2019 because of Corentin Jabot's proposal for
 ["`auto` NSDMIs"](https://cor3ntin.github.io/posts/auto_nsdmi/) — non-static data members
 whose type is deduced (at class-definition time) from the type of their initializer.
 `auto` NSDMIs are not (yet?) part of any draft standard.
