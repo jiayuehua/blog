@@ -96,7 +96,7 @@ at all:
     }
 
 Thanks to the STL team (and specifically
-[the other STL](https://quuxplusone.github.io/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#the-other-meaning-of-stl-in-c-co))
+[the other STL](/blog/2019/08/02/the-tough-guide-to-cpp-acronyms/#the-other-meaning-of-stl-in-c-co))
 for already landing the fix.
 
 
