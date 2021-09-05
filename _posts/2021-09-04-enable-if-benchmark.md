@@ -92,17 +92,39 @@ quartics ended up super wiggly.
 
 ![](/blog/images/2021-09-04-gcc10-results.png)
 
-I observe only two significant results here:
+I don't have the ability to run this benchmark on MSVC, but two intrepid readers
+have already sent in their benchmark results! The left graph (from Ilya) shows
+MSVC `19.30.30401`. The right graph (from Nick Powell) shows MSVC `19.30.30423`.
+
+|--------------------------------------------------|--------------------------------------------------|
+|![](/blog/images/2021-09-04-msvc-results-ilya.png)|![](/blog/images/2021-09-04-msvc-results-nick.png)|
+
+Again I'm amazed how precisely these two sets of curves, generated on different machines,
+match up. Notice that the individual data points are in different places: my script adds some
+random "jiggle" to the number of overloads so the results don't end up as a series of illegible
+vertical streaks. Also, Ilya's numbers come from a Core i7 and Nick's from a Ryzen 5800x; thus
+the Y-axis timings are slightly different. And yet the shapes of the best-fit curves are
+pretty much identical between the two graphs!
+
+I observe the following:
 
 * On Clang, C++20 `requires` is significantly _worse_ than the rest.
 
 * On GCC 10.3, the extra-value-parameter method is significantly _better_ than the rest.
 
-I have no particular explanation for either of these observations.
+* On MSVC, the extra-type-parameter method seems _worse_ than the other two SFINAE methods,
+    and C++20 `requires` seems to be operating on a different polynomial from the rest.
+
+I have no particular explanation for any of these observations.
+
+I should emphasize that these results pertain to a benchmark where
+_all it does_ is compute candidate sets, on overload sets with tens to hundreds of non-viable
+candidates. Real-world C++ code doesn't do this. (Code that uses `<<` for output can definitely
+run into hundred-candidate overload sets, but even there, we're not eliminating them via SFINAE.)
+So while I hope this benchmark is a cause for mild agitation among C++20 compiler implementors,
+in the average C++ codebase I don't think it indicates any need to avoid `requires` or even
+to prefer one kind of SFINAE over another.
 
 ----
 
-I don't have the ability to run this benchmark on MSVC, but if you run it,
-send me the numeric results as a text file and I'll credit you here!
-
-* Get my Python script [here](/blog/code/2021-09-04-benchmark.py).
+To run the benchmark on your own machine, get my Python script [here](/blog/code/2021-09-04-benchmark.py).
