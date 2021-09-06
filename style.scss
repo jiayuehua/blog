@@ -343,6 +343,14 @@ footer {
   font-size: smaller;
 }
 
+// This matches the diagram in Wikipedia's "Single-precision floating-point format"
+.floating-point-format {
+  font-size: smaller;
+  td {
+    padding: 5px 4px;
+  }
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
