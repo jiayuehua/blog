@@ -125,6 +125,10 @@ So while I hope this benchmark is a cause for mild agitation among C++20 compile
 in the average C++ codebase I don't think it indicates any need to avoid `requires` or even
 to prefer one kind of SFINAE over another.
 
+To run the benchmark on your own machine, get my Python script [here](/blog/code/2021-09-04-benchmark.py).
+
 ----
 
-To run the benchmark on your own machine, get my Python script [here](/blog/code/2021-09-04-benchmark.py).
+See also:
+
+* ["A compile-time benchmark for `enable_if` and `requires`, part 2"](/blog/2021/09/14/enable-if-benchmark-part-2/) (2021-09-14)
