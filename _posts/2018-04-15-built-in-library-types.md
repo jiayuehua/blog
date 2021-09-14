@@ -55,9 +55,9 @@ badly.
 This returns a reference to an object of the built-in type `std::type_info`, which has virtual functions
 and stuff.
 
-    struct A { virtual ~A(); }
+    struct A { virtual ~A(); } a;
     struct B : A {};
-    auto y = dynamic_cast<B&>((A*)nullptr);
+    auto& y = dynamic_cast<B&>(a);
 
 This throws an exception of the built-in type `std::bad_cast`, which has virtual functions and stuff.
 And `std::bad_cast` also has a `noexcept` copy constructor, which means that it is not allowed to
