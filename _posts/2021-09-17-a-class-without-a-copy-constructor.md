@@ -168,3 +168,26 @@ C++11 behavior of `rf(D)` above — but only until
 [P2266 "Simpler implicit move"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p2266r1.html)
 got rid of the second overload resolution pass altogether, at which point
 `rf(D)` would become ill-formed (and we'd all probably breathe a sigh of relief).
+
+----
+
+UPDATE, 2021-09-20: I still think the ability to make a class with no
+(eligible) copy constructor is new-in-C++20, but Lénárd Szolnoki sends me
+[this example in pure C++98](https://godbolt.org/z/Tzfr6T569) proving
+that the "scenic route" of stacking user-defined conversions has been
+possible since the dawn of time.
+
+    struct H;
+    struct G {
+        G(G&);
+        G(const H&);
+    };
+
+    struct H { H(const G&); };
+
+    void f(G);
+    void f(H);
+
+    void test(const G& g) {
+        f(g);  // equivalent to f(G(H(g)))
+    }
