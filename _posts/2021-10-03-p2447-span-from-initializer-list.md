@@ -9,6 +9,7 @@ tags:
   wg21
 ---
 
+{% raw %}
 C++17 introduced `std::string_view` as a "parameter-only" drop-in replacement
 for `const std::string&`. This allows us to make clean refactorings such as:
 
@@ -267,3 +268,4 @@ the paper was abandoned without ever getting `il.data()` working.
 See also Federico's own blog post:
 
 * ["`std::span`, the missing constructor"](https://fekir.info/post/span-the-missing-constructor/) (Federico Kircheis, June 2021)
+{% endraw %}

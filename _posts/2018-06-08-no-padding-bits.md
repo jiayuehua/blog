@@ -7,6 +7,7 @@ tags:
   rant
 ---
 
+{% raw %}
 In my talk ["The Best Type Traits C++ Doesn't Have"](https://youtu.be/MWBfmmg8-Yo?t=41m),
 I present `is_trivially_equality_comparable` (essentially "can I compare these objects
 at runtime with `memcmp`?") and contrast it with P0732's notion-now-perhaps-known-as
@@ -67,3 +68,4 @@ And in fact I'd really like to require something along the lines of
 
 Sadly, I predict that if we required `compare_exchange`-able types to actually
 *be* `comparable`, it would break an intolerable amount of existing code.
+{% endraw %}

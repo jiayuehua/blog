@@ -8,6 +8,7 @@ tags:
   pearls
 ---
 
+{% raw %}
 I'm currently working on a reference implementation of
 [P0429R6 `flat_map`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0429r6.pdf).
 Here's a C++ metaprogramming idiom I learned in the process.
@@ -240,3 +241,4 @@ recommendations here — can be found in
 [Boost `iterator_facade`](https://www.boost.org/doc/libs/1_69_0/boost/iterator/iterator_facade.hpp)
 (which calls it `operator_arrow_dispatch::proxy`), and
 [Boost `iterator_archetypes`](https://www.boost.org/doc/libs/1_69_0/boost/iterator/iterator_archetypes.hpp).
+{% endraw %}
