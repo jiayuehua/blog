@@ -61,13 +61,14 @@ I'd rather that compilers and/or platform-ABI owners be free to do this optimiza
 themselves, without any additional keywords. But P1169 is definitely a step forward
 for the non-lambda case, and maybe lambdas will catch up in a few years.
 
-> CppCon Pub Quiz practice: Which four C++20 keywords can _already_
+> CppCon Pub Quiz practice: Which six C++20 keywords can _already_
 > appear in trailing position, directly after a lambda's parameter-list?
 >
-> [UPDATE, 2021-10-08: Changed "three" to "four." Thanks to Reddit commenter
-> "SentientChowMein" for pointing out that while there are currently only three
-> _decl-specifiers_ that can appear in trailing position, there is at
-> least one more _keyword_ that can appear there.]
+> [UPDATES, 2021-10-08: Changed "three" to "four," then again to "six."
+> Thanks to Reddit commenters "SentientChowMein" and "i_lack_chromosomes"
+> for pointing out that while there are currently only three _decl-specifiers_
+> that can appear in trailing position, there are several more _keywords_
+> that can appear there.]
 
 ----
 
