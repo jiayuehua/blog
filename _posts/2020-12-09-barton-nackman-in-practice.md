@@ -92,3 +92,9 @@ the Barton–Nackman trick, specifically, provides a subtle benefit.
 Even in C++20, STL containers generally use free templates instead of the Barton–Nackman trick,
 which means that `sort_in_place` will, for example, _work_ when `vt` is `vector<int>`
 but _fail_ when `vt` is `vector<string>`. ([Godbolt.](https://godbolt.org/z/x7nWhj))
+
+----
+
+See also:
+
+* ["`operator<=>` doesn't obsolete the hidden friend idiom"](/blog/2021/10/22/hidden-friend-outlives-spaceship/) (2021-10-22)
