@@ -7,7 +7,7 @@ tags:
   cppcon
 excerpt: |
   ![Spoiler for question #4](/blog/images/2020-09-16-anagram-time-1.jpg){: .float-right}
-  [CppCon 2020](https://cppcon.org/cppcon-2020-program/) is half over;
+  [CppCon 2020](https://cppcon.org/program2020/) is half over;
   this afternoon I gave [my B2B talk on algebraic data types](https://cppcon2020.sched.com/event/e7Ad/).
   On Friday I give [my B2B talk on concurrency](https://cppcon2020.sched.com/event/e7Ab/),
   and next week I'll deliver
@@ -25,7 +25,7 @@ excerpt: |
   Team 0x1010, and Team IFNDR!
 ---
 
-[CppCon 2020](https://cppcon.org/cppcon-2020-program/) is half over;
+[CppCon 2020](https://cppcon.org/program2021/) is half over;
 this afternoon I gave [my B2B talk on algebraic data types](https://cppcon2020.sched.com/event/e7Ad/).
 On Friday I give [my B2B talk on concurrency](https://cppcon2020.sched.com/event/e7Ab/),
 and next week I'll deliver
