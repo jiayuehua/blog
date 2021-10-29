@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++ Pub Quiz at CppCon 2020"
+title: "C++ Pub Quiz at CppCon 2020, Game One"
 date: 2020-09-16 00:01:00 +0000
 tags:
   conferences
