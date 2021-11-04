@@ -5,7 +5,9 @@ date: 2019-05-10 00:01:00 +0000
 tags:
   cppnow
   library-design
+  parameter-only-types
   pitfalls
+  type-erasure
 ---
 
 At C++Now 2018, I wrote three blog posts during the conference.
