@@ -71,7 +71,7 @@ standard known as "implicit move," which means that the copy into the return slo
 the _move_ constructor, not the _copy_ constructor, even though the returned expression
 `x` is totally an lvalue.
 
-> I have a proposal before LWG right now —
+> I have a proposal before EWG right now —
 > [P2266](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p2266r0.html) —
 > which in C++23 will make that `x` into an rvalue, literally. This radically simplifies
 > the wording and compiler implementation around "implicit move."
