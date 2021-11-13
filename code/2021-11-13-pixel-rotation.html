@@ -1,0 +1,308 @@
+<html>
+<head>
+<title>Pixel-conserving rotations</title>
+<style>
+  .squished.portrait {
+    display: inline-block;
+    transform: scale(0.7, 1);
+    transition: transform 3s;
+  }
+  .squished:not(.portrait) {
+    display: inline-block;
+    transform: scale(1, 0.7);
+    transition: transform 3s;
+  }
+</style>
+<script>
+
+function divideClockwise(rectangles) {
+    var result = [];
+    for (var kv of rectangles) {
+        var r = kv.to;
+        var rwidth = r[2] - r[0];
+        var rheight = r[3] - r[1];
+        if (rwidth == 1 && rheight == 1) {
+            // there are no subrectangles
+        } else if (rwidth == 1 && rheight % 2 == 0) {
+            result.push({
+                from: [r[0], r[1], r[2], r[1] + rheight/2],
+                to: [r[0], r[1] + rheight/2, r[2], r[3]],
+            });
+            result.push({
+                from: [r[0], r[1] + rheight/2, r[2], r[3]],
+                to: [r[0], r[1], r[2], r[1] + rheight/2],
+            });
+        } else if (rwidth == 1 && rheight % 2 == 1) {
+            result.push({
+                from: [r[0], r[1], r[2], r[1] + (rheight-1)/2],
+                to: [r[0], r[1] + (rheight+1)/2, r[2], r[3]],
+            });
+            result.push({
+                from: [r[0], r[1] + (rheight+1)/2, r[2], r[3]],
+                to: [r[0], r[1], r[2], r[1] + (rheight-1)/2],
+            });
+        } else if (rheight == 1 && rwidth % 2 == 0) {
+            result.push({
+                from: [r[0], r[1], r[0] + rwidth/2, r[3]],
+                to: [r[0] + rwidth/2, r[1], r[2], r[3]],
+            });
+            result.push({
+                from: [r[0] + rwidth/2, r[1], r[2], r[3]],
+                to: [r[0], r[1], r[0] + rwidth/2, r[3]],
+            });
+        } else if (rheight == 1 && rwidth % 2 == 1) {
+            result.push({
+                from: [r[0], r[1], r[0] + (rwidth-1)/2, r[3]],
+                to: [r[0] + (rwidth+1)/2, r[1], r[2], r[3]],
+            });
+            result.push({
+                from: [r[0] + (rwidth+1)/2, r[1], r[2], r[3]],
+                to: [r[0], r[1], r[0] + (rwidth-1)/2, r[3]],
+            });
+        } else if (rwidth % 2 == 0 && rheight % 2 == 0) {
+            result.push({
+                from: [r[0], r[1], r[0] + rwidth/2, r[1] + rheight/2],
+                to: [r[0] + rwidth/2, r[1], r[2], r[1] + rheight/2],
+            });
+            result.push({
+                from: [r[0] + rwidth/2, r[1], r[2], r[1] + rheight/2],
+                to: [r[0] + rwidth/2, r[1] + rheight/2, r[2], r[3]],
+            });
+            result.push({
+                from: [r[0] + rwidth/2, r[1] + rheight/2, r[2], r[3]],
+                to: [r[0], r[1] + rheight/2, r[0] + rwidth/2, r[3]],
+            });
+            result.push({
+                from: [r[0], r[1] + rheight/2, r[0] + rwidth/2, r[3]],
+                to: [r[0], r[1], r[0] + rwidth/2, r[1] + rheight/2],
+            });
+        } else if (rwidth % 2 == 0 && rheight % 2 == 1) {
+            result.push({
+                from: [r[0], r[1], r[0] + rwidth/2, r[1] + (rheight-1)/2],
+                to: [r[0] + rwidth/2, r[1], r[2], r[1] + (rheight-1)/2],
+            });
+            result.push({
+                from: [r[0] + rwidth/2, r[1], r[2], r[1] + (rheight+1)/2],
+                to: [r[0] + rwidth/2, r[1] + (rheight-1)/2, r[2], r[3]],
+            });
+            result.push({
+                from: [r[0] + rwidth/2, r[1] + (rheight+1)/2, r[2], r[3]],
+                to: [r[0], r[1] + (rheight+1)/2, r[0] + rwidth/2, r[3]],
+            });
+            result.push({
+                from: [r[0], r[1] + (rheight-1)/2, r[0] + rwidth/2, r[3]],
+                to: [r[0], r[1], r[0] + rwidth/2, r[1] + (rheight+1)/2],
+            });
+        } else if (rwidth % 2 == 1 && rheight % 2 == 0) {
+            result.push({
+                from: [r[0], r[1], r[0] + (rwidth-1)/2, r[1] + rheight/2],
+                to: [r[0] + (rwidth+1)/2, r[1], r[2], r[1] + rheight/2],
+            });
+            result.push({
+                from: [r[0] + (rwidth-1)/2, r[1], r[2], r[1] + rheight/2],
+                to: [r[0] + (rwidth-1)/2, r[1] + rheight/2, r[2], r[3]],
+            });
+            result.push({
+                from: [r[0] + (rwidth+1)/2, r[1] + rheight/2, r[2], r[3]],
+                to: [r[0], r[1] + rheight/2, r[0] + (rwidth-1)/2, r[3]],
+            });
+            result.push({
+                from: [r[0], r[1] + rheight/2, r[0] + (rwidth+1)/2, r[3]],
+                to: [r[0], r[1], r[0] + (rwidth+1)/2, r[1] + rheight/2],
+            });
+        } else if (rwidth % 2 == 1 && rheight % 2 == 1) {
+            result.push({
+                from: [r[0], r[1], r[0] + (rwidth-1)/2, r[1] + (rheight+1)/2],
+                to: [r[0] + (rwidth+1)/2, r[1], r[2], r[1] + (rheight+1)/2],
+            });
+            result.push({
+                from: [r[0] + (rwidth-1)/2, r[1], r[2], r[1] + (rheight-1)/2],
+                to: [r[0] + (rwidth-1)/2, r[1] + (rheight+1)/2, r[2], r[3]],
+            });
+            result.push({
+                from: [r[0] + (rwidth+1)/2, r[1] + (rheight-1)/2, r[2], r[3]],
+                to: [r[0], r[1] + (rheight-1)/2, r[0] + (rwidth-1)/2, r[3]],
+            });
+            result.push({
+                from: [r[0], r[1] + (rheight+1)/2, r[0] + (rwidth+1)/2, r[3]],
+                to: [r[0], r[1], r[0] + (rwidth+1)/2, r[1] + (rheight-1)/2],
+            });
+        } else {
+            console.assert(false);  // unreachable, right?
+        }
+    }
+    return result;
+}
+
+function divideCounterclockwise(rectangles) {
+    var result = [];
+    for (var kv of divideClockwise(rectangles)) {
+        result.push({ from: kv.to, to: kv.from });
+    }
+    return result;
+}
+
+function copyCanvas(orig) {
+    copy = document.createElement('canvas');
+    copy.width = orig.width;
+    copy.height = orig.height;
+    copy.getContext('2d').drawImage(orig, 0, 0);
+    return copy;
+}
+
+function grayAllButtons(disable) {
+    document.getElementById('RectCounterclockwiseButton').disabled = disable;
+    document.getElementById('SquareCounterclockwiseButton').disabled = disable;
+    document.getElementById('SquareClockwiseButton').disabled = disable;
+    document.getElementById('RectClockwiseButton').disabled = disable;
+}
+
+function slideOnce(canvas, initialRectangle, clockwise) {
+    var context = canvas.getContext('2d');
+    var divide = clockwise ? divideClockwise : divideCounterclockwise;
+    var rectangles = divide([ { to: initialRectangle } ]);
+    var firstTimestamp = null;
+    var budget = 800; // milliseconds
+    var origImage = copyCanvas(canvas);
+
+    function loop(currentTimestamp) {
+        if (firstTimestamp === null) {
+            firstTimestamp = currentTimestamp;
+        }
+        context.drawImage(origImage, 0, 0);
+        var progress = Math.min(Math.max(0, (currentTimestamp - firstTimestamp) / budget), 1.0);
+        for (var kv of rectangles) {
+            var sx = kv.from[0];
+            var sy = kv.from[1];
+            var w = kv.from[2] - sx;
+            var h = kv.from[3] - sy;
+            var dx = kv.from[0] + (kv.to[0] - kv.from[0]) * progress;
+            var dy = kv.from[1] + (kv.to[1] - kv.from[1]) * progress;
+            context.drawImage(origImage, sx, sy, w, h, dx, dy, w, h);
+        }
+        if (progress < 1.0) {
+            requestAnimationFrame(loop);
+        } else {
+            rectangles = divide(rectangles);
+            if (rectangles.length) {
+                origImage = copyCanvas(canvas);
+                firstTimestamp = currentTimestamp;
+                budget *= 0.7;
+                requestAnimationFrame(loop);
+            } else {
+                grayAllButtons(false);
+            }
+        }
+    }
+    requestAnimationFrame(loop);
+}
+
+function rotateCoordsCounterclockwise(r, imageRectangle) {
+    function rotate(x, y) {
+        console.assert(r[0] <= x && x <= r[2]);
+        console.assert(r[1] <= y && y <= r[3]);
+        var dx = x - r[0];
+        var dy = y - r[1];
+        return [r[0] + dy, r[2] - dx];
+    }
+    var bottomleft = rotate(imageRectangle[0], imageRectangle[1]);
+    var topright = rotate(imageRectangle[2], imageRectangle[3]);
+    return [bottomleft[0], topright[1], topright[0], bottomleft[1]];
+}
+
+function rotateCoordsClockwise(r, imageRectangle) {
+    function rotate(x, y) {
+        console.assert(r[0] <= x && x <= r[2]);
+        console.assert(r[1] <= y && y <= r[3]);
+        var dx = x - r[0];
+        var dy = y - r[1];
+        return [r[2] - dy, r[0] + dx];
+    }
+    var topright = rotate(imageRectangle[0], imageRectangle[1]);
+    var bottomleft = rotate(imageRectangle[2], imageRectangle[3]);
+    return [bottomleft[0], topright[1], topright[0], bottomleft[1]];
+}
+
+window.addEventListener('load', function () {
+    var canvas = document.getElementById('Canvas');
+    var context = canvas.getContext('2d');
+    var imageRectangle = [0, 0, 1, 1];
+    var canvasRectangle = [0, 0, canvas.width, canvas.height];
+
+    function doImageLoading(src) {
+        var img = new Image();
+        img.onload = function () {
+            var scale = Math.min(canvas.width / img.width, canvas.height / img.height, 1.0);
+            var scaledWidth = Math.min(Math.round(img.width * scale), canvas.width);
+            var scaledHeight = Math.min(Math.round(img.height * scale), canvas.height);
+            var marginWidth = Math.floor((canvas.width - scaledWidth) / 2);
+            var marginHeight = Math.floor((canvas.height - scaledHeight) / 2);
+            imageRectangle = [marginWidth, marginHeight, marginWidth + scaledWidth, marginHeight + scaledHeight];
+            console.assert(0 <= imageRectangle[2] && imageRectangle[2] <= canvas.width);
+            console.assert(0 <= imageRectangle[3] && imageRectangle[3] <= canvas.height);
+            context.fillStyle = 'black';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(img, 0, 0, img.width, img.height, marginWidth, marginHeight, scaledWidth, scaledHeight);
+            if (img.width > img.height) {
+                document.getElementById('RectTextCCW').classList.remove('portrait');
+                document.getElementById('RectTextCW').classList.remove('portrait');
+            } else if (img.height > img.width) {
+                document.getElementById('RectTextCCW').classList.add('portrait');
+                document.getElementById('RectTextCW').classList.add('portrait');
+            }
+        };
+        img.src = src;
+        grayAllButtons(false);  // redundant, but just make sure
+    }
+
+    document.getElementById('ImagePicker').addEventListener('change', function (e) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            doImageLoading(e.target.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    });
+    document.getElementById('RectCounterclockwiseButton').addEventListener('click', function () {
+        grayAllButtons(true);
+        slideOnce(canvas, imageRectangle, false);
+    });
+    document.getElementById('SquareCounterclockwiseButton').addEventListener('click', function () {
+        grayAllButtons(true);
+        slideOnce(canvas, canvasRectangle, false);
+        imageRectangle = rotateCoordsCounterclockwise(canvasRectangle, imageRectangle);
+        document.getElementById('RectTextCCW').classList.toggle('portrait');
+        document.getElementById('RectTextCW').classList.toggle('portrait');
+    });
+    document.getElementById('SquareClockwiseButton').addEventListener('click', function () {
+        grayAllButtons(true);
+        slideOnce(canvas, canvasRectangle, true);
+        imageRectangle = rotateCoordsClockwise(canvasRectangle, imageRectangle);
+        document.getElementById('RectTextCCW').classList.toggle('portrait');
+        document.getElementById('RectTextCW').classList.toggle('portrait');
+    });
+    document.getElementById('RectClockwiseButton').addEventListener('click', function () {
+        grayAllButtons(true);
+        slideOnce(canvas, imageRectangle, true);
+    });
+
+    doImageLoading('/blog/images/pumpkin-toss.jpg');
+});
+
+</script>
+</head>
+<body>
+<center>
+<div class="container">
+    <canvas id="Canvas" width="512" height="512"></canvas>
+</div>
+<div class="buttons">
+    <button id="RectCounterclockwiseButton"><span id="RectTextCCW" class="squished">&#x27F2;</span></button>
+    <button id="SquareCounterclockwiseButton">&#x27F2;</button>
+    <button id="SquareClockwiseButton">&#x27F3;</button>
+    <button id="RectClockwiseButton"><span id="RectTextCW" class="squished">&#x27F3;</span></button>
+    <br>
+    <input type="file" id="ImagePicker"/>
+</div>
+</center>
+</body>
+</html>
