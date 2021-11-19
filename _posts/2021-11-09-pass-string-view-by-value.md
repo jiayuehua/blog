@@ -201,3 +201,9 @@ To sum up:
 - Small, trivially copyable, "parameter-only" types like C++17 `string_view`,
     C++20 `span`, and C++2b `function_ref` are explicitly designed to occupy
     the same category as `int` and `char*`. Pass them by value!
+
+----
+
+See also:
+
+* ["A footnote on 'Three reasons to pass `std::string_view` by value'"](/blog/2021/11/19/string-view-by-value-ps/) (2021-11-19)
