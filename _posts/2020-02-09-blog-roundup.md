@@ -4,6 +4,7 @@ title: '"Myths about /dev/urandom" and "What Is JavaScript Made Of?"'
 date: 2020-02-09 00:01:00 +0000
 tags:
   blog-roundup
+  random-numbers
 ---
 
 Today I read an excellent post: Thomas Hühn's ["Myths about /dev/urandom."](http://www.2uo.de/myths-about-urandom/)
