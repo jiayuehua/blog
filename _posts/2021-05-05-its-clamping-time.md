@@ -91,7 +91,7 @@ C++17 `std::clamp` muffed it.
 
     std::clamp(value, lo, hi)
 
-This is exactly the antipattern that led to Andrzej's original example!
+This is exactly the antipattern that led to Andrzej's original example.
 The API is [easy to misuse](https://www.oreilly.com/library/view/97-things-every/9780596809515/ch55.html),
 and so the implementor has to resort to safety nets like preconditions and
 assertions. (Not that you should _avoid_ writing safety nets, even in
@@ -100,7 +100,7 @@ nets from "must-haves" into "nice-to-haves.")
 
 René Rivera pointed out to me that [OpenGL's `clamp` function](https://docs.gl/sl4/clamp)
 makes the same API mistake, and so C++'s `std::clamp` was probably designed to
-copy that familiar (if unfortunate API).
+copy that familiar (if unfortunate) API.
 
 I noticed something interesting in the OpenGL API docs:
 
