@@ -31,3 +31,7 @@ Check it out on your own sample image below:
 
 The Javascript/Canvas code embedded in the iframe above is also downloadable
 [here](/blog/code/2021-11-13-pixel-rotation.html).
+
+See also:
+
+* ["Image rotation by three affine transformations"](/blog/2021/11/26/shear-rotation/) (2021-11-26)

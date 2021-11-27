@@ -12,8 +12,7 @@ tags:
 ---
 
 At CppCon this year, [Ben Deane](https://cpp.chat/guests/ben_deane/)'s
-nametag featured a cryptic crossword clue. (I don't quite remember the
-wording. "Bird damaged a pencil," perhaps? I'm sure Twitter will tell me.)
+nametag featured a cryptic crossword clue: _Bird chewing a pencil (7)._
 That got us talking about crosswords, which reminded me that a few
 months earlier I'd learned of Vermont poet [Holly Painter](http://www.hollypainter.com/),
 who has a book coming out next year titled _At last, we listen closely:
