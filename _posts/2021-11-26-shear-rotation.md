@@ -14,16 +14,16 @@ that generated ["Image rotation by shifting pixels"](/blog/2021/11/13/pixel-rota
 Any angular rotation can be expressed as the sum of three shear transformations.
 Shear right, then down, then right again; the result is an angular rotation!
 
-Unlike the previous method for rotating by 90 degrees, this sum-of-shears method
-isn't "pixel-conserving," because you'll end up shifting almost all the pixels
-by non-integer pixel offsets. So there has to be some interpolation to fit the
-data back onto the pixel grid. This interpolation slightly blurs the resulting image,
-even when rotating by 90 degrees.
-
 In writing this JavaScript code I learned about the
 [`context.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setTransform)
 function, which makes the code for shearing an image almost disappointingly easy,
 and this "rotation by composing affine transformations" business almost obvious.
+
+Unlike the previous method for rotating by 90 degrees, this sum-of-shears method
+requires some pixels to move by non-integer amounts. You can deal with this either
+by interpolating their color values (which introduces blurring, even when rotating
+by 90 degrees) or by snapping to the pixel grid (which makes this approach
+"pixel-conserving" in the same way as the previous recursive-rotation approach).
 
 Check it out on your own sample image below:
 

@@ -14,6 +14,7 @@ function copyCanvas(orig) {
 function grayAllButtons(disable) {
     document.getElementById('CounterclockwiseButton').disabled = disable;
     document.getElementById('ClockwiseButton').disabled = disable;
+    document.getElementById('SnapCheckbox').disabled = disable;
 }
 
 function shearOnce(canvas, angle) {
@@ -26,6 +27,32 @@ function shearOnce(canvas, angle) {
     var origImage = copyCanvas(canvas);
     var stage = 1;
 
+    function snapShearToPixelGrid() {
+        context.fillStyle = 'black';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (stage == 1) {
+            // Shear right by alpha.
+            for (var y = 0; y < canvas.height; ++y) {
+                var shear = Math.round((y - canvas.height/2) * alpha);
+                context.drawImage(origImage, 0, y, canvas.width, 1, shear, y, canvas.width, 1);
+            }
+        } else if (stage == 2) {
+            // Shear down by beta.
+            for (var x = 0; x < canvas.width; ++x) {
+                var shear = Math.round((x - canvas.width/2) * beta);
+                context.drawImage(origImage, x, 0, 1, canvas.height, x, shear, 1, canvas.height);
+            }
+        } else {
+            console.assert(stage == 3);
+            // Shear right by alpha.
+            for (var y = 0; y < canvas.height; ++y) {
+                var shear = Math.round((y - canvas.height/2) * alpha);
+                context.drawImage(origImage, 0, y, canvas.width, 1, shear, y, canvas.width, 1);
+            }
+        }
+    }
+
     function loop(currentTimestamp) {
         if (firstTimestamp === null) {
             firstTimestamp = currentTimestamp;
@@ -36,12 +63,12 @@ function shearOnce(canvas, angle) {
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         if (stage == 1) {
-            // Shear left by alpha.
+            // Shear right by alpha.
             context.setTransform(1, 0, progress*alpha, 1, -progress*alpha*canvas.width/2, 0);
             context.drawImage(origImage,0,0);
             context.resetTransform();
         } else if (stage == 2) {
-            // Shear up by beta.
+            // Shear down by beta.
             context.setTransform(1, progress*beta, 0, 1, 0, -progress*beta*canvas.height/2);
             context.drawImage(origImage,0,0);
             context.resetTransform();
@@ -56,6 +83,9 @@ function shearOnce(canvas, angle) {
         if (progress < 1.0) {
             requestAnimationFrame(loop);
         } else {
+            if (document.getElementById('SnapCheckbox').checked) {
+                snapShearToPixelGrid(stage, alpha, beta);
+            }
             stage += 1;
             if (stage <= 3) {
                 origImage = copyCanvas(canvas);
@@ -121,6 +151,7 @@ window.addEventListener('load', function () {
     <button id="CounterclockwiseButton">&#x27F2;</button>
     <input type="number" id="AngleInput" min="0" max="360" value="45">
     <button id="ClockwiseButton">&#x27F3;</button>
+    <input type="checkbox" id="SnapCheckbox" checked="true"><label for="SnapCheckbox">Snap to grid</label>
     <br>
     <input type="file" id="ImagePicker"/>
 </div>
