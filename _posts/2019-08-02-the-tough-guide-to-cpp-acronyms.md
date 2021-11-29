@@ -851,6 +851,30 @@ For more on this topic, see my talk "[An Allocator is a Handle to a Heap](https:
 "[Plain Old Data](https://en.cppreference.com/w/cpp/named_req/PODType)."
 This term has been deprecated in C++20, along with the type trait `std::is_pod<T>`.
 
+## PR
+
+Most commonly, in software engineering, a "PR" is a "Pull Request" —
+either literally a GitHub pull request, or in the more general sense of a patch
+that's ready for code review.
+
+Confusingly, the Clang/LLVM project has historically used "PR" to mean "Problem Report,"
+so if you see a Clang or libc++ person talking about "PR12345," they probably mean Bugzilla
+bug number 12345. (Clang/LLVM pull requests will be identified as "D123456,"
+where the D stands for "[Differential](https://reviews.llvm.org/differential/)";
+this in turn is not to be confused with WG21's use of "D1234" to identify a
+pre-publication draft version of a P-numbered paper.)
+
+In [CWG and LWG](#cwg-ewg-ewgi-lewg-lewgi-lwg), on the other hand, "P/R"
+(with the slash) stands for the "Proposed Resolution" to an open issue — that is, what change
+are we going to make to the standard's wording in order to close some loophole? This
+meaning is not that far different from "Pull Request," but applies to standardese
+rather than code.
+
+So a libc++ maintainer might say — with a reasonable expectation of being understood —
+"Implementing the P/R for LWG2357 will fix PR2468; I've done that in D123456.
+The same PR includes an implementation of D2581 from next month's mailing."
+Or: "I know you want this fixed, but I can't submit a PR until someone suggests a P/R!"
+
 ## QoI
 
 "Quality of Implementation." This is the C/C++ committee wonk's version of
