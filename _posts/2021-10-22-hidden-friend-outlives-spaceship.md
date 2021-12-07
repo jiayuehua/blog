@@ -4,6 +4,7 @@ title: "`operator<=>` doesn't obsolete the hidden friend idiom"
 date: 2021-10-22 00:01:00 +0000
 tags:
   argument-dependent-lookup
+  hidden-friend-idiom
   c++-style
   operator-spaceship
   stl-classic

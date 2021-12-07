@@ -4,6 +4,7 @@ title: "An example of the Barton–Nackman trick"
 date: 2020-12-09 00:01:00 +0000
 tags:
   argument-dependent-lookup
+  hidden-friend-idiom
   slack
   stl-classic
   templates

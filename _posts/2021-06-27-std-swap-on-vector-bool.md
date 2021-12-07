@@ -4,6 +4,7 @@ title: 'Implementation divergence on swapping bools within vectors'
 date: 2021-06-27 00:01:00 +0000
 tags:
   argument-dependent-lookup
+  hidden-friend-idiom
   implementation-divergence
   stl-classic
   templates
