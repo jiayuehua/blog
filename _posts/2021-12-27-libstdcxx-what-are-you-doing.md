@@ -9,6 +9,7 @@ tags:
   metaprogramming
   pitfalls
   ranges
+  slack
 excerpt: |
   Here's a C++ riddle for you: When does `std::invoke` not invoke?
 
@@ -106,6 +107,12 @@ I suggest three fixes to the paper standard here:
 `invoke(F&&, Args&&...)` should be constrained on `is_invocable<F&&, Args&&...>`,
 not on `is_invocable<F, Args...>`. This would immediately eliminate one source of
 undefined behavior in the library, and would be very cheap to implement.
+
+UPDATE, 2021-12-28: Conversation with Peter Dimov reveals that we'd also have to
+change the return type of `invoke` from `invoke_result_t<F, Args...>` to
+`invoke_result_t<F&&, Args&&...>`, because `invoke_result`
+[has the same completeness precondition](https://eel.is/c++draft/meta.trans.other#tab:meta.trans.other-row-13-column-2-sentence-6)
+as `is_invocable`.
 
 
 ## 2. Relax superfluous completeness constraints in [meta]
