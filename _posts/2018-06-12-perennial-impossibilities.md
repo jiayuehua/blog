@@ -3,7 +3,9 @@ layout: post
 title: 'Perennial impossibilities of C++'
 date: 2018-06-12 00:02:00 +0000
 tags:
+  constexpr
   language-design
+  metaprogramming
 ---
 
 These topics come up perennially in std-proposals, StackOverflow, and other places where
@@ -175,6 +177,14 @@ branches are actually asking about the constexprness of the `if constexpr` condi
 and therefore are all equivalent to `if constexpr (true)`. This seems to eliminate some of these
 metaprogramming-related issues, although it does mean that both branches must be instantiable even
 in the constexpr case.)
+
+(UPDATE, 2022-01-04: In C++20 you can actually write `if (std::is_constant_evaluated()) {` to
+get basically this effect — and in C++2b it's proposed that you'll be able to write `if consteval {`
+directly in the core language. The C++20 feature sidesteps the `silly` and `Evil` issues by
+forbidding your "compile-time" and "runtime" branches to return different types. I would say that
+C++20 completely solves the problem of how to get different _behavior_ at compile-time versus run-time;
+but only by firmly closing the door on how to get different _data representations_ at compile-time
+versus run-time. Anyway, this item is pretty obsolete: I should rewrite or remove it at some point.)
 
 
 ## Strong typedefs
