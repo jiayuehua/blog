@@ -181,4 +181,5 @@ You have three hours. Go!
 
 ----
 
-_Tomorrow: The thrilling conclusion._
+For spoilers and analysis, see
+["The best engineering interview question I've ever gotten, Part 2."](/blog/2022/01/07/memcached-interview-solution/)
