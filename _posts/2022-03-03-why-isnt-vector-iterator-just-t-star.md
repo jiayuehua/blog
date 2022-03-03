@@ -17,11 +17,12 @@ instead.
 | Type   | libstdc++    | libc++  | MSVC |
 |--------|---------|--------|--------|
 | `initializer_list<T>::iterator`<br>([mandated](https://eel.is/c++draft/initializer.list.syn)) | `const T*` | `const T*` | `const T*` |
-| `array<T, 10>::iterator`        | `T*` | `T*` | `std::_Array_iterator<int,10>` |
-| `span<T>::iterator`             | `__gnu_cxx::__normal_iterator<int*, std::span<int>>` | `std::__wrap_iter<int*>` | `std::_Span_iterator<int>` |
-| `string::iterator`              | `__gnu_cxx::__normal_iterator<char*, std::string>` | `std::__wrap_iter<char*>` | `std::_String_iterator<std::_String_val<std::_Simple_types<char>>>` |
-| `string_view::iterator`         | `const char*` | `const char*` | `std::_String_view_iterator<std::char_traits<char>>` |
-| `vector<T>::iterator`           | `__gnu_cxx::__normal_iterator<T*, std::vector<T>>` | `std::__wrap_iter<T*>` | `std::_Vector_iterator<std::_Vector_val<std::_Simple_types<T>>>` |
+| `array<T, 10>::iterator`          | `T*` | `T*` | `std::_Array_iterator<int,10>` |
+| `span<T>::iterator`               | `__gnu_cxx::__normal_iterator<int*, std::span<int>>` | `std::__wrap_iter<int*>` | `std::_Span_iterator<int>` |
+| `string::iterator`                | `__gnu_cxx::__normal_iterator<char*, std::string>` | `std::__wrap_iter<char*>` | `std::_String_iterator<std::_String_val<std::_Simple_types<char>>>` |
+| `string_view::iterator`           | `const char*` | `const char*` | `std::_String_view_iterator<std::char_traits<char>>` |
+| `ranges::iterator_t<valarray<T>>` | `T*` | `T*` | `T*` |
+| `vector<T>::iterator`             | `__gnu_cxx::__normal_iterator<T*, std::vector<T>>` | `std::__wrap_iter<T*>` | `std::_Vector_iterator<std::_Vector_val<std::_Simple_types<T>>>` |
 
 All these wrappers impose a pretty high cost in terms of compilation speed,
 debug performance, and even object-file size (because of all those super-long
@@ -33,7 +34,7 @@ Nothing prevents a green-field STL implementation from using `T*` for all these 
 by default: it would break too much existing code. Besides the obvious ABI breakage,
 it would actually be an API break as well! Here's a list of code snippets that would
 change their behavior if `vector<T>::iterator` became an alias for `T*`.
-([Godbolt.](https://godbolt.org/z/dW7785qdf))
+([Godbolt.](https://godbolt.org/z/n53fvfnaz))
 
 
 ## Implicit conversion from `T*`
@@ -139,3 +140,18 @@ If `vector<A>::iterator` is `A*`, this calls the only candidate:
 it'll also consider `std::iter_swap` as a candidate, but `A`'s hidden friend will be
 the better match. But, if `vector<A>::iterator` is `std::__wrap_iter<A*>::type`,
 then `std::iter_swap` will be the only candidate!
+
+
+## Modifiable prvalues
+
+Hat tip to Ben Craig for this addition:
+
+    void modify_prvalue() {
+        std::vector<int> v = {1,2,3};
+        auto it = --v.end();
+    }
+
+If `vector<int>::iterator` is a class type, then this code is valid C++;
+`it` is initialized with the result of `v.end().operator--()`.
+But if it's `int*`, then `--v.end()` is ill-formed: the built-in `--`
+operator requires a modifiable lvalue, and `v.end()` would be a prvalue!
