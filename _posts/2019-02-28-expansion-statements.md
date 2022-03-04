@@ -6,6 +6,7 @@ tags:
   kona-2019
   language-design
   metaprogramming
+  variadic-templates
 ---
 
 Daveed Vandevoorde's [P1306R1 "Expansion Statements"](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1306r1.pdf)

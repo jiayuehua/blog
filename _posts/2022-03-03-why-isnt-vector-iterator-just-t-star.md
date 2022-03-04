@@ -7,6 +7,7 @@ tags:
   implementation-divergence
   library-design
   llvm
+  stl-classic
 ---
 
 Every major C++ standard library vendor defines wrappers for their
@@ -15,7 +16,7 @@ think that they should just define these iterators as aliases for `T*`
 instead.
 
 | Type   | libstdc++    | libc++  | MSVC |
-|--------|---------|--------|--------|
+|--------|--------------|---------|------|
 | `initializer_list<T>::iterator`<br>([mandated](https://eel.is/c++draft/initializer.list.syn)) | `const T*` | `const T*` | `const T*` |
 | `array<T, 10>::iterator`          | `T*` | `T*` | `std::_Array_iterator<int,10>` |
 | `span<T>::iterator`               | `__gnu_cxx::__normal_iterator<int*, std::span<int>>` | `std::__wrap_iter<int*>` | `std::_Span_iterator<int>` |
@@ -23,6 +24,7 @@ instead.
 | `string_view::iterator`           | `const char*` | `const char*` | `std::_String_view_iterator<std::char_traits<char>>` |
 | `ranges::iterator_t<valarray<T>>` | `T*` | `T*` | `T*` |
 | `vector<T>::iterator`             | `__gnu_cxx::__normal_iterator<T*, std::vector<T>>` | `std::__wrap_iter<T*>` | `std::_Vector_iterator<std::_Vector_val<std::_Simple_types<T>>>` |
+{:.smaller}
 
 All these wrappers impose a pretty high cost in terms of compilation speed,
 debug performance, and even object-file size (because of all those super-long

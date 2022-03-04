@@ -6,6 +6,7 @@ tags:
   kona-2019
   language-design
   metaprogramming
+  variadic-templates
 ---
 
 Jason Rice's interesting (but IMHO too novel) proposal

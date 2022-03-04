@@ -3,8 +3,8 @@ layout: post
 title: 'Perfect forwarding call wrappers need `=delete`'
 date: 2021-07-30 00:01:00 +0000
 tags:
+  metaprogramming
   pitfalls
-  template-metaprogramming
 ---
 
 (Hat tip to Louis Dionne and Tim Song for bringing this up
