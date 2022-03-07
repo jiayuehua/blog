@@ -8,6 +8,7 @@ tags:
   naming
   rant
   templates
+  value-semantics
   wg21
 ---
 

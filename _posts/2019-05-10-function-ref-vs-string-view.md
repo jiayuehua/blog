@@ -8,6 +8,7 @@ tags:
   parameter-only-types
   pitfalls
   type-erasure
+  value-semantics
 ---
 
 At C++Now 2018, I wrote three blog posts during the conference.
