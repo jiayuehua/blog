@@ -56,7 +56,7 @@ unit of my ["Classic STL"](https://cppcon.org/class-2020-classic-stl/) training 
             std::ostream_iterator<int>(std::cout), std::mem_fn(&T::value_));
     }
 
-([Godbolt.](https://godbolt.org/z/PscoPz))
+([Godbolt.](https://godbolt.org/z/j74PsfK3z))
 
 We observe that `sort_in_place` works nicely for `Dog`. Whenever `std::sort`
 needs to compute `a < b`, where `a` and `b` are `reference_wrapper<Dog<int>>`,
@@ -92,7 +92,7 @@ the Barton–Nackman trick, specifically, provides a subtle benefit.
 
 Even in C++20, STL containers generally use free templates instead of the Barton–Nackman trick,
 which means that `sort_in_place` will, for example, _work_ when `vt` is `vector<int>`
-but _fail_ when `vt` is `vector<string>`. ([Godbolt.](https://godbolt.org/z/x7nWhj))
+but _fail_ when `vt` is `vector<string>`. ([Godbolt.](https://godbolt.org/z/T57z8co6f))
 
 ----
 
