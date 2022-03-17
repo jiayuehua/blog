@@ -46,7 +46,7 @@ It's considered better style to encapsulate the `noexcept`-expression in a type-
 
 ----
 
-The C++2a Working Draft has "`requires`-clauses" and "`requires`-expressions." They do different things.
+C++20 has "`requires`-clauses" and "`requires`-expressions." They do different things.
 
 * A `requires`-clause says, "This function *should participate in overload resolution when...* (some condition)."
     It goes on a function declaration, takes a boolean parameter, and causes a behavioral change
@@ -71,7 +71,7 @@ It's considered better style to encapsulate the `requires`-expression in a type-
     template<class T>
     void incr(T t) requires is_incrable_v<T>;  // BETTER, PART 2
 
-...or in a (C++2a Working Draft) concept.
+...or in a (C++20) concept.
 
     template<class T> concept Incrable =
         requires(T t) { ++t; };  // BETTER, PART 1
