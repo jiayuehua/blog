@@ -1,0 +1,58 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 11.6 lnav 用于linux平台浏览日志
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 183
+wordpress_url: http://www.jiayuehua.com/?p=183
+date: '2016-09-24 16:26:52 +0800'
+date_gmt: '2016-09-24 16:26:52 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>查看日志大家多用more less 甚至vim，但vim有一大缺陷，对于大文件，vim要解析文件格式占用大量资源。more和less是古典的查看工具，不过缺少高亮，另外也没有统计功能，过滤起来也不方便。今天我们推介<a href="http://lnav.org/">lnav</a>，可很方便的查看日志。</p>
+<p>lnav用法</p>
+<p>lnav &nbsp;error.log 将显示日志</p>
+<p>error日志显示为红色</p>
+<p>warning日志显示为黄色</p>
+<p>不同日期的日志间以长下划线分割</p>
+<p>lnav 的用法是使用快捷键</p>
+<p>?显示帮助</p>
+<p>g 跳转到日志首部</p>
+<p>G跳转到日志尾部</p>
+<p>space 向下翻页</p>
+<p>b 向上翻页</p>
+<p>j 向下一行</p>
+<p>k 向上一行</p>
+<p>h 向左移动</p>
+<p>k向右移动</p>
+<p>e /E 下一/上一eror级别日志</p>
+<p>w/W 下一/上一 warning级别日志</p>
+<p>/ &nbsp; &nbsp; &nbsp;搜索日志</p>
+<p>o/O 跳转到下一小时/或者上一小时位置处</p>
+<p>d/D 跳转到下一天/上一天位置处</p>
+<p>m 标记日志</p>
+<p>c 将标记的日志拷贝到剪贴板</p>
+<p>i 查看日志统计的直方图，如具体每小时有多少error日志、warning日志等</p>
+<p>z /Z切换日志统计的时间单位，如按小时或者按天等等。</p>
+<p>:filter-in 过滤日志，像是执行grep后显示的结果</p>
+<p>:filter-out 反向过滤 , 类似 grep -v</p>
+<p>:enable-filter 使能 filter-in/filter-out创建的过滤</p>
+<p>:disable-filter 不使能 filter-in/filter-out创建的过滤</p>
+<p>:goto 100# &nbsp; &nbsp; &nbsp; &nbsp;跳转到第100行</p>
+<p>X 关闭当前日志文件</p>
+<p>q 退出lnav</p>
+<p>还有很多其它功能，请参考<a href="http://lnav.readthedocs.io/en/latest/index.html">官方文档</a> 。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

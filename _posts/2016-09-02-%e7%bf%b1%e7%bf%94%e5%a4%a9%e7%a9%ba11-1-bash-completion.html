@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空11.1 bash completion
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 134
+wordpress_url: https://www.jiayuehua.com/?p=134
+date: '2016-09-02 15:18:20 +0800'
+date_gmt: '2016-09-02 15:18:20 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p><span style="font-size:14pt">在linux操作环境，命令行的自动补全很重要，因为用户往往记不得那么多的选项和命令。可是在centos等平台上，你会发现补全的往往不是你想要的，比如你想补全命令，可偏偏提示的是当前目录的文件，这种情况有没有办法解决呢。<br />
+</span></p>
+<p><span style="font-size:14pt">1 安装bash completion<br />
+</span></p>
+<p><span style="font-size:14pt">$ sudo yum install bash-completion<br />
+</span></p>
+<p><span style="font-size:14pt">2 很多程序，都有自己相关的补全文件，可以自行加入.bashrc ，比如如果你发现尽管安装了bash-completion还是用不了 git 的补全，比如 你用 git checkout 时 没有提示git 的各分支名称，这时你可以通过如下方法加入git 补全。<br />
+</span></p>
+<p><span style="font-size:14pt">2.1 下载git 补全文件到 ~<br />
+</span></p>
+<p><span style="font-size:14pt">$ wget <a href="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash">https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash</a><br />
+		</span></p>
+<p><span style="font-size:14pt">$ source ~/.git-completion.bash<br />
+</span></p>
+<p><span style="font-size:14pt">这时你用 git checkout 按tab键 会列出所有git 分支。<br />
+</span></p>
+<p><span style="font-size:14pt"><br />
+		</span>&nbsp;</p>

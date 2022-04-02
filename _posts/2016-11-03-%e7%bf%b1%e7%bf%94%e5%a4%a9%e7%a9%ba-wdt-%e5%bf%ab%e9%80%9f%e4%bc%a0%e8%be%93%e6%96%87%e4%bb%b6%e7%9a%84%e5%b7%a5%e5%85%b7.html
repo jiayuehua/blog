@@ -1,0 +1,57 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空11.7  wdt 快速传输文件的工具
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 187
+wordpress_url: http://www.jiayuehua.com/?p=187
+date: '2016-11-03 05:34:44 +0800'
+date_gmt: '2016-11-03 05:34:44 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>wdt 是facebook 出品的用于linux机器间传输文件的工具，传输速度明显快于rsync和scp。</p>
+<p>wdt 官网</p>
+<p>https://github.com/facebook/wdt</p>
+<p>wdt 用法</p>
+<p>ssh dsthost wdt -directory destdir | ssh srchost wdt -directory srcdir -</p>
+<p>不过请注意，wdt不支持传输文件，只支持传输目录。</p>
+<p>这个命令行很长，我写了一个shell ，名为fcp，可以使用类似scp的语法:</p>
+<p>fcp &nbsp;[[user@]host1:]dir [[user@]host2:]dir</p>
+<p>======= fcp =======</p>
+<p>#!/bin/bash<br />
+if [ $# -lt 2 ]<br />
+then<br />
+echo "usage: fcp [[user@]host1:]dir [[user@]host2:]dir "<br />
+exit<br />
+fi<br />
+sh=`echo $1| awk -F: '{print $1 }'`<br />
+sp=`echo $1| awk -F: '{print $2 }'`<br />
+dh=`echo $2| awk -F: '{print $1 }'`<br />
+dp=`echo $2| awk -F: '{print $2 }'`<br />
+if [ -z "$sp" ]<br />
+then<br />
+sp=$sh<br />
+sh=''<br />
+else<br />
+sh="ssh $sh"<br />
+fi</p>
+<p>if [ -z "$dp" ]<br />
+then<br />
+dp=$dh<br />
+dh=''<br />
+else<br />
+dh="ssh $dh"<br />
+fi</p>
+<p>#echo $sh $sp $dh $dp</p>
+<p>$dh wdt -directory $dp | &nbsp;$sh wdt -directory $sp &nbsp;-</p>
+<p>&nbsp;</p>

@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 11.1 bash 命令行快速编辑
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 98
+wordpress_url: http://www.jiayuehua.com/?p=98
+date: '2016-01-31 05:46:07 +0800'
+date_gmt: '2016-01-31 05:46:07 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>bash是linux 下强大的Shell工具。这里介绍一些有用的用法。</p>
+<p>1.命令行编辑</p>
+<p>bash的命令行可以使用emacs 方式或者vim 方式, 在.bashrc中可以设置</p>
+<p>set -o vi &nbsp;或</p>
+<p>set -o emacs</p>
+<p>默认是emacs 方式的。</p>
+<p>一些快捷键，bash emacs方式下的快捷键和在emacs中编辑的很类似。</p>
+<p>C 代表Ctrl键 M代表Alt键。</p>
+<p>M-d 向后删除一个单词</p>
+<p>C- d向后删除一个字母</p>
+<p>C-k删除到行末</p>
+<p>M-f光标前进一个单词</p>
+<p>C-f光标前进一个字母</p>
+<p>C-b后退一个字母</p>
+<p>M-b后退一个单词</p>
+<p>C-r搜索历史命令</p>
+<p>2批量输入命令</p>
+<p>在.bashrc中加入如下行，设置编辑器为vim</p>
+<p>$export EDITOR='/usr/bin/vim'</p>
+<p>然后使设置生效</p>
+<p>$source .bashrc</p>
+<p>这时如果想输入多行，比如你看到某技术博客上的一篇文章，包含多条命令，你可以先复制包含命令的文本。</p>
+<p>&nbsp;</p>
+<p>然后拷贝到终端，让多行命令依次执行，在终端中按如下键</p>
+<p>C-x C-e</p>
+<p>看到vim打开了，然后在vim中执行</p>
+<p>:set paste</p>
+<p>以便保证粘贴后文本的是和原来一模一样的的，</p>
+<p>把多行命令从文本拷贝到vim中，使用i 插入模式, C-v粘贴命令 Esc 完成插入。</p>
+<p>接着vim中</p>
+<p>:wq</p>
+<p>退出，看到了吧，多条命令批量依次执行。这种办法比一次输入一行要方便很多；也比本地创建shell脚本文件、粘贴命令、执行shell脚本文件的方式要方便一些。</p>
+<p>&nbsp;</p>

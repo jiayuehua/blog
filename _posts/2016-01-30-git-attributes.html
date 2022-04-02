@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空3.3 git 使用git attributes将代码缩进由制表符修改为空格
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 93
+wordpress_url: http://www.jiayuehua.com/?p=93
+date: '2016-01-30 13:43:02 +0800'
+date_gmt: '2016-01-30 13:43:02 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>使用空格做缩进而非制表符，这样代码更容易阅读。那么假如git库中的代码是以制表符tab缩进的，本地想用空格查看，该如何做？</p>
+<p>1 可以使用以前介绍的replace工具</p>
+<p>2使用emacs打开某文件，然后M-x untabity</p>
+<p>但这两种做法都需要手工操作，有没有自动的方法呢？</p>
+<p>有的，就是attributes</p>
+<p>方法如下，</p>
+<p>1 在项目的.git/config文件中加入如下配置</p>
+<p>[filter "tabspace"]<br />
+;clean = unexpand --tabs=2 --first-only ;; commit<br />
+smudge = expand --tabs=2 --initial ;; checkout</p>
+<p>其中smudge指定在检出时运行的命令，clean指定提交时的。上述配置会将每行起始处的每个tab替换为两个空格。</p>
+<p>上述clean配置在提交时做相反的转换，我一般都将clean行注释掉，甚至设为和smudge的命令一样为expand，以便保证提交的代码没有起始tab.</p>
+<p>2 创建attributes文件，指定使用上述配置的文件类型</p>
+<p>在.git/info/目录下创建attributes文件，文件内容如下</p>
+<p>*.c filter=tabspace<br />
+*.cc filter=tabspace<br />
+*.h filter=tabspace<br />
+*.hpp filter=tabspace<br />
+*.cpp filter=tabspace<br />
+*.asm filter=tabspace</p>
+<p>这样c源码文件就都会使用config中的"tabspace "配置，检出代码时将tab转换为空格。</p>
+<p>配置好后，以后所有的代码都是空格缩进了。很方便吧，赶快试试吧！</p>
+<p>&nbsp;</p>

@@ -1,0 +1,53 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 5 samba 在linux 和windows操作系统间共享文件
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 34
+wordpress_url: http://www.jiayuehua.com/?p=34
+date: '2016-01-30 15:00:07 +0800'
+date_gmt: '2016-01-30 15:00:07 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>假定你需要将文件从linux传输到windows，你会咋做</p>
+<p>可能你会想到用ftp, http 。如果加密的呢，用winscp.可是如果需要在windows中创建一个visual studio工程，而工程文件和源码文件都位于linux上，这时该如何做。</p>
+<p>答案是samba，使用samba，你既可以将windows的文件系统挂载到linux上，也可以将linux文件系统挂载到windows上。本文讲解如何正确配置将linux的文件系统挂载到windows。</p>
+<p>1 安装Samba</p>
+<p>sudo apt-get install samba</p>
+<p>2 在/etc/samba下创建smb.conf配置文件，内容</p>
+<p>[global]<br />
+workgroup = helloworld<br />
+netbios name = jiayuehua<br />
+server string = Linux Samba Server TestServer<br />
+security = user<br />
+map archive = no<br />
+[hello]<br />
+path = /home/jiayuehua/<br />
+map archive = no<br />
+writeable = yes<br />
+browseable = yes<br />
+create mode = 0644<br />
+directory mode = 0755</p>
+<p>&nbsp;</p>
+<p>这里共享文件夹路径为<span style="color: #003366;"> /home/jiayuehua</span> 使用密码认证，并且该配置使用户可以在挂载的目录中创建文件。</p>
+<p>3 设置samba登录密码&nbsp;&nbsp;sudo smbpasswd -a jiayuehua</p>
+<p>我一般设成和linux登录密码相同</p>
+<p>4重启samba</p>
+<p>/etc/init.d/smbd restart</p>
+<p>/etc/init.d/nmbd restart</p>
+<p>5 windows上配置账号信息</p>
+<p>在 控制面板\所有控制面板项\凭据管理器 中点击添加windows凭据 ，依次输入linux机器ip地址，samba用户名，samba密码</p>
+<p>6连接samba 在windows资源管理器计算机图标中点击鼠标右键，选择<映射网络驱动器>，文件夹部分填写<span style="color: #99cc00;">\\192.168.56.101\hello </span>其中&ldquo;<span style="color: #99cc00;">hello</span>&rdquo;的名称来源自samba配置文件中第二个方括号&ldquo;[<span style="color: #99cc00;">hello</span>]&rdquo;。</p>
+<p>点击完成，便可看到资源管理器的右侧多了一个盘符，点击该盘符，便可浏览配置文件中设置的linux共享文件夹，路径为/home/jiayuehua的内容。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

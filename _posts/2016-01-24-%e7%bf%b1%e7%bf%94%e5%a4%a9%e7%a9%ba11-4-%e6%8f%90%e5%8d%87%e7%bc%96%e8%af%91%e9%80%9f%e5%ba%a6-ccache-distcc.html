@@ -1,0 +1,152 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空11.4 提升编译速度 ccache distcc
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 50
+wordpress_url: http://www.jiayuehua.com/?p=50
+date: '2016-01-24 04:29:10 +0800'
+date_gmt: '2016-01-24 04:29:10 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p><span style="font-family:宋体"><span style="font-size:18pt">程序员常常为编译大型程序时较长的编译时间苦恼。福音来了，使用ccache 和distcc，可以显著提高gcc和g++的编译速度。 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="font-size:18pt">使用非常简单 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<h1><span style="font-size:18pt">A ccache<br />
+</span></h1>
+<p><span style="font-family:宋体"><span style="font-size:18pt">1 安装ccache </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="font-size:18pt">$ sudo apt-get install ccache </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="font-size:18pt">2使用ccache </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="font-size:18pt">$ ccache gcc a.cpp </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="font-size:18pt">可以在~/.bin下加入几个软链接 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">$ ln -s /usr/bin/ccache gcc </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">$ ln -s /usr/bin/ccache g++ </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">然后修改.bashrc 加入如下行 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">PATH=~someuser/.bin:$PATH </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">$ . ~/.bashrc </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">以后直接使用gcc 和g++命令时也能高速快捷了。赶快试试吧。 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">管理ccache </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">Ccache 会在用户根目录下存放一些缓冲文件，可以使用ccache 命令来管理，比如 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">$ ccache -s </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">可以查看现在缓冲文件的统计信息，其他用法可查看帮助 </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="font-family:宋体"><span style="color:black; font-size:18pt; background-color:white">$ ccache &ndash;h </span><span style="font-size:12pt"><br />
+			</span></span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">比如想设定缓冲文件夹的总大小等。<br />
+</span></p>
+<p>
+&nbsp;</p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white"><strong>B distcc<br />
+</strong></span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">Distcc 可以让其他机器一起编译项目<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">1 客户端client、服务器server 上distcc安装<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@client:~$ apt install distcc<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@server:~$ apt install distcc<br />
+</span></p>
+<p>
+&nbsp;</p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">2 服务器启动distccd<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">在其他机器上也安装distccd 安装完后使用如下命令启动distccd<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">--allow 参数指明了允许连接的客户端ip ，使用点分十进制<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@server:~$ distccd --user=nobody --daemon --allow=10.73.139.40/22<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">可以将该命令写入/etc/rc.local，这样机器启动后自动启动distccd<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@test72:~# cat /etc/rc.local<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">#!/bin/sh<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">distccd --user=nobody --daemon --allow=10.73.139.40/22<br />
+</span></p>
+<p>
+&nbsp;</p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">3 客户端设定DISTCC_HOSTS环境变量指明client要连接的服务端ip列表<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">假定服务器ip 是10.190.4.2 以空格分割。<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@client:~$ export DISTCC_HOSTS='10.190.4.2 localhost'<br />
+</span></p>
+<p>
+&nbsp;</p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">完成！<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">现在可以试一下<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@client:~# cat a.cpp<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">#include <cstdio><br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">int main(){<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">    std::printf("hello, distcc!\n");<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">}<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@client:~# distcc g++ a.c<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">root@client:~# ./a.out<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">hello, distcc!<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">我们用大型项目git试试编译速度。<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">首先 需要创建一个make 的别名<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">Client $ alias make='make &ndash;j 32'<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">然后编译git<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">Client $ make<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">同时可以在另一个标签中查看编译的情况<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">Client $ distccmon-text  2<br />
+</span></p>
+<p>
+&nbsp;</p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white"> 11000  Compile     credential.stdout.ubuntu.10990             10.190.4.2[0]<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white"> 11001  Compile     credential.stdout.ubuntu.10984             10.190.4.2[1]<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white"> 10931  Compile     imap-send.stdout.ubuntu.10906.                localhost[0]<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white"> 10897  Compile     fast-impor.stdout.ubuntu.10887                localhost[1]<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;<br />
+</span></p>
+<p>
+&nbsp;</p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">可以看到服务器也在帮我们编译一些源码文件。<br />
+</span></p>
+<p><span style="color:black; font-family:宋体; font-size:18pt; background-color:white">服务器越多越好，如果有两台服务器和本机一起编译，官方说能将任务速度提高到原来的2.6倍。</span></p>

@@ -1,0 +1,48 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 3.1 让git日志更美观
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 56
+wordpress_url: http://www.jiayuehua.com/?p=56
+date: '2016-01-26 14:49:39 +0800'
+date_gmt: '2016-01-26 14:49:39 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>git 的每个commit相关日志通常有多行，比如作者的一个库的日志显示如下运行git log</p>
+<p>commit c0bb1d12198ee2868e8668efd449a5eb8f871f0b<br />
+Author: jiayuehua <gracedancer@163.com><br />
+Date:&nbsp;&nbsp; Tue Dec 15 22:27:40 2015</p>
+<p>adapt lines position</p>
+<p>commit 66033c4c8e58b8c394d3090ab0d7c4f46b0740e0<br />
+Author: jiayuehua <jiayuehua@jd.com><br />
+Date:&nbsp;&nbsp; Thu Dec 10 03:40:09 2015</p>
+<p>rm test_push</p>
+<p>如果提交很多的话，查找一个commit将很不方便。</p>
+<p>解决方法是使用&ldquo;美观&rdquo;格式，命令如下：</p>
+<p>$ git log --pretty=oneline</p>
+<p>输出的例子</p>
+<p>c0bb1d12198ee2868e8668efd449a5eb8f871f0b adapt lines position<br />
+66033c4c8e58b8c394d3090ab0d7c4f46b0740e0 rm test_push<br />
+9911dad5c6b28441a7082cc5dca9e5967ea1d5ee test push<br />
+909a078bb341ffce038319e339e40a1f5f5ff7f9 git attributes lf crlf<br />
+f4e89dba921ff93e6884e2bb85535b1a6917c48f tabspace convert</p>
+<p>然而还是不太方便，只显示sha1 id 和commit msg，没有显示作者，日期等，有没有其他办法 呢。</p>
+<p>办法是有的，只要修改git配置文件~/.gitconfig， 加入如下两行</p>
+<p>[format]<br />
+pretty = format:%C(auto) %C(yellow)%h%Creset %C(green)(%ad)%Creset&nbsp;&nbsp; %C(yellow)%an%Creset&nbsp; %s</p>
+<p>这是再次运行git log不用加任何参数，输出将美观的显示如下</p>
+<p><span style="color: #ffff00;">&nbsp;c0bb1d1</span><span style="color: #008000;"> (Tue Dec 15 22:27:40 2015)&nbsp;</span>&nbsp;<span style="color: #ffff00;"> jiayuehua</span>&nbsp; adapt lines position<br />
+<span style="color: #ffff00;">&nbsp;66033c4</span> <span style="color: #008000;">(Thu Dec 10 03:40:09 2015)</span>&nbsp;&nbsp;<span style="color: #ffff00;"> jiayuehua</span>&nbsp; rm test_push<br />
+<span style="color: #ffff00;">&nbsp;9911dad</span> <span style="color: #008000;">(Thu Dec 10 03:39:34 2015)</span>&nbsp;&nbsp; <span style="color: #ffff00;">jiayuehua</span>&nbsp; test push</p>
+<p>加入了作者和日期字段，而且各个字段是有颜色的。我将第一个字段设成了黄色，第二个绿色，等等。另外commit id也是更加简洁的以7个短字符显示，如&nbsp;c0bb1d1 。比以前美观许多了吧。赶快试试吧。</p>

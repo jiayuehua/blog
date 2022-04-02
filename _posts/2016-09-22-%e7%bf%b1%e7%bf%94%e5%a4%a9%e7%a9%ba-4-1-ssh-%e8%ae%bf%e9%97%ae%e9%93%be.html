@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 4.1 ssh 访问链
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 177
+wordpress_url: http://www.jiayuehua.com/?p=177
+date: '2016-09-22 11:32:04 +0800'
+date_gmt: '2016-09-22 11:32:04 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>1 ssh查看公钥md5签名</p>
+<p>ssh-keygen -l -E md5 -f id_rsa.pub</p>
+<p>2 ssh 访问链</p>
+<p>在 .ssh/config 中加入如下内容</p>
+<p>Host *+*<br />
+ProxyCommand ssh -W $(echo %h | sed 's/^.*+//;s/^\([^:]*$\)/\1:22/') $(echo %h | sed 's/+[^+]*$//;s/\([^+%%]*\)%%\([^+]*\)$/\2 -l \1/;s/:\([^:+]*\)$/ -p \1/')</p>
+<p>Host */*<br />
+ProxyCommand ssh %r@$(dirname %h) -W $(basename %h):%p</p>
+<p>可以递归的通过其他机器访问目的机器</p>
+<p>如 $ ssh m1/m2</p>
+<p>假定你对m1 m2 都有权访问 ，但能直接访问m1不能直接访问m2 ，这时，该命令可帮助你，假定通过密码验证，你需要先输入m1的密码，然后输入m2的密码，这时你就登录到m2 了</p>
+<p>如果需要多次跳转，可使用 $ ssh m1/m2/m3&hellip;&hellip;</p>
+<p>如果需要指定用户名和端口呢</p>
+<p>$ ssh -lrob jiayuehua%m1:50022+m2:22</p>
+<p>这类似 ssh m1/m2 不过m1的用户名是jiayuehua , 端口50022 ；m2的用户名rob 端口为22。</p>
+<p>3 <a href="http://www.anchor.com.au/blog/2010/02/ssh-controlmaster-the-good-the-bad-the-ugly/">ssh controlmaster</a> 该文详细介绍了ssh controlmaster 配置的作用。</p>
+<p>4 <a href="http://jpuyy.com/2013/10/ssh-agent-usage.html">ssh-agent</a> 详细介绍了ssh-agent的妙用</p>

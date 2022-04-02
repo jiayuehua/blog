@@ -1,0 +1,29 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 11.5 查看导致core文件的原因
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 112
+wordpress_url: http://www.jiayuehua.com/?p=112
+date: '2016-02-04 11:47:53 +0800'
+date_gmt: '2016-02-04 11:47:53 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>程序员开发时经常遇到程序core掉，这是可以通过gdb调试，可是如果ulimit -c的值是0时，系统是不会产生core文件的。</p>
+<p>可以通过如下方法修改</p>
+<p>超户权限下修改/etc/security/limits.conf</p>
+<p>加入如下两行</p>
+<p>jiayuehua soft core 100000 #二进制程序小于100m时产生core，一般linux程序都不会超过该值。<br />
+root hard core unlimited</p>
+<p>这里假定用户名为jiayuehua 。</p>
+<p>这时，重启机器，测试下，在C代码中调用abort函数，可以看到已经正确的产生了core文件。以后便可以方便的查找运行时错误了。</p>

@@ -1,0 +1,94 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 4  ssh 远程登录的安全shell
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 172
+wordpress_url: http://www.jiayuehua.com/?p=172
+date: '2016-09-22 08:53:05 +0800'
+date_gmt: '2016-09-22 08:53:05 +0800'
+categories:
+- 编程环境
+tags: []
+comments: []
+---
+<p>ssh 是用于远程登录的工具。ssh周边的工具包括scp 远程拷贝， sftp 远程安全ftp，sshfs挂载远程文件系统。</p>
+<p>本文主要介绍ssh通过sock5代理访问远程机器，主要用于本机不能访问远程机器，通过代理来绕过限制访问远程机器的情形。</p>
+<p>这里以访问github.com为例，想ssh github.com以便通过ssh协议下载github 上的代码。</p>
+<p>假定本地机器不能访问github 但能访问代理，代理可访问github</p>
+<p>1 代理服务器上安装sock5服务器</p>
+<p>这里使用dante软件作sock5服务</p>
+<p>&nbsp;</p>
+<p>假定代理服务器为centos 系统，安装方法</p>
+<p>1.1 安装Dante，执行如下脚本</p>
+<p>#!/bin/bash</p>
+<p>cd ~</p>
+<p>yum install gcc make bison flex rpm-build.x85_64</p>
+<p>yum install openldap-devel.x86_64 pam-devel.x86_64 openssl-devel.x86_64 libgssapi-devel.x86_64 libgssapi-devel.x86_64</p>
+<p>wget -c <a href="http://www.inet.no/dante/files/dante-1.4.0-pre1.tar.gz">http://www.inet.no/dante/files/dante-1.4.0-pre1.tar.gz</a></p>
+<p>#tar zxf dante-1.4.0-pre1.tar.gz</p>
+<p>#cd dante-1.4.0-pre1/</p>
+<p>#./configure</p>
+<p>#make</p>
+<p>#make install</p>
+<p>&nbsp;</p>
+<p>rpmbuild -ta dante-1.4.0-pre1.tar.gz</p>
+<p>cd ~/rpmbuild/RPMS/x86_64/</p>
+<p>sudo rpm -ivh dante-1.4.0-0.pre1.el6.x86_64.rpm</p>
+<p>&nbsp;</p>
+<p>1.2 在/etc下创建文件sockd.conf ，修改文件中的内外网IP,文件内容：</p>
+<p>logoutput: /var/log/danted.log</p>
+<p>internal: 192.168.115.72 port = 1080&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #替换为代理的内网IP</p>
+<p>external: 61.135.169.72&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #替换为代理的外网IP</p>
+<p>method: none</p>
+<p>#user.privileged: proxy</p>
+<p>user.notprivileged: nobody</p>
+<p>#user.libwrap: nobody</p>
+<p>client pass {</p>
+<p>from: 0.0.0.0/0 to: 0.0.0.0/0</p>
+<p>log: connect disconnect</p>
+<p>}</p>
+<p>pass {</p>
+<p>from: 0.0.0.0/0 to: 0.0.0.0/0 port gt 1023</p>
+<p>command: bind</p>
+<p>log: connect disconnect</p>
+<p>}</p>
+<p>pass {</p>
+<p>from: 0.0.0.0/0 to: 0.0.0.0/0</p>
+<p>command: connect udpassociate</p>
+<p>log: connect disconnect</p>
+<p>}</p>
+<p>1.3 启动dante</p>
+<p>/etc/init.d/sockd start</p>
+<p>&nbsp;</p>
+<p>2 本地机器 安装connect 程序</p>
+<p>2.1 下载<a href="https://raw.githubusercontent.com/jiayuehua/profiles/master/ssh/connect.c">connect.c</a></p>
+<p>2.2 编译安装</p>
+<p>$&nbsp; gcc connect.c -o connect</p>
+<p>$&nbsp; mv connect /usr/local/bin</p>
+<p>&nbsp;</p>
+<p>3 本地机器 在.ssh中创建文件config</p>
+<p>加入如下内容</p>
+<p>&nbsp;</p>
+<p>Host github.com</p>
+<p>Hostname github.com</p>
+<p>User git</p>
+<p>ProxyCommand ~/.ssh/proxy-wrapper&nbsp; '%h %p'</p>
+<p>4 本地机器 在.ssh中创建文件proxy-wrapper 并将之权限改为可执行，注意将文件中的ip地址为1.2中设置的内网IP.</p>
+<p>$ cat proxy-wrapper</p>
+<p>#!/bin/bash</p>
+<p>connect -S 192.168.115.72:1080 $@&nbsp; #注意这里的ip为1.2中设置的内网IP</p>
+<p>&nbsp;</p>
+<p>5 大功告成，试试吧，在本机机器上使用ssh协议clone</p>
+<p>git clone git@github.com:jiayuehua/unpv22e.git</p>
+<p>本地机器成功的下载下来了自己在github上的代码，很棒吧。</p>
+<p>&nbsp;</p>
+<p>* 如果你的代理服务器是ubuntu系统，可以下载<a href="https://raw.githubusercontent.com/jiayuehua/profiles/master/ssh/danted.conf">dante.conf</a>和<a href="https://raw.githubusercontent.com/jiayuehua/profiles/master/ssh/install_dante.sh">install_dante.sh</a>，按照1.2修改dante.conf中的内外网ip ，然后运行install_dante.sh便可安装和启动dante 服务。</p>
+<p>&nbsp;</p>

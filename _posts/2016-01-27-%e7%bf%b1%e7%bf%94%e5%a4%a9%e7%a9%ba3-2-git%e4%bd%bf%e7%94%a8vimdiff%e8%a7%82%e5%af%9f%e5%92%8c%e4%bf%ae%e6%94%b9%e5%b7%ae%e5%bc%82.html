@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空3.2 git使用git difftool观察和修改差异
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 59
+wordpress_url: http://www.jiayuehua.com/?p=59
+date: '2016-01-27 15:41:18 +0800'
+date_gmt: '2016-01-27 15:41:18 +0800'
+categories:
+- 编程环境
+tags:
+- git
+- vimdiff
+- log
+comments: []
+---
+<p>在git中，编辑过代码后，提交前，大多人都会使用git diff比较下差异，有时也会和其他分支比较下差异，大多情况下使用git diff。可git diff有个缺陷，只能看到改动文本，而把大量的上下文隐藏了起来，那么有没有办法得到更加好的diff输出呢。</p>
+<p>答案是修改配置文件，加入diff.tool选项:</p>
+<p>[diff]</p>
+<p>tool = vimdiff</p>
+<p>这里我设为了vimdiff ，也可以设为kdiff3 ，meld,beyond compare 等其他比较工具。设为vimdiff的优点是，可以在windows上的linux虚拟终端软件如secureCrt、Xshell里使用。</p>
+<p>使用方法 很简单 ，使用 git difftool 就可。</p>
+<p>&nbsp;</p>
+<p>这时可以方便的以两栏的方式竖直显示，并且可以方便的看到上下文。不只如此，还可以在每个差异块见跳转</p>
+<p>] c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 跳转到下一差异</p>
+<p>[c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 跳转到上一差异</p>
+<p>如果想放弃某一处修改，还可以使用如下命令来获取历史版本中的该处的文本。</p>
+<p>do&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 获取另一缓冲区的差异。</p>
+<p>dp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 将另一缓冲区 块的文本改为和本缓冲区一致。</p>
+<p>上文中使用光标在右侧差异块时，使用do，将使右侧文本和左侧完全一样，放弃了修改。另外，退出vimdiff时，如果想保留do、 dp的改动，记得要保存文件 &ldquo; :wqa&rdquo; 。</p>
+<p>如果改动的文件比较多，使用git difftool 时会依次用vimdiff 比较每个有变动的文件。</p>
+<p>是不是比以前操作方便了许多，赶快体验一下吧。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

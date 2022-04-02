@@ -1,0 +1,51 @@
+---
+layout: post
+status: publish
+published: true
+title: 翱翔天空 11.3  去除C C++源文件中的注释
+author:
+  display_name: jiayuehua
+  login: jiayuehua
+  email: jiayuehua1982@qq.com
+  url: ''
+author_login: jiayuehua
+author_email: jiayuehua1982@qq.com
+wordpress_id: 35
+wordpress_url: http://www.jiayuehua.com/?p=35
+date: '2016-01-23 13:35:03 +0800'
+date_gmt: '2016-01-23 13:35:03 +0800'
+categories:
+- 编程环境
+tags:
+- 编程
+- C++
+- shell
+comments: []
+---
+<p>程序员大概是天下最会&ldquo;复用&rdquo;的人，假如你看到一段代码写的不错，且授权随意修改和使用，可惜有个缺点，文中有大量的注释，而你不希望保留注释，该咋做呢。</p>
+<p>你可能会说，用编辑器删，可是如果有上百行分开的注释，用编辑器删也不轻松。</p>
+<p>福音来了，有一个工具 StripCmt, 可以完全去掉源码中的注释，而保留其他内容部变。</p>
+<p>StripCmt 的下载地址</p>
+<p>http://www.bdc.cx/software/stripcmt/</p>
+<p>安装只需要按照Readme中的说明操作即可，很简单。</p>
+<p>使用方法</p>
+<p>~$ stripcmt source.cpp</p>
+<p>便可将source.cpp中的注释去掉，然后将结果打印在控制台。</p>
+<p>如果想直接替换源文件呢？相信大多数情况是这样的。</p>
+<p>可以使用11.2中的rewrite</p>
+<p>$ rewrite source.cpp stripcmt source.cpp</p>
+<p>我在/usr/local/bin中添加了一个名为mystripcmt的脚本，可以批量替换shell命令行参数中的所有文件。</p>
+<p>#!/bin/bash</p>
+<p># mystrpcmt</p>
+<p>PATH=/bin:/usr/bin:/usr/local/bin</p>
+<p>case $# in<br />
+0)&nbsp; echo 'Usage: mystripcmt&nbsp; files' 1>&amp;2; exit 1<br />
+esac</p>
+<p>for i<br />
+do<br />
+overwrite&nbsp;&nbsp; $i &nbsp; stripcmt&nbsp;&nbsp; $i<br />
+done</p>
+<p>使用这个脚本便可以方便的批量删除原文件中的注释。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
