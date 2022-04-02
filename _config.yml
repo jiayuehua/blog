@@ -18,16 +18,16 @@ avatar: https://raw.githubusercontent.com/Quuxplusone/blog/master/images/pumpkin
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: arthur.j.odwyer@gmail.com
+  email: techyoo@gmail.com
   facebook:
   flickr:
-  github: Quuxplusone
+  github: jiayuehua
   instagram:
-  linkedin: arthur-odwyer
+  linkedin: 
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: ColossalCaveTBG
-  stackoverflow: users/1424877/quuxplusone
+  twitter: jiayuehua
+  stackoverflow: 
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
@@ -47,7 +47,7 @@ anchorjs: true
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: https://quuxplusone.github.io
+url: https://jiayuehua.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
