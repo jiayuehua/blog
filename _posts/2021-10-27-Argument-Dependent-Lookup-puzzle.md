@@ -4,9 +4,7 @@ title:  "Argument Dependent Lookup puzzle"
 date:   2021-10-27 09:23:58 +0800
 categories: jekyll update
 tags:
-  Hello
-  world
-  jekyll-now
+  adl
 ---
 
 adl是指函数通过其参数所在的名字空间来寻找，对于模板函数，其行为和普通函数略有不同。
