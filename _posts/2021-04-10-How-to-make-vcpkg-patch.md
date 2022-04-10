@@ -13,11 +13,9 @@ tags:
 假定我们想将abseil由20210324升级到20211102版本.
 
 ## 修改vcpkg.json
-
-删除PATCHS 参数中的所有内容。
 将ports/abseil/vcpkg.json中的version-string字段改为新版本的version-string.
 ## 修改portfile.cmake
-首先我们修改ports/abseil/portfile.cmake，将vcpkg_from_github中的REF字段的commitID改为新版本20211102对应的git commitID. SHA512改为0.
+首先我们修改ports/abseil/portfile.cmake，将vcpkg_from_github中的PATCHS 参数中的所有内容删除，REF字段的commitID改为新版本20211102对应的git commitID. SHA512改为0.
 如何获取新版本的SHA512呢？在vcpkg工程根目录下运行./vcpkg install abseil，终端打印出如下内容
 
     ...
@@ -74,7 +72,7 @@ vcpkg使用git diff的输出打patch，为了使用git diff。我们首先在
  
     ~/vcpkg/buildtrees/abseil/src/cae233d0bf-c7dcd484c3.clean$ git diff . > ../../../../ports/abseil/fix-cxx-standard.patch
 
-再次修改port/abseil/portfile.cmake 将fix-cxx-standard.patch加回vcpkg_from_github PATCHS参数
+再次修改ports/abseil/portfile.cmake 将fix-cxx-standard.patch加回vcpkg_from_github PATCHS参数
 
     vcpkg_from_github(
         OUT_SOURCE_PATH SOURCE_PATH
@@ -137,4 +135,4 @@ vcpkg使用git diff的输出打patch，为了使用git diff。我们首先在
 
 大功告成! 接下来，我们便可以将对abseil的更新push到自己fork的vcpkg仓库，然后向microsoft/vcpkg提交pr了。
 
-参考了https://github.com/microsoft/vcpkg/pull/22017 我以前成功被merge的abseil的Pull request。
+参考了 https://github.com/microsoft/vcpkg/pull/22017 我以前成功被merge的abseil的Pull request。
