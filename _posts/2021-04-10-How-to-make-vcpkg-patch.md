@@ -6,7 +6,7 @@ categories: jekyll update
 tags:
   vcpkg
 ---
-[vcpkg](www.github.com/microsoft/vcpkg)是微软出品的C++软件包管理器，包含超过1700个库。使用时如果喜欢的库不在microsoft/vcpkg中或者发现安装后有bug,或者需要升级库到新版本时，可以给microsfot/vcpkg提交PR。本文介绍提交升级vcpkg中库的PR。
+[vcpkg](www.github.com/microsoft/vcpkg)是微软出品的C++软件包管理器，包含超过1700个库。使用时如果喜欢的库不在microsoft/vcpkg中或者发现安装后有bug,或者需要升级库到新版本时，可以给microsoft/vcpkg提交PR。本文介绍提交升级vcpkg中库的PR。
 
 以abseil库为例说明。
 每个软件包的对应的cmake文件位于ports 目录
@@ -46,10 +46,10 @@ tags:
     ...
 
 从上文中可以看到abseil的20211102版本的源码位于/home/rob/vcpkg/buildtrees/abseil/src/cae233d0bf-c7dcd484c3.clean,
-我们到/home/rob/vcpkg/buildtrees/abseil/src/cae233d0bf-c7dcd484c3.clean目录打patch。
+我们到/home/rob/vcpkg/buildtrees/abseil/src/cae233d0bf-c7dcd484c3.clean目录制作patch。
 
-### 打patch
-vcpkg使用git diff的输出打patch，为了使用git diff。我们首先在
+### 制作新patch
+vcpkg使用git diff的输出制作patch，为了使用git diff。我们首先在
 /home/rob/vcpkg/buildtrees/abseil/src/cae233d0bf-c7dcd484c3.clean 目录依次运行
 
     git init
@@ -91,6 +91,7 @@ vcpkg使用git diff的输出打patch，为了使用git diff。我们首先在
 
 ## 重新安装验证新patch能工作
 
+    ~/vcpkg$ ./vcpkg remove abseil
     ~/vcpkg$ ./vcpkg install abseil
     Computing installation plan...
     The following packages will be built and installed:
