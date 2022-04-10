@@ -110,7 +110,7 @@ vcpkg使用git diff的输出制作patch，为了使用git diff。我们首先在
     -- Building x64-linux-dbg
 
 ## 提交更改
-更改需要分两次提交，因为vcpkg的version/中用到ports/中的git tree index的信息。
+更改需要分两次提交，因为vcpkg的versions/中用到ports/中的git tree index的信息。
 首先提交一次 ports的更改
 
     git add ports/abseil
