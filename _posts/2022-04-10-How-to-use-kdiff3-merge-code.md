@@ -125,8 +125,7 @@ tags:
 ![merge](/images/merge-menu.png "merge menu")
 
 比如我们想全部使用deque分支的代码，可以选择 _Choose C Everywhere_ ,或者对所有有冲突的地方都使用本地代码，可以选择 _Choose B For All Unsolved Conflicts_ 。而工具栏中的这四个图标，
-![diff-button](/images/diff-button.png "diff buttion") 
-分别用于跳转到上一个差异，下一个差异，上一个冲突，下一个冲突。另外底部的窗口你可直接编辑合并的结果，如改写变量名字，添加一行代码等。
+![diff-button](/images/diff-button.png "diff buttion") 分别用于跳转到上一个差异，下一个差异，上一个冲突，下一个冲突。另外底部的窗口你可直接编辑合并的结果，如改写变量名字，添加一行代码等。
 
 编译完成后保存，回到tortoisegit解决冲突窗口列表，对每个文件都完成合并后，选择ok按钮。然后提交，就完成了合并。这里我们选择所有差异都是用C，也就是deque分支的代码。
 
