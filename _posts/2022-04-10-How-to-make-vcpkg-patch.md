@@ -136,4 +136,49 @@ vcpkg使用git diff的输出制作patch，为了使用git diff。我们首先在
 
 大功告成! 接下来，我们便可以将对abseil的更新push到自己fork的vcpkg仓库，然后向microsoft/vcpkg提交pr了。
 
+## bonus: 制作一个port的多个patch
+
+有时我们需要制作多个patch，针对不同的功能，这时需要在port的buildtree下的源码目录提交多次
+
+        ~/openSrc/vcpkg/buildtrees/abseil/src/cae233d0bf-0b16e4be7c.clean master> git log
+         34c4a53 (Wed Apr 13 11:39:33 2022) jiayuehua  second patch
+         3209c04 (Wed Apr 13 11:37:44 2022) jiayuehua  first patch
+         ae508e7 (Wed Apr 13 11:34:53 2022) jiayuehua  tmp
+
+这里tmp是直接下载源码后的提交，"first patch"是第一个改动的提交，"second patch"是第二个改动的提交。确保源码目录所有改动都已经提交
+
+        ~/openSrc/vcpkg/buildtrees/abseil/src/cae233d0bf-0b16e4be7c.clean master> git status
+        On branch master
+        nothing to commit, working tree clean
+
+这时可运行vcpkgformatpatch
+
+    ~/openSrc/vcpkg/buildtrees/abseil/src/cae233d0bf-0b16e4be7c.clean master> vcpkgformatpatch 
+    0001-first-patch.patch
+    0002-second-patch.patch
+
+然后将0001-firt-patch.patch 和0002-second-patch.patch拷贝到 ~/openSrc/vcpkg/ports/abseil/目录，再修改 ~/openSrc/vcpkg/ports/abseil/portfile.cmake 中的vcpkg_from_github函数，将这两个patch作为PATCHES的参数
+
+     vcpkg_from_github(
+        OUT_SOURCE_PATH SOURCE_PATH
+        REPO abseil/abseil-cpp
+        REF 215105818dfde3174fe799600bb0f3cae233d0bf #LTS 20211102, Patch 1
+        SHA512 75d234eac76be8790cf09e3e1144e4b4cf5cacb61e46961a9e4a35b37d0fa85243afdd5de5f47a006ef96af6fc91ecc0c233297c4c32258c08d46304b3361330
+        HEAD_REF master
+        PATCHES
+          0001-first-patch.patch
+          0002-second-patch.patch
+    )
+
+vcpkgformatpatch是我写的一个脚本，内容
+
+    !w /usr/local/bin> cat vcpkgformatpatch 
+    #!/bin/zsh
+    CommitsNum=`git log --oneline|wc -l`
+    CommitsNum=$((CommitsNum-1))
+    git format-patch --no-stat --no-signature "-$CommitsNum"
+    sed -i -n '/^diff/,$p' 0*.patch
+
+你便了解了制作多个patch的全部奥秘。
+
 参考了 https://github.com/microsoft/vcpkg/pull/22017 我以前成功被merge的abseil的Pull request。
