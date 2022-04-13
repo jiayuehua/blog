@@ -172,11 +172,10 @@ vcpkg使用git diff的输出制作patch，为了使用git diff。我们首先在
 
 vcpkgformatpatch是我写的一个脚本，内容
 
-    !w /usr/local/bin> cat vcpkgformatpatch 
+    /usr/local/bin> cat vcpkgformatpatch 
     #!/bin/zsh
-    CommitsNum=`git log --oneline|wc -l`
-    CommitsNum=$((CommitsNum-1))
-    git format-patch --no-stat --no-signature "-$CommitsNum"
+    CommitsNum=`git rev-list --count master`
+    git format-patch --no-stat --no-signature "-$((CommitsNum-1))"
     sed -i -n '/^diff/,$p' 0*.patch
 
 你便了解了制作多个patch的全部奥秘。
