@@ -3,6 +3,8 @@ layout: post
 title:  "value wrapper and SFINAE failure"
 date:   2021-10-08 09:23:58 +0800
 categories: jekyll update
+tags: 
+   SFINAE
 ---
 
 C\++17中的value wrapper 如optional 和variant给我们带来很大便利。假定我们要实现一个自己的value wrapper，代码如下:

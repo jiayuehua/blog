@@ -3,6 +3,8 @@ layout: post
 title:  "variadic template and typelist mutual conversion"
 date:   2021-06-03 09:23:58 +0800
 categories: jekyll update
+tags:
+   metaprogramming
 ---
 C++11引入了variadic template，现在模板库都使用新的variadic template来实现模板元编程，可是C\++03使用typelist，旧有的模板元库的算法难道都要舍弃了，另起炉灶吗？旧有的算法有其价值，最好的方法是能将typelist和variadic template相互转换，这样我们就可以应用旧有的算法于variadic template了。
 如何转换呢？我们这里使用boost mp11库实现。

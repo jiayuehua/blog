@@ -3,6 +3,8 @@ layout: post
 title:  "A better ostream_iterator"
 date:   2021-04-12 09:23:58 +0800
 categories: jekyll update
+tags:
+  iterator
 ---
 ostream_iterator 可方便的用于算法。但有个缺陷，使用ostream_iterator必须指定要输出类型的type，如ostream_iterator\<int\>。正如各种标准库的谓词可以不指定模板参数，ostream_iterator的设计也可改为不再需要指定模板参数，而将输出操作也就是复制函数改为模板成员函数
 ```cpp

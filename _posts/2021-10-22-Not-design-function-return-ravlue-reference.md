@@ -3,6 +3,8 @@ layout: post
 title:  "Don't design function that return rvalue reference"
 date:   2021-10-22 09:23:58 +0800
 categories: jekyll update
+tags:
+ rvalue
 ---
 
 设计函数和lambda时，尽量不要返回右值引用。这是因为1 可能返回dangling reference，2可能导致self move。返回dangling reference的情况大家比较熟悉，这里重点讨论self move。

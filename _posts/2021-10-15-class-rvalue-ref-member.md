@@ -3,6 +3,8 @@ layout: post
 title:  "Don't design class that contain Rvalue reference member"
 date:   2021-10-15 09:23:58 +0800
 categories: jekyll update
+tags: 
+   rvalue
 ---
 设计类的时候，千万不可以让类有右值成员的应用，很容易导致dangling reference。因为类的成员右值引用只能将所引用的临时对象的生存期延长到类实例构造函数结束，而不是整个类实例的生存期。
 
