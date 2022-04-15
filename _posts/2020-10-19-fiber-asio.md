@@ -3,6 +3,9 @@ layout: post
 title:  "使用asio和boost fiber纤程实现echo服务器"
 date:   2020-10-19 10:00:00 +0800
 categories: jekyll update
+tags:
+  asio
+   fiber
 ---
 boost fiber提供了编写异步程序的另一种方式，发起异步调用时切换上下文，由调度器迁移到其他纤程，当异步操作完成时，将原来纤程加入就绪队列，最终不再wait，成功执行完成操作，下文我们使用纤程实现echo服务器，可以看到会话session的语法和过程式调用一样简单。
 

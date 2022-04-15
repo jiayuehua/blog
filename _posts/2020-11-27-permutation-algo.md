@@ -3,6 +3,8 @@ layout: post
 title:  "stl排列组合算法"
 date:   2020-12-27 09:23:58 +0800
 categories: jekyll update
+tags:
+  algorithm
 ---
 标准库的排列组合算法现在只支持next_permutation和prev_permutation。排列组合有着极为重要的应用，howard hinnart开发了15个泛型算法，可以表示日常排列组合的大多数应用。
 我们挑选其中三个做说明。

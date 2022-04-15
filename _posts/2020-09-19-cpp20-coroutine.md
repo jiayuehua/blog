@@ -3,6 +3,7 @@ layout: post
 title:  "c++20 coroutine example"
 date:   2020-09-19 09:23:58 +0800
 categories: jekyll update
+tags: coroutine
 ---
 coroutine 作为C++20的新特性，在编程有着重要的应用。以下我们示范了如何使用coroutine，resumeable 类型和co_await able类型如何编写，以及coroutine中callee 和caller如何手动切换上下文。
 ```cpp

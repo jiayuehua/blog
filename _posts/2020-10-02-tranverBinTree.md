@@ -3,6 +3,8 @@ layout: post
 title:  "使用堆栈遍历二叉树"
 date:   2020-10-02 09:23:58 +0800
 categories: jekyll update
+tags:
+   algorithm
 ---
 以下我们使用堆栈遍历二叉树，支持前序中序后序，使用智能指针管理内存。遍历时支持定制化的动作。
 ```cpp
