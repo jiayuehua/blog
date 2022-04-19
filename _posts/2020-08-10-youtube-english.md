@@ -3,6 +3,7 @@ layout: post
 title:  "睁眼看世界：推介youtube channel,英语类"
 date:   2020-08-10 09:23:58 +0800
 categories: jekyll update
+tags: english
 ---
 英语作为世界语，形塑着地球村的现在和未来。推介几个youtube英语频道。
 

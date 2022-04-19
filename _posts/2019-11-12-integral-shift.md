@@ -3,6 +3,7 @@ layout: post
 title:  "integral shift"
 date:   2019-11-12 07:23:58 +0800
 categories: jekyll update
+tags: ub
 ---
 C++中的整型的移位操作可能导致undefined behavior。从美国女程序员Satabdi Das学到
 ```cpp

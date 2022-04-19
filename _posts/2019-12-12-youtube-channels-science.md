@@ -3,6 +3,7 @@ layout: post
 title:  "睁眼看世界：推介youtube channel，科学类"
 date:   2019-12-12 17:23:58 +0800
 categories: jekyll update
+tags: math
 ---
 
 "Science will stagnate if it is made to serve practical goals" - Albert Einstein

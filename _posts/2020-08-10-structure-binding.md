@@ -3,6 +3,7 @@ layout: post
 title:  "structure binding"
 date:   2020-08-10 09:23:58 +0800
 categories: jekyll update
+tags: tuple
 ---
 structure binding是C++17中的新的语言特性，用于查看一个结构体或者一个数据结构中的各个元素。比如如下代码可以很方便的查看插入map的操作成功了吗，成功的话打印新插入元素的value。
 

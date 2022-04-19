@@ -3,6 +3,7 @@ layout: post
 title:  "睁眼看世界：推介youtube channel，数学类"
 date:   2019-12-10 17:23:58 +0800
 categories: jekyll update
+tags: math
 ---
 
 Know the world in yourself. Never look for yourself in the world, for this would be to project your illusion .   Ancient Egyptian proverb.

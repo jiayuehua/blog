@@ -3,6 +3,7 @@ layout: post
 title:  "友元函数的技巧"
 date:   2019-10-12 07:23:58 +0800
 categories: jekyll update
+tags: function
 ---
 友元函数大家习惯将声明和定义分开写,如
 ```cpp

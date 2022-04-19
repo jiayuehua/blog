@@ -3,6 +3,7 @@ layout: post
 title:  "vector bool"
 date:   2019-12-08 17:23:58 +0800
 categories: jekyll update
+tags: container
 ---
 vector\<bool\>  和vector\<int\>有啥区别？区别是vector\<bool>的reference_type 不是bool&,而是代理类型。这种代理类型可以转换为bool，这种代理类型还有一个特点，拷贝构造时，相当于拷贝了bit的"地址",而当赋值时，则会真正的拷贝底层的bit。比如如下swap代码:
 

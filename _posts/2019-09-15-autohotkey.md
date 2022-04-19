@@ -3,6 +3,7 @@ layout: post
 title:  "编程友好的键盘布局"
 date:   2019-09-15 07:23:58 +0800
 categories: jekyll update
+tags: productivity
 ---
 编程中需要用到大量的特殊字符，而很难键入，比如“+”，需要按住shift和=两个键。并且数字在编码中用的远不如特殊字符多，因此编程中最好特殊字符能一键打出，而不是数字。
 
