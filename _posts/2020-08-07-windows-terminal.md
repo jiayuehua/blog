@@ -3,6 +3,9 @@ layout: post
 title:  "windows terminal"
 date:   2020-08-07 07:23:58 +0800
 categories: jekyll update
+tags:
+   application 
+   terminal
 ---
 windows terminal是微软推出的终端工具，快速的受到广大程序员的欢迎。
 安装方法，使用微软最新推出的命令行软件包管理器winget安装：

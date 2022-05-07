@@ -3,6 +3,7 @@ layout: post
 title:  "睁眼看世界：推介youtube channel，舞蹈类"
 date:   2019-12-15 17:23:58 +0800
 categories: jekyll update
+tags: dance
 ---
 
 在我成长时期，感情和欲望都令我羞涩。而通过舞蹈，我终于可以应付自如，而不再觉得羞涩。——舞蹈家Twyla Tharp

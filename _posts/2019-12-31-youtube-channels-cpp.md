@@ -3,6 +3,7 @@ layout: post
 title:  "睁眼看世界：推介youtube channel，C++类"
 date:   2019-12-31 17:23:58 +0800
 categories: jekyll update
+tags: lesson
 ---
 
 “Codes are a puzzle. A game, just like any other game."- Alan Turing
