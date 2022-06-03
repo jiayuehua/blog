@@ -1,13 +1,11 @@
 ---
 layout: post
-title:  "direct aggregate initialisation"
+title:  "direct aggeregate initialisation"
 date:   2022-06-03 09:24:08 +0800
 categories: jekyll update
 tags:
   initialisation
 ---
-
-
 ## direct aggeregate initialisation 介绍
 C\++20引入了direct aggeregate initialisation，那么它和传统的list aggeregate initialisation有啥区别。
 
