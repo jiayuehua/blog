@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "Direct Aggeregate Initialisation"
+title:  "direct aggeregate initialisation"
 date:   2022-06-03 09:24:58 +0800
 categories: jekyll update
 tags:
   initial
+
 ---
 
 ## direct aggeregate initialisation ΩÈ…‹
