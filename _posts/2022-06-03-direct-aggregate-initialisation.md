@@ -4,7 +4,7 @@ title:  "Direct Aggeregate Initialisation"
 date:   2022-06-03 09:24:58 +0800
 categories: jekyll update
 tags:
-  initialisation
+  initial
 ---
 
 ## direct aggeregate initialisation 介绍
@@ -13,6 +13,7 @@ C\++20引入了direct aggeregate initialisation，那么它有啥有点，和传统的list agger
 我们用例子来说明:
 
 比如array的aggeregate initialisation
+
     int a[]{1,2,3};
     int a[](1,2,3);
 
