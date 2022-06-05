@@ -6,7 +6,6 @@ categories: jekyll update
 tags:
   initialisation
 ---
-## direct aggeregate initialisation 介绍
 C\++20引入了direct aggeregate initialisation，那么它和传统的list aggeregate initialisation有啥区别。
 
 我们用例子来说明:
