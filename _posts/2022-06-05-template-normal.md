@@ -4,7 +4,7 @@ title:  "template revisit"
 date:   2022-06-03 09:24:08 +0800
 categories: jekyll update
 tags:
-  initialisation
+  template
 ---
 这里我们重温一下template的重要特性，这里的内容只覆盖到C\++17。
 
