@@ -4,7 +4,7 @@ title:  "使用boost hana的静态反射功能读取结构体的字段"
 date:   2023-02-25 09:24:58 +0800
 categories: jekyll update
 tags:
-  Undefined Behavior
+   static-reflection 
 ---
 做数据的序列化和反序列化时候，如果有静态反射，会极大简化要做的工作。这是因为有静态反射的化，很多解析和格式化的工作可以有同一个模板函数完成。
 
