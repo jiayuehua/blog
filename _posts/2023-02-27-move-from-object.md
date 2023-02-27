@@ -27,7 +27,7 @@ sean parent的move from对象规范能很大的简化支持move的类型的实�
         my_type(const my_type& a) : _remote{std::make_unique<implementation>(*a._remote)} {}
 
         my_type& operator=(const my_type& a) {
-            *_remote = *a._remote;
+            *_remote = *a._remote;//UB, this->_remote may be is null.
             return *this;
         }
 
@@ -41,6 +41,7 @@ sean parent的move from对象规范能很大的简化支持move的类型的实�
           return *_remote;
         }
     };
+
 构造函数将_remote设置成非空指针。可以看到这时默认移动函数将move from对象的成员_remote设为空指针，但这是符合新规范的，因为新规范并不要求move from对象还满足不变式，因此可以_remote成员设为任何值，只要能通过赋值被覆盖和析构自身就可。
 但这里的拷贝赋值操作还有bug，因为对于move from对象_remote为空，解引用将UB,需要改为：
 
