@@ -6,9 +6,9 @@ categories: jekyll update
 tags:
    static-reflection 
 ---
-做数据的序列化和反序列化时候，如果有静态反射，会极大简化要做的工作。这是因为有静态反射的化，很多解析和格式化的工作可以有同一个模板函数完成。
+做数据的序列化和反序列化时候，如果有静态反射，会极大简化要做的工作。这是因为有静态反射的话，很多解析和格式化的工作可以由同一个模板函数完成。
 
-这里我们使用boost hana演示静态反射。展示如何读取不同结构体的数。为了简单，这些结构体各字段都是数值。数据从字符串里读取，字符串里的数以空格分割。
+这里我们使用boost hana演示静态反射。展示如何读取不同结构体成员的数据。为了简单，这些结构体各字段都是数值。数据从字符串里读取，字符串里的数以空格分割。
 
 如
 
@@ -62,9 +62,9 @@ Point 类型的数据p存在字符串"15"里，Pair类型的数据存放在字�
       Point p{3};
       p = ReadInfo<Point>("15");
       Pair pa = ReadInfo<Pair>("3 5");
-      std::cout<<"p.x: "<< p.x <<std::endl; //p.x not modified
-      std::cout<<"pa.x: "<< pa.x ; //p.x not modified
-      std::cout<<" , pa.y: "<< pa.y <<std::endl; //p.x not modified
+      std::cout<<"p.x: "<< p.x <<std::endl;
+      std::cout<<"pa.x: "<< pa.x ; 
+      std::cout<<" , pa.y: "<< pa.y <<std::endl;
     }
 
 可以看到，我们首先需要修改Point和Pair类的定义，使用 BOOST_HANA_DEFINE_STRUCT 来让类支持静态反射，ReadInfo函数模板是核心的部分，模板参数U是要读取的类型如Point,buf是存放数据的字符串。同时加入了静态成员fmtString用于表示从sscanf中读取时候的格式。      
