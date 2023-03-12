@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "放宽对move from 对象的要求"
-date:   2023-02-25 09:24:58 +0800
+date:   2023-02-27 09:24:58 +0800
 categories: jekyll update
 tags:
-  io
+  move-semantic 
 ---
 
 现在C\++标准中要求move from 对象必须是合法，不确定的状态。比如对于std::vector\<int>move from对象，应能合法的调用所有没有precondition的成员函数，如push_back size empty等，但注意不能直接调用operator []，可能导致UB。sean parent认为这些要求太过严格，他观察到标准库对move from对象只执行四种操作：
