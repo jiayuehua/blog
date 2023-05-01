@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "中国古典名言"
-date:   2013-01-29 09:24:58 +0800
+date:   2014-04-29 09:24:58 +0800
 categories: jekyll update
 tags:
   quotes 

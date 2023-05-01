@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "中国古典名言"
-date:   2013-01-29 09:24:58 +0800
+title:  "为纯科学呐喊"
+date:   2017-01-11 09:24:58 +0800
 categories: jekyll update
 tags:
   quotes 
