@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "将16进制字符串转化为10进制数"
-date:   2013-07-10 09:24:58 +0800
+date:   2013-07-06 09:24:58 +0800
 categories: jekyll update
 tags:
   parser 
