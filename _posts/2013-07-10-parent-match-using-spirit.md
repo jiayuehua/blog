@@ -4,7 +4,7 @@ title:  "括号匹配，使用boost-spirit实现"
 date:   2013-07-10 09:24:58 +0800
 categories: jekyll update
 tags:
-  quotes 
+  parser 
 ---
 如下代码可以匹配四种类型的括号,大括号、小括号、中括号和尖括号。允许各种嵌套。并且允许输入串中包含其他字符。
 
