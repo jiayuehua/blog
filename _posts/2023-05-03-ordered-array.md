@@ -10,7 +10,7 @@ tags:
 
 算法分两步
 
-- 使用partition_point找到partition point,partition point前的元素都大于等于B的首元素。比如B数组{3,4,5,6,1,2}前四个元素都大于等于B的首元素3，那么partition point指向第五个元素1。
+- 使用partition_point找到partition point,partition point前的元素都大于等于B的首元素。比如B数组为{3,4,5,6,1,2}前四个元素都大于等于B的首元素3，那么partition point指向第五个元素1。
 - 对数组B循环，将partition point指向的元素作为循环后结果数组的首元素。结果数组和A完全相等。
 
 实现如下：
