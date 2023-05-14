@@ -3,6 +3,7 @@ layout: post
 title:  "permutaion"
 date:   2018-09-10 07:23:56 +0800
 categories: jekyll update
+tags: algorithm
 ---
 1 2 3 4 的全排列
 ```cpp

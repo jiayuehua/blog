@@ -4,7 +4,7 @@ title:  "借助folly eventbase实现简单的异步周期回调"
 date:   2023-03-25 09:24:58 +0800
 categories: jekyll update
 tags:
-  template
+  async
 ---
 folly/io/async/EventBase.h 以libevent为基础，实现了强大的异步io网络库。这里只是简单的介绍一下如何使用EventBase实现简单的异步周期回调。
 

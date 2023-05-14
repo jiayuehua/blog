@@ -3,6 +3,7 @@ layout: post
 title:  "C++函数对象 的模板参数 技巧"
 date:   2018-05-02 07:23:59 +0800
 categories: jekyll update
+tags: closure
 ---
 假定有两组数，需要将对应的元素相加，用stl咋做
 

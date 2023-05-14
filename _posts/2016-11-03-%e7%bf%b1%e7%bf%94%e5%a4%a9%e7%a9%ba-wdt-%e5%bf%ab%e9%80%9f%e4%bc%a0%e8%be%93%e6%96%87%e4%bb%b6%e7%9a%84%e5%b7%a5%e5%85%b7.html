@@ -16,7 +16,8 @@ date: '2016-11-03 05:34:44 +0800'
 date_gmt: '2016-11-03 05:34:44 +0800'
 categories:
 - 编程环境
-tags: []
+tags:
+- Transmission-tool
 comments: []
 ---
 <p>wdt 是facebook 出品的用于linux机器间传输文件的工具，传输速度明显快于rsync和scp。</p>
@@ -28,30 +29,34 @@ comments: []
 <p>这个命令行很长，我写了一个shell ，名为fcp，可以使用类似scp的语法:</p>
 <p>fcp &nbsp;[[user@]host1:]dir [[user@]host2:]dir</p>
 <p>======= fcp =======</p>
-<p>#!/bin/bash<br />
-if [ $# -lt 2 ]<br />
-then<br />
-echo "usage: fcp [[user@]host1:]dir [[user@]host2:]dir "<br />
-exit<br />
-fi<br />
-sh=`echo $1| awk -F: '{print $1 }'`<br />
-sp=`echo $1| awk -F: '{print $2 }'`<br />
-dh=`echo $2| awk -F: '{print $1 }'`<br />
-dp=`echo $2| awk -F: '{print $2 }'`<br />
-if [ -z "$sp" ]<br />
-then<br />
-sp=$sh<br />
-sh=''<br />
-else<br />
-sh="ssh $sh"<br />
-fi</p>
-<p>if [ -z "$dp" ]<br />
-then<br />
-dp=$dh<br />
-dh=''<br />
-else<br />
-dh="ssh $dh"<br />
-fi</p>
+<p>
+  #!/bin/bash<br />
+  if [ $# -lt 2 ]<br />
+  then<br />
+  echo "usage: fcp [[user@]host1:]dir [[user@]host2:]dir "<br />
+  exit<br />
+  fi<br />
+  sh=`echo $1| awk -F: '{print $1 }'`<br />
+  sp=`echo $1| awk -F: '{print $2 }'`<br />
+  dh=`echo $2| awk -F: '{print $1 }'`<br />
+  dp=`echo $2| awk -F: '{print $2 }'`<br />
+  if [ -z "$sp" ]<br />
+  then<br />
+  sp=$sh<br />
+  sh=''<br />
+  else<br />
+  sh="ssh $sh"<br />
+  fi
+</p>
+<p>
+  if [ -z "$dp" ]<br />
+  then<br />
+  dp=$dh<br />
+  dh=''<br />
+  else<br />
+  dh="ssh $dh"<br />
+  fi
+</p>
 <p>#echo $sh $sp $dh $dp</p>
 <p>$dh wdt -directory $dp | &nbsp;$sh wdt -directory $sp &nbsp;-</p>
 <p>&nbsp;</p>

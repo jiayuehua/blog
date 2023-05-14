@@ -3,6 +3,7 @@ layout: post
 title:  "使用variadic template实现函数重载"
 date:   2018-12-20 07:23:52 +0000
 categories: jekyll update
+tags: template
 ---
 ```cpp
 #include <sparsehash/dense_hash_map>
