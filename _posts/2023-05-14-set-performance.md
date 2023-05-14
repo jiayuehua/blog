@@ -4,7 +4,7 @@ title:  "比较三种ordered set的性能"
 date:   2023-05-14 09:24:58 +0800
 categories: jekyll update
 tags:
-  algorithm
+  container
 ---
 标准库提供了有序的std::set,folly中新增了两种有序set,sorted_vector_set和heap_vector_set。我们比较下它们的查找和插入的性能。
 
