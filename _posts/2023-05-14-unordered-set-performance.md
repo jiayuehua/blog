@@ -337,7 +337,7 @@ tags:
 benchmark结果
 查询时，容器中有5000000个元素。以及不同方式插入5000000个元素时结果
 
-![benchmark result](/images/unordered_set_benchmark.jpeg)
+![benchmark_result](/images/unordered_set_benchmark.jpg)
 
 结论:
 
