@@ -24,6 +24,7 @@ folly中tokenbucket的使用方法:
        // 100 tokens per second, and a maximum burst size of 500 tokens
       folly::TokenBucket bucket(100, 500);
       //now there should be 500 tokens in the bucket
+      // tokenbucket's available tokens size is less_equal then burst size: 500 in its lifetime.
 
       for (int i = 0; i < 100; ++i) {
         EXPECT_TRUE(bucket.consume(1));
