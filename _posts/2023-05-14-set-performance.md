@@ -139,5 +139,5 @@ benchmark代码:
 - 当容器中有1000000个元素时，heap_vector_set的查询性能最佳,set最差。
 - 如果插入的是有序的range，range中有1000000个元素时，sorted_vector_set使用folly::sorted_unique tag时插入性能最佳,set最差。
 - 如果插入的是随机的range，range中有1000000个元素时，sorted_vector_set插入性能依然最佳,set最差。
-- 如果是一个一个插入随机元素，插入1000000个时，btree_set插入性能依然最佳，而heap_vector_set的插入性能最差，只有set的0.2%,sorted_vector_set的性能只有set的13% 。
+- 如果是一个一个插入随机元素，插入100000个时，btree_set插入性能依然最佳，而heap_vector_set的插入性能最差，只有set的0.2%,sorted_vector_set的性能只有set的13% 。
  
