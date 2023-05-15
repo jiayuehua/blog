@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "observer container"
-date:   2023-05-14 09:24:58 +0800
+date:   2023-05-16 08:24:58 +0800
 categories: jekyll update
 tags:
   design-pattern
