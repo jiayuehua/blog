@@ -4,7 +4,7 @@ title:  "cpo和tag_invoke"
 date:   2023-05-18 08:00:02 +0800
 categories: jekyll update
 tags:
-  container 
+  customization-point 
 ---
 
 customization point object(cpo)和tag_invoke由eric niebler提出，在ranges和executor中有很多应用。
