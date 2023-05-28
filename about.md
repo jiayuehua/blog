@@ -52,6 +52,12 @@ permalink: /about/
 - 哈姆雷特
 - 李尔王
 - 西厢记
+- 文明的冲突的世界秩序的重建
+- 大棋局
+- 世界秩序
+- 历史的教训
+- 培根论人生
+- 红楼梦
    
 曲目
 - 红旗颂
@@ -61,6 +67,9 @@ permalink: /about/
 - 末代皇帝
 - 茶花女
 - 小步舞曲
+- 第二圆舞曲
+- 节日序曲
+- 伏瓦塔尔河
    
 名言
 - 两只黄鹂鸣翠柳，一行白鹭上青天。
@@ -72,21 +81,13 @@ permalink: /about/
 - 海纳百川，有容乃大；壁立千仞，无欲则刚。
 - 横看成岭侧成峰，远近高低各不同。
 
-足球
-- 布冯
-- 基耶里尼
-- 赫迪拉
 
-排球
-- 朱婷
-- 袁心玥
-- 姚笛
-- 魏秋月
-- 张常宁
+通读过的代码
+- Linux内核 0.11 ,linus torvalds好聪明
+- tcp/ip (bsd4.4)
+- STL (sgi-stl)
+- loki库
 
-贾跃华
-
-我的新浪博客 [贾跃华](http://blog.sina.com.cn/jiayuehua8)
 
 ###  Cool C++ websites and blogs
 
@@ -115,7 +116,7 @@ permalink: /about/
 
 
 全球 C\++社区交流群  
- [Cpplang ](https://cpplang-inviter.cppalliance.org/)  
+ [Cpplang ](https://cppalliance.org/slack/)  
 [include C++  ](https://discord.com/invite/ZPErMGW)
 
 100位世界级C\++专家twitter列表   
@@ -124,3 +125,5 @@ permalink: /about/
 [C\++演讲视频汇总 日常更新](https://www.swedencpp.se/videos)  
 [meeting C++ blogroll](https://meetingcpp.com/blog/blogroll/)   
 [cpp links](https://github.com/MattPD/cpplinks)
+
+贾跃华
