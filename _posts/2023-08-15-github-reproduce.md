@@ -7,12 +7,12 @@ tags:
   github
 ---
 
-我們以  jiayuehua/CMakeVcpkgManifest 爲例，说明如何在github上建立可重复的开发环境。
+我們以 github上 jiayuehua/CMakeVcpkgManifest 代码库  爲例，说明如何在github上建立可重复的开发环境。
 
 # 1. 增加devcontainer 配置文件
 在visual stuido code中 C-S-P,选择CodeSpaces:add devcontainer configure files... 生成devcontainer配置文件和Dockerfile。
 
-修改这两文件为和CMakeVcpkgManifest的内容完全一致，因为CMakeVcpkgManifest正确的配置了sshd和安装了X11 forwarding所需要的程序。
+修改这两文件为和CMakeVcpkgManifest的内容完全一致，因为CMakeVcpkgManifest正确的配置了sshd和安装了X11 forwarding所需要的程序。将改动push到github。
 
 # 2 . 添加codespace, 在github上添加codespace。
 
