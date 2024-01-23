@@ -63,7 +63,7 @@ daisy在cppnow 2023的演讲中展示了可极大简化模板元算法的技巧�
               }
 
 
-因为i 和j是运行时变量，而我们需要编译时取到type_list中第i个元素和第j个元素，做法是构造一个variant的数组，variant的每项依次构造为std::type_identity\<Ts\>...,然后使用std::visit访问数组中的第i项和第j项，因为该lambda是constexpr的，所以可以用于编译时调用。
+我们需要取到type_list中第i个元素和第j个元素对应的信息，做法是构造一个variant的数组，variant的每项依次构造为std::type_identity\<Ts\>...,然后使用std::visit访问数组中的第i项和第j项，因为该lambda是constexpr的，所以可以用于编译时调用。
 
 Key是以std::type_indentity为参数的仿函数
 
